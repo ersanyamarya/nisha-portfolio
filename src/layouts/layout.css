@@ -1,11 +1,16 @@
 :root {
-  --color-primary-main: #e87278;
-  --color-primary-light: #ffbcba;
+  --color-primary-main: #45b26d;
+  --color-primary-light: #5ebbd5;
   --color-on-primary-main: #fefefe;
   --color-primary-text: #333333;
   --color-background: #f5f5f5;
 
   --dim-hero-clip: 832px;
+}
+
+.dark {
+  --color-primary-text: #f5f5f5;
+  --color-background: #333333;
 }
 * {
   box-sizing: border-box;

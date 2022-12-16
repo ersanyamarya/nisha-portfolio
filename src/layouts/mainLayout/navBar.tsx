@@ -1,8 +1,27 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
-import Logo from './logo'
+import React, { useState } from 'react'
+import { Logo } from '../../components'
+
+const NAVIGATION_LINKS = [
+  {
+    name: 'Home',
+    path: '/#hero',
+  },
+  {
+    name: 'Why me',
+    path: '/#whyme',
+  },
+  {
+    name: 'Projects',
+    path: '/#projects',
+  },
+  {
+    name: 'Contact',
+    path: '/#contact',
+  },
+]
+
 const StyledLink = styled(Link)({
   color: 'var(--color-on-primary-main)',
   fontSize: '1.25rem',
@@ -17,41 +36,145 @@ const StyledLink = styled(Link)({
     borderBottom: '2px solid var(--color-on-primary-main)',
   },
 })
-const NavContainer = styled.nav({
+const NavigationBar = styled.nav({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  padding: '1rem 8rem',
+  padding: '0.4rem 8rem',
   position: 'sticky',
   top: '0',
+  '@media only screen and (max-width: 920px)': {
+    padding: '1rem 1rem',
+  },
 })
-const NavLinks = styled.div({
-  display: 'flex',
+const NavLinks = styled.nav({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  display: 'flex',
+  '@media only screen and (max-width: 920px)': {
+    display: 'none',
+  },
+})
+const HamBurger = styled.button({
+  width: '40px',
+  border: 'none',
+  background: 'none',
+  cursor: 'pointer',
+  display: 'none',
+  padding: '5px',
+  '@media only screen and (max-width: 920px)': {
+    display: 'block',
+  },
+})
+const FullLogo = styled.div({
+  display: 'block',
+  '@media only screen and (max-width: 920px)': {
+    display: 'none',
+  },
 })
 
+const Overlay = styled.div({
+  position: 'fixed',
+  top: '0',
+  left: '-100%',
+  // width: '50%',
+  // height: '100%',
+  background: 'var(--color-primary-main)',
+  zIndex: 100,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  opacity: 0,
+  transition: 'all 0.2s ease-in-out',
+  '@media only screen and (min-width: 920px)': {
+    display: 'none',
+  },
+  boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.5)',
+  '&.visible': {
+    opacity: 1,
+    left: '0',
+  },
+})
 export default function NavBar() {
+  const [isOverlayVisible, setOverlayVisible] = useState(false)
   return (
-    <NavContainer>
-      <Logo />
+    <NavigationBar>
+      <HamBurger
+        onClick={() => {
+          setOverlayVisible(true)
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          shape-rendering="geometricPrecision"
+          text-rendering="geometricPrecision"
+          image-rendering="optimizeQuality"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          viewBox="0 0 512 351.67"
+        >
+          <path fill-rule="nonzero" d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z" />
+        </svg>
+      </HamBurger>
+
+      <FullLogo>
+        <Logo />
+      </FullLogo>
       <NavLinks>
-        <StyledLink activeClassName="active" to="/#hero">
-          Home
-        </StyledLink>
-        <StyledLink activeClassName="active" to="/#whyme">
-          Why me
-        </StyledLink>
-        <StyledLink activeClassName="active" to="/#projects">
-          Projects
-        </StyledLink>
-        <StyledLink activeClassName="active" to="/#contact">
-          Contact
-        </StyledLink>
+        {NAVIGATION_LINKS.map(link => (
+          <StyledLink activeClassName="active" to={link.path} key={link.name}>
+            {link.name}
+          </StyledLink>
+        ))}
       </NavLinks>
-    </NavContainer>
+      <Overlay className={isOverlayVisible ? 'visible' : ''}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            gap: '4rem',
+            width: '100%',
+            backgroundColor: 'var(--color-background)',
+            padding: '1rem',
+          }}
+        >
+          <Logo />
+
+          <HamBurger
+            onClick={() => {
+              setOverlayVisible(false)
+            }}
+          >
+            <svg
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 122.878 122.88"
+              enable-background="new 0 0 122.878 122.88"
+            >
+              <g>
+                <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
+              </g>
+            </svg>
+          </HamBurger>
+        </div>
+        {NAVIGATION_LINKS.map(link => (
+          <StyledLink
+            activeClassName="active"
+            to={link.path}
+            key={link.name}
+            onClick={() => {
+              setOverlayVisible(false)
+            }}
+          >
+            {link.name}
+          </StyledLink>
+        ))}
+      </Overlay>
+    </NavigationBar>
   )
 }

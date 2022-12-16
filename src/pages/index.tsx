@@ -2,6 +2,23 @@ import * as React from 'react'
 import type { HeadFC, PageProps } from 'gatsby'
 import Layout from '../layouts/mainLayout'
 import { StaticImage } from 'gatsby-plugin-image'
+import styled from '@emotion/styled'
+
+const ContactMeButton = styled.button({
+  marginTop: '1.5rem',
+  padding: '0.5rem 1rem',
+  border: 'none',
+  borderRadius: '4px',
+  backgroundColor: 'var(--color-primary-main)',
+  color: 'var(--color-on-primary-main)',
+  fontSize: '1.5rem',
+  fontWeight: '550',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease-in-out',
+  '&:hover': {
+    boxShadow: '4px 4px 8px #33333388',
+  },
+})
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -39,6 +56,7 @@ const IndexPage: React.FC<PageProps> = () => {
               Nisha Kumari
             </h1>
             <h3>UI/UX Designer</h3>
+            <ContactMeButton>Use My Brain</ContactMeButton>
           </div>
           <StaticImage width={128 * 4} src="../images/person.png" alt="A corgi smiling happily" />
         </section>

@@ -8,15 +8,17 @@ const Container = styled.div({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  // backgroundColor: 'var(--color-background)',
+  color: 'var(--color-primary-text)',
 })
 
-const MainArea = styled.div({
+const Cover = styled.div({
   position: 'absolute',
   height: 'var(--dim-hero-clip)',
   right: '0',
   width: '99%',
   top: '0px',
-  zIndex: '-999999',
+  zIndex: '-1',
   background: 'var(--color-primary-main)',
   clipPath: 'polygon(43.2% 0%, 100% 0%, 100% 100%, 51.1% 100%)',
 })
@@ -27,9 +29,11 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <NavBar />
-      <Container>{children}</Container>
-      <MainArea />
+      <Cover />
+      <div className="">
+        <NavBar />
+        <Container>{children}</Container>
+      </div>
     </>
   )
 }

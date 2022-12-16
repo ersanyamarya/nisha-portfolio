@@ -14,7 +14,7 @@ const LogoTitle = styled.span({
   },
 })
 
-export default function Logo() {
+export function Logo({ ...props }) {
   return (
     <Link
       style={{
@@ -22,9 +22,10 @@ export default function Logo() {
         alignItems: 'center',
         gap: '1.5rem',
       }}
+      {...props}
       to="/"
     >
-      <StaticImage width={64} src="../../images/icon.png" alt="A corgi smiling happily" />
+      {/* <StaticImage width={64} src="../../images/icon.png" alt="A corgi smiling happily" /> */}
       <div
         style={{
           display: 'flex',
