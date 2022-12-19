@@ -1,14 +1,16 @@
 import * as React from 'react'
-import type { HeadFC, PageProps } from 'gatsby'
+import { graphql, HeadFC, PageProps } from 'gatsby'
 import Layout from '../layouts/mainLayout'
 import { StaticImage } from 'gatsby-plugin-image'
 import styled from '@emotion/styled'
+import { contentfulBaseData } from '../utils/contentfulBaseData'
+import ProjectsSection from '../sections/projects'
 
 const ContactMeButton = styled.button({
   marginTop: '1.5rem',
   padding: '1rem 4rem',
   border: 'none',
-  borderRadius: '4px',
+  borderRadius: 'var(--dim-round-corner-large)',
   backgroundColor: 'var(--color-primary-500)',
   color: 'var(--color-primary-0)',
   fontSize: '2.438rem',
@@ -34,6 +36,7 @@ const HeroSection = styled.section({
     flexDirection: 'column',
     width: '100vw',
     marginTop: 'var(--dim-nav-height)',
+    gap: '2rem',
   },
 })
 
@@ -43,16 +46,19 @@ const HeroBlob = styled.svg({
   right: '0',
   width: '50vh',
   height: '60vh',
+  zIndex: -1,
 
   '@media only screen and (max-width: 920px)': {
     top: '30vh',
-    width: '40vh',
+    width: '30vh',
     height: '50vh',
   },
 })
-const IndexPage: React.FC<PageProps> = () => {
+
+const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
+  const { socialLinks, projects } = contentfulBaseData(data as Queries.Query)
   return (
-    <Layout>
+    <Layout socialLinks={socialLinks}>
       <main>
         <HeroBlob viewBox="0 0 440 618" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -113,93 +119,14 @@ const IndexPage: React.FC<PageProps> = () => {
           <StaticImage
             placeholder="blurred"
             layout="constrained"
+            style={{
+              width: '40vh',
+            }}
             src="../images/person.png"
             alt="A corgi smiling happily"
           />
         </HeroSection>
-        <section id="projects">
-          <h1>Projects</h1>
-          <p>
-            Occaecat sint incididunt ea officia. Dolor velit nisi elit mollit culpa voluptate sit aliqua cillum commodo
-            minim. Ea ullamco dolore cupidatat est commodo veniam cupidatat do sint eiusmod. Laboris incididunt duis
-            exercitation id commodo qui deserunt fugiat pariatur. Laborum id amet aute eiusmod tempor sunt dolore magna.
-            Ipsum quis in consequat culpa velit commodo ullamco magna id eu excepteur excepteur do dolore. Est laborum
-            veniam ex ipsum ipsum aliquip nostrud qui velit enim laborum commodo velit. Enim fugiat quis dolore
-            consequat non irure. Dolore exercitation mollit laboris non ipsum ad. Nostrud aute ut aliquip enim proident
-            veniam. Sunt ipsum dolor eiusmod consequat dolor sunt proident occaecat ipsum laborum. Labore adipisicing
-            reprehenderit incididunt amet velit exercitation laborum eu nisi anim amet. Cillum fugiat in consequat irure
-            ut amet. Sit tempor magna est est anim ex esse nisi sit. Officia consequat aute anim id laborum
-            reprehenderit enim aliquip ex do Lorem exercitation. Ullamco non incididunt deserunt sint nulla. Quis
-            excepteur culpa ipsum ullamco magna sint occaecat culpa et in Lorem. Adipisicing elit aliquip laborum id.
-            Lorem do Lorem eu cupidatat est ex fugiat cillum amet adipisicing enim irure id. Sunt velit do ad ipsum ut.
-            Velit magna quis eu Lorem ea amet nisi laborum excepteur id labore non labore. Sit exercitation esse ullamco
-            nostrud duis aliqua deserunt occaecat voluptate elit laborum adipisicing. Velit pariatur veniam quis dolore
-            aliqua amet magna aliquip duis anim ut cillum cillum mollit. Et ea incididunt cupidatat ipsum laborum veniam
-            pariatur irure dolor eu. Ullamco enim enim voluptate dolor mollit exercitation esse non non fugiat duis. Sit
-            nisi laboris veniam excepteur incididunt mollit labore nisi culpa. Veniam fugiat anim quis aute enim fugiat
-            commodo. Ad non nisi laborum mollit amet id qui proident minim cillum Lorem.
-          </p>{' '}
-          <p>
-            Occaecat sint incididunt ea officia. Dolor velit nisi elit mollit culpa voluptate sit aliqua cillum commodo
-            minim. Ea ullamco dolore cupidatat est commodo veniam cupidatat do sint eiusmod. Laboris incididunt duis
-            exercitation id commodo qui deserunt fugiat pariatur. Laborum id amet aute eiusmod tempor sunt dolore magna.
-            Ipsum quis in consequat culpa velit commodo ullamco magna id eu excepteur excepteur do dolore. Est laborum
-            veniam ex ipsum ipsum aliquip nostrud qui velit enim laborum commodo velit. Enim fugiat quis dolore
-            consequat non irure. Dolore exercitation mollit laboris non ipsum ad. Nostrud aute ut aliquip enim proident
-            veniam. Sunt ipsum dolor eiusmod consequat dolor sunt proident occaecat ipsum laborum. Labore adipisicing
-            reprehenderit incididunt amet velit exercitation laborum eu nisi anim amet. Cillum fugiat in consequat irure
-            ut amet. Sit tempor magna est est anim ex esse nisi sit. Officia consequat aute anim id laborum
-            reprehenderit enim aliquip ex do Lorem exercitation. Ullamco non incididunt deserunt sint nulla. Quis
-            excepteur culpa ipsum ullamco magna sint occaecat culpa et in Lorem. Adipisicing elit aliquip laborum id.
-            Lorem do Lorem eu cupidatat est ex fugiat cillum amet adipisicing enim irure id. Sunt velit do ad ipsum ut.
-            Velit magna quis eu Lorem ea amet nisi laborum excepteur id labore non labore. Sit exercitation esse ullamco
-            nostrud duis aliqua deserunt occaecat voluptate elit laborum adipisicing. Velit pariatur veniam quis dolore
-            aliqua amet magna aliquip duis anim ut cillum cillum mollit. Et ea incididunt cupidatat ipsum laborum veniam
-            pariatur irure dolor eu. Ullamco enim enim voluptate dolor mollit exercitation esse non non fugiat duis. Sit
-            nisi laboris veniam excepteur incididunt mollit labore nisi culpa. Veniam fugiat anim quis aute enim fugiat
-            commodo. Ad non nisi laborum mollit amet id qui proident minim cillum Lorem.
-          </p>{' '}
-          <p>
-            Occaecat sint incididunt ea officia. Dolor velit nisi elit mollit culpa voluptate sit aliqua cillum commodo
-            minim. Ea ullamco dolore cupidatat est commodo veniam cupidatat do sint eiusmod. Laboris incididunt duis
-            exercitation id commodo qui deserunt fugiat pariatur. Laborum id amet aute eiusmod tempor sunt dolore magna.
-            Ipsum quis in consequat culpa velit commodo ullamco magna id eu excepteur excepteur do dolore. Est laborum
-            veniam ex ipsum ipsum aliquip nostrud qui velit enim laborum commodo velit. Enim fugiat quis dolore
-            consequat non irure. Dolore exercitation mollit laboris non ipsum ad. Nostrud aute ut aliquip enim proident
-            veniam. Sunt ipsum dolor eiusmod consequat dolor sunt proident occaecat ipsum laborum. Labore adipisicing
-            reprehenderit incididunt amet velit exercitation laborum eu nisi anim amet. Cillum fugiat in consequat irure
-            ut amet. Sit tempor magna est est anim ex esse nisi sit. Officia consequat aute anim id laborum
-            reprehenderit enim aliquip ex do Lorem exercitation. Ullamco non incididunt deserunt sint nulla. Quis
-            excepteur culpa ipsum ullamco magna sint occaecat culpa et in Lorem. Adipisicing elit aliquip laborum id.
-            Lorem do Lorem eu cupidatat est ex fugiat cillum amet adipisicing enim irure id. Sunt velit do ad ipsum ut.
-            Velit magna quis eu Lorem ea amet nisi laborum excepteur id labore non labore. Sit exercitation esse ullamco
-            nostrud duis aliqua deserunt occaecat voluptate elit laborum adipisicing. Velit pariatur veniam quis dolore
-            aliqua amet magna aliquip duis anim ut cillum cillum mollit. Et ea incididunt cupidatat ipsum laborum veniam
-            pariatur irure dolor eu. Ullamco enim enim voluptate dolor mollit exercitation esse non non fugiat duis. Sit
-            nisi laboris veniam excepteur incididunt mollit labore nisi culpa. Veniam fugiat anim quis aute enim fugiat
-            commodo. Ad non nisi laborum mollit amet id qui proident minim cillum Lorem.
-          </p>{' '}
-          <p>
-            Occaecat sint incididunt ea officia. Dolor velit nisi elit mollit culpa voluptate sit aliqua cillum commodo
-            minim. Ea ullamco dolore cupidatat est commodo veniam cupidatat do sint eiusmod. Laboris incididunt duis
-            exercitation id commodo qui deserunt fugiat pariatur. Laborum id amet aute eiusmod tempor sunt dolore magna.
-            Ipsum quis in consequat culpa velit commodo ullamco magna id eu excepteur excepteur do dolore. Est laborum
-            veniam ex ipsum ipsum aliquip nostrud qui velit enim laborum commodo velit. Enim fugiat quis dolore
-            consequat non irure. Dolore exercitation mollit laboris non ipsum ad. Nostrud aute ut aliquip enim proident
-            veniam. Sunt ipsum dolor eiusmod consequat dolor sunt proident occaecat ipsum laborum. Labore adipisicing
-            reprehenderit incididunt amet velit exercitation laborum eu nisi anim amet. Cillum fugiat in consequat irure
-            ut amet. Sit tempor magna est est anim ex esse nisi sit. Officia consequat aute anim id laborum
-            reprehenderit enim aliquip ex do Lorem exercitation. Ullamco non incididunt deserunt sint nulla. Quis
-            excepteur culpa ipsum ullamco magna sint occaecat culpa et in Lorem. Adipisicing elit aliquip laborum id.
-            Lorem do Lorem eu cupidatat est ex fugiat cillum amet adipisicing enim irure id. Sunt velit do ad ipsum ut.
-            Velit magna quis eu Lorem ea amet nisi laborum excepteur id labore non labore. Sit exercitation esse ullamco
-            nostrud duis aliqua deserunt occaecat voluptate elit laborum adipisicing. Velit pariatur veniam quis dolore
-            aliqua amet magna aliquip duis anim ut cillum cillum mollit. Et ea incididunt cupidatat ipsum laborum veniam
-            pariatur irure dolor eu. Ullamco enim enim voluptate dolor mollit exercitation esse non non fugiat duis. Sit
-            nisi laboris veniam excepteur incididunt mollit labore nisi culpa. Veniam fugiat anim quis aute enim fugiat
-            commodo. Ad non nisi laborum mollit amet id qui proident minim cillum Lorem.
-          </p>
-        </section>
+        <ProjectsSection projects={projects} />
       </main>
     </Layout>
   )
@@ -207,4 +134,30 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const query = graphql`
+  query Contentful {
+    allContentfulProject {
+      nodes {
+        id
+        name
+        slug
+        shortDescription
+        cardCover {
+          gatsbyImageData
+        }
+      }
+    }
+    allContentfulSocialLinks {
+      nodes {
+        id
+        name
+        link
+        logo {
+          gatsbyImageData
+        }
+      }
+    }
+  }
+`
+
+export const Head: HeadFC = () => <title>Nisha Kumari</title>

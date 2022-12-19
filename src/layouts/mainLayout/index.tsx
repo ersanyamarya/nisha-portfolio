@@ -1,20 +1,20 @@
-import styled from '@emotion/styled'
-import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { SocialLinks } from '../../components'
+import { SocialLink } from '../../utils/contentfulBaseData'
 import '../layout.css'
 import NavBar from './navBar'
 
 interface LayoutProps {
   children: React.ReactNode
+  socialLinks: SocialLink[]
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, socialLinks }: LayoutProps) {
   return (
     <>
       <div className="">
         <NavBar />
-        <SocialLinks />
+        <SocialLinks socialLinks={socialLinks} />
         {children}
       </div>
     </>
