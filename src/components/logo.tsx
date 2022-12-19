@@ -9,6 +9,7 @@ const LogoTitle = styled.span({
   '&:nth-of-type(even)': {
     color: 'var(--color-primary-0)',
     backgroundColor: 'var(--color-primary-500)',
+    borderRadius: 'var(--dim-round-corner)',
   },
 })
 

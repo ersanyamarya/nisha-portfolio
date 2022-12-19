@@ -13,9 +13,9 @@ const SocialLinksContainer = styled.aside({
   justifyContent: 'space-between',
   alignItems: 'center',
   gap: '1rem',
-  boxShadow: 'var(--elevation-light)',
+  //   boxShadow: 'var(--elevation-light)',
   width: 'fit-content',
-  backgroundColor: 'var(--color-secondary-0)',
+  backgroundColor: 'var(--color-primary-0)',
   '@media only screen and (max-width: 920px)': {
     display: 'none',
   },

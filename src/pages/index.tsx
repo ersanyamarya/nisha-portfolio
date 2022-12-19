@@ -81,7 +81,6 @@ const IndexPage: React.FC<PageProps> = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              flex: 1,
             }}
           >
             <span
@@ -110,20 +109,13 @@ const IndexPage: React.FC<PageProps> = () => {
             </span>
             <ContactMeButton>Contact Me</ContactMeButton>
           </div>
-          <div
-            style={{
-              flex: 1,
-            }}
-          >
-            <div>
-              <StaticImage
-                placeholder="blurred"
-                layout="constrained"
-                src="../images/person.png"
-                alt="A corgi smiling happily"
-              />
-            </div>
-          </div>
+
+          <StaticImage
+            placeholder="blurred"
+            layout="constrained"
+            src="../images/person.png"
+            alt="A corgi smiling happily"
+          />
         </HeroSection>
         <section id="projects">
           <h1>Projects</h1>
