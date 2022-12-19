@@ -9,10 +9,6 @@ const NAVIGATION_LINKS = [
     path: '/#hero',
   },
   {
-    name: 'Why me',
-    path: '/#whyme',
-  },
-  {
     name: 'Projects',
     path: '/#projects',
   },
@@ -23,17 +19,18 @@ const NAVIGATION_LINKS = [
 ]
 
 const StyledLink = styled(Link)({
-  color: 'var(--color-on-primary-main)',
-  fontSize: '1.25rem',
-  padding: '0.8rem 1rem',
-  fontWeight: '600',
-  textDecoration: 'none',
+  padding: '0 1rem',
   transition: 'all 0.2s ease-in-out',
+  color: 'var(--color-primary-500)',
+
   '&:hover:not(.active)': {
-    color: 'var(--color-on-primary-light)',
+    textShadow: 'var(--elevation-surface)',
   },
   '&.active': {
-    borderBottom: '2px solid var(--color-on-primary-main)',
+    borderBottom: '2px solid var(--color-primary-0)',
+  },
+  '@media only screen and (max-width: 920px)': {
+    padding: '1rem',
   },
 })
 const NavigationBar = styled.nav({
@@ -42,11 +39,16 @@ const NavigationBar = styled.nav({
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  padding: '0.4rem 8rem',
+  padding: '0 8rem',
+  height: 'var(--dim-nav-height)',
+  maxHeight: 'var(--dim-nav-height)',
   position: 'sticky',
   top: '0',
+  zIndex: 100,
+  backgroundColor: 'var(--color-secondary-0)',
   '@media only screen and (max-width: 920px)': {
-    padding: '1rem 1rem',
+    padding: '1rem',
+    position: 'absolute',
   },
 })
 const NavLinks = styled.nav({
@@ -80,9 +82,8 @@ const Overlay = styled.div({
   position: 'fixed',
   top: '0',
   left: '-100%',
-  // width: '50%',
-  // height: '100%',
-  background: 'var(--color-primary-main)',
+
+  background: 'var(--color-secondary-0)',
   zIndex: 100,
   display: 'flex',
   flexDirection: 'column',
@@ -125,7 +126,12 @@ export default function NavBar() {
       </FullLogo>
       <NavLinks>
         {NAVIGATION_LINKS.map(link => (
-          <StyledLink activeClassName="active" to={link.path} key={link.name}>
+          <StyledLink
+            className="text-style-heading-h-5-semi-bold"
+            activeClassName="active"
+            to={link.path}
+            key={link.name}
+          >
             {link.name}
           </StyledLink>
         ))}
@@ -138,7 +144,7 @@ export default function NavBar() {
             justifyContent: 'space-between',
             gap: '4rem',
             width: '100%',
-            backgroundColor: 'var(--color-background)',
+            backgroundColor: 'var(--color-secondary-0)',
             padding: '1rem',
           }}
         >
@@ -164,6 +170,7 @@ export default function NavBar() {
         </div>
         {NAVIGATION_LINKS.map(link => (
           <StyledLink
+            className="text-style-heading-h-5-semi-bold"
             activeClassName="active"
             to={link.path}
             key={link.name}
