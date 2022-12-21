@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import { Logo } from '../../components'
+import useScrollPosition from '../../hooks/useScrollPosition'
 
 const NAVIGATION_LINKS = [
   {
@@ -44,11 +45,15 @@ const NavigationBar = styled.nav({
   maxHeight: 'var(--dim-nav-height)',
   position: 'sticky',
   top: '0',
-  zIndex: 100,
+  zIndex: 10000,
   backgroundColor: 'var(--color-secondary-0)',
   '@media only screen and (max-width: 920px)': {
     padding: '1rem',
     position: 'absolute',
+  },
+  '&.shadow': {
+    transition: 'var(--transition-ease)',
+    boxShadow: 'var(--elevation-surface)',
   },
 })
 const NavLinks = styled.nav({
@@ -100,9 +105,10 @@ const Overlay = styled.div({
   },
 })
 export default function NavBar() {
+  const scrollPosition = useScrollPosition()
   const [isOverlayVisible, setOverlayVisible] = useState(false)
   return (
-    <NavigationBar>
+    <NavigationBar className={scrollPosition > 215 ? 'shadow' : ''}>
       <HamBurger
         onClick={() => {
           setOverlayVisible(true)
@@ -124,6 +130,7 @@ export default function NavBar() {
       <FullLogo>
         <Logo />
       </FullLogo>
+      {/* <pre>{scrollPosition}</pre> */}
       <NavLinks>
         {NAVIGATION_LINKS.map(link => (
           <StyledLink
