@@ -26,11 +26,12 @@
 
   --dim-nav-height: 72px;
 
-  --elevation-surface: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
-  --elevation-focus: 0px 20px 30px -10px #26394d;
+  --elevation-surface: 12px 12px 21px #d4d2d0, -12px -12px 21px #ffffff;
+  --elevation-focus: 18px 18px 22px #d4d2d0, -18px -18px 22px #ffffff;
   --elevation-light: 0px 8px 24px rgba(149, 157, 165, 0.2);
+
   --transition-ease: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .text-style-heading-h-1-regular {
   font-size: 3.062rem;

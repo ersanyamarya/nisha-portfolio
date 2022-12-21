@@ -15,10 +15,10 @@ export type Project = {
 }
 export type ContentfulBaseData = {
   socialLinks: SocialLink[]
-  projects: Project[]
+  // projects: Project[]
 }
 export function contentfulBaseData(query: Queries.Query): ContentfulBaseData {
-  const { allContentfulProject, allContentfulSocialLinks } = query
+  const { allContentfulSocialLinks } = query
   return {
     socialLinks: allContentfulSocialLinks.nodes.map(social => {
       const image = getImage(social.logo?.gatsbyImageData as IGatsbyImageData) as IGatsbyImageData
@@ -29,15 +29,15 @@ export function contentfulBaseData(query: Queries.Query): ContentfulBaseData {
         logo: image,
       }
     }) as SocialLink[],
-    projects: allContentfulProject.nodes.map(project => {
-      const image = getImage(project.cardCover?.gatsbyImageData as IGatsbyImageData) as IGatsbyImageData
-      return {
-        id: project.id,
-        name: project.name,
-        shortDescription: project.shortDescription,
-        slug: project.slug,
-        cardCover: image,
-      }
-    }) as Project[],
+    // projects: allContentfulProject.nodes.map(project => {
+    //   const image = getImage(project.cardCover?.gatsbyImageData as IGatsbyImageData) as IGatsbyImageData
+    //   return {
+    //     id: project.id,
+    //     name: project.name,
+    //     shortDescription: project.shortDescription,
+    //     slug: project.slug,
+    //     cardCover: image,
+    //   }
+    // }) as Project[],
   }
 }

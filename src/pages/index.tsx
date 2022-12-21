@@ -7,7 +7,7 @@ import { contentfulBaseData } from '../utils/contentfulBaseData'
 import ProjectsSection from '../sections/projects'
 
 const ContactMeButton = styled.button({
-  marginTop: '1.5rem',
+  marginTop: '2rem',
   padding: '1rem 4rem',
   border: 'none',
   borderRadius: 'var(--dim-round-corner-large)',
@@ -17,9 +17,14 @@ const ContactMeButton = styled.button({
   fontWeight: '400',
   cursor: 'pointer',
   width: 'fit-content',
+  boxShadow: 'var(--elevation-surface)',
+  transform: 'scale(0.95)',
+  marginLeft: '-0.8rem',
   transition: 'var(--transition-ease)',
   '&:hover': {
     boxShadow: 'var(--elevation-focus)',
+    transform: 'scale(1)',
+    // marginLeft: '0rem',
   },
 })
 
@@ -42,46 +47,23 @@ const HeroSection = styled.section({
 
 const HeroBlob = styled.svg({
   position: 'absolute',
-  top: '10vh',
-  right: '0',
+  top: '0%',
+  right: '-50%',
+  zIndex: -1,
   width: '50vh',
   height: '60vh',
-  zIndex: -1,
-
-  '@media only screen and (max-width: 920px)': {
-    top: '30vh',
-    width: '30vh',
-    height: '50vh',
-  },
+  // '@media only screen and (max-width: 920px)': {
+  //   top: '30vh',
+  //   width: '30vh',
+  //   height: '50vh',
+  // },
 })
 
 const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
-  const { socialLinks, projects } = contentfulBaseData(data as Queries.Query)
+  const { socialLinks } = contentfulBaseData(data as Queries.Query)
   return (
     <Layout socialLinks={socialLinks}>
       <main>
-        <HeroBlob viewBox="0 0 440 618" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M282.321 0.117837C363.442 -3.56932 412.097 80.0621 466.755 140.118C529.461 209.016 638.819 273.222 612.104 362.47C585.482 451.404 451.425 424.469 368.908 466.999C280.288 512.673 220.379 643.167 125.227 613.409C28.1003 583.034 1.67535 453.385 0.0182355 351.633C-1.28584 271.559 67.6305 218.421 117.777 155.98C167.547 94.0075 202.919 3.72686 282.321 0.117837Z"
-            fill="url(#paint0_linear_20_18)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_20_18"
-              x1="-9"
-              y1="273.5"
-              x2="596.5"
-              y2="212"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stop-color="var(--color-primary-700)" />
-              <stop offset="1" stop-color="var(--color-primary-0)" />
-            </linearGradient>
-          </defs>
-        </HeroBlob>
-
         <HeroSection id="hero">
           <div
             style={{
@@ -91,11 +73,11 @@ const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
           >
             <span
               style={{
-                lineHeight: '1.5',
+                lineHeight: '2',
               }}
               className="text-style-heading-h-2-regular"
             >
-              I am
+              I am,
             </span>
             <span
               style={{
@@ -115,18 +97,44 @@ const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
             </span>
             <ContactMeButton>Contact Me</ContactMeButton>
           </div>
-
-          <StaticImage
-            placeholder="blurred"
-            layout="constrained"
+          <div
             style={{
-              width: '40vh',
+              position: 'relative',
             }}
-            src="../images/person.png"
-            alt="A corgi smiling happily"
-          />
+          >
+            <HeroBlob viewBox="0 0 478 573" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M207.262 0.313351C338.646 -6.98229 436.561 114.293 470.663 241.384C499.653 349.425 437.712 453.864 346.24 518.254C259.53 579.292 142.659 596.207 58.7989 531.31C-19.2097 470.941 -5.80895 361.364 20.7514 266.367C52.9933 151.05 87.7064 6.95214 207.262 0.313351Z"
+                fill="url(#paint0_linear_59_11341)"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_59_11341"
+                  x1="1.20022e-05"
+                  y1="452.5"
+                  x2="478"
+                  y2="176.5"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="var(--color-primary-700)" />
+                  <stop offset="1" stop-color="var(--color-primary-0)" />
+                </linearGradient>
+              </defs>
+            </HeroBlob>
+            <StaticImage
+              placeholder="blurred"
+              layout="fullWidth"
+              style={{
+                width: '40vh',
+              }}
+              src="../images/person.png"
+              alt="A corgi smiling happily"
+            ></StaticImage>
+          </div>
         </HeroSection>
-        <ProjectsSection projects={projects} />
+        <ProjectsSection />
       </main>
     </Layout>
   )
@@ -136,17 +144,6 @@ export default IndexPage
 
 export const query = graphql`
   query Contentful {
-    allContentfulProject {
-      nodes {
-        id
-        name
-        slug
-        shortDescription
-        cardCover {
-          gatsbyImageData
-        }
-      }
-    }
     allContentfulSocialLinks {
       nodes {
         id
