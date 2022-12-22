@@ -1,20 +1,19 @@
 import React from 'react'
 import { SocialLinks } from '../../components'
-import { SocialLink } from '../../utils/contentfulBaseData'
 import '../layout.css'
 import NavBar from './navBar'
 
 interface LayoutProps {
   children: React.ReactNode
-  socialLinks: SocialLink[]
 }
 
-export default function Layout({ children, socialLinks }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <div className="">
+        {/* <NavSlider /> */}
         <NavBar />
-        <SocialLinks socialLinks={socialLinks} />
+        <SocialLinks />
         {children}
       </div>
     </>

@@ -53,7 +53,7 @@ const NavigationBar = styled.nav({
   },
   '&.shadow': {
     transition: 'var(--transition-ease)',
-    boxShadow: 'var(--elevation-surface)',
+    boxShadow: 'var(--elevation-light)',
   },
 })
 const NavLinks = styled.nav({

@@ -103,28 +103,28 @@ export function IGuide({}) {
         placeholder="blurred"
         layout="constrained"
         src="../../images/projects/iGuide/graphics.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="logo"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/iGuide/logo.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="description"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/iGuide/description.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="mobile"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/iGuide/mobile.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
 
       <StaticImage
@@ -132,14 +132,14 @@ export function IGuide({}) {
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/iGuide/desktop.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="ipad"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/iGuide/ipad.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
     </IGuideProjectPreviewCard>
   )

@@ -93,35 +93,35 @@ export function PawsAndClaws({}) {
         placeholder="blurred"
         layout="constrained"
         src="../../images/projects/pawsAndClaws/graphics.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="logo"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/pawsAndClaws/logo.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="description"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/pawsAndClaws/description.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="mobile"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/pawsAndClaws/mobile.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="desktop"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/pawsAndClaws/desktop.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
     </PawsProjectPreviewCard>
   )

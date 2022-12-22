@@ -24,7 +24,7 @@ export function Logo({ ...props }) {
       {...props}
       to="/"
     >
-      {/* <StaticImage width={64} src="../../images/icon.png" alt="A corgi smiling happily" /> */}
+      {/* <StaticImage width={64} src="../../images/icon.png" alt="REPLACE WITH ACTUAL COPY" /> */}
       <div
         style={{
           display: 'flex',

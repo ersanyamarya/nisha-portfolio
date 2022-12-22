@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { SocialLink } from '../utils/contentfulBaseData'
+
 const SocialLinksContainer = styled.aside({
   position: 'fixed',
   top: 'calc(50% - 5rem)',
@@ -13,6 +14,7 @@ const SocialLinksContainer = styled.aside({
   justifyContent: 'space-between',
   alignItems: 'center',
   gap: '1rem',
+  zIndex: 1,
   //   boxShadow: 'var(--elevation-light)',
   width: 'fit-content',
   backgroundColor: 'var(--color-primary-0)',
@@ -32,21 +34,25 @@ const SocialIcon = styled.a({
   },
 })
 
-type SocialLinkProps = {
-  socialLinks: SocialLink[]
-}
-
-export function SocialLinks({ socialLinks }: SocialLinkProps) {
+export function SocialLinks() {
   return (
     <SocialLinksContainer>
-      {socialLinks.map(
-        social =>
-          social.link && (
-            <SocialIcon href={social.link} key={social.id} target="_blank">
-              <GatsbyImage image={social.logo} alt={social?.name || 'social link'} />
-            </SocialIcon>
-          )
-      )}
+      <SocialIcon href="https://www.linkedin.com/in/sanyam-arya/" target="_blank">
+        <StaticImage
+          placeholder="blurred"
+          layout="constrained"
+          src="../images/behance.png"
+          alt="REPLACE WITH ACTUAL COPY"
+        />
+      </SocialIcon>
+      <SocialIcon href="https://www.linkedin.com/in/nisha-kumari-de/" target="_blank">
+        <StaticImage
+          placeholder="blurred"
+          layout="constrained"
+          src="../images/linkedin.png"
+          alt="REPLACE WITH ACTUAL COPY"
+        />
+      </SocialIcon>
     </SocialLinksContainer>
   )
 }

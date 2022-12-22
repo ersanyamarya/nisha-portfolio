@@ -1,9 +1,8 @@
-import * as React from 'react'
-import { graphql, HeadFC, PageProps } from 'gatsby'
-import Layout from '../layouts/mainLayout'
-import { StaticImage } from 'gatsby-plugin-image'
 import styled from '@emotion/styled'
-import { contentfulBaseData } from '../utils/contentfulBaseData'
+import { HeadFC, PageProps } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
+import * as React from 'react'
+import Layout from '../layouts/mainLayout'
 import ProjectsSection from '../sections/projects'
 
 const ContactMeButton = styled.button({
@@ -37,6 +36,11 @@ const HeroSection = styled.section({
   margin: '0 auto',
   width: '80vw',
   height: 'calc(100vh - var(--dim-nav-height))',
+  // '&:hover > div > svg': {
+  //   // opacity: 0.5,
+  //   transform: 'scale(1.2)',
+  // },
+
   '@media only screen and (max-width: 920px)': {
     flexDirection: 'column',
     width: '100vw',
@@ -52,6 +56,8 @@ const HeroBlob = styled.svg({
   zIndex: -1,
   width: '50vh',
   height: '60vh',
+  transition: 'var(--transition-ease)',
+
   // '@media only screen and (max-width: 920px)': {
   //   top: '30vh',
   //   width: '30vh',
@@ -59,10 +65,9 @@ const HeroBlob = styled.svg({
   // },
 })
 
-const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
-  const { socialLinks } = contentfulBaseData(data as Queries.Query)
+const IndexPage: React.FC<PageProps> = () => {
   return (
-    <Layout socialLinks={socialLinks}>
+    <Layout>
       <main>
         <HeroSection id="hero">
           <div
@@ -130,7 +135,7 @@ const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
                 width: '40vh',
               }}
               src="../images/person.png"
-              alt="A corgi smiling happily"
+              alt="REPLACE WITH ACTUAL COPY"
             ></StaticImage>
           </div>
         </HeroSection>
@@ -141,20 +146,5 @@ const IndexPage: React.FC<PageProps> = ({ data }: PageProps) => {
 }
 
 export default IndexPage
-
-export const query = graphql`
-  query Contentful {
-    allContentfulSocialLinks {
-      nodes {
-        id
-        name
-        link
-        logo {
-          gatsbyImageData
-        }
-      }
-    }
-  }
-`
 
 export const Head: HeadFC = () => <title>Nisha Kumari</title>

@@ -112,49 +112,49 @@ export function WatchAndBite({}) {
         placeholder="blurred"
         layout="constrained"
         src="../../images/projects/watchAndBite/graphics.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="logo"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/watchAndBite/logo.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="description"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/watchAndBite/description.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="desktop"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/watchAndBite/desktop.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="Screen-3"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/watchAndBite/Screen-3.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="Screen-2"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/watchAndBite/Screen-2.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
         className="Screen-1"
         placeholder="blurred"
         layout="fixed"
         src="../../images/projects/watchAndBite/Screen-1.png"
-        alt="A corgi smiling happily"
+        alt="REPLACE WITH ACTUAL COPY"
       />
     </WatchProjectPreviewCard>
   )
