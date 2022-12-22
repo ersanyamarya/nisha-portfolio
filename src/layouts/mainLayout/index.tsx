@@ -5,14 +5,15 @@ import NavBar from './navBar'
 
 interface LayoutProps {
   children: React.ReactNode
+  openContactForm: () => void
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, openContactForm }: LayoutProps) {
   return (
     <>
       <div className="">
         {/* <NavSlider /> */}
-        <NavBar />
+        <NavBar openContactForm={openContactForm} />
         <SocialLinks />
         {children}
       </div>

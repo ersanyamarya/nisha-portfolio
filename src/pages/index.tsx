@@ -2,7 +2,9 @@ import styled from '@emotion/styled'
 import { HeadFC, PageProps } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import useScrollPosition from '../hooks/useScrollPosition'
 import Layout from '../layouts/mainLayout'
+import Contact from '../sections/contact'
 import ProjectsSection from '../sections/projects'
 
 const ContactMeButton = styled.button({
@@ -57,6 +59,7 @@ const HeroBlob = styled.svg({
   width: '50vh',
   height: '60vh',
   transition: 'var(--transition-ease)',
+  overflow: 'hidden',
 
   // '@media only screen and (max-width: 920px)': {
   //   top: '30vh',
@@ -66,82 +69,105 @@ const HeroBlob = styled.svg({
 })
 
 const IndexPage: React.FC<PageProps> = () => {
+  const scrollPosition = useScrollPosition()
+  const [showContact, setShowContact] = React.useState(false)
   return (
-    <Layout>
-      <main>
-        <HeroSection id="hero">
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <span
+    <>
+      <Contact open={showContact} onClose={() => setShowContact(false)} />
+      <Layout
+        openContactForm={() => {
+          setShowContact(true)
+        }}
+      >
+        <main>
+          <HeroSection id="hero">
+            <div
               style={{
-                lineHeight: '2',
+                display: 'flex',
+                flexDirection: 'column',
               }}
-              className="text-style-heading-h-2-regular"
             >
-              I am,
-            </span>
-            <span
+              <span
+                style={{
+                  lineHeight: '2',
+                }}
+                className="text-style-heading-h-2-regular"
+              >
+                I am,
+              </span>
+              <span
+                style={{
+                  lineHeight: '1.2',
+                }}
+                className="text-style-heading-h-1-semi-bold"
+              >
+                Nisha Kumari
+              </span>
+              <span
+                style={{
+                  lineHeight: '1.2',
+                }}
+                className="text-style-heading-h-2-semi-bold"
+              >
+                UI/UX Designer
+              </span>
+              <ContactMeButton
+                onClick={() => {
+                  setShowContact(true)
+                }}
+              >
+                Contact Me
+              </ContactMeButton>
+            </div>
+            <div
               style={{
-                lineHeight: '1.2',
+                position: 'relative',
               }}
-              className="text-style-heading-h-1-semi-bold"
             >
-              Nisha Kumari
-            </span>
-            <span
-              style={{
-                lineHeight: '1.2',
-              }}
-              className="text-style-heading-h-2-semi-bold"
-            >
-              UI/UX Designer
-            </span>
-            <ContactMeButton>Contact Me</ContactMeButton>
-          </div>
-          <div
-            style={{
-              position: 'relative',
-            }}
-          >
-            <HeroBlob viewBox="0 0 478 573" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M207.262 0.313351C338.646 -6.98229 436.561 114.293 470.663 241.384C499.653 349.425 437.712 453.864 346.24 518.254C259.53 579.292 142.659 596.207 58.7989 531.31C-19.2097 470.941 -5.80895 361.364 20.7514 266.367C52.9933 151.05 87.7064 6.95214 207.262 0.313351Z"
-                fill="url(#paint0_linear_59_11341)"
-              />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_59_11341"
-                  x1="1.20022e-05"
-                  y1="452.5"
-                  x2="478"
-                  y2="176.5"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stop-color="var(--color-primary-700)" />
-                  <stop offset="1" stop-color="var(--color-primary-0)" />
-                </linearGradient>
-              </defs>
-            </HeroBlob>
-            <StaticImage
-              placeholder="blurred"
-              layout="fullWidth"
-              style={{
-                width: '40vh',
-              }}
-              src="../images/person.png"
-              alt="REPLACE WITH ACTUAL COPY"
-            ></StaticImage>
-          </div>
-        </HeroSection>
-        <ProjectsSection />
-      </main>
-    </Layout>
+              <HeroBlob
+                style={{
+                  transition: 'var(--transition-slow)',
+                  transform: `rotate(${scrollPosition / 5}deg)`,
+                }}
+                viewBox="0 0 478 573"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M207.262 0.313351C338.646 -6.98229 436.561 114.293 470.663 241.384C499.653 349.425 437.712 453.864 346.24 518.254C259.53 579.292 142.659 596.207 58.7989 531.31C-19.2097 470.941 -5.80895 361.364 20.7514 266.367C52.9933 151.05 87.7064 6.95214 207.262 0.313351Z"
+                  fill="url(#paint0_linear_59_11341)"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_59_11341"
+                    x1="1.20022e-05"
+                    y1="452.5"
+                    x2="478"
+                    y2="176.5"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="var(--color-primary-700)" />
+                    <stop offset="1" stop-color="var(--color-primary-0)" />
+                  </linearGradient>
+                </defs>
+              </HeroBlob>
+              <StaticImage
+                placeholder="blurred"
+                layout="fullWidth"
+                style={{
+                  width: '40vh',
+                }}
+                src="../images/person.png"
+                alt="REPLACE WITH ACTUAL COPY"
+              ></StaticImage>
+            </div>
+          </HeroSection>
+          <ProjectsSection />
+        </main>
+      </Layout>
+    </>
   )
 }
 

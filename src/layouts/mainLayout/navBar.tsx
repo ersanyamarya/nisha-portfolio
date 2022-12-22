@@ -13,22 +13,31 @@ const NAVIGATION_LINKS = [
     name: 'Projects',
     path: '/#projects',
   },
-  {
-    name: 'Contact',
-    path: '/#contact',
-  },
 ]
+
+const ContactMeButton = styled.button({
+  padding: '1rem 3rem',
+  marginLeft: '1rem',
+  width: 'fit-content',
+  cursor: 'pointer',
+  border: 'none',
+  borderRadius: 'var(--dim-round-corner-large)',
+  backgroundColor: 'var(--color-primary-500)',
+  color: 'var(--color-primary-0)',
+  boxShadow: 'var(--elevation-surface)',
+  transition: 'var(--transition-ease)',
+  '&:hover': {
+    boxShadow: 'var(--elevation-focus)',
+  },
+})
 
 const StyledLink = styled(Link)({
   padding: '0 1rem',
-  transition: 'all 0.2s ease-in-out',
+  transition: 'var(--transition-ease)',
   color: 'var(--color-primary-500)',
 
-  '&:hover:not(.active)': {
+  '&:hover': {
     textShadow: 'var(--elevation-surface)',
-  },
-  '&.active': {
-    borderBottom: '2px solid var(--color-primary-0)',
   },
   '@media only screen and (max-width: 920px)': {
     padding: '1rem',
@@ -45,8 +54,9 @@ const NavigationBar = styled.nav({
   maxHeight: 'var(--dim-nav-height)',
   position: 'sticky',
   top: '0',
-  zIndex: 10000,
-  backgroundColor: 'var(--color-secondary-0)',
+  zIndex: 10,
+  backgroundColor: 'rgba(255, 253, 250, 0.9)',
+  backdropFilter: 'blur(5px)',
   '@media only screen and (max-width: 920px)': {
     padding: '1rem',
     position: 'absolute',
@@ -104,7 +114,11 @@ const Overlay = styled.div({
     left: '0',
   },
 })
-export default function NavBar() {
+
+export type NavBarProps = {
+  openContactForm: () => void
+}
+export default function NavBar({ openContactForm }: NavBarProps) {
   const scrollPosition = useScrollPosition()
   const [isOverlayVisible, setOverlayVisible] = useState(false)
   return (
@@ -142,6 +156,14 @@ export default function NavBar() {
             {link.name}
           </StyledLink>
         ))}
+        <ContactMeButton
+          className="text-style-heading-h-5-semi-bold"
+          onClick={() => {
+            openContactForm()
+          }}
+        >
+          Contact Me
+        </ContactMeButton>
       </NavLinks>
       <Overlay className={isOverlayVisible ? 'visible' : ''}>
         <div
