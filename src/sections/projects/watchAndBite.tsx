@@ -90,18 +90,6 @@ const WatchProjectPreviewCard = styled.article({
     top: '22%',
     left: '65%',
   },
-
-  '& .desktop': {
-    transform: 'scale(0.8)',
-    left: '-150px',
-    top: '-10px',
-  },
-
-  '&:hover > .desktop': {
-    transform: 'scale(1)',
-    left: '50px',
-    top: '280px',
-  },
 })
 
 export function WatchAndBite({}) {
@@ -128,13 +116,7 @@ export function WatchAndBite({}) {
         src="../../images/projects/watchAndBite/description.png"
         alt="REPLACE WITH ACTUAL COPY"
       />
-      <StaticImage
-        className="desktop"
-        placeholder="blurred"
-        layout="fixed"
-        src="../../images/projects/watchAndBite/desktop.png"
-        alt="REPLACE WITH ACTUAL COPY"
-      />
+
       <StaticImage
         className="Screen-3"
         placeholder="blurred"
