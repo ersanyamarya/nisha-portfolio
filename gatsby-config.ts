@@ -4,10 +4,10 @@ import dotenv from 'dotenv'
 dotenv.config()
 import { env } from './src/utils/env'
 
-const contentful = {
-  accessToken: env('GATSBY_CONTENTFUL_ACCESS_TOKEN'),
-  spaceId: env('GATSBY_CONTENTFUL_SPACE_ID'),
-}
+// const contentful = {
+//   accessToken: env('GATSBY_CONTENTFUL_ACCESS_TOKEN'),
+//   spaceId: env('GATSBY_CONTENTFUL_SPACE_ID'),
+// }
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -19,13 +19,13 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        accessToken: contentful.accessToken,
-        spaceId: contentful.spaceId,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-contentful',
+    //   options: {
+    //     accessToken: contentful.accessToken,
+    //     spaceId: contentful.spaceId,
+    //   },
+    // },
     'gatsby-plugin-emotion',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
