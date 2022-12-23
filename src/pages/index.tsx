@@ -134,8 +134,8 @@ const IndexPage: React.FC<PageProps> = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   d="M207.262 0.313351C338.646 -6.98229 436.561 114.293 470.663 241.384C499.653 349.425 437.712 453.864 346.24 518.254C259.53 579.292 142.659 596.207 58.7989 531.31C-19.2097 470.941 -5.80895 361.364 20.7514 266.367C52.9933 151.05 87.7064 6.95214 207.262 0.313351Z"
                   fill="url(#paint0_linear_59_11341)"
                 />
@@ -148,8 +148,8 @@ const IndexPage: React.FC<PageProps> = () => {
                     y2="176.5"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="var(--color-primary-700)" />
-                    <stop offset="1" stop-color="var(--color-primary-0)" />
+                    <stop stopColor="var(--color-primary-700)" />
+                    <stop offset="1" stopColor="var(--color-primary-0)" />
                   </linearGradient>
                 </defs>
               </HeroBlob>

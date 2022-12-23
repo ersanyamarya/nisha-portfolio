@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import React from 'react'
-import Modal from '../../components/modal'
+import useForm from '../../hooks/useForm'
+
+const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i
 
 const Backdrop = styled.div({
   position: 'fixed',
@@ -58,6 +60,10 @@ const ModalContent = styled.div({
     '::placeholder': {
       color: 'var(--color-primary-200)',
     },
+
+    '&.error': {
+      border: '1px solid #FF331F',
+    },
   },
   '& button': {
     padding: '1rem 2.4rem',
@@ -81,6 +87,16 @@ const ModalContent = styled.div({
       transform: 'scale(1)',
       // marginLeft: '0rem',
     },
+    // Disabled state
+    '&:disabled': {
+      backgroundColor: 'var(--color-primary-200)',
+      cursor: 'not-allowed',
+      // disable hover
+      '&:hover': {
+        boxShadow: 'none',
+        transform: 'scale(0.95)',
+      },
+    },
   },
 })
 
@@ -90,6 +106,16 @@ export type ContactProps = {
 }
 
 export default function Contact({ open, onClose }: ContactProps) {
+  const { state, registerField, noErrors, reset, valueExists } = useForm({
+    name: '',
+    email: '',
+    message: `Let's talk about your project!`,
+  })
+  const handleSubmit = () => {
+    console.log(state)
+    reset()
+    onClose()
+  }
   return (
     <>
       {open ? (
@@ -121,20 +147,56 @@ export default function Contact({ open, onClose }: ContactProps) {
               >
                 Send me a message
               </h2>
-              <input type="text" placeholder="name" autoComplete="name" />
-              <input type="email" placeholder="email" autoComplete="email" />
-              <textarea placeholder="message" rows={2} />
-              <button className="send text-style-heading-h-4-semi-bold ">
+              <input
+                type="text"
+                {...registerField('name', {
+                  validator: value => {
+                    if (value.length < 0) {
+                      return 'Name is required'
+                    }
+                    return ''
+                  },
+                })}
+              />
+              <input
+                type="email"
+                {...registerField('email', {
+                  validator: value => {
+                    // validate email with regex
+                    if (!value.match(EMAIL_REGEX)) {
+                      return 'Invalid email'
+                    }
+
+                    return ''
+                  },
+                })}
+              />
+              <textarea
+                rows={2}
+                {...registerField('message', {
+                  validator: value => {
+                    if (value.length < 0) {
+                      return 'Message is required'
+                    }
+                    return ''
+                  },
+                })}
+              />
+              <button
+                className="send text-style-heading-h-4-semi-bold"
+                disabled={!noErrors || !valueExists(['name', 'email', 'message'])}
+                onClick={() => handleSubmit()}
+              >
                 Send
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  shape-rendering="geometricPrecision"
-                  text-rendering="geometricPrecision"
-                  image-rendering="optimizeQuality"
+                  shapeRendering="geometricPrecision"
+                  textRendering="geometricPrecision"
+                  imageRendering="optimizeQuality"
                   width="32px"
                   height="32px"
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
                   fill="currentColor"
                   viewBox="0 0 512 371.13"
                 >
