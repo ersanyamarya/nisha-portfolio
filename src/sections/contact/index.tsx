@@ -40,7 +40,7 @@ const ModalWrapper = styled.div({
   color: 'var(--color-primary-500)',
 })
 
-const ModalContent = styled.div({
+const ModalContent = styled.form({
   padding: '3rem',
   display: 'flex',
   flexDirection: 'column',
@@ -109,7 +109,7 @@ export default function Contact({ open, onClose }: ContactProps) {
   const { state, registerField, noErrors, reset, valueExists } = useForm({
     name: '',
     email: '',
-    message: `Let's talk about your project!`,
+    message: ``,
   })
   const handleSubmit = () => {
     console.log(state)
@@ -138,7 +138,15 @@ export default function Contact({ open, onClose }: ContactProps) {
                 </g>
               </svg>
             </CloseButton>
-            <ModalContent>
+            <ModalContent
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              onSubmit={() => {
+                handleSubmit()
+              }}
+            >
               <h2
                 style={{
                   marginBottom: '2rem',
@@ -147,6 +155,13 @@ export default function Contact({ open, onClose }: ContactProps) {
               >
                 Send me a message
               </h2>
+              <label
+                style={{
+                  display: 'none',
+                }}
+              >
+                Don’t fill this out if you’re human: <input name="bot-field" />
+              </label>
               <input
                 type="text"
                 {...registerField('name', {
@@ -185,7 +200,7 @@ export default function Contact({ open, onClose }: ContactProps) {
               <button
                 className="send text-style-heading-h-4-semi-bold"
                 disabled={!noErrors || !valueExists(['name', 'email', 'message'])}
-                onClick={() => handleSubmit()}
+                type="submit"
               >
                 Send
                 <svg
