@@ -40,7 +40,7 @@ const ModalWrapper = styled.div({
   color: 'var(--color-primary-500)',
 })
 
-const ModalContent = styled.form({
+const ModalContent = styled.div({
   padding: '3rem',
   display: 'flex',
   flexDirection: 'column',
@@ -109,12 +109,23 @@ export default function Contact({ open, onClose }: ContactProps) {
   const { state, registerField, noErrors, reset, valueExists } = useForm({
     name: '',
     email: '',
-    message: ``,
+    message: `Let's talk about your project!`,
   })
-  const handleSubmit = () => {
-    console.log(state)
-    reset()
+  const handleSubmit = async () => {
+    // Send Request to API  /.netlify/functions/contact-form
+    console.log('Sending Request')
     onClose()
+    try {
+      const data = await fetch('/.netlify/functions/contact-form', {
+        method: 'POST',
+        body: JSON.stringify(state),
+      }).then(res => res.json())
+      if (data.status === 'success') alert('Message Sent.')
+      reset()
+    } catch (error) {
+      alert('Error sending message.')
+      reset()
+    }
   }
   return (
     <>
@@ -138,15 +149,7 @@ export default function Contact({ open, onClose }: ContactProps) {
                 </g>
               </svg>
             </CloseButton>
-            <ModalContent
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={() => {
-                handleSubmit()
-              }}
-            >
+            <ModalContent>
               <h2
                 style={{
                   marginBottom: '2rem',
@@ -200,7 +203,11 @@ export default function Contact({ open, onClose }: ContactProps) {
               <button
                 className="send text-style-heading-h-4-semi-bold"
                 disabled={!noErrors || !valueExists(['name', 'email', 'message'])}
-                type="submit"
+                onClick={async () => {
+                  console.log(state)
+
+                  await handleSubmit()
+                }}
               >
                 Send
                 <svg
