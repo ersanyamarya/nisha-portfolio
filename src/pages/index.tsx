@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { HeadFC, PageProps } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
+import { SvgBlob } from '../components/svgBlob'
 import useScrollPosition from '../hooks/useScrollPosition'
 import Layout from '../layouts/mainLayout'
 import Contact from '../sections/contact'
@@ -51,10 +52,10 @@ const HeroSection = styled.section({
   },
 })
 
-const HeroBlob = styled.svg({
+const HeroBlob = styled(SvgBlob)({
   position: 'absolute',
   top: '0%',
-  right: '-50%',
+  right: '-32%',
   zIndex: -1,
   width: '50vh',
   height: '60vh',
@@ -124,7 +125,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 position: 'relative',
               }}
             >
-              <HeroBlob
+              {/* <HeroBlob
                 style={{
                   transition: 'var(--transition-slow)',
                   transform: `rotate(${scrollPosition / 5}deg)`,
@@ -152,7 +153,8 @@ const IndexPage: React.FC<PageProps> = () => {
                     <stop offset="1" stopColor="var(--color-primary-0)" />
                   </linearGradient>
                 </defs>
-              </HeroBlob>
+              </HeroBlob> */}
+              <HeroBlob />
               <StaticImage
                 placeholder="blurred"
                 layout="fullWidth"
