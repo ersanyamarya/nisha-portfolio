@@ -3,7 +3,6 @@ import { HeadFC, PageProps } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import { SEO, SvgBlob } from '../components'
-import useScrollPosition from '../hooks/useScrollPosition'
 import Layout from '../layouts/mainLayout'
 import Contact from '../sections/contact'
 import ProjectsSection from '../sections/projects'
@@ -72,7 +71,6 @@ const HeroBlob = styled(SvgBlob)({
 })
 
 const IndexPage: React.FC<PageProps> = () => {
-  const scrollPosition = useScrollPosition()
   const [showContact, setShowContact] = React.useState(false)
   return (
     <>

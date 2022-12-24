@@ -29,6 +29,7 @@
   --elevation-surface: 12px 12px 21px #d4d2d0, -12px -12px 21px #ffffff;
   --elevation-focus: 18px 18px 22px #d4d2d0, -18px -18px 22px #ffffff;
   --elevation-light: 0px 8px 24px rgba(149, 157, 165, 0.2);
+  --elevation-dark: 8px 8px 10px -2.5px #d4d2d0, -8px -8px 10px -2.5px #d4d2d0;
 
   --transition-ease: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);

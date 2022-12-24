@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 
-const IGuideProjectPreviewCard = styled.article({
+const IGuideProjectPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
   boxShadow: 'var(--elevation-surface)',
   cursor: 'pointer',
@@ -97,7 +98,7 @@ const IGuideProjectPreviewCard = styled.article({
 })
 export function IGuide({}) {
   return (
-    <IGuideProjectPreviewCard>
+    <IGuideProjectPreviewCard to="/details/watchAndBite/">
       <StaticImage
         className="graphics"
         placeholder="blurred"
