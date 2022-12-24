@@ -45,7 +45,7 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        output: '/sitemap.xml',
+        output: '/sitemap',
         createLinkInHead: true,
       },
     },
@@ -54,6 +54,13 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.png',
+        name: 'Nisha Kumari | UI/UX Designer',
+        short_name: 'Nisha Kumari',
+        start_url: '/',
+        display: 'standalone',
+        background_color: '#fffdfa',
+        theme_color: '#525c8f',
+        lang: 'en',
       },
     },
     'gatsby-plugin-sharp',
