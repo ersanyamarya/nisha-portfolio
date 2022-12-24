@@ -2,9 +2,10 @@ import React from 'react'
 // import { graphql } from 'gatsby'
 import Contact from '../sections/contact'
 import Layout from '../layouts/mainLayout'
-import { PageProps } from 'gatsby'
+import { HeadFC, PageProps } from 'gatsby'
 import styled from '@emotion/styled'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { SEO } from '../components'
 
 interface DetailsProps extends PageProps {
   pageContext: {
@@ -27,7 +28,7 @@ const DetailContainer = styled.article({
   maxWidth: '1400px',
   margin: '0 auto',
   // border: '1px solid var(--color-primary-500)',
-  boxShadow: '8px 8px 10px -2.5px #dddddd, -8px -8px 10px -2.5px #dddddd',
+  boxShadow: 'var(--elevation-paper)',
   borderRadius: 'var(--dim-round-corner)',
 })
 export default function Details({ pageContext }: DetailsProps) {
@@ -66,4 +67,17 @@ const camelCaseToTitle = (str: string) => {
       return str.toUpperCase()
     })
     .trim()
+}
+
+export const Head: HeadFC = ({ location, pageContext }) => {
+  const pC = { ...pageContext } as DetailsProps['pageContext']
+  const projectName = camelCaseToTitle(pC.name)
+  return (
+    <SEO
+      title={projectName}
+      description={`Details of ${projectName} project to be displayed here.`}
+      keyWords={[projectName, 'project', 'details']}
+      pathname={location.pathname}
+    />
+  )
 }

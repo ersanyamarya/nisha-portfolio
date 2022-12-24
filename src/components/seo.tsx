@@ -5,10 +5,11 @@ interface SEOProps {
   title?: string
   description?: string
   pathname?: string
+  keyWords?: string[]
   children?: React.ReactNode
 }
 
-export function SEO({ title, description, pathname, children }: SEOProps) {
+export function SEO({ title, description, pathname, keyWords, children }: SEOProps) {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -31,7 +32,7 @@ export function SEO({ title, description, pathname, children }: SEOProps) {
     image,
     siteUrl,
     twitterUsername,
-    keyWords,
+    keyWords: defaultKeyWords,
   } = data.site.siteMetadata
 
   const seo = {
@@ -40,7 +41,7 @@ export function SEO({ title, description, pathname, children }: SEOProps) {
     image: `${siteUrl}${image}`,
     url: `${siteUrl}${pathname || '/'}`,
     twitterUsername,
-    keyWords,
+    keyWords: [...defaultKeyWords, ...(keyWords || [])],
   }
 
   return (

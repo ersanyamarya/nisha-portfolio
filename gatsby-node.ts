@@ -30,7 +30,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promis
   groups.forEach(group => {
     const name = group?.fieldValue?.split('/')[1]
     createPage({
-      path: `/details/${name}`,
+      path: `/projects/${name}`,
       component: path.resolve('./src/templates/details.tsx'),
       context: {
         name,

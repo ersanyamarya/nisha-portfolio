@@ -98,7 +98,7 @@ const IGuideProjectPreviewCard = styled(Link)({
 })
 export function IGuide({}) {
   return (
-    <IGuideProjectPreviewCard to="/details/watchAndBite/">
+    <IGuideProjectPreviewCard to="/projects/watchAndBite/">
       <StaticImage
         className="graphics"
         placeholder="blurred"
