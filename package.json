@@ -25,6 +25,7 @@
     "gatsby-plugin-emotion": "^8.2.0",
     "gatsby-plugin-image": "^3.3.2",
     "gatsby-plugin-manifest": "^5.2.0",
+    "gatsby-plugin-no-index": "^1.0.2",
     "gatsby-plugin-react-helmet": "^6.2.0",
     "gatsby-plugin-robots-txt": "^1.8.0",
     "gatsby-plugin-sharp": "^5.2.0",
