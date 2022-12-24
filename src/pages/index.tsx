@@ -98,14 +98,14 @@ const IndexPage: React.FC<PageProps> = () => {
               >
                 I am,
               </span>
-              <span
+              <h1
                 style={{
                   lineHeight: '1.2',
                 }}
                 className="text-style-heading-h-1-semi-bold"
               >
                 Nisha Kumari
-              </span>
+              </h1>
               <span
                 style={{
                   lineHeight: '1.2',

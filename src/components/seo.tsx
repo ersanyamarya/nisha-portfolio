@@ -19,6 +19,7 @@ export function SEO({ title, description, pathname, children }: SEOProps) {
           linkedinUsername
           image
           siteUrl
+          keyWords
         }
       }
     }
@@ -30,6 +31,7 @@ export function SEO({ title, description, pathname, children }: SEOProps) {
     image,
     siteUrl,
     twitterUsername,
+    keyWords,
   } = data.site.siteMetadata
 
   const seo = {
@@ -38,6 +40,7 @@ export function SEO({ title, description, pathname, children }: SEOProps) {
     image: `${siteUrl}${image}`,
     url: `${siteUrl}${pathname || '/'}`,
     twitterUsername,
+    keyWords,
   }
 
   return (
@@ -45,6 +48,10 @@ export function SEO({ title, description, pathname, children }: SEOProps) {
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      <meta name="keywords" content={seo.keyWords} />
+
+      {/* Canonical */}
+      <link rel="canonical" href={seo.url} />
 
       {/* Twitter   */}
       <meta name="twitter:card" content="summary_large_image" />
