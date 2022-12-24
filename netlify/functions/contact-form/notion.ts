@@ -17,6 +17,7 @@ export async function postNewPage(properties: Record<string, any>) {
 }
 
 export async function addNewMessageToDatabase({ name, email, message }) {
+  console.info('Adding new message to database: ', name, email, message)
   const properties = {
     Name: {
       title: [

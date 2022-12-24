@@ -22,7 +22,8 @@ export const handler: Handler = async (event, context) => {
     headers: { host },
     body,
   } = event
-  console.log('env', process.env.GATSBY_CONTENTFUL_ACCESS_TOKEN)
+
+  console.info('Sending message from: ', host)
 
   if (!body || !host) return { statusCode: 400, body: 'Bad Request' }
   if (httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' }
@@ -39,6 +40,7 @@ export const handler: Handler = async (event, context) => {
       }),
     }
   } catch (error) {
+    console.error(error)
     return {
       statusCode: 500,
       body: JSON.stringify({
