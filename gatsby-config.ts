@@ -42,13 +42,7 @@ const config: GatsbyConfig = {
     'gatsby-plugin-emotion',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-plugin-sitemap',
-      options: {
-        output: '/sitemap',
-        createLinkInHead: true,
-      },
-    },
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     {
       resolve: 'gatsby-plugin-manifest',
