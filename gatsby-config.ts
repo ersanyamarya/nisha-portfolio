@@ -45,6 +45,7 @@ const config: GatsbyConfig = {
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     `gatsby-plugin-no-index`,
+    `gatsby-plugin-minify`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
