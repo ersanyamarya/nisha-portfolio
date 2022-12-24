@@ -1,31 +1,19 @@
-import type { GatsbyConfig } from 'gatsby'
 import dotenv from 'dotenv'
+import type { GatsbyConfig } from 'gatsby'
 
 dotenv.config()
-import { env } from './src/utils/env'
-
-// const contentful = {
-//   accessToken: env('GATSBY_CONTENTFUL_ACCESS_TOKEN'),
-//   spaceId: env('GATSBY_CONTENTFUL_SPACE_ID'),
-// }
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `nisha-portfolio`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `Nisha Kumari | UI/UX Designer`,
+    siteUrl: `https://nisha-kumari-portfolio.netlify.app`,
+    description: `Nisha Kumari is a UI/UX Designer based in Berlin. She is passionate about designing and creating beautiful user interfaces.`,
+    linkedinUsername: `nisha-kumari-de/`,
+    twitterUsername: `nishakumari_de`,
+    image: '/seoThumbnail.png',
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    // {
-    //   resolve: 'gatsby-source-contentful',
-    //   options: {
-    //     accessToken: contentful.accessToken,
-    //     spaceId: contentful.spaceId,
-    //   },
-    // },
     'gatsby-plugin-emotion',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',

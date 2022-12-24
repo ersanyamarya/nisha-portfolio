@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { HeadFC, PageProps } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
-import { SvgBlob } from '../components/svgBlob'
+import { SEO, SvgBlob } from '../components'
 import useScrollPosition from '../hooks/useScrollPosition'
 import Layout from '../layouts/mainLayout'
 import Contact from '../sections/contact'
@@ -169,4 +169,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Nisha Kumari</title>
+export const Head: HeadFC = () => <SEO />

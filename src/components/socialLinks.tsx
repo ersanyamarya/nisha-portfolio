@@ -37,7 +37,7 @@ const SocialIcon = styled.a({
 export function SocialLinks() {
   return (
     <SocialLinksContainer>
-      <SocialIcon href="https://www.linkedin.com/in/sanyam-arya/" target="_blank">
+      <SocialIcon href="https://www.behance.net/nisha-kumari-de" target="_blank">
         <StaticImage
           placeholder="blurred"
           layout="constrained"
