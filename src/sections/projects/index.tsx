@@ -23,8 +23,8 @@ const CardContainer = styled.div({
   rowGap: '5vh',
   gap: '5vh',
   opacity: 0,
-  transform: 'translateY(50vh)',
-  transition: 'var(--transition-slow)',
+  transform: 'translateY(100%)',
+  transition: 'var(--transition-ease)',
   // '& > *': {
   //   opacity: 0.3,
 
