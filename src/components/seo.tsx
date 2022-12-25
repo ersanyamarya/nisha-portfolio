@@ -6,10 +6,11 @@ interface SEOProps {
   description?: string
   pathname?: string
   keyWords?: string[]
+  image?: string
   children?: React.ReactNode
 }
 
-export function SEO({ title, description, pathname, keyWords, children }: SEOProps) {
+export function SEO({ title, description, pathname, image, keyWords, children }: SEOProps) {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -29,7 +30,7 @@ export function SEO({ title, description, pathname, keyWords, children }: SEOPro
   const {
     title: defaultTitle,
     description: defaultDescription,
-    image,
+    image: defaultImage,
     siteUrl,
     twitterUsername,
     keyWords: defaultKeyWords,
@@ -38,10 +39,10 @@ export function SEO({ title, description, pathname, keyWords, children }: SEOPro
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
+    image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname || '/'}`,
     twitterUsername,
-    keyWords: [...defaultKeyWords, ...(keyWords || [])],
+    keyWords: [...new Set<string>([...defaultKeyWords, ...(keyWords || [])])].join(', '),
   }
 
   return (

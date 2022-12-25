@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
-import { SocialLink } from '../utils/contentfulBaseData'
 
 const SocialLinksContainer = styled.aside({
   position: 'fixed',
@@ -15,7 +14,7 @@ const SocialLinksContainer = styled.aside({
   alignItems: 'center',
   gap: '1rem',
   zIndex: 1,
-  //   boxShadow: 'var(--elevation-light)',
+  boxShadow: 'var(--elevation-light)',
   width: 'fit-content',
   backgroundColor: 'var(--color-primary-0)',
   '@media only screen and (max-width: 920px)': {

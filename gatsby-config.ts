@@ -6,7 +6,7 @@ dotenv.config()
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Nisha Kumari | UI/UX Designer`,
-    siteUrl: `https://nisha-kumari-portfolio.netlify.app`,
+    siteUrl: `https://nishakumari.art/`,
     description: `Nisha Kumari, UI/UX designer in Berlin, passionate about creating user-centric designs. Completed course with Google, seeking opportunities to create user-friendly products.`,
     linkedinUsername: `nisha-kumari-de/`,
     twitterUsername: `nishakumari_de`,
