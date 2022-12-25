@@ -88,30 +88,36 @@ const HamBurger = styled.button({
 })
 const FullLogo = styled.div({
   display: 'block',
-  '@media only screen and (max-width: 920px)': {
-    display: 'none',
-  },
+  // '@media only screen and (max-width: 920px)': {
+  //   display: 'none',
+  // },
 })
 
 const Overlay = styled.div({
   position: 'fixed',
   top: '0',
   left: '-100%',
-
+  padding: '1rem 0rem 1.5rem 0rem ',
   background: 'var(--color-secondary-0)',
   zIndex: 100,
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   opacity: 0,
+  width: '100%',
   transition: 'all 0.2s ease-in-out',
   '@media only screen and (min-width: 920px)': {
     display: 'none',
   },
-  boxShadow: '0 0 10px 0 rgba(0, 0, 0, 0.5)',
+  boxShadow: 'var(--elevation-light)',
   '&.visible': {
     opacity: 1,
     left: '0',
+  },
+  // CSS for button
+  '& > button': {
+    width: '80%',
+    margin: '0 auto',
   },
 })
 
@@ -123,6 +129,9 @@ export default function NavBar({ openContactForm }: NavBarProps) {
   const [isOverlayVisible, setOverlayVisible] = useState(false)
   return (
     <NavigationBar className={scrollPosition > 215 ? 'shadow' : ''}>
+      <FullLogo>
+        <Logo />
+      </FullLogo>
       <HamBurger
         onClick={() => {
           setOverlayVisible(true)
@@ -141,9 +150,6 @@ export default function NavBar({ openContactForm }: NavBarProps) {
         </svg>
       </HamBurger>
 
-      <FullLogo>
-        <Logo />
-      </FullLogo>
       {/* <pre>{scrollPosition}</pre> */}
       <NavLinks>
         {NAVIGATION_LINKS.map(link => (
@@ -210,6 +216,14 @@ export default function NavBar({ openContactForm }: NavBarProps) {
             {link.name}
           </StyledLink>
         ))}
+        <ContactMeButton
+          className="text-style-heading-h-5-semi-bold"
+          onClick={() => {
+            openContactForm()
+          }}
+        >
+          Contact Me
+        </ContactMeButton>
       </Overlay>
     </NavigationBar>
   )
