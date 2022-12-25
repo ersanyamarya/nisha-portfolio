@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
-const WatchProjectPreviewCard = styled.article({
+const WatchProjectPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
   boxShadow: 'var(--elevation-surface)',
   cursor: 'pointer',
@@ -94,7 +95,7 @@ const WatchProjectPreviewCard = styled.article({
 
 export function WatchAndBite({}) {
   return (
-    <WatchProjectPreviewCard>
+    <WatchProjectPreviewCard to="/projects/watchAndBite/">
       <StaticImage
         className="graphics"
         placeholder="blurred"

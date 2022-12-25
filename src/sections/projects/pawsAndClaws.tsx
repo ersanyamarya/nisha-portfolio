@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
+import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 
-const PawsProjectPreviewCard = styled.article({
+const PawsProjectPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
   boxShadow: 'var(--elevation-surface)',
   cursor: 'pointer',
@@ -87,7 +88,7 @@ const PawsProjectPreviewCard = styled.article({
 
 export function PawsAndClaws({}) {
   return (
-    <PawsProjectPreviewCard>
+    <PawsProjectPreviewCard to="/projects/pawsAndClaws/">
       <StaticImage
         className="graphics"
         placeholder="blurred"
