@@ -37,7 +37,7 @@ export function SEO({ title, description, pathname, image, keyWords, children }:
   } = data.site.siteMetadata
 
   const seo = {
-    title: title || defaultTitle,
+    title: title ? `${defaultTitle} | ${title}` : defaultTitle,
     description: description || defaultDescription,
     image: `${siteUrl}${image || defaultImage}`,
     url: `${siteUrl}${pathname || '/'}`,
