@@ -11,7 +11,7 @@ export function SvgBlob({
   paths,
   duration = 3000,
   animationInterval,
-  transitionStyle = 'ease-in-out',
+  transitionStyle = 'linear',
   ...props
 }: Props) {
   const [pathData, setPathData] = useState<string>(paths[0])

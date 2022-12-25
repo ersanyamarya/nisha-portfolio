@@ -11,6 +11,7 @@ const config: GatsbyConfig = {
     linkedinUsername: `nisha-kumari-de/`,
     twitterUsername: `nishakumari_de`,
     image: '/seoThumbnail.png',
+    copyWrite: 'Nisha Kumari',
     keyWords: [
       'UI/UX designer',
       'user-centric design',

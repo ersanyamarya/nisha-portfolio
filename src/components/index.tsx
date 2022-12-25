@@ -1,5 +1,4 @@
 export * from './logo'
-export * from './socialLinks'
 export * from './seo'
-export * from './socialLinks'
 export * from './svgBlob'
+export * from './socialIcons'
