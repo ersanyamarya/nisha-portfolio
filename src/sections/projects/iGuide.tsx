@@ -11,8 +11,9 @@ const IGuideProjectPreviewCard = styled(Link)({
   position: 'relative',
   overflow: 'hidden',
   width: '808px',
-  maxWidth: '808px',
   height: '632px',
+  maxWidth: '100vw',
+  maxHeight: '100vw',
   transform: 'scale(0.95)',
 
   '&:hover': {
@@ -24,6 +25,7 @@ const IGuideProjectPreviewCard = styled(Link)({
     position: 'absolute',
     transition: 'var(--transition-ease)',
   },
+
   '& .graphics': {
     height: 'fill-available',
     width: 'fill-available',
@@ -94,6 +96,12 @@ const IGuideProjectPreviewCard = styled(Link)({
     transform: 'scale(1)',
     top: '42%',
     left: '-10%',
+  },
+
+  '@media (max-width: 600px)': {
+    '& > .gatsby-image-wrapper': {
+      zoom: '50%',
+    },
   },
 })
 export function IGuide({}) {

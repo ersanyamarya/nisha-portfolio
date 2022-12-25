@@ -10,8 +10,8 @@ const ProjectsContainer = styled.section({
   flexDirection: 'column',
   alignItems: 'center',
   width: '100vw',
-  minHeight: 'calc(100vh - 10vh)',
-  gap: '10vh',
+  minHeight: 'calc(100vh - var(--dim-nav-height))',
+  gap: '10vw',
 })
 
 const CardContainer = styled.div({
@@ -65,9 +65,9 @@ export default function ProjectsSection() {
     <ProjectsContainer id="projects">
       <h2 className="text-style-heading-h-1-semi-bold">Projects</h2>
       <CardContainer className={scrollPosition > 300 ? 'show' : ''}>
+        <WatchAndBite />
         <IGuide />
         <PawsAndClaws />
-        <WatchAndBite />
       </CardContainer>
     </ProjectsContainer>
   )

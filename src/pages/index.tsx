@@ -40,7 +40,9 @@ const HeroSection = styled.section({
   gap: '8rem',
   margin: '0 auto',
   width: '80vw',
-  height: 'calc(100vh - var(--dim-nav-height))',
+  minHeight: 'calc(100vh - var(--dim-nav-height))',
+  // border: '1px solid red',
+
   // '&:hover > div > svg': {
   //   // opacity: 0.5,
   //   transform: 'scale(1.2)',
@@ -49,8 +51,8 @@ const HeroSection = styled.section({
   '@media only screen and (max-width: 920px)': {
     flexDirection: 'column',
     width: '100vw',
-    marginTop: 'var(--dim-nav-height)',
     gap: '2rem',
+    marginTop: 'calc(var(--dim-nav-height))!important',
   },
 })
 

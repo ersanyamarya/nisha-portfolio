@@ -30,6 +30,10 @@ const PageContainer = styled.div({
     textAlign: 'center',
     padding: '0 2rem',
   },
+
+  '@media only screen and (max-width: 920px)': {
+    marginTop: 'calc(var(--dim-nav-height))!important',
+  },
 })
 const DetailContainer = styled.article({
   maxWidth: '1400px',
@@ -52,7 +56,7 @@ export default function Details({ pageContext }: DetailsProps) {
       >
         <PageContainer>
           <h1 className="text-style-heading-h-1-semi-bold">{name}</h1>
-          <h2 className="text-style-heading-h-2-regular"> {description}</h2>
+          <h2 className="text-style-heading-h-3-regular"> {description}</h2>
           {/* A hidden paragraph which can only be read by Search engines */}
           <p style={{ display: 'none' }}>{hiddenDescription}</p>
           <DetailContainer>

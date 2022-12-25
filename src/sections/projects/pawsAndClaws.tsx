@@ -11,8 +11,9 @@ const PawsProjectPreviewCard = styled(Link)({
   position: 'relative',
   overflow: 'hidden',
   width: '808px',
-  maxWidth: '808px',
   height: '632px',
+  maxWidth: '100vw',
+  maxHeight: '100vw',
   transform: 'scale(0.95)',
 
   '&:hover': {
@@ -83,6 +84,11 @@ const PawsProjectPreviewCard = styled(Link)({
     transform: 'scale(1)',
     top: '60%',
     left: '15%',
+  },
+  '@media (max-width: 600px)': {
+    '& > .gatsby-image-wrapper': {
+      zoom: '50%',
+    },
   },
 })
 
