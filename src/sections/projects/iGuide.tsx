@@ -46,7 +46,7 @@ const IGuideProjectPreviewCard = styled(Link)({
 
   '&:hover > .logo': {
     transform: 'translate(0%, 0%) scale(1)',
-    top: '5%',
+    top: '4%',
     left: '15%',
   },
 
@@ -58,7 +58,7 @@ const IGuideProjectPreviewCard = styled(Link)({
 
   '&:hover > .description': {
     transform: 'translate(0%, 0%) scale(1)',
-    top: '20%',
+    top: '23%',
     left: '10%',
   },
 
@@ -89,7 +89,7 @@ const IGuideProjectPreviewCard = styled(Link)({
   '& .desktop': {
     transform: 'scale(0.9)',
     top: '50%',
-    left: '-20%',
+    left: '-15%',
   },
 
   '&:hover > .desktop': {

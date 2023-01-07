@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { HeadFC, PageProps } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { SEO } from '../components'
 import Layout from '../layouts/mainLayout'
@@ -13,6 +13,8 @@ interface DetailsProps extends PageProps {
     hiddenDescription: string
     keyWords: string[]
     image: string
+    icon: Queries.File
+    prototypeLink: string
     images: Queries.Query['allFile']['nodes']
   }
 }
@@ -30,10 +32,38 @@ const PageContainer = styled.div({
     textAlign: 'center',
     padding: '0 2rem',
   },
-
   '@media only screen and (max-width: 920px)': {
     marginTop: 'calc(var(--dim-nav-height))!important',
   },
+})
+
+const ContextAction = styled.aside({
+  position: 'fixed',
+  top: '50%',
+  right: '2%',
+  zIndex: 100,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '1rem',
+  borderRadius: '100%',
+  gap: '2rem',
+
+  backgroundColor: 'var(--color-primary-500)',
+  boxShadow: 'var(--elevation-surface)',
+  transition: 'var(--transition-ease)',
+  // hover
+  '&:hover': {
+    backgroundColor: 'var(--color-primary-600)',
+    cursor: 'pointer',
+    boxShadow: 'var(--elevation-focus)',
+  },
+
+  '@media only screen and (max-width: 920px)': {
+    display: 'none',
+  },
+  '-webkit-animation': 'bounce-top 0.9s both',
+  animation: 'bounce-top 0.9s both',
 })
 const DetailContainer = styled.article({
   maxWidth: '1400px',
@@ -42,7 +72,7 @@ const DetailContainer = styled.article({
   borderRadius: 'var(--dim-round-corner)',
 })
 export default function Details({ pageContext }: DetailsProps) {
-  const { images, name, description, hiddenDescription } = pageContext
+  const { images, name, description, hiddenDescription, icon } = pageContext
 
   const [showContact, setShowContact] = React.useState(false)
 
@@ -54,6 +84,16 @@ export default function Details({ pageContext }: DetailsProps) {
           setShowContact(true)
         }}
       >
+        <ContextAction>
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <mask id="mask0_565_6467" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+              <rect width="24" height="24" fill="var(--color-primary-0)" />
+            </mask>
+            <g mask="url(#mask0_565_6467)">
+              <path d="M8 19V5L19 12L8 19Z" fill="var(--color-primary-0)" />
+            </g>
+          </svg>
+        </ContextAction>
         <PageContainer>
           <h1 className="text-style-heading-h-1-semi-bold">{name}</h1>
           <h2 className="text-style-heading-h-3-regular"> {description}</h2>
