@@ -53,6 +53,7 @@ const HeroSection = styled.section({
     width: '100vw',
     gap: '2rem',
     marginTop: 'calc(var(--dim-nav-height))!important',
+    overflowX: 'hidden',
   },
 })
 
@@ -63,12 +64,11 @@ const HeroBlob = styled(SvgBlob)({
   zIndex: -1,
   width: '50vh',
   height: '60vh',
-  overflow: 'hidden',
 
   // '@media only screen and (max-width: 920px)': {
-  //   top: '30vh',
-  //   width: '30vh',
-  //   height: '50vh',
+  //   top: '0%',
+  //   left: '0%',
+  //   overflowX: 'clip',
   // },
 })
 

@@ -30,7 +30,9 @@ export const handler: Handler = async (event, context) => {
   if (isSpam(host)) return { statusCode: 429, body: 'Too Many Requests' }
 
   try {
-    const formData = JSON.parse(body || '{}')
+    console.log('body', body)
+
+    const formData = JSON.parse(body)
     const { name, email, message } = formData
 
     await addNewMessageToDatabase({ name, email, message })
