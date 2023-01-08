@@ -32,7 +32,8 @@ export const handler: Handler = async (event, context) => {
   try {
     const formData = JSON.parse(body || '{}')
     const { name, email, message } = formData
-    addNewMessageToDatabase({ name, email, message })
+
+    await addNewMessageToDatabase({ name, email, message })
     return {
       statusCode: 200,
       body: JSON.stringify({

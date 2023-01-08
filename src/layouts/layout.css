@@ -250,8 +250,8 @@ body::-webkit-scrollbar-thumb {
 
 @-webkit-keyframes bounce-top {
   0% {
-    -webkit-transform: translateY(-500px);
-    transform: translateY(-500px);
+    -webkit-transform: translateY(-45px);
+    transform: translateY(-45px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
     opacity: 1;
@@ -303,8 +303,8 @@ body::-webkit-scrollbar-thumb {
 
 @keyframes bounce-top {
   0% {
-    -webkit-transform: translateY(-500px);
-    transform: translateY(-500px);
+    -webkit-transform: translateY(-45px);
+    transform: translateY(-45px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
     opacity: 1;
