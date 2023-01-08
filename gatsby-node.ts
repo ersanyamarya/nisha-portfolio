@@ -45,7 +45,7 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     ],
     image: '/watchAndBiteThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/proto/4ZQ2Z5QY2Z2Z5QY2Z2Z5QY2Z/Watch-and-Bite?node-id=1%3A2&scaling=scale-down',
+      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FadJbZIjy3sg1GEursehV33%2FDesigns%3Fnode-id%3D875%253A13025%26scaling%3Dscale-down%26page-id%3D304%253A3662%26starting-point-node-id%3D1061%253A17257',
   },
   iGuide: {
     name: 'I Guide',
@@ -67,7 +67,7 @@ Mentees can connect with mentors on our platform with the aspiration of a great 
     ],
     image: '/iGuideThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/proto/4ZQ2Z5QY2Z2Z5QY2Z2Z5QY2Z/Watch-and-Bite?node-id=1%3A2&scaling=scale-down',
+      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fz4vYxXoBLnA4qF7LZaxXbc%2FScreen-Designs%3Fnode-id%3D446%253A6392%26scaling%3Dscale-down%26page-id%3D32%253A789%26starting-point-node-id%3D446%253A6392%26show-proto-sidebar%3D1',
   },
   pawsAndClaws: {
     name: 'Paws and Claws',
@@ -87,7 +87,7 @@ Mentees can connect with mentors on our platform with the aspiration of a great 
     ],
     image: '/pawsAndClawsThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/proto/4ZQ2Z5QY2Z2Z5QY2Z2Z5QY2Z/Watch-and-Bite?node-id=1%3A2&scaling=scale-down',
+      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FAMM7qmLT3MqWohK0T45Vt0%2FPaws-N-Claws--Responsive-Web-Design%3Fnode-id%3D202%253A3669%26scaling%3Dscale-down%26page-id%3D29%253A714%26starting-point-node-id%3D202%253A3669%26show-proto-sidebar%3D1',
   },
 }
 

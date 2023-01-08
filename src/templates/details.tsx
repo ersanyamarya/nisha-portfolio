@@ -3,6 +3,7 @@ import { HeadFC, PageProps } from 'gatsby'
 import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { SEO } from '../components'
+import Modal from '../components/modal'
 import Layout from '../layouts/mainLayout'
 import Contact from '../sections/contact'
 
@@ -41,7 +42,7 @@ const ContextAction = styled.aside({
   position: 'fixed',
   top: '50%',
   right: '2%',
-  zIndex: 100,
+  zIndex: 99,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -50,13 +51,15 @@ const ContextAction = styled.aside({
   gap: '2rem',
 
   backgroundColor: 'var(--color-primary-500)',
-  boxShadow: 'var(--elevation-surface)',
+  boxShadow: 'var(--elevation-dark)',
   transition: 'var(--transition-ease)',
+
   // hover
   '&:hover': {
     backgroundColor: 'var(--color-primary-600)',
     cursor: 'pointer',
-    boxShadow: 'var(--elevation-focus)',
+    boxShadow: 'var(--elevation-dark-focus)',
+    padding: '1.2rem',
   },
 
   '@media only screen and (max-width: 920px)': {
@@ -72,19 +75,34 @@ const DetailContainer = styled.article({
   borderRadius: 'var(--dim-round-corner)',
 })
 export default function Details({ pageContext }: DetailsProps) {
-  const { images, name, description, hiddenDescription, icon } = pageContext
+  const { images, name, description, hiddenDescription, prototypeLink } = pageContext
 
   const [showContact, setShowContact] = React.useState(false)
 
+  const [showEmbed, setShowEmbed] = React.useState(false)
+
   return (
     <>
+      <Modal open={showEmbed} onClose={() => setShowEmbed(false)}>
+        <iframe
+          style={{
+            border: '1px solid rgba(0, 0, 0, 0.1)',
+            flex: 1,
+            width: '100%',
+          }}
+          // // width="800"
+          // height="100%"
+          src={prototypeLink}
+          allowFullScreen
+        ></iframe>
+      </Modal>
       <Contact open={showContact} onClose={() => setShowContact(false)} />
       <Layout
         openContactForm={() => {
           setShowContact(true)
         }}
       >
-        <ContextAction>
+        <ContextAction onClick={() => setShowEmbed(true)}>
           <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_565_6467" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
               <rect width="24" height="24" fill="var(--color-primary-0)" />
