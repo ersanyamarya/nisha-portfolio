@@ -62,7 +62,7 @@ const ContextAction = styled.aside({
   '@media only screen and (max-width: 920px)': {
     display: 'none',
   },
-  '-webkit-animation': 'bounce-top 0.9s both',
+  WebkitAnimation: 'bounce-top 0.9s both',
   animation: 'bounce-top 0.9s both',
 })
 const DetailContainer = styled.article({
