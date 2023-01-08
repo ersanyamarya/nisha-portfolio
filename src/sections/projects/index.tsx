@@ -44,6 +44,11 @@ const CardContainer = styled.div({
   //   opacity: 1,
   // },
 
+  '@media (max-width: 600px)': {
+    transform: 'translateY(0rem)',
+    opacity: 1,
+  },
+
   '&.show': {
     transform: 'translateY(0rem)',
     opacity: 1,
