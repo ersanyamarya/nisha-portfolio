@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { HeadFC, PageProps } from 'gatsby'
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import React, { useState } from 'react'
 import { SEO } from '../components'
 import Modal from '../components/modal'
 import Layout from '../layouts/mainLayout'
@@ -62,11 +62,14 @@ const ContextAction = styled.aside({
     padding: '1.2rem',
   },
 
-  '@media only screen and (max-width: 920px)': {
-    display: 'none',
-  },
   WebkitAnimation: 'bounce-top 0.9s both',
   animation: 'bounce-top 0.9s both',
+
+  '@media only screen and (max-width: 920px)': {
+    // position: 'fixed',
+    top: '92%',
+    right: '3%',
+  },
 })
 const DetailContainer = styled.article({
   maxWidth: '1400px',
@@ -77,9 +80,9 @@ const DetailContainer = styled.article({
 export default function Details({ pageContext }: DetailsProps) {
   const { images, name, description, hiddenDescription, prototypeLink } = pageContext
 
-  const [showContact, setShowContact] = React.useState(false)
+  const [showContact, setShowContact] = useState(false)
 
-  const [showEmbed, setShowEmbed] = React.useState(false)
+  const [showEmbed, setShowEmbed] = useState(false)
 
   return (
     <>
@@ -102,7 +105,12 @@ export default function Details({ pageContext }: DetailsProps) {
           setShowContact(true)
         }}
       >
-        <ContextAction onClick={() => setShowEmbed(true)}>
+        <ContextAction
+          onClick={() => {
+            if (!window.matchMedia('(max-width: 920px)').matches) setShowEmbed(true)
+            else window.open(prototypeLink, '_blank')
+          }}
+        >
           <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <mask id="mask0_565_6467" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
               <rect width="24" height="24" fill="var(--color-primary-0)" />
