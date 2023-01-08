@@ -11,8 +11,9 @@ const Backdrop = styled.div({
   left: 0,
   right: 0,
   backgroundColor: 'rgba(10, 10, 10, 0.3)',
-  padding: 50,
+  paddingTop: 50,
   zIndex: 100,
+
   //   transition: 'var(--transition-ease)',
   //   backdropFilter: 'blur(5px)',
 })
@@ -30,8 +31,8 @@ const CloseButton = styled.button({
 
 const ModalWrapper = styled.div({
   borderRadius: 'var(--dim-round-corner)',
-  maxWidth: 800,
-  minHeight: 400,
+  width: 'min(92vw, 800px)',
+  minHeight: '400px',
   margin: '0 auto',
   position: 'relative',
   backgroundColor: 'rgba(250, 251, 255, 0.9)',
@@ -112,8 +113,6 @@ export default function Contact({ open, onClose }: ContactProps) {
     message: `Let's talk about your project!`,
   })
   const handleSubmit = async () => {
-    // Send Request to API  /.netlify/functions/contact-form
-    console.log('Sending Request')
     onClose()
     try {
       const data = await fetch('/.netlify/functions/contact-form', {
@@ -123,6 +122,8 @@ export default function Contact({ open, onClose }: ContactProps) {
       if (data.status === 'success') alert('Message Sent.')
       reset()
     } catch (error) {
+      console.error(error)
+
       alert('Error sending message.')
       reset()
     }
@@ -204,8 +205,6 @@ export default function Contact({ open, onClose }: ContactProps) {
                 className="send text-style-heading-h-4-semi-bold"
                 disabled={!noErrors || !valueExists(['name', 'email', 'message'])}
                 onClick={async () => {
-                  console.log(state)
-
                   await handleSubmit()
                 }}
               >
