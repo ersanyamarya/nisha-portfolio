@@ -67,8 +67,9 @@ const ContextAction = styled.aside({
 
   '@media only screen and (max-width: 920px)': {
     // position: 'fixed',
-    top: '92%',
-    right: '3%',
+    top: '90%',
+    right: '5%',
+    padding: '0.5rem',
   },
 })
 const DetailContainer = styled.article({

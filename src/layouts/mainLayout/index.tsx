@@ -14,7 +14,7 @@ const SocialLinksContainer = styled(SocialIcons)({
   top: 'calc(50% - 5rem)',
   left: '1%',
   display: 'flex',
-  padding: '0.5rem 1rem',
+  padding: '1rem 1rem',
   borderRadius: 'var(--dim-round-corner-large)',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -38,7 +38,7 @@ export default function Layout({ children, openContactForm }: LayoutProps) {
       <div className="">
         {/* <NavSlider /> */}
         <NavBar openContactForm={openContactForm} />
-        <SocialLinksContainer />
+        <SocialLinksContainer showEmail={false} />
         {children}
         <Footer />
       </div>
