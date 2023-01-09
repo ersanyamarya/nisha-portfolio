@@ -45,7 +45,6 @@ const config: GatsbyConfig = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
-    `gatsby-plugin-no-index`,
     `gatsby-plugin-minify`,
     {
       resolve: 'gatsby-plugin-manifest',
