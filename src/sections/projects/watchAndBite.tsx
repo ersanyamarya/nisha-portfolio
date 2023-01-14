@@ -47,11 +47,12 @@ const WatchProjectPreviewCard = styled(Link)({
   '& > .gatsby-image-wrapper': {
     position: 'absolute',
     transition: 'var(--transition-ease)',
+    zoom: '25%',
   },
 
   '@media (max-width: 600px)': {
     '& > .gatsby-image-wrapper': {
-      zoom: '50%',
+      zoom: '12.5%',
     },
   },
 

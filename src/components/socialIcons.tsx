@@ -46,16 +46,6 @@ export function SocialIcons({ showEmail = true, ...props }: SocialIconsProps) {
           />
         </svg>
       </SocialIcon>
-
-      <SocialIcon title="Resume" href="/Nisha_Kumari_Berlin_Resume.pdf" target="_blank">
-        <svg width="100%" height="100%" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10.4 7.7H16.45L10.4 1.65V7.7ZM2.7 0H11.5L18.1 6.6V19.8C18.1 20.3835 17.8682 20.9431 17.4556 21.3556C17.0431 21.7682 16.4835 22 15.9 22H2.7C2.11652 22 1.55695 21.7682 1.14436 21.3556C0.731785 20.9431 0.5 20.3835 0.5 19.8V2.2C0.5 0.979 1.479 0 2.7 0ZM11.5 19.8V18.7C11.5 17.237 8.563 16.5 7.1 16.5C5.637 16.5 2.7 17.237 2.7 18.7V19.8H11.5ZM7.1 11C6.51652 11 5.95695 11.2318 5.54437 11.6444C5.13179 12.0569 4.9 12.6165 4.9 13.2C4.9 13.7835 5.13179 14.3431 5.54437 14.7556C5.95695 15.1682 6.51652 15.4 7.1 15.4C7.68348 15.4 8.24305 15.1682 8.65563 14.7556C9.06821 14.3431 9.3 13.7835 9.3 13.2C9.3 12.6165 9.06821 12.0569 8.65563 11.6444C8.24305 11.2318 7.68348 11 7.1 11Z"
-            fill="var(--color-primary-500)"
-          />
-        </svg>
-      </SocialIcon>
-
       {showEmail && (
         <SocialIcon title="Email" href="mailto:kumari.nisha.de@gmail.com" target="_blank">
           <svg width="100%" height="100%" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,6 +56,14 @@ export function SocialIcons({ showEmail = true, ...props }: SocialIconsProps) {
           </svg>
         </SocialIcon>
       )}
+      <SocialIcon title="Resume" href="/Nisha_Kumari_Berlin_Resume.pdf" target="_blank">
+        <svg width="100%" height="100%" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M10.4 7.7H16.45L10.4 1.65V7.7ZM2.7 0H11.5L18.1 6.6V19.8C18.1 20.3835 17.8682 20.9431 17.4556 21.3556C17.0431 21.7682 16.4835 22 15.9 22H2.7C2.11652 22 1.55695 21.7682 1.14436 21.3556C0.731785 20.9431 0.5 20.3835 0.5 19.8V2.2C0.5 0.979 1.479 0 2.7 0ZM11.5 19.8V18.7C11.5 17.237 8.563 16.5 7.1 16.5C5.637 16.5 2.7 17.237 2.7 18.7V19.8H11.5ZM7.1 11C6.51652 11 5.95695 11.2318 5.54437 11.6444C5.13179 12.0569 4.9 12.6165 4.9 13.2C4.9 13.7835 5.13179 14.3431 5.54437 14.7556C5.95695 15.1682 6.51652 15.4 7.1 15.4C7.68348 15.4 8.24305 15.1682 8.65563 14.7556C9.06821 14.3431 9.3 13.7835 9.3 13.2C9.3 12.6165 9.06821 12.0569 8.65563 11.6444C8.24305 11.2318 7.68348 11 7.1 11Z"
+            fill="var(--color-primary-500)"
+          />
+        </svg>
+      </SocialIcon>
     </div>
   )
 }

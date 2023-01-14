@@ -102,7 +102,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promis
             name
             id
             childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 1400)
+              gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 4200)
             }
           }
           fieldValue
@@ -118,7 +118,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promis
           name
           id
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 1400)
+            gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED, width: 4200)
           }
         }
       }

@@ -38,23 +38,24 @@ const PawsProjectPreviewCard = styled(Link)({
   '& .mobile': {
     transform: 'scale(1)',
     top: '-4%',
-    right: '-2%',
+    right: '0%',
   },
 
   '& .desktop': {
-    transform: 'scale(1)',
-    top: '60%',
-    left: '15%',
+    transform: 'scale(1.15)',
+    top: '75%',
+    left: '12%',
   },
 
   '& > .gatsby-image-wrapper': {
     position: 'absolute',
     transition: 'var(--transition-ease)',
+    zoom: '25%',
   },
 
   '@media (max-width: 600px)': {
     '& > .gatsby-image-wrapper': {
-      zoom: '50%',
+      zoom: '12.5%',
     },
   },
 
