@@ -89,6 +89,43 @@ Mentees can connect with mentors on our platform with the aspiration of a great 
     prototypeLink:
       'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FAMM7qmLT3MqWohK0T45Vt0%2FPaws-N-Claws--Responsive-Web-Design%3Fnode-id%3D202%253A3669%26scaling%3Dscale-down%26page-id%3D29%253A714%26starting-point-node-id%3D202%253A3669%26show-proto-sidebar%3D1',
   },
+  rollingAhead: {
+    name: 'Rolling Ahead',
+    description: `Rolling Ahead is an HMI dashboard designed specifically for the tire manufacturing industry. This dashboard is focused on providing an intuitive and user-friendly interface for operators, allowing them to easily monitor and control production processes.`,
+    hiddenDescription: `Rolling Ahead is an HMI dashboard designed specifically for the tire manufacturing industry. This dashboard is focused on providing an intuitive and user-friendly interface for operators, allowing them to easily monitor and control production processes. Rolling Ahead integrates with the Manufacturing Execution System (MES) to provide real-time information on production progress, inventory, and quality control. it acts as a bridge between the shop floor and the manufacturing execution system (MES) by providing real-time data on production progress and performance, allowing for efficient monitoring and decision-making. It also allows shop floor engineers to easily monitor and troubleshoot the machine's performance, issues related to services and error logs.`,
+    keyWords: [
+      'Rolling Ahead',
+      'Human Machine Interface (HMI) dashboard',
+      'Industry 4.0',
+      'Internet of Things (IoT)',
+      'tire manufacturing',
+      'Manufacturing Execution System (MES)',
+      'production process',
+      'real-time information',
+      'inventory',
+      'quality control',
+      'shop floor',
+      'production progress',
+      'performance',
+      'monitoring',
+      'decision-making',
+      'troubleshoot',
+      'machine performance',
+      'error logs',
+      'user-friendly interface',
+      'small screen size',
+      'data prioritization',
+      'intuitive navigation',
+      'challenge',
+      'limited space',
+      'design',
+      'testing',
+      'tire industry',
+    ],
+    image: '/rollingAheadThumbnail.png',
+    prototypeLink:
+      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHxm3IZE6FgHQNZmI09ufQz%2FHMI%3Fnode-id%3D41%253A9%26scaling%3Dcontain%26page-id%3D0%253A1%26starting-point-node-id%3D41%253A9',
+  },
 }
 
 export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promise<void> => {
