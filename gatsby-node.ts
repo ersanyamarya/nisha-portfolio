@@ -2,6 +2,32 @@ import { CreatePagesArgs } from 'gatsby'
 import path from 'path'
 
 const ProjectsLookup = {
+  mqtizerApp: {
+    name: 'Mqtizer App',
+    description: 'MQTIZER: Your gateway to seamless MQTT management and enhanced IoT connectivity.',
+    hiddenDescription: `MQTIZER: Elevate your Industry 4.0 projects with our cutting-edge MQTT mobile client.
+Seamlessly monitor real-time data, collaborate effortlessly, and simulate sensor values with the intuitive Sensor Keyboard.
+Revolutionize your IoT journey with the ultimate MQTT solution!`,
+    keyWords: [
+      'MQTIZER',
+      'Mobile MQTT client',
+      'IoT connectivity',
+      'Industry 4.0',
+      'Real-time data monitoring',
+      'Sensor Keyboard',
+      'Collaborative workspaces',
+      'User experience design',
+      'Enhanced UI/UX',
+      'User-centric design',
+      'Intuitive interface',
+      'Innovative solutions',
+      'Seamless configuration',
+      'User feedback incorporation',
+      'Enhanced IoT experience',
+    ],
+    image: '/mqtizerAppThumbnail.png',
+    prototypeLink: 'https://www.youtube.com/embed/Kw5PtbWzuNk?si=RGj7QaefEDB02iSm',
+  },
   watchAndBite: {
     name: 'Watch And Bite',
     description: 'An Online Platform for Convenient Snack and Beverage Delivery at the Movies',
@@ -46,48 +72,6 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     image: '/watchAndBiteThumbnail.png',
     prototypeLink:
       'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FadJbZIjy3sg1GEursehV33%2FDesigns%3Fnode-id%3D875%253A13025%26scaling%3Dscale-down%26page-id%3D304%253A3662%26starting-point-node-id%3D1061%253A17257',
-  },
-  iGuide: {
-    name: 'I Guide',
-    description:
-      'I Guide is an online mentoring platform that helps college graduates choose a professional path and prepare for future education with the assistance of industry professionals.',
-    hiddenDescription: `i Guide is an online mentoring service that helps college graduates to choose a professional path or prepare for future education.
-Mentees can connect with mentors on our platform with the aspiration of a great career. Provide an online mentoring service through chat, voice and video calls for college grads. Provides a platform to explore the career opportunities available in a particular field Helps to choose a better professional path through mentoring By connecting college graduates with industry professionals from a variety of fields, assists them in selecting universities for their further education. Mentors can help to understand the admission process and exam patterns of a college Provides variety of sessions (weekly, monthly or once).`,
-    keyWords: [
-      'online mentoring',
-      'college graduates',
-      'professional path',
-      'career opportunities',
-      'industry professionals',
-      'education',
-      'admission process',
-      'exam patterns',
-      'sessions',
-      'personalized guidance',
-    ],
-    image: '/iGuideThumbnail.png',
-    prototypeLink:
-      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2Fz4vYxXoBLnA4qF7LZaxXbc%2FScreen-Designs%3Fnode-id%3D446%253A6392%26scaling%3Dscale-down%26page-id%3D32%253A789%26starting-point-node-id%3D446%253A6392%26show-proto-sidebar%3D1',
-  },
-  pawsAndClaws: {
-    name: 'Paws and Claws',
-    description:
-      'Paws & Claws is a responsive web design for a service that helps connect animals in shelters with potential adopters. Visitors can arrange appointments to meet adoptable cats and dogs and give them a loving home.',
-    hiddenDescription:
-      'Every year, millions of animals enter shelters. Many of them are in good health, would make wonderful pets, and need a home. Paws & Claws is a fictitious responsive website designed for an animal shelter that offers a platform for visitors to arrange appointments to meet cats and dogs up for adoption.',
-    keyWords: [
-      'pet adoption service',
-      'animal rescue',
-      'foster care',
-      'pet matching',
-      'adoptable pets',
-      'homeless animals',
-      'animal welfare',
-      'pet care',
-    ],
-    image: '/pawsAndClawsThumbnail.png',
-    prototypeLink:
-      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FAMM7qmLT3MqWohK0T45Vt0%2FPaws-N-Claws--Responsive-Web-Design%3Fnode-id%3D202%253A3669%26scaling%3Dscale-down%26page-id%3D29%253A714%26starting-point-node-id%3D202%253A3669%26show-proto-sidebar%3D1',
   },
   rollingAhead: {
     name: 'Rolling Ahead',

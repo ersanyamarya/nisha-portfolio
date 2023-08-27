@@ -23,22 +23,22 @@ const RollingAheadProjectPreviewCard = styled(Link)({
     left: '0%',
   },
 
-  '& .logo': {
-    transform: 'translate(0%, 0%) scale(1.6)',
-    top: '5%',
-    left: '32%',
-  },
-
-  '& .description': {
-    transform: 'translate(0%, 0%) scale(1.6)',
-    top: '14%',
-    left: '28%',
-  },
-
-  '& .desktop': {
-    transform: 'scale(1)',
-    top: '30%',
+  '& .content': {
+    transform: 'translate(0%, 0%) scale(1.2)',
+    top: '24%',
     left: '2%',
+  },
+
+  '& .android': {
+    transform: 'translate(0%, 0%) scale(1.1)',
+    top: '28%',
+    left: '42%',
+  },
+
+  '& .iphone': {
+    transform: 'translate(0%, 0%) scale(1.1)',
+    top: '36%',
+    left: '48%',
   },
 
   '& > .gatsby-image-wrapper': {
@@ -64,22 +64,22 @@ const RollingAheadProjectPreviewCard = styled(Link)({
       left: '-15%',
     },
 
-    '& .logo': {
-      transform: 'translate(0%, 0%) scale(1.8)',
-      top: '8%',
-      left: '38%',
+    '& .content': {
+      transform: 'translate(0%, 0%) scale(1.4)',
+      top: '24%',
+      left: '16%',
     },
 
-    '& .description': {
-      transform: 'translate(0%, 0%) scale(1.8)',
-      top: '20%',
-      left: '32%',
+    '& .android': {
+      transform: 'scale(0.8)',
+      top: '38%',
+      left: '50%',
     },
 
-    '& .desktop': {
-      transform: 'scale(1.3)',
-      top: '45%',
-      left: '32%',
+    '& .iphone': {
+      transform: 'scale(0.8)',
+      top: '38%',
+      left: '50%',
     },
 
     '&:hover > .graphics': {
@@ -89,55 +89,55 @@ const RollingAheadProjectPreviewCard = styled(Link)({
       left: '0%',
     },
 
-    '&:hover > .logo': {
-      transform: 'translate(0%, 0%) scale(1.2)',
-      top: '6%',
+    '&:hover > .content': {
+      transform: 'translate(0%, 0%) scale(1)',
+      top: '24%',
+      left: '2%',
+    },
+
+    '&:hover > .android': {
+      transform: 'translate(0%, 0%) scale(1)',
+      top: '24%',
       left: '36%',
     },
 
-    '&:hover > .description': {
-      transform: 'translate(0%, 0%) scale(1.2)',
-      top: '14.5%',
-      left: '32%',
-    },
-
-    '&:hover > .desktop': {
-      transform: 'scale(0.95)',
-      top: '22%',
-      left: '6%',
+    '&:hover > .iphone': {
+      transform: 'translate(0%, 0%) scale(1)',
+      top: '30%',
+      left: '42%',
     },
   },
 })
 
-export function RollingAhead({}) {
+export function MqtizerApp({}) {
   return (
-    <RollingAheadProjectPreviewCard to="/projects/rollingAhead/">
+    <RollingAheadProjectPreviewCard to="/projects/mqtizerApp">
       <StaticImage
         className="graphics"
         placeholder="blurred"
         layout="constrained"
-        src="../../images/projects/rollingAhead/graphics.png"
+        src="../../images/projects/mqtizer/graphics.png"
         alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
-        className="logo"
+        className="content"
         placeholder="blurred"
         layout="fixed"
-        src="../../images/projects/rollingAhead/logo.png"
+        src="../../images/projects/mqtizer/content.png"
         alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
-        className="description"
+        className="iphone"
         placeholder="blurred"
         layout="fixed"
-        src="../../images/projects/rollingAhead/description.png"
+        src="../../images/projects/mqtizer/iphone.png"
         alt="REPLACE WITH ACTUAL COPY"
       />
       <StaticImage
-        className="desktop"
+        className="android"
         placeholder="blurred"
         layout="fixed"
-        src="../../images/projects/rollingAhead/desktop.png"
+        src="../../images/projects/mqtizer/android.png"
         alt="REPLACE WITH ACTUAL COPY"
       />
     </RollingAheadProjectPreviewCard>

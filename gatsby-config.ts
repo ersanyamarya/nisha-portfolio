@@ -5,15 +5,15 @@ dotenv.config()
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Nisha Kumari | UI/UX Designer`,
+    title: `Nisha Kumari | Senior UX Designer`,
     siteUrl: `https://nishakumari.art/`,
-    description: `Nisha Kumari, UI/UX designer in Berlin, passionate about creating user-centric designs. Completed course with Google, seeking opportunities to create user-friendly products.`,
+    description: `Nisha Kumari, Senior UX designer in Berlin, passionate about creating user-centric designs. Completed course with Google, seeking opportunities to create user-friendly products.`,
     linkedinUsername: `nisha-kumari-de/`,
     twitterUsername: `nishakumari_de`,
     image: '/seoThumbnail.png',
     copyWrite: 'Nisha Kumari',
     keyWords: [
-      'UI/UX designer',
+      'Senior UX designer',
       'user-centric design',
       'Berlin',
       'IT experience',
@@ -50,7 +50,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.png',
-        name: 'Nisha Kumari | UI/UX Designer',
+        name: 'Nisha Kumari | Senior UX Designer',
         short_name: 'Nisha Kumari',
         start_url: '/',
         display: 'standalone',

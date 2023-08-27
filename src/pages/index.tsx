@@ -108,11 +108,11 @@ const IndexPage: React.FC<PageProps> = () => {
               </h1>
               <span
                 style={{
-                  lineHeight: '1.2',
+                  lineHeight: '1.4',
                 }}
                 className="text-style-heading-h-2-semi-bold"
               >
-                UI/UX Designer
+                Senior UX Designer
               </span>
               <ContactMeButton
                 onClick={() => {

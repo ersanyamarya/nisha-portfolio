@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import useScrollPosition from '../../hooks/useScrollPosition'
-import { IGuide } from './iGuide'
-import { PawsAndClaws } from './pawsAndClaws'
+
 import { WatchAndBite } from './watchAndBite'
 import { RollingAhead } from './rollingAhead'
+import { MqtizerApp } from './mqtizerApp'
 
 const ProjectsContainer = styled.section({
   display: 'flex',
@@ -71,10 +71,9 @@ export default function ProjectsSection() {
     <ProjectsContainer id="projects">
       <h2 className="text-style-heading-h-1-semi-bold">Projects</h2>
       <CardContainer className={scrollPosition > 300 ? 'show' : ''}>
+        <MqtizerApp />
         <RollingAhead />
         <WatchAndBite />
-        <IGuide />
-        <PawsAndClaws />
       </CardContainer>
     </ProjectsContainer>
   )
