@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 
-const RollingAheadProjectPreviewCard = styled(Link)({
+const MqtizerAppPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
   boxShadow: 'var(--elevation-surface)',
   cursor: 'pointer',
@@ -73,7 +73,7 @@ const RollingAheadProjectPreviewCard = styled(Link)({
     '& .android': {
       transform: 'scale(0.8)',
       top: '38%',
-      left: '50%',
+      left: '60%',
     },
 
     '& .iphone': {
@@ -111,7 +111,7 @@ const RollingAheadProjectPreviewCard = styled(Link)({
 
 export function MqtizerApp({}) {
   return (
-    <RollingAheadProjectPreviewCard to="/projects/mqtizerApp">
+    <MqtizerAppPreviewCard to="/projects/mqtizerApp">
       <StaticImage
         className="graphics"
         placeholder="blurred"
@@ -140,6 +140,6 @@ export function MqtizerApp({}) {
         src="../../images/projects/mqtizer/android.png"
         alt="REPLACE WITH ACTUAL COPY"
       />
-    </RollingAheadProjectPreviewCard>
+    </MqtizerAppPreviewCard>
   )
 }

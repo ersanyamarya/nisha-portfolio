@@ -4,7 +4,7 @@ import path from 'path'
 const ProjectsLookup = {
   mqtizerApp: {
     name: 'Mqtizer App',
-    description: 'MQTIZER: Your gateway to seamless MQTT management and enhanced IoT connectivity.',
+    description: 'MQTIZER: Cross-platform MQTT client for industry grade IoT Solutions.',
     hiddenDescription: `MQTIZER: Elevate your Industry 4.0 projects with our cutting-edge MQTT mobile client.
 Seamlessly monitor real-time data, collaborate effortlessly, and simulate sensor values with the intuitive Sensor Keyboard.
 Revolutionize your IoT journey with the ultimate MQTT solution!`,
@@ -27,6 +27,60 @@ Revolutionize your IoT journey with the ultimate MQTT solution!`,
     ],
     image: '/mqtizerAppThumbnail.png',
     prototypeLink: 'https://www.youtube.com/embed/Kw5PtbWzuNk?si=RGj7QaefEDB02iSm',
+  },
+  mqtizerWeb: {
+    name: 'Mqtizer Website',
+    description: 'MQTIZER: Cross-platform MQTT client for industry grade IoT Solutions.',
+    hiddenDescription: `MQTIZER: Elevate your Industry 4.0 projects with our cutting-edge MQTT mobile client.
+Seamlessly monitor real-time data, collaborate effortlessly, and simulate sensor values with the intuitive Sensor Keyboard.
+Revolutionize your IoT journey with the ultimate MQTT solution!`,
+    keyWords: [
+      'MQTIZER',
+      'Mobile MQTT client',
+      'IoT connectivity',
+      'Industry 4.0',
+      'Real-time data monitoring',
+      'Sensor Keyboard',
+      'Collaborative workspaces',
+      'User experience design',
+      'Enhanced UI/UX',
+      'User-centric design',
+      'Intuitive interface',
+      'Innovative solutions',
+      'Seamless configuration',
+      'User feedback incorporation',
+      'Enhanced IoT experience',
+    ],
+    image: '/mqtizerWebsiteThumbnail.png',
+    prototypeLink: 'https://www.mqtizer.com',
+  },
+  visionari: {
+    name: 'Visionar.AI',
+    description: 'Empowering Innovation with VisionarAI: Where Ideas Flourish and Future Unfolds.',
+    hiddenDescription: `"At VisionarAI, we are the pioneers of a transformative journey where innovation takes center stage.
+Our platform, VisionarAI, is the catalyst for visionary entrepreneurs, offering a comprehensive toolkit to nurture and elevate ideas into impactful realities.
+With a powerful blend of AI-driven insights and user-centric design, we bring ideas to life while ensuring compliance with a changing landscape.
+Dive into a realm where creativity thrives, guided by the pulse of market dynamics and the unwavering vision of entrepreneurs.`,
+    keyWords: [
+      'VisionarAI',
+      'Innovation',
+      'Empowerment',
+      'Entrepreneurship',
+      'Ideation',
+      'AI-driven Insights',
+      'User-Centric Design',
+      'Ideas to Reality',
+      'Compliance',
+      'Creative Transformation',
+      'Market Dynamics',
+      'Visionaries',
+      'Unleashing Potential',
+      'Future Shaping',
+      'Nurturing Ideas',
+    ],
+    image: '/visionarAiThumbnail.png',
+    prototypeLink:
+      'https://www.figma.com/proto/OEJMoWhUcHxO7yTrskLKT5/VisionarAI_Designs?type=design&node-id=1-2&t=uZMeEAzVT15q573y-0&scaling=scale-down&starting-point-node-id=348%3A12724',
   },
   watchAndBite: {
     name: 'Watch And Bite',
@@ -71,7 +125,7 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     ],
     image: '/watchAndBiteThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FadJbZIjy3sg1GEursehV33%2FDesigns%3Fnode-id%3D875%253A13025%26scaling%3Dscale-down%26page-id%3D304%253A3662%26starting-point-node-id%3D1061%253A17257',
+      'https://www.figma.com/proto/OEJMoWhUcHxO7yTrskLKT5/VisionarAI_Designs?type=design&node-id=348-12724&t=5IG3NWoe0efGNFGi-1&scaling=scale-down&page-id=1%3A2&starting-point-node-id=348%3A12724',
   },
   rollingAhead: {
     name: 'Rolling Ahead',

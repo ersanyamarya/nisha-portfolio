@@ -5,6 +5,8 @@ import useScrollPosition from '../../hooks/useScrollPosition'
 import { WatchAndBite } from './watchAndBite'
 import { RollingAhead } from './rollingAhead'
 import { MqtizerApp } from './mqtizerApp'
+import { MqtizerWeb } from './mqtizerWeb'
+import { VisionarAI } from './visionarai'
 
 const ProjectsContainer = styled.section({
   display: 'flex',
@@ -72,6 +74,8 @@ export default function ProjectsSection() {
       <h2 className="text-style-heading-h-1-semi-bold">Projects</h2>
       <CardContainer className={scrollPosition > 300 ? 'show' : ''}>
         <MqtizerApp />
+        <VisionarAI />
+        <MqtizerWeb />
         <RollingAhead />
         <WatchAndBite />
       </CardContainer>
