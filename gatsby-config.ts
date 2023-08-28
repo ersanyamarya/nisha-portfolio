@@ -42,7 +42,6 @@ const config: GatsbyConfig = {
   plugins: [
     'gatsby-plugin-emotion',
     'gatsby-plugin-image',
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
     `gatsby-plugin-minify`,
