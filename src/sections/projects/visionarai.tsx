@@ -24,21 +24,21 @@ const VisionarAIPreviewCard = styled(Link)({
   },
 
   '& .winner-tag': {
-    transform: 'translate(0%, 0%) scale(1.2)',
-    top: '0%',
+    transform: 'translate(0%, 0%) scale(1)',
+    top: '55%',
     left: '6%',
   },
 
   '& .logo': {
-    transform: 'scale(1.5)',
-    top: '10%',
-    left: '45%',
+    transform: 'scale(1)',
+    top: '22%',
+    left: '6%',
   },
 
   '& .desktop': {
-    transform: 'translate(0%, 0%) scale(1.3)',
-    top: '42%',
-    left: '14%',
+    transform: 'translate(0%, 0%) scale(1)',
+    top: '0%',
+    left: '48%',
   },
 
   '& > .gatsby-image-wrapper': {
