@@ -80,7 +80,7 @@ Dive into a realm where creativity thrives, guided by the pulse of market dynami
     ],
     image: '/visionarAiThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/proto/OEJMoWhUcHxO7yTrskLKT5/VisionarAI_Designs?type=design&node-id=1-2&t=uZMeEAzVT15q573y-0&scaling=scale-down&starting-point-node-id=348%3A12724',
+      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FOEJMoWhUcHxO7yTrskLKT5%2FVisionarAI_Designs%3Ftype%3Ddesign%26node-id%3D348-12724%26t%3DeYxqN6aLN6z5Dlzk-1%26scaling%3Dscale-down%26page-id%3D1%253A2%26starting-point-node-id%3D348%253A12724%26mode%3Ddesign',
   },
   watchAndBite: {
     name: 'Watch And Bite',
@@ -125,7 +125,7 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     ],
     image: '/watchAndBiteThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/proto/OEJMoWhUcHxO7yTrskLKT5/VisionarAI_Designs?type=design&node-id=348-12724&t=5IG3NWoe0efGNFGi-1&scaling=scale-down&page-id=1%3A2&starting-point-node-id=348%3A12724',
+      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FadJbZIjy3sg1GEursehV33%2FDesigns%3Fnode-id%3D875%253A13025%26scaling%3Dscale-down%26page-id%3D304%253A3662%26starting-point-node-id%3D1061%253A17257',
   },
   rollingAhead: {
     name: 'Rolling Ahead',

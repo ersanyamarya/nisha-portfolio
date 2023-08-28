@@ -24,9 +24,9 @@ const MqtizerWebPreviewCard = styled(Link)({
   },
 
   '& .header': {
-    transform: 'translate(0%, 0%) scale(1.2)',
+    transform: 'translate(0%, 0%) scale(0.98)',
     top: '0%',
-    left: '6%',
+    left: '-3%',
   },
 
   '& .logo': {
@@ -36,15 +36,15 @@ const MqtizerWebPreviewCard = styled(Link)({
   },
 
   '& .desktop': {
-    transform: 'translate(0%, 0%) scale(1.3)',
+    transform: 'translate(0%, 0%) scale(1.2)',
     top: '42%',
-    left: '14%',
+    left: '8%',
   },
 
   '& .iphone': {
-    transform: 'translate(0%, 0%) scale(1.3)',
-    top: '58%',
-    left: '74%',
+    transform: 'translate(0%, 0%) scale(1.2)',
+    top: '56%',
+    left: '72%',
   },
 
   '& > .gatsby-image-wrapper': {
