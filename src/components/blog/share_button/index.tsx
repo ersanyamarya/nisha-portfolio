@@ -28,7 +28,7 @@ const ModalWrapper = styled.div`
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
   background-size: cover;
   backdrop-filter: blur(px);
-  border-radius: 1.5rem;
+  border-radius: 0.4rem;
 
   flex-direction: column;
   justify-content: center;

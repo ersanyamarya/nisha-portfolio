@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Link, PageProps, graphql } from 'gatsby'
+import { HeadFC, Link, PageProps, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Layout from '../../layouts/mainLayout'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ShareButtons from '../../components/blog/share_button'
+import { SEO } from '../../components'
 const BlogContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -59,11 +60,12 @@ const BlogContainer = styled.div`
   .html-content {
     & :is(h2, h3, h4, h5, h6) {
       font-style: normal;
-      font-weight: 500;
+      font-weight: 600;
       margin: 4rem 0 2rem 0;
     }
 
     h1 {
+      font-weight: 600;
       color: #191c1e;
       font-size: 3.25rem;
       line-height: 4rem;
@@ -216,6 +218,33 @@ export default function BlogPostTemplate({ data, location: { href: url } }: Page
   )
 }
 
+interface SeoData {
+  featuredImage: {
+    publicURL: string
+  }
+  title: string
+  executiveSummary: string
+  keywords: string
+}
+
+export const Head: HeadFC = ({ data, location }) => {
+  const {
+    markdownRemark: {
+      frontmatter: { featuredImage, title, executiveSummary, keywords },
+    },
+  } = data as any
+
+  return (
+    <SEO
+      title={title}
+      description={executiveSummary}
+      keyWords={keywords.split(',')}
+      pathname={location.pathname}
+      image={featuredImage.publicURL}
+    />
+  )
+}
+
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
@@ -225,6 +254,7 @@ export const pageQuery = graphql`
         slug
         title
         executiveSummary
+        keywords
         featuredImage {
           publicURL
           childImageSharp {
