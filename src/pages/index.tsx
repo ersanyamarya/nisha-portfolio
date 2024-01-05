@@ -106,7 +106,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 style={{
                   lineHeight: '1.4',
                 }}
-                className="text-style-heading-h-2-semi-bold"
+                className="text-style-heading-h-2-regular"
               >
                 Senior UX Designer
               </span>

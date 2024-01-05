@@ -19,13 +19,12 @@ const BlogCardWrapper = styled(Link)`
   align-items: center;
   overflow: hidden;
   cursor: pointer;
-
-  border-radius: 16px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
   background: #fefefe;
-  box-shadow: 0px 1px 25px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 12px 12px 21px #d4d2d0, -12px -12px 21px #ffffff;
 
   &: hover {
-    box-shadow: 0px 1px 30px 0px rgba(0, 0, 0, 0.5);
     transform: scale(1.01);
   }
 
@@ -55,7 +54,7 @@ const BlogCardWrapper = styled(Link)`
 
   .image {
     flex: 1;
-    padding: 2rem;
+    padding: 2rem 0 2rem 2rem;
     .gatsby-image-wrapper {
       border-radius: 8px;
       padding: 0;
