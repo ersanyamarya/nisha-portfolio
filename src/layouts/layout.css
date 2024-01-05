@@ -52,6 +52,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
 body {
   /* background: var(--color-secondary-0); */
   background-color: #fffdfa;
@@ -71,6 +75,7 @@ body {
   --color-secondary-0: #333333;
   background: var(--color-secondary-0);
 }
+
 a {
   text-decoration: none;
 }
@@ -97,6 +102,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-1-semi-bold {
   font-size: 3.062rem;
   font-family: 'Montserrat';
@@ -105,6 +111,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-2-regular {
   font-size: 2.438rem;
   font-family: 'Montserrat';
@@ -113,6 +120,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-2-semi-bold {
   font-size: 2.438rem;
   font-family: 'Montserrat';
@@ -121,6 +129,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-3-regular {
   font-size: 1.938rem;
   font-family: 'Montserrat';
@@ -129,6 +138,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-3-semi-bold {
   font-size: 1.938rem;
   font-family: 'Montserrat';
@@ -137,6 +147,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-4-regular {
   font-size: 1.562rem;
   font-family: 'Montserrat';
@@ -145,6 +156,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-4-medium {
   font-size: 1.562rem;
   font-family: 'Montserrat';
@@ -153,6 +165,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-4-semi-bold {
   font-size: 1.562rem;
   font-family: 'Montserrat';
@@ -161,6 +174,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-5-regular {
   font-size: 1.25rem;
   font-family: 'Montserrat';
@@ -169,6 +183,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-5-medium {
   font-size: 1.25rem;
   font-family: 'Montserrat';
@@ -177,6 +192,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-heading-h-5-semi-bold {
   font-size: 1.25rem;
   font-family: 'Montserrat';
@@ -185,6 +201,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-regular-regular {
   font-size: 1rem;
   font-family: 'Montserrat';
@@ -193,6 +210,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-regular-light {
   font-size: 1rem;
   font-family: 'Montserrat';
@@ -201,6 +219,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-regular-semi-bold {
   font-size: 1rem;
   font-family: 'Montserrat';
@@ -209,12 +228,14 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-regular-semi-bold-italic {
   font-size: 1rem;
   font-family: 'Montserrat';
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-mini-regular {
   font-size: 0.812rem;
   font-family: 'Montserrat';
@@ -223,6 +244,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-mini-italic {
   font-size: 0.812rem;
   font-family: 'Montserrat';
@@ -231,6 +253,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-mini-medium {
   font-size: 0.812rem;
   font-family: 'Montserrat';
@@ -239,6 +262,7 @@ body::-webkit-scrollbar-thumb {
   text-decoration: none;
   text-transform: none;
 }
+
 .text-style-body-mini-semi-bold {
   font-size: 0.812rem;
   font-family: 'Montserrat';
@@ -256,33 +280,39 @@ body::-webkit-scrollbar-thumb {
     animation-timing-function: ease-in;
     opacity: 1;
   }
+
   24% {
     opacity: 1;
   }
+
   40% {
     -webkit-transform: translateY(-24px);
     transform: translateY(-24px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   65% {
     -webkit-transform: translateY(-12px);
     transform: translateY(-12px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   82% {
     -webkit-transform: translateY(-6px);
     transform: translateY(-6px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   93% {
     -webkit-transform: translateY(-4px);
     transform: translateY(-4px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   25%,
   55%,
   75%,
@@ -292,6 +322,7 @@ body::-webkit-scrollbar-thumb {
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
+
   100% {
     -webkit-transform: translateY(0px);
     transform: translateY(0px);
@@ -309,33 +340,39 @@ body::-webkit-scrollbar-thumb {
     animation-timing-function: ease-in;
     opacity: 1;
   }
+
   24% {
     opacity: 1;
   }
+
   40% {
     -webkit-transform: translateY(-24px);
     transform: translateY(-24px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   65% {
     -webkit-transform: translateY(-12px);
     transform: translateY(-12px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   82% {
     -webkit-transform: translateY(-6px);
     transform: translateY(-6px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   93% {
     -webkit-transform: translateY(-4px);
     transform: translateY(-4px);
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
+
   25%,
   55%,
   75%,
@@ -345,6 +382,7 @@ body::-webkit-scrollbar-thumb {
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
+
   100% {
     -webkit-transform: translateY(0px);
     transform: translateY(0px);

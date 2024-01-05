@@ -6,7 +6,6 @@ import Footer from './footer'
 import NavBar from './navBar'
 interface LayoutProps {
   children: React.ReactNode
-  openContactForm: () => void
 }
 
 const SocialLinksContainer = styled(SocialIcons)({
@@ -32,12 +31,12 @@ const SocialLinksContainer = styled(SocialIcons)({
   },
 })
 
-export default function Layout({ children, openContactForm }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <div className="">
         {/* <NavSlider /> */}
-        <NavBar openContactForm={openContactForm} />
+        <NavBar />
         <SocialLinksContainer showEmail={false} />
         {children}
         <Footer />

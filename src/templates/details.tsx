@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import { SEO } from '../components'
 import Modal from '../components/modal'
 import Layout from '../layouts/mainLayout'
-import Contact from '../sections/contact'
 
 interface DetailsProps extends PageProps {
   pageContext: {
@@ -81,8 +80,6 @@ const DetailContainer = styled.article({
 export default function Details({ pageContext }: DetailsProps) {
   const { images, name, description, hiddenDescription, prototypeLink } = pageContext
 
-  const [showContact, setShowContact] = useState(false)
-
   const [showEmbed, setShowEmbed] = useState(false)
 
   return (
@@ -100,12 +97,7 @@ export default function Details({ pageContext }: DetailsProps) {
           allowFullScreen
         ></iframe>
       </Modal>
-      <Contact open={showContact} onClose={() => setShowContact(false)} />
-      <Layout
-        openContactForm={() => {
-          setShowContact(true)
-        }}
-      >
+      <Layout>
         <ContextAction
           onClick={() => {
             if (!window.matchMedia('(max-width: 920px)').matches) setShowEmbed(true)

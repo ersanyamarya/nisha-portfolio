@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import { Logo } from '../../components'
 import useScrollPosition from '../../hooks/useScrollPosition'
+import Contact from '../../sections/contact'
 
 const NAVIGATION_LINKS = [
   {
@@ -12,6 +13,10 @@ const NAVIGATION_LINKS = [
   {
     name: 'Projects',
     path: '/#projects',
+  },
+  {
+    name: 'Blog',
+    path: '/blog',
   },
 ]
 
@@ -121,110 +126,114 @@ const Overlay = styled.div({
   },
 })
 
-export type NavBarProps = {
-  openContactForm: () => void
-}
-export default function NavBar({ openContactForm }: NavBarProps) {
+export default function NavBar() {
+  const [showContact, setShowContact] = React.useState(false)
   const scrollPosition = useScrollPosition()
   const [isOverlayVisible, setOverlayVisible] = useState(false)
   return (
-    <NavigationBar className={scrollPosition > 215 ? 'shadow' : ''}>
-      <FullLogo>
-        <Logo />
-      </FullLogo>
-      <HamBurger
-        onClick={() => {
-          setOverlayVisible(true)
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          shapeRendering="geometricPrecision"
-          textRendering="geometricPrecision"
-          imageRendering="optimizeQuality"
-          fillRule="evenodd"
-          clipRule="evenodd"
-          viewBox="0 0 512 351.67"
-        >
-          <path fillRule="nonzero" d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z" />
-        </svg>
-      </HamBurger>
-
-      {/* <pre>{scrollPosition}</pre> */}
-      <NavLinks>
-        {NAVIGATION_LINKS.map(link => (
-          <StyledLink
-            className="text-style-heading-h-5-semi-bold"
-            activeClassName="active"
-            to={link.path}
-            key={link.name}
-          >
-            {link.name}
-          </StyledLink>
-        ))}
-        <ContactMeButton
-          className="text-style-heading-h-5-semi-bold"
-          onClick={() => {
-            openContactForm()
-          }}
-        >
-          Contact Me
-        </ContactMeButton>
-      </NavLinks>
-      <Overlay className={isOverlayVisible ? 'visible' : ''}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            gap: '4rem',
-            width: '100%',
-            backgroundColor: 'var(--color-secondary-0)',
-            padding: '1rem',
-          }}
-        >
+    <>
+      <Contact open={showContact} onClose={() => setShowContact(false)} />
+      <NavigationBar className={scrollPosition > 215 ? 'shadow' : ''}>
+        <FullLogo>
           <Logo />
-
-          <HamBurger
-            onClick={() => {
-              setOverlayVisible(false)
-            }}
-          >
-            <svg
-              version="1.1"
-              id="Layer_1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 122.878 122.88"
-              enableBackground="new 0 0 122.878 122.88"
-            >
-              <g>
-                <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
-              </g>
-            </svg>
-          </HamBurger>
-        </div>
-        {NAVIGATION_LINKS.map(link => (
-          <StyledLink
-            className="text-style-heading-h-5-semi-bold"
-            activeClassName="active"
-            to={link.path}
-            key={link.name}
-            onClick={() => {
-              setOverlayVisible(false)
-            }}
-          >
-            {link.name}
-          </StyledLink>
-        ))}
-        <ContactMeButton
-          className="text-style-heading-h-5-semi-bold"
+        </FullLogo>
+        <HamBurger
           onClick={() => {
-            openContactForm()
+            setOverlayVisible(true)
           }}
         >
-          Contact Me
-        </ContactMeButton>
-      </Overlay>
-    </NavigationBar>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            shapeRendering="geometricPrecision"
+            textRendering="geometricPrecision"
+            imageRendering="optimizeQuality"
+            fillRule="evenodd"
+            clipRule="evenodd"
+            viewBox="0 0 512 351.67"
+          >
+            <path
+              fillRule="nonzero"
+              d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z"
+            />
+          </svg>
+        </HamBurger>
+
+        {/* <pre>{scrollPosition}</pre> */}
+        <NavLinks>
+          {NAVIGATION_LINKS.map(link => (
+            <StyledLink
+              className="text-style-heading-h-5-semi-bold"
+              activeClassName="active"
+              to={link.path}
+              key={link.name}
+            >
+              {link.name}
+            </StyledLink>
+          ))}
+          <ContactMeButton
+            className="text-style-heading-h-5-semi-bold"
+            onClick={() => {
+              setShowContact(true)
+            }}
+          >
+            Contact Me
+          </ContactMeButton>
+        </NavLinks>
+        <Overlay className={isOverlayVisible ? 'visible' : ''}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              gap: '4rem',
+              width: '100%',
+              backgroundColor: 'var(--color-secondary-0)',
+              padding: '1rem',
+            }}
+          >
+            <Logo />
+
+            <HamBurger
+              onClick={() => {
+                setOverlayVisible(false)
+              }}
+            >
+              <svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 122.878 122.88"
+                enableBackground="new 0 0 122.878 122.88"
+              >
+                <g>
+                  <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
+                </g>
+              </svg>
+            </HamBurger>
+          </div>
+          {NAVIGATION_LINKS.map(link => (
+            <StyledLink
+              className="text-style-heading-h-5-semi-bold"
+              activeClassName="active"
+              to={link.path}
+              key={link.name}
+              onClick={() => {
+                setOverlayVisible(false)
+              }}
+            >
+              {link.name}
+            </StyledLink>
+          ))}
+          <ContactMeButton
+            className="text-style-heading-h-5-semi-bold"
+            onClick={() => {
+              setShowContact(true)
+            }}
+          >
+            Contact Me
+          </ContactMeButton>
+        </Overlay>
+      </NavigationBar>
+    </>
   )
 }

@@ -77,11 +77,7 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Contact open={showContact} onClose={() => setShowContact(false)} />
-      <Layout
-        openContactForm={() => {
-          setShowContact(true)
-        }}
-      >
+      <Layout>
         <main>
           <HeroSection id="hero">
             <div

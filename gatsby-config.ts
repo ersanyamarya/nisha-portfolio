@@ -69,6 +69,29 @@ const config: GatsbyConfig = {
       __key: 'images',
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `./src/content`,
+      },
+      __key: 'content',
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1280,
+              quality: 100,
+            },
+          },
+        ],
+      },
+    },
+
+    {
       resolve: `gatsby-omni-font-loader`,
       options: {
         enableListener: true,
