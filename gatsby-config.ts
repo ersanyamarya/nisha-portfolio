@@ -104,6 +104,13 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-clarity`,
+      options: {
+        clarity_project_id: 'ldwc685yke',
+        enable_on_dev_env: true,
+      },
+    },
   ],
 }
 
