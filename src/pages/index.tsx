@@ -92,23 +92,24 @@ const IndexPage: React.FC<PageProps> = () => {
                 }}
                 className="text-style-heading-h-2-regular"
               >
-                I am,
+                Hi, I am <strong>Nisha Kumari</strong>
+                <br />
+                <strong>Senior UX Designer </strong>based in Berlin.
               </span>
               <h1
                 style={{
                   lineHeight: '1.2',
                 }}
                 className="text-style-heading-h-1-semi-bold"
-              >
-                Nisha Kumari
-              </h1>
+              ></h1>
               <span
                 style={{
                   lineHeight: '1.4',
                 }}
-                className="text-style-heading-h-2-regular"
+                className="text-style-heading-h-3-regular"
               >
-                Senior UX Designer
+                I specialize in creating data-driven, user-centric digital experiences, working with both enterprises
+                and startups to craft intuitive and impactful designs.
               </span>
               <ContactMeButton
                 onClick={() => {
