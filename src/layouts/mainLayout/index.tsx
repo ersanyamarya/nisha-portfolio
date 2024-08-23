@@ -34,13 +34,10 @@ const SocialLinksContainer = styled(SocialIcons)({
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <div className="">
-        {/* <NavSlider /> */}
-        <NavBar />
-        <SocialLinksContainer showEmail={false} />
-        {children}
-        <Footer />
-      </div>
+      <NavBar />
+      <SocialLinksContainer showEmail={false} />
+      {children}
+      <Footer />
     </>
   )
 }

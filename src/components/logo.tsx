@@ -4,11 +4,11 @@ import { StaticImage } from 'gatsby-plugin-image'
 import React from 'react'
 
 const LogoTitle = styled.span({
-  color: 'var(--color-primary-500)',
+  color: 'var(--color-primary-700)',
   padding: '0rem 0.2rem',
   '&:nth-of-type(even)': {
     color: 'var(--color-primary-0)',
-    backgroundColor: 'var(--color-primary-500)',
+    backgroundColor: 'var(--color-primary-700)',
     borderRadius: 'var(--dim-round-corner)',
   },
 })
@@ -20,6 +20,7 @@ export function Logo({ ...props }) {
         display: 'flex',
         alignItems: 'center',
         gap: '1.5rem',
+        backgroundColor: 'var(--color-primary-50)',
       }}
       {...props}
       to="/"
@@ -30,8 +31,8 @@ export function Logo({ ...props }) {
           display: 'flex',
         }}
       >
-        <LogoTitle className="text-style-heading-h-3-semi-bold">NISHA</LogoTitle>
-        <LogoTitle className="text-style-heading-h-3-semi-bold">KUMARI</LogoTitle>
+        <LogoTitle className="text-style-heading-h-3-semi-bold">N</LogoTitle>
+        <LogoTitle className="text-style-heading-h-3-semi-bold">K</LogoTitle>
       </div>
     </Link>
   )

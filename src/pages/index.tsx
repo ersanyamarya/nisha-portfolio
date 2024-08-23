@@ -142,6 +142,7 @@ const IndexPage: React.FC<PageProps> = () => {
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop stopColor="var(--color-primary-700)" />
+
                     <stop offset="1" stopColor="var(--color-primary-100)" />
                   </linearGradient>
                 </defs>

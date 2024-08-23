@@ -27,7 +27,7 @@ const ContactMeButton = styled.button({
   cursor: 'pointer',
   border: 'none',
   borderRadius: 'var(--dim-round-corner-large)',
-  backgroundColor: 'var(--color-primary-500)',
+  backgroundColor: 'var(--color-primary-700)',
   color: 'var(--color-primary-0)',
   boxShadow: 'var(--elevation-surface)',
   transition: 'var(--transition-ease)',
@@ -60,8 +60,8 @@ const NavigationBar = styled.nav({
   position: 'sticky',
   top: '0',
   zIndex: 10,
-  backgroundColor: 'rgba(255, 253, 250, 0.9)',
-  backdropFilter: 'blur(5px)',
+  backgroundColor: 'transparent',
+  // backdropFilter: 'blur(5px)',
   '@media only screen and (max-width: 920px)': {
     padding: '1rem',
     position: 'absolute',
@@ -69,6 +69,7 @@ const NavigationBar = styled.nav({
   '&.shadow': {
     transition: 'var(--transition-ease)',
     boxShadow: 'var(--elevation-light)',
+    backdropFilter: 'blur(5px)',
   },
 })
 const NavLinks = styled.nav({
@@ -187,7 +188,7 @@ export default function NavBar() {
               justifyContent: 'space-between',
               gap: '4rem',
               width: '100%',
-              backgroundColor: 'var(--color-secondary-0)',
+              backgroundColor: 'transparent',
               padding: '1rem',
             }}
           >
