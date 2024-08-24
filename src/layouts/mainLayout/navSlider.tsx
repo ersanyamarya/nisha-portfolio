@@ -1,6 +1,6 @@
-import styled from '@emotion/styled'
-import React from 'react'
-import useScrollPosition from '../../hooks/useScrollPosition'
+import styled from '@emotion/styled';
+import React from 'react';
+import useScrollPosition from '../../hooks/useScrollPosition';
 
 const NAVIGATION_LINKS = [
   {
@@ -15,7 +15,7 @@ const NAVIGATION_LINKS = [
     name: 'Contact',
     path: '/#contact',
   },
-]
+];
 
 const NavSliderContainer = styled.nav({
   display: 'flex',
@@ -53,17 +53,20 @@ const NavSliderContainer = styled.nav({
       left: '0%',
     },
   },
-})
+});
 
 export default function NavSlider() {
-  const scrollPosition = useScrollPosition()
+  const scrollPosition = useScrollPosition();
   return (
     <NavSliderContainer className={scrollPosition > 215 ? 'show' : ''}>
       {NAVIGATION_LINKS.map(link => (
-        <a href={link.path} key={link.name} className="text-style-heading-h-5-semi-bold">
+        <a
+          href={link.path}
+          key={link.name}
+          className="text-style-heading-h-5-semi-bold">
           {link.name}
         </a>
       ))}
     </NavSliderContainer>
-  )
+  );
 }

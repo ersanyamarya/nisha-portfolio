@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import React from 'react';
 const WatchProjectPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
   boxShadow: 'var(--elevation-surface)',
@@ -127,7 +127,7 @@ const WatchProjectPreviewCard = styled(Link)({
       left: '65%',
     },
   },
-})
+});
 
 export function WatchAndBite({}) {
   return (
@@ -176,5 +176,5 @@ export function WatchAndBite({}) {
         alt="REPLACE WITH ACTUAL COPY"
       />
     </WatchProjectPreviewCard>
-  )
+  );
 }

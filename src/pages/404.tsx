@@ -1,18 +1,20 @@
-import * as React from 'react'
-import { Link, HeadFC, PageProps } from 'gatsby'
-import Contact from '../sections/contact'
-import Layout from '../layouts/mainLayout'
+import { HeadFC, Link, PageProps } from 'gatsby';
+import * as React from 'react';
+import Layout from '../layouts/mainLayout';
+import Contact from '../sections/contact';
 
 const NotFoundPage: React.FC<PageProps> = () => {
-  const [showContact, setShowContact] = React.useState(false)
+  const [showContact, setShowContact] = React.useState(false);
   return (
     <>
-      <Contact open={showContact} onClose={() => setShowContact(false)} />
+      <Contact
+        open={showContact}
+        onClose={() => setShowContact(false)}
+      />
       <Layout
         openContactForm={() => {
-          setShowContact(true)
-        }}
-      >
+          setShowContact(true);
+        }}>
         <main style={{}}>
           <Link
             style={{
@@ -27,16 +29,14 @@ const NotFoundPage: React.FC<PageProps> = () => {
               textAlign: 'center',
             }}
             to="/"
-            className="text-style-heading-h-4-regular"
-          >
+            className="text-style-heading-h-4-regular">
             <svg
               style={{
                 width: 'min(800px, 75vw)',
               }}
               viewBox="0 0 1058 643"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M661.842 622.708C665.518 620.647 669.65 619.532 673.864 619.463C678.078 619.394 682.243 620.374 685.985 622.314C689.727 624.255 692.927 627.095 695.299 630.579C697.671 634.063 699.139 638.083 699.572 642.275C684.156 642.275 669.046 638.688 661.842 622.708Z"
                 fill="var(--color-primary-100)"
@@ -762,9 +762,9 @@ const NotFoundPage: React.FC<PageProps> = () => {
         </main>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;
 
-export const Head: HeadFC = () => <title>Not found</title>
+export const Head: HeadFC = () => <title>Not found</title>;

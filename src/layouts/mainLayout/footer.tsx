@@ -1,15 +1,15 @@
-import styled from '@emotion/styled'
-import { graphql, useStaticQuery } from 'gatsby'
-import React from 'react'
-import { Logo, SvgBlob } from '../../components'
-import { SocialIcons } from '../../components/socialIcons'
+import styled from '@emotion/styled';
+import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
+import { Logo, SvgBlob } from '../../components';
+import { SocialIcons } from '../../components/socialIcons';
 const FooterWrapper = styled.div({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   marginTop: '2rem',
-})
+});
 const FooterContainer = styled.footer({
   display: 'flex',
   flexDirection: 'row',
@@ -34,13 +34,13 @@ const FooterContainer = styled.footer({
     gap: '2rem',
     flex: 1,
   },
-})
+});
 
 const Wave = styled(SvgBlob)({
   width: '100%',
   height: '10vh',
   overflow: 'hidden',
-})
+});
 
 export default function Footer() {
   const {
@@ -57,7 +57,7 @@ export default function Footer() {
         }
       }
     }
-  `)
+  `);
   return (
     <FooterWrapper>
       <Wave
@@ -70,18 +70,19 @@ export default function Footer() {
         paths={[
           'M0 0L50 30C100 60 200 120 300 132C400 144 500 108 600 114C700 120 800 168 900 186C1000 204 1100 192 1150 186L1200 180V360H1150C1100 360 1000 360 900 360C800 360 700 360 600 360C500 360 400 360 300 360C200 360 100 360 50 360H0V0Z',
           'M0 9.94947L50 45.9495C100 81.9495 200 153.949 300 183.949C400 213.949 500 201.949 600 153.949C700 105.949 800 21.9495 900 3.94947C1000 -14.0505 1100 33.9495 1150 57.9495L1200 81.9495V297.949H1150C1100 297.949 1000 297.949 900 297.949C800 297.949 700 297.949 600 297.949C500 297.949 400 297.949 300 297.949C200 297.949 100 297.949 50 297.949H0V9.94947Z',
-        ]}
-      >
+        ]}>
         <linearGradient
           id="paint_linear_gradient"
           x1="657.5"
           y1="212"
           x2="654.5"
           y2="-358"
-          gradientUnits="userSpaceOnUse"
-        >
+          gradientUnits="userSpaceOnUse">
           <stop stopColor="var(--color-secondary-100)" />
-          <stop offset="1" stopColor="var(--color-secondary-0)" />
+          <stop
+            offset="1"
+            stopColor="var(--color-secondary-0)"
+          />
         </linearGradient>
       </Wave>
       <FooterContainer>
@@ -92,7 +93,9 @@ export default function Footer() {
         <div>
           <p>
             ©{' '}
-            <a href="https://www.linkedin.com/in/nisha-kumari-de/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/nisha-kumari-de/"
+              target="_blank">
               {copyWrite}
             </a>{' '}
             {new Date().getFullYear()}, Built with ❤️
@@ -110,5 +113,5 @@ export default function Footer() {
         </div>
       </FooterContainer>
     </FooterWrapper>
-  )
+  );
 }

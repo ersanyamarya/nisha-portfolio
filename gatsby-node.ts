@@ -1,5 +1,5 @@
-import { CreatePagesArgs } from 'gatsby'
-import path from 'path'
+import { CreatePagesArgs } from 'gatsby';
+import path from 'path';
 
 const ProjectsLookup = {
   mqtizerApp: {
@@ -164,10 +164,10 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     prototypeLink:
       'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHxm3IZE6FgHQNZmI09ufQz%2FHMI%3Fnode-id%3D41%253A9%26scaling%3Dcontain%26page-id%3D0%253A1%26starting-point-node-id%3D41%253A9',
   },
-}
+};
 
 export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promise<void> => {
-  const { createPage } = actions
+  const { createPage } = actions;
 
   const projectsResult = await graphql<Queries.Query>(`
     query AllDetailsDirectories {
@@ -184,7 +184,7 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promis
         }
       }
     }
-  `)
+  `);
 
   const iconsResult = await graphql<Queries.Query>(`
     query AllIcons {
@@ -198,23 +198,23 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promis
         }
       }
     }
-  `)
+  `);
 
   if (projectsResult.errors) {
-    throw projectsResult.errors
+    throw projectsResult.errors;
   }
 
   if (iconsResult.errors) {
-    throw iconsResult.errors
+    throw iconsResult.errors;
   }
 
-  const groups = projectsResult.data?.allFile.group ?? []
-  const icons = iconsResult.data?.allFile.nodes ?? []
+  const groups = projectsResult.data?.allFile.group ?? [];
+  const icons = iconsResult.data?.allFile.nodes ?? [];
 
   groups.forEach(group => {
-    const name = group?.fieldValue?.split('/')[1] ?? ''
-    const projectDetails = ProjectsLookup[name as keyof typeof ProjectsLookup] ?? {}
-    const icon = icons.find(icon => icon.name === name)
+    const name = group?.fieldValue?.split('/')[1] ?? '';
+    const projectDetails = ProjectsLookup[name as keyof typeof ProjectsLookup] ?? {};
+    const icon = icons.find(icon => icon.name === name);
 
     createPage({
       path: `/projects/${name}`,
@@ -224,6 +224,6 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs): Promis
         icon,
         ...projectDetails,
       },
-    })
-  })
-}
+    });
+  });
+};

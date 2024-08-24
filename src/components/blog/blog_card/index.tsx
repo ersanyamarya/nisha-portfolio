@@ -1,16 +1,16 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import React from 'react'
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import React from 'react';
 
 export type BlogCardProps = {
-  title: string
-  slug: string
-  executiveSummary: string
-  image: any
-  date: string
-  reverse?: boolean
-}
+  title: string;
+  slug: string;
+  executiveSummary: string;
+  image: any;
+  date: string;
+  reverse?: boolean;
+};
 
 const BlogCardWrapper = styled(Link)`
   display: flex;
@@ -22,7 +22,9 @@ const BlogCardWrapper = styled(Link)`
   transition: all 0.2s ease-in-out;
   border-radius: 8px;
   background: #fefefe;
-  box-shadow: 12px 12px 21px #d4d2d0, -12px -12px 21px #ffffff;
+  box-shadow:
+    12px 12px 21px #d4d2d0,
+    -12px -12px 21px #ffffff;
 
   &: hover {
     transform: scale(1.01);
@@ -80,7 +82,7 @@ const BlogCardWrapper = styled(Link)`
       }
     }
   }
-`
+`;
 
 const AuthorCard = styled.div`
   display: flex;
@@ -99,7 +101,7 @@ const AuthorCard = styled.div`
     height: 2.8rem;
     border-radius: 50%;
   }
-`
+`;
 export function BlogCard({ title, slug, executiveSummary, image, date, reverse }: BlogCardProps) {
   return (
     <BlogCardWrapper
@@ -111,8 +113,7 @@ export function BlogCard({ title, slug, executiveSummary, image, date, reverse }
       data-sal={reverse ? 'slide-right' : 'slide-left'}
       data-sal-delay="250"
       data-sal-easing="ease"
-      data-sal-duration="250"
-    >
+      data-sal-duration="250">
       <div className="text">
         <h2>{title}</h2>
         <p>{executiveSummary}</p>
@@ -122,8 +123,12 @@ export function BlogCard({ title, slug, executiveSummary, image, date, reverse }
         </div>
       </div>
       <div className="image">
-        <GatsbyImage image={image} alt={title} aria-placeholder={title} />
+        <GatsbyImage
+          image={image}
+          alt={title}
+          aria-placeholder={title}
+        />
       </div>
     </BlogCardWrapper>
-  )
+  );
 }

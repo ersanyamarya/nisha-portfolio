@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import React from 'react';
 
 const VisionarAIPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
@@ -104,7 +104,7 @@ const VisionarAIPreviewCard = styled(Link)({
       left: '48%',
     },
   },
-})
+});
 
 export function VisionarAI({}) {
   return (
@@ -138,5 +138,5 @@ export function VisionarAI({}) {
         alt="REPLACE WITH ACTUAL COPY"
       />
     </VisionarAIPreviewCard>
-  )
+  );
 }

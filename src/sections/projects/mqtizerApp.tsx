@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import React from 'react';
 
 const MqtizerAppPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
@@ -107,7 +107,7 @@ const MqtizerAppPreviewCard = styled(Link)({
       left: '42%',
     },
   },
-})
+});
 
 export function MqtizerApp({}) {
   return (
@@ -141,5 +141,5 @@ export function MqtizerApp({}) {
         alt="REPLACE WITH ACTUAL COPY"
       />
     </MqtizerAppPreviewCard>
-  )
+  );
 }

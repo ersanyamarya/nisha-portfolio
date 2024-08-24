@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import React from 'react'
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import React from 'react';
 
 const RollingAheadProjectPreviewCard = styled(Link)({
   borderRadius: 'var(--dim-round-corner-large)',
@@ -107,7 +107,7 @@ const RollingAheadProjectPreviewCard = styled(Link)({
       left: '6%',
     },
   },
-})
+});
 
 export function RollingAhead({}) {
   return (
@@ -141,5 +141,5 @@ export function RollingAhead({}) {
         alt="REPLACE WITH ACTUAL COPY"
       />
     </RollingAheadProjectPreviewCard>
-  )
+  );
 }

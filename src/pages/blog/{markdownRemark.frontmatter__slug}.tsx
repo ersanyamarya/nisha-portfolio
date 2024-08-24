@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { HeadFC, Link, PageProps, graphql } from 'gatsby'
-import styled from '@emotion/styled'
-import Layout from '../../layouts/mainLayout'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import ShareButtons from '../../components/blog/share_button'
-import { SEO } from '../../components'
+import styled from '@emotion/styled';
+import { HeadFC, PageProps, graphql } from 'gatsby';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import * as React from 'react';
+import { SEO } from '../../components';
+import ShareButtons from '../../components/blog/share_button';
+import Layout from '../../layouts/mainLayout';
 const BlogContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,7 +130,7 @@ const BlogContainer = styled.div`
       text-align: justify;
     }
   }
-`
+`;
 const AuthorCard = styled.div`
   display: flex;
   flex-direction: row;
@@ -169,16 +169,20 @@ const AuthorCard = styled.div`
       flex-wrap: wrap;
     }
   }
-`
+`;
 export default function BlogPostTemplate({ data, location: { href: url } }: PageProps<Queries.Query>) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark as any
-  const { featuredImage, title, executiveSummary, date } = frontmatter
-  const featuredImg = getImage(featuredImage?.childImageSharp?.gatsbyImageData as any) as any
+  const { markdownRemark } = data; // data.markdownRemark holds your post data
+  const { frontmatter, html } = markdownRemark as any;
+  const { featuredImage, title, executiveSummary, date } = frontmatter;
+  const featuredImg = getImage(featuredImage?.childImageSharp?.gatsbyImageData as any) as any;
   return (
     <Layout>
       <BlogContainer>
-        <GatsbyImage image={featuredImg} alt={title} aria-placeholder={title} />
+        <GatsbyImage
+          image={featuredImg}
+          alt={title}
+          aria-placeholder={title}
+        />
         <div className="share-row">
           <AuthorCard>
             <img
@@ -202,29 +206,47 @@ export default function BlogPostTemplate({ data, location: { href: url } }: Page
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="18" cy="5" r="3" />
-              <circle cx="6" cy="12" r="3" />
-              <circle cx="18" cy="19" r="3" />
+              stroke-linejoin="round">
+              <circle
+                cx="18"
+                cy="5"
+                r="3"
+              />
+              <circle
+                cx="6"
+                cy="12"
+                r="3"
+              />
+              <circle
+                cx="18"
+                cy="19"
+                r="3"
+              />
               <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98" />
             </svg>
-            <ShareButtons url={url} title={title} description={executiveSummary} />
+            <ShareButtons
+              url={url}
+              title={title}
+              description={executiveSummary}
+            />
           </div>
         </div>
-        <div className="html-content" dangerouslySetInnerHTML={{ __html: html }} />
+        <div
+          className="html-content"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
       </BlogContainer>
     </Layout>
-  )
+  );
 }
 
 interface SeoData {
   featuredImage: {
-    publicURL: string
-  }
-  title: string
-  executiveSummary: string
-  keywords: string
+    publicURL: string;
+  };
+  title: string;
+  executiveSummary: string;
+  keywords: string;
 }
 
 export const Head: HeadFC = ({ data, location }) => {
@@ -232,7 +254,7 @@ export const Head: HeadFC = ({ data, location }) => {
     markdownRemark: {
       frontmatter: { featuredImage, title, executiveSummary, keywords },
     },
-  } = data as any
+  } = data as any;
 
   return (
     <SEO
@@ -242,8 +264,8 @@ export const Head: HeadFC = ({ data, location }) => {
       pathname={location.pathname}
       image={featuredImage.publicURL}
     />
-  )
-}
+  );
+};
 
 export const pageQuery = graphql`
   query ($id: String!) {
@@ -264,11 +286,11 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
 
 const minutesToRead = (text: string) => {
-  const wordsPerMinute = 250
+  const wordsPerMinute = 250;
 
-  const numberOfWords = text.replace(/<[^>]*>/g, '').split(/\s/g).length
-  return `${Math.ceil(numberOfWords / wordsPerMinute)} min read`
-}
+  const numberOfWords = text.replace(/<[^>]*>/g, '').split(/\s/g).length;
+  return `${Math.ceil(numberOfWords / wordsPerMinute)} min read`;
+};

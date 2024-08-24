@@ -1,12 +1,12 @@
-import styled from '@emotion/styled'
-import React from 'react'
-import useScrollPosition from '../../hooks/useScrollPosition'
+import styled from '@emotion/styled';
+import React from 'react';
+import useScrollPosition from '../../hooks/useScrollPosition';
 
-import { WatchAndBite } from './watchAndBite'
-import { RollingAhead } from './rollingAhead'
-import { MqtizerApp } from './mqtizerApp'
-import { MqtizerWeb } from './mqtizerWeb'
-import { VisionarAI } from './visionarai'
+import { MqtizerApp } from './mqtizerApp';
+import { MqtizerWeb } from './mqtizerWeb';
+import { RollingAhead } from './rollingAhead';
+import { VisionarAI } from './visionarai';
+import { WatchAndBite } from './watchAndBite';
 
 const ProjectsContainer = styled.section({
   display: 'flex',
@@ -15,7 +15,7 @@ const ProjectsContainer = styled.section({
   width: '100vw',
   minHeight: 'calc(100vh - var(--dim-nav-height))',
   gap: '10vw',
-})
+});
 
 const CardContainer = styled.div({
   display: 'flex',
@@ -65,10 +65,10 @@ const CardContainer = styled.div({
   //   rowGap: '1vh',
   //   gap: '1vh',
   // },
-})
+});
 
 export default function ProjectsSection() {
-  const scrollPosition = useScrollPosition()
+  const scrollPosition = useScrollPosition();
   return (
     <ProjectsContainer id="projects">
       <h2 className="text-style-heading-h-1-semi-bold">Projects</h2>
@@ -80,5 +80,5 @@ export default function ProjectsSection() {
         <WatchAndBite />
       </CardContainer>
     </ProjectsContainer>
-  )
+  );
 }

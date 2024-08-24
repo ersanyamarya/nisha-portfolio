@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import React from 'react'
+import styled from '@emotion/styled';
+import React from 'react';
 
 const Backdrop = styled.div({
   position: 'fixed',
@@ -12,7 +12,7 @@ const Backdrop = styled.div({
   zIndex: 100,
   //   transition: 'var(--transition-ease)',
   //   backdropFilter: 'blur(5px)',
-})
+});
 const CloseButton = styled.button({
   padding: '1.5rem',
   border: 'none',
@@ -23,7 +23,7 @@ const CloseButton = styled.button({
   borderRadius: 'var(--dim-round-corner)',
   backgroundColor: 'var(--color-primary-500)',
   color: 'var(--color-secondary-0)',
-})
+});
 
 const ModalWrapper = styled.div({
   borderRadius: 'var(--dim-round-corner)',
@@ -39,16 +39,16 @@ const ModalWrapper = styled.div({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-})
+});
 
 export type ModalProps = {
-  children: React.ReactNode
-  onClose: () => void
-  open: boolean
-}
+  children: React.ReactNode;
+  onClose: () => void;
+  open: boolean;
+};
 
 export default function Modal({ children, onClose, open }: ModalProps) {
-  if (!open) return null
+  if (!open) return null;
   return (
     <Backdrop>
       <ModalWrapper>
@@ -62,8 +62,7 @@ export default function Modal({ children, onClose, open }: ModalProps) {
             height="16px"
             viewBox="0 0 122.878 122.88"
             xmlSpace="preserve"
-            fill="currentColor"
-          >
+            fill="currentColor">
             <g>
               <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
             </g>
@@ -72,5 +71,5 @@ export default function Modal({ children, onClose, open }: ModalProps) {
         {children}
       </ModalWrapper>
     </Backdrop>
-  )
+  );
 }

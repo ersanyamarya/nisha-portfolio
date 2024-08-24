@@ -1,30 +1,33 @@
-import styled from '@emotion/styled'
-import { HeadFC, PageProps } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
-import * as React from 'react'
-import { SEO, SvgBlob } from '../components'
-import Layout from '../layouts/mainLayout'
-import Contact from '../sections/contact'
-import ProjectsSection from '../sections/projects'
+import { HeadFC, PageProps } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import * as React from 'react';
+import { SEO } from '../components';
+import Layout from '../layouts/mainLayout';
+import Contact from '../sections/contact';
+import ProjectsSection from '../sections/projects';
 
 const IndexPage: React.FC<PageProps> = () => {
-  const [showContact, setShowContact] = React.useState(false)
+  const [showContact, setShowContact] = React.useState(false);
   return (
     <>
-      <Contact open={showContact} onClose={() => setShowContact(false)} />
+      <Contact
+        open={showContact}
+        onClose={() => setShowContact(false)}
+      />
       <Layout>
         <main>
-          <div className="grid grid-cols-3 gap-2 w-full" id="hero">
+          <div
+            className="grid w-full grid-cols-3 gap-2"
+            id="hero">
             <div className="col-span-1">
               <StaticImage
                 placeholder="blurred"
                 layout="fullWidth"
                 src="../images/hero-img.png"
-                alt="REPLACE WITH ACTUAL COPY"
-              ></StaticImage>
+                alt="REPLACE WITH ACTUAL COPY"></StaticImage>
             </div>
-            <div className="col-span-2 px-16 flex flex-col justify-center gap-2">
-              <h1 className="text-4xl mb-2">
+            <div className="col-span-2 flex flex-col justify-center gap-2 px-16">
+              <h1 className="mb-2 text-4xl">
                 Hi, I am <span className="text-primary">Nisha Kumari</span>
               </h1>
 
@@ -42,9 +45,9 @@ const IndexPage: React.FC<PageProps> = () => {
         </main>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <SEO />
+export const Head: HeadFC = () => <SEO />;

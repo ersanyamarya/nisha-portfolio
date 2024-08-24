@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import React from 'react'
+import styled from '@emotion/styled';
+import React from 'react';
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -9,12 +9,12 @@ import {
   TwitterShareButton,
   WhatsappIcon,
   WhatsappShareButton,
-} from 'react-share'
+} from 'react-share';
 
 interface ShareButtonsProps extends React.HTMLAttributes<HTMLDivElement> {
-  url: string
-  title: string
-  description: string
+  url: string;
+  title: string;
+  description: string;
 }
 
 const ModalWrapper = styled.div`
@@ -51,26 +51,51 @@ const ModalWrapper = styled.div`
       filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.25));
     }
   }
-`
+`;
 
 export default function ShareButtons({ url, title, description }: ShareButtonsProps) {
   return (
     <ModalWrapper className="modal-wrapper">
-      <LinkedinShareButton url={url} title={title} summary={description}>
-        <LinkedinIcon size={32} round={true} /> <span>LinkedIn</span>
+      <LinkedinShareButton
+        url={url}
+        title={title}
+        summary={description}>
+        <LinkedinIcon
+          size={32}
+          round={true}
+        />{' '}
+        <span>LinkedIn</span>
       </LinkedinShareButton>
 
-      <TwitterShareButton url={url} title={description}>
-        <TwitterIcon size={32} round={true} /> <span>Twitter</span>
+      <TwitterShareButton
+        url={url}
+        title={description}>
+        <TwitterIcon
+          size={32}
+          round={true}
+        />{' '}
+        <span>Twitter</span>
       </TwitterShareButton>
 
-      <WhatsappShareButton url={url} title={description}>
-        <WhatsappIcon size={32} round={true} /> <span>Whatsapp</span>
+      <WhatsappShareButton
+        url={url}
+        title={description}>
+        <WhatsappIcon
+          size={32}
+          round={true}
+        />{' '}
+        <span>Whatsapp</span>
       </WhatsappShareButton>
 
-      <FacebookShareButton url={url} title={description}>
-        <FacebookIcon size={32} round={true} /> <span>Facebook</span>
+      <FacebookShareButton
+        url={url}
+        title={description}>
+        <FacebookIcon
+          size={32}
+          round={true}
+        />{' '}
+        <span>Facebook</span>
       </FacebookShareButton>
     </ModalWrapper>
-  )
+  );
 }

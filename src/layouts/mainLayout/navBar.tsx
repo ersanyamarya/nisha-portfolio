@@ -1,9 +1,9 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-import React, { useState } from 'react'
-import { Logo } from '../../components'
-import useScrollPosition from '../../hooks/useScrollPosition'
-import Contact from '../../sections/contact'
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import React, { useState } from 'react';
+import { Logo } from '../../components';
+import useScrollPosition from '../../hooks/useScrollPosition';
+import Contact from '../../sections/contact';
 
 const NAVIGATION_LINKS = [
   {
@@ -18,7 +18,7 @@ const NAVIGATION_LINKS = [
     name: 'Blog',
     path: '/blog',
   },
-]
+];
 
 const ContactMeButton = styled.button({
   padding: '1rem 3rem',
@@ -34,7 +34,7 @@ const ContactMeButton = styled.button({
   '&:hover': {
     boxShadow: 'var(--elevation-focus)',
   },
-})
+});
 
 const StyledLink = styled(Link)({
   padding: '0 1rem',
@@ -47,7 +47,7 @@ const StyledLink = styled(Link)({
   '@media only screen and (max-width: 920px)': {
     padding: '1rem',
   },
-})
+});
 const NavigationBar = styled.nav({
   display: 'flex',
   flexDirection: 'row',
@@ -71,7 +71,7 @@ const NavigationBar = styled.nav({
     boxShadow: 'var(--elevation-light)',
     backdropFilter: 'blur(5px)',
   },
-})
+});
 const NavLinks = styled.nav({
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -80,7 +80,7 @@ const NavLinks = styled.nav({
   '@media only screen and (max-width: 920px)': {
     display: 'none',
   },
-})
+});
 const HamBurger = styled.button({
   width: '40px',
   border: 'none',
@@ -91,13 +91,13 @@ const HamBurger = styled.button({
   '@media only screen and (max-width: 920px)': {
     display: 'block',
   },
-})
+});
 const FullLogo = styled.div({
   display: 'block',
   // '@media only screen and (max-width: 920px)': {
   //   display: 'none',
   // },
-})
+});
 
 const Overlay = styled.div({
   position: 'fixed',
@@ -125,24 +125,26 @@ const Overlay = styled.div({
     width: '80%',
     margin: '0 auto',
   },
-})
+});
 
 export default function NavBar() {
-  const [showContact, setShowContact] = React.useState(false)
-  const scrollPosition = useScrollPosition()
-  const [isOverlayVisible, setOverlayVisible] = useState(false)
+  const [showContact, setShowContact] = React.useState(false);
+  const scrollPosition = useScrollPosition();
+  const [isOverlayVisible, setOverlayVisible] = useState(false);
   return (
     <>
-      <Contact open={showContact} onClose={() => setShowContact(false)} />
+      <Contact
+        open={showContact}
+        onClose={() => setShowContact(false)}
+      />
       <NavigationBar className={scrollPosition > 215 ? 'shadow' : ''}>
         <FullLogo>
           <Logo />
         </FullLogo>
         <HamBurger
           onClick={() => {
-            setOverlayVisible(true)
-          }}
-        >
+            setOverlayVisible(true);
+          }}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             shapeRendering="geometricPrecision"
@@ -150,8 +152,7 @@ export default function NavBar() {
             imageRendering="optimizeQuality"
             fillRule="evenodd"
             clipRule="evenodd"
-            viewBox="0 0 512 351.67"
-          >
+            viewBox="0 0 512 351.67">
             <path
               fillRule="nonzero"
               d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z"
@@ -166,17 +167,15 @@ export default function NavBar() {
               className="text-style-heading-h-5-semi-bold"
               activeClassName="active"
               to={link.path}
-              key={link.name}
-            >
+              key={link.name}>
               {link.name}
             </StyledLink>
           ))}
           <ContactMeButton
             className="text-style-heading-h-5-semi-bold"
             onClick={() => {
-              setShowContact(true)
-            }}
-          >
+              setShowContact(true);
+            }}>
             Contact Me
           </ContactMeButton>
         </NavLinks>
@@ -190,22 +189,19 @@ export default function NavBar() {
               width: '100%',
               backgroundColor: 'transparent',
               padding: '1rem',
-            }}
-          >
+            }}>
             <Logo />
 
             <HamBurger
               onClick={() => {
-                setOverlayVisible(false)
-              }}
-            >
+                setOverlayVisible(false);
+              }}>
               <svg
                 version="1.1"
                 id="Layer_1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 122.878 122.88"
-                enableBackground="new 0 0 122.878 122.88"
-              >
+                enableBackground="new 0 0 122.878 122.88">
                 <g>
                   <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
                 </g>
@@ -219,22 +215,20 @@ export default function NavBar() {
               to={link.path}
               key={link.name}
               onClick={() => {
-                setOverlayVisible(false)
-              }}
-            >
+                setOverlayVisible(false);
+              }}>
               {link.name}
             </StyledLink>
           ))}
           <ContactMeButton
             className="text-style-heading-h-5-semi-bold"
             onClick={() => {
-              setShowContact(true)
-            }}
-          >
+              setShowContact(true);
+            }}>
             Contact Me
           </ContactMeButton>
         </Overlay>
       </NavigationBar>
     </>
-  )
+  );
 }

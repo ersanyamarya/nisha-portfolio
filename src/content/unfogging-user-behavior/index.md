@@ -1,8 +1,8 @@
 ---
 kind: blog
-title: "Unfogging User Behavior: A Practical Guide to BJ Fogg’s Behavior Model 🌈"
+title: 'Unfogging User Behavior: A Practical Guide to BJ Fogg’s Behavior Model 🌈'
 slug: unfogging-user-behavior
-executiveSummary: "A comprehensive guide to BJ Fogg’s Behavior Model, explained with everyday examples for a clear understanding."
+executiveSummary: 'A comprehensive guide to BJ Fogg’s Behavior Model, explained with everyday examples for a clear understanding.'
 keywords: BJ Fogg, Behavior Model, UX Design, Behavior Change, User Experience, Motivation, Ability, Triggers
 date: February 19, 2023
 featuredImage: featured.png
@@ -26,8 +26,6 @@ Ability is like climbing a hill. The steeper the hill, the harder it is to climb
 
 Triggers are like alarm clocks. They tell us when it's time to wake up and start our day. In UX design, triggers are the notifications, cues, or prompts that tell users when it's time to take action. But remember, the alarm is only effective if you're motivated to get up and able to do so. ⏰
 
-
 ## Conclusion: The Art of Influencing Behavior 🎨
 
 BJ Fogg’s Behavior Model is more than just a theory. It's a practical tool that can help you design products that resonate with your users. By understanding their motivations, making actions easy, and providing timely triggers, you can influence user behavior in a positive way. So why wait? Start applying these insights today! 🌟
-

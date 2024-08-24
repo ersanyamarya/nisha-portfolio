@@ -1,8 +1,8 @@
-import { Client } from '@notionhq/client'
+import { Client } from '@notionhq/client';
 
 export const notionClient = new Client({
   auth: process.env.NOTION_API_KEY,
-})
+});
 
 export async function postNewPage(properties: Record<string, any>) {
   return await notionClient.pages
@@ -13,11 +13,11 @@ export async function postNewPage(properties: Record<string, any>) {
       },
       properties,
     })
-    .then(res => res.id)
+    .then(res => res.id);
 }
 
 export async function addNewMessageToDatabase({ name, email, message }) {
-  console.info('Adding new message to database: ', name, email, message)
+  console.info('Adding new message to database: ', name, email, message);
   const properties = {
     Name: {
       title: [
@@ -40,7 +40,7 @@ export async function addNewMessageToDatabase({ name, email, message }) {
         },
       ],
     },
-  }
+  };
 
-  return await postNewPage(properties)
+  return await postNewPage(properties);
 }

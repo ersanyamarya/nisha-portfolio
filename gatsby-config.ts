@@ -1,7 +1,7 @@
-import dotenv from 'dotenv'
-import type { GatsbyConfig } from 'gatsby'
+import dotenv from 'dotenv';
+import type { GatsbyConfig } from 'gatsby';
 
-dotenv.config()
+dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -113,6 +113,6 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-postcss',
   ],
-}
+};
 
-export default config
+export default config;
