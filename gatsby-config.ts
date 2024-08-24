@@ -111,6 +111,7 @@ const config: GatsbyConfig = {
         enable_on_dev_env: true,
       },
     },
+    'gatsby-plugin-postcss',
   ],
 }
 
