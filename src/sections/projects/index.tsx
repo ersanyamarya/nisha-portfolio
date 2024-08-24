@@ -8,15 +8,6 @@ import { RollingAhead } from './rollingAhead';
 import { VisionarAI } from './visionarai';
 import { WatchAndBite } from './watchAndBite';
 
-const ProjectsContainer = styled.section({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '100vw',
-  minHeight: 'calc(100vh - var(--dim-nav-height))',
-  gap: '10vw',
-});
-
 const CardContainer = styled.div({
   display: 'flex',
   flexDirection: 'row',
@@ -28,24 +19,6 @@ const CardContainer = styled.div({
   opacity: 0,
   transform: 'translateY(100%)',
   transition: 'var(--transition-ease)',
-  // '& > *': {
-  //   opacity: 0.3,
-
-  //   transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)',
-  // },
-
-  // '& > :nth-child(odd)': {
-  //   marginLeft: '-100rem',
-  // },
-
-  // '& > :nth-child(even)': {
-  //   marginRight: '-100rem',
-  // },
-
-  // '&.show > *': {
-  //   margin: '0rem',
-  //   opacity: 1,
-  // },
 
   '@media (max-width: 600px)': {
     transform: 'translateY(0rem)',
@@ -70,15 +43,17 @@ const CardContainer = styled.div({
 export default function ProjectsSection() {
   const scrollPosition = useScrollPosition();
   return (
-    <ProjectsContainer id="projects">
-      <h2 className="text-style-heading-h-1-semi-bold">Projects</h2>
-      <CardContainer className={scrollPosition > 300 ? 'show' : ''}>
+    <section
+      id="projects"
+      className="gap-10vh flex w-full flex-col items-center">
+      <h2 className="text-5xl">Projects</h2>
+      <CardContainer className={scrollPosition > 50 ? 'show' : ''}>
         <MqtizerApp />
         <VisionarAI />
         <MqtizerWeb />
         <RollingAhead />
         <WatchAndBite />
       </CardContainer>
-    </ProjectsContainer>
+    </section>
   );
 }

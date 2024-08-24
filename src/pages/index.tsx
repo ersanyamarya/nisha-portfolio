@@ -17,7 +17,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Layout>
         <main>
           <div
-            className="grid w-full grid-cols-3 gap-2"
+            className="my-16 grid w-full grid-cols-3 gap-2"
             id="hero">
             <div className="col-span-1">
               <StaticImage

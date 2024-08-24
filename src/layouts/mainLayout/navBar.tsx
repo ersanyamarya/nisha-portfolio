@@ -20,110 +20,34 @@ const NAVIGATION_LINKS = [
   },
 ];
 
-const ContactMeButton = styled.button({
-  padding: '1rem 3rem',
-  marginLeft: '1rem',
-  width: 'fit-content',
-  cursor: 'pointer',
-  border: 'none',
-  borderRadius: 'var(--dim-round-corner-large)',
-  backgroundColor: 'var(--color-primary-700)',
-  color: 'var(--color-primary-0)',
-  boxShadow: 'var(--elevation-surface)',
-  transition: 'var(--transition-ease)',
-  '&:hover': {
-    boxShadow: 'var(--elevation-focus)',
-  },
-});
-
-const StyledLink = styled(Link)({
-  padding: '0 1rem',
-  transition: 'var(--transition-ease)',
-  color: 'var(--color-primary-500)',
-
-  '&:hover': {
-    textShadow: 'var(--elevation-surface)',
-  },
-  '@media only screen and (max-width: 920px)': {
-    padding: '1rem',
-  },
-});
 const NavigationBar = styled.nav({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  width: '100%',
-  padding: '0 8rem',
-  height: 'var(--dim-nav-height)',
-  maxHeight: 'var(--dim-nav-height)',
-  position: 'sticky',
-  top: '0',
-  zIndex: 10,
-  backgroundColor: 'transparent',
-  // backdropFilter: 'blur(5px)',
-  '@media only screen and (max-width: 920px)': {
-    padding: '1rem',
-    position: 'absolute',
-  },
   '&.shadow': {
     transition: 'var(--transition-ease)',
     boxShadow: 'var(--elevation-light)',
     backdropFilter: 'blur(5px)',
   },
 });
-const NavLinks = styled.nav({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  display: 'flex',
-  '@media only screen and (max-width: 920px)': {
-    display: 'none',
-  },
-});
-const HamBurger = styled.button({
-  width: '40px',
-  border: 'none',
-  background: 'none',
-  cursor: 'pointer',
-  display: 'none',
-  padding: '5px',
-  '@media only screen and (max-width: 920px)': {
-    display: 'block',
-  },
-});
-const FullLogo = styled.div({
-  display: 'block',
-  // '@media only screen and (max-width: 920px)': {
-  //   display: 'none',
-  // },
-});
 
 const Overlay = styled.div({
   position: 'fixed',
   top: '0',
   left: '-100%',
-  padding: '1rem 0rem 1.5rem 0rem ',
-  background: 'var(--color-secondary-0)',
-  zIndex: 100,
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  opacity: 0,
-  width: '100%',
-  transition: 'all 0.2s ease-in-out',
-  '@media only screen and (min-width: 920px)': {
-    display: 'none',
-  },
-  boxShadow: 'var(--elevation-light)',
+  // padding: '1rem 0rem 1.5rem 0rem ',
+  // background: 'var(--color-secondary-0)',
+  // zIndex: 100,
+  // display: 'flex',
+  // flexDirection: 'column',
+  // justifyContent: 'center',
+  // opacity: 0,
+  // width: '100%',
+  // transition: 'all 0.2s ease-in-out',
+  // boxShadow: 'var(--elevation-light)',
+  // '@media only screen and (min-width: 920px)': {
+  //   display: 'none',
+  // },
   '&.visible': {
     opacity: 1,
     left: '0',
-  },
-  // CSS for button
-  '& > button': {
-    width: '80%',
-    margin: '0 auto',
   },
 });
 
@@ -137,14 +61,17 @@ export default function NavBar() {
         open={showContact}
         onClose={() => setShowContact(false)}
       />
-      <NavigationBar className={scrollPosition > 215 ? 'shadow' : ''}>
-        <FullLogo>
+      <NavigationBar
+        className={`${scrollPosition > 0 ? 'shadow' : ''} bg-transparent sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between px-8 transition-[all]`}>
+        <div>
           <Logo />
-        </FullLogo>
-        <HamBurger
+        </div>
+
+        <button
           onClick={() => {
             setOverlayVisible(true);
-          }}>
+          }}
+          className="block w-10 cursor-pointer border-none bg-none p-1 sm:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             shapeRendering="geometricPrecision"
@@ -158,44 +85,35 @@ export default function NavBar() {
               d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z"
             />
           </svg>
-        </HamBurger>
+        </button>
 
         {/* <pre>{scrollPosition}</pre> */}
-        <NavLinks>
+        <nav className="hidden flex-row items-center justify-between sm:flex">
           {NAVIGATION_LINKS.map(link => (
-            <StyledLink
-              className="text-style-heading-h-5-semi-bold"
+            <Link
+              className="hover:text-shadow px-4 text-primary-500 transition-[all] sm:px-4 sm:py-4"
               activeClassName="active"
               to={link.path}
               key={link.name}>
               {link.name}
-            </StyledLink>
+            </Link>
           ))}
-          <ContactMeButton
-            className="text-style-heading-h-5-semi-bold"
+          <button
+            className="rounded-lg bg-primary px-4 py-2 text-primary-50"
             onClick={() => {
               setShowContact(true);
             }}>
             Contact Me
-          </ContactMeButton>
-        </NavLinks>
-        <Overlay className={isOverlayVisible ? 'visible' : ''}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              gap: '4rem',
-              width: '100%',
-              backgroundColor: 'transparent',
-              padding: '1rem',
-            }}>
+          </button>
+        </nav>
+        <Overlay className={`${isOverlayVisible ? 'visible' : ''} flex w-full flex-col gap-4 bg-primary-50 pb-8`}>
+          <div className="bg-transparent flex w-full flex-row items-center justify-between p-4">
             <Logo />
-
-            <HamBurger
+            <button
               onClick={() => {
                 setOverlayVisible(false);
-              }}>
+              }}
+              className="w-10 cursor-pointer border-none bg-none p-1">
               <svg
                 version="1.1"
                 id="Layer_1"
@@ -206,11 +124,11 @@ export default function NavBar() {
                   <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
                 </g>
               </svg>
-            </HamBurger>
+            </button>
           </div>
           {NAVIGATION_LINKS.map(link => (
-            <StyledLink
-              className="text-style-heading-h-5-semi-bold"
+            <Link
+              className="hover:text-shadow px-4 text-xl text-primary transition-[all] sm:px-4 sm:py-4"
               activeClassName="active"
               to={link.path}
               key={link.name}
@@ -218,15 +136,15 @@ export default function NavBar() {
                 setOverlayVisible(false);
               }}>
               {link.name}
-            </StyledLink>
+            </Link>
           ))}
-          <ContactMeButton
-            className="text-style-heading-h-5-semi-bold"
+          <button
+            className="mx-auto w-2/3 rounded-lg bg-primary px-4 py-2 text-primary-50"
             onClick={() => {
               setShowContact(true);
             }}>
             Contact Me
-          </ContactMeButton>
+          </button>
         </Overlay>
       </NavigationBar>
     </>
