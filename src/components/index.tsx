@@ -4,3 +4,4 @@ export * from './logo';
 export * from './seo';
 export * from './socialIcons';
 export * from './svgBlob';
+export * from './wordRotate';

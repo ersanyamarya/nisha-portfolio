@@ -11,6 +11,7 @@ module.exports = {
       sans: ['Montserrat', 'sans-serif'],
     },
     colors: {
+      transparent: 'transparent',
       primary: {
         50: '#eff8ff',
         100: '#def1ff',

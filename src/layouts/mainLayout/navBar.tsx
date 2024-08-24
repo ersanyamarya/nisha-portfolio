@@ -49,7 +49,7 @@ export default function NavBar() {
         onClose={() => setShowContact(false)}
       />
       <NavigationBar
-        className={`${scrollPosition > 0 ? 'shadow' : ''} bg-transparent sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between px-8 transition-[all]`}>
+        className={`${scrollPosition > 0 ? 'shadow' : ''} bg-transparent sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between px-24 py-10 transition-[all]`}>
         <div>
           <Logo />
         </div>
@@ -78,7 +78,7 @@ export default function NavBar() {
         <nav className="hidden flex-row items-center justify-between sm:flex">
           {NAVIGATION_LINKS.map(link => (
             <Link
-              className="hover:text-shadow px-4 text-primary-500 transition-[all] sm:px-4 sm:py-4"
+              className="hover:text-shadow px-4 text-primary transition-[all] sm:px-4 sm:py-4"
               activeClassName="active"
               to={link.path}
               key={link.name}>
