@@ -18,10 +18,10 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <NavBar />
-      <SocialLinksContainer
+      {/* <SocialLinksContainer
         className="fixed left-1 top-1/2 z-10 hidden -translate-y-1/2 transform flex-col gap-4 rounded-lg bg-primary-50 p-4 shadow-lg md:flex"
         showEmail={false}
-      />
+      /> */}
       <div className="container mx-auto px-4">{children}</div>
       <Footer />
     </>

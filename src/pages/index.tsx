@@ -17,7 +17,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Layout>
         <main>
           <div
-            className="my-24 grid w-full grid-cols-1 gap-2 md:grid-cols-3"
+            className="my-32 grid w-full grid-cols-1 gap-2 md:grid-cols-3"
             id="hero">
             <div className="col-span-1">
               <StaticImage
@@ -26,7 +26,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 src="../images/hero-img.png"
                 alt="REPLACE WITH ACTUAL COPY"></StaticImage>
             </div>
-            <div className="col-span-1 flex w-full flex-col justify-center gap-2 pb-8 md:col-span-2 md:pl-16">
+            <div className="col-span-1 flex w-full flex-col justify-center gap-2 pb-16 md:col-span-2 md:pl-16">
               <h1 className="mb-2 text-4xl">
                 Hi, I am <span className="font-semibold text-primary">Nisha Kumari</span>
               </h1>
@@ -73,12 +73,12 @@ const IndexPage: React.FC<PageProps> = () => {
                 Berlin, Germany
               </p>
 
-              <p className="mt-4 text-4xl">
+              <p className="mt-8 text-4xl">
                 I specialize in creating digital experiences
                 <br />
                 that are{' '}
                 <WordRotate
-                  className="text-transparent bg-gradient-to-r from-secondary-500 to-secondary-900 bg-clip-text font-semibold"
+                  className="bg-gradient-to-r from-secondary-500 to-secondary-900 bg-clip-text font-semibold text-transparent"
                   words={['user-centric', 'data-driven', 'intuitive', 'engaging']}
                 />
               </p>
