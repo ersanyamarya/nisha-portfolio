@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import MqtizerGraphic from '../../images/projects/mqtizer/iphone.png';
@@ -8,6 +8,7 @@ import MqtizerGraphic from '../../images/projects/mqtizer/iphone.png';
 const projects = [
   {
     name: 'MQTIZER',
+    link: '/projects/mqtizerApp',
     description: 'Overcoming Configuration Challenges in MQTT for Industry 4.0',
     brand: {
       primary: '#353D69',
@@ -41,17 +42,19 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="gap-10vh flex w-full flex-col gap-16">
-      <h2 className="text-4xl text-primary-950">Projects</h2>
+      className="gap-10vh flex w-full flex-col gap-16 font-light">
+      <h2 className="text-4xl font-medium">Projects</h2>
       {projects.map((project, index) => {
         const placeholderImage = allFile.nodes.find(node => node.relativePath === project.backDrop);
         const image = getImage(placeholderImage);
 
         return (
-          <div
-            className="relative grid grid-cols-1 rounded-lg transition hover:shadow-xl md:grid-cols-2"
+          <Link
+            to={project.link}
+            className="relative grid grid-cols-1 rounded-lg transition hover:shadow-xl md:grid-cols-3"
             style={{
               color: project.brand.primary,
+              // height: '32rem',
             }}>
             <GatsbyImage
               image={image}
@@ -65,7 +68,7 @@ export default function ProjectsSection() {
               />
             </div>
 
-            <div className="relative col-span-1 flex flex-col justify-center gap-6 p-8 md:col-span-1">
+            <div className="relative col-span-1 flex flex-col justify-center gap-6 p-8 md:col-span-2">
               <h3 className="text-4xl">{project.name}</h3>
               <p className="text-2xl">{project.description}</p>
               <ul className="flex flex-wrap gap-2">
@@ -89,7 +92,7 @@ export default function ProjectsSection() {
                 ))}
               </ul>
             </div>
-          </div>
+          </Link>
         );
       })}
     </section>

@@ -49,7 +49,7 @@ export default function NavBar() {
         onClose={() => setShowContact(false)}
       />
       <NavigationBar
-        className={`${scrollPosition > 0 ? 'shadow' : ''} bg-transparent sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between px-24 py-10 transition-[all]`}>
+        className={`${scrollPosition > 0 ? 'shadow' : ''} sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between bg-transparent px-24 py-10 transition-[all]`}>
         <div>
           <Logo />
         </div>
@@ -75,26 +75,33 @@ export default function NavBar() {
         </button>
 
         {/* <pre>{scrollPosition}</pre> */}
-        <nav className="hidden flex-row items-center justify-between sm:flex">
+        <nav className="hidden flex-row items-center justify-between gap-6 sm:flex">
           {NAVIGATION_LINKS.map(link => (
             <Link
-              className="hover:text-shadow px-4 text-primary transition-[all] sm:px-4 sm:py-4"
+              className="rounded-md px-2 py-1 text-lg text-primary hover:scale-105 hover:bg-primary-50 hover:font-medium hover:text-primary-900"
               activeClassName="active"
               to={link.path}
               key={link.name}>
               {link.name}
             </Link>
           ))}
+          <a
+            title="Resume"
+            href="/Nisha_Kumari_Berlin_Resume.pdf"
+            className="rounded-lg bg-primary-100 px-4 py-2 text-primary hover:shadow-lg"
+            target="_blank">
+            Resume
+          </a>
           <button
-            className="rounded-lg bg-primary px-4 py-2 text-primary-50"
+            className="rounded-lg bg-primary px-4 py-2 text-primary-50 hover:shadow-lg"
             onClick={() => {
               setShowContact(true);
             }}>
-            Contact Me
+            Let’s Talk
           </button>
         </nav>
         <Overlay className={`${isOverlayVisible ? 'visible' : ''} flex w-full flex-col gap-4 bg-primary-50 pb-8`}>
-          <div className="bg-transparent flex w-full flex-row items-center justify-between p-4">
+          <div className="flex w-full flex-row items-center justify-between bg-transparent p-4">
             <Logo />
             <button
               onClick={() => {

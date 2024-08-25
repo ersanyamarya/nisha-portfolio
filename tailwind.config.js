@@ -4,11 +4,12 @@ module.exports = {
     './src/pages/**/*.{js,jsx,ts,tsx}',
     './src/components/**/*.{js,jsx,ts,tsx}',
     './src/layouts/**/*.{js,jsx,ts,tsx}',
+    './src/templates/**/*.{js,jsx,ts,tsx}',
     './src/sections/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     fontFamily: {
-      sans: ['Montserrat', 'sans-serif'],
+      sans: ['Lato', 'sans-serif'],
     },
     colors: {
       transparent: 'transparent',
@@ -52,6 +53,7 @@ module.exports = {
         800: '#4b4144',
         900: '#41393b',
         950: '#231f20',
+        DEFAULT: '#231520',
       },
     },
   },

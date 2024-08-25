@@ -40,25 +40,25 @@ export default function Footer() {
               The thrill of stepping into the unknown, diving headfirst into challenges that make me think, grow, and ultimately become a better designer.
             </p>
           </div>
-          <div className="flex flex-row gap-8">
+          <div className="flex flex-row items-start justify-end gap-16">
             <a
               title="Resume"
               href="/Nisha_Kumari_Berlin_Resume.pdf"
-              className="text-lg text-primary hover:text-primary-900"
+              className="rounded-md px-2 py-1 text-lg text-primary hover:scale-105 hover:bg-primary-50 hover:font-medium hover:text-primary-900"
               target="_blank">
               Resume
             </a>
             <a
               title="Resume"
               href="https://www.linkedin.com/in/nisha-kumari-de/"
-              className="text-lg text-primary hover:text-primary-900"
+              className="rounded-md px-2 py-1 text-lg text-primary hover:scale-105 hover:bg-primary-50 hover:font-medium hover:text-primary-900"
               target="_blank">
               Linkedin
             </a>
             <a
               title="Resume"
               href="https://www.behance.net/nisha-kumari-de"
-              className="text-lg text-primary hover:text-primary-900"
+              className="rounded-md px-2 py-1 text-lg text-primary hover:scale-105 hover:bg-primary-50 hover:font-medium hover:text-primary-900"
               target="_blank">
               Behance
             </a>

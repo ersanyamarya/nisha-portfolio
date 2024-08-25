@@ -24,7 +24,7 @@ const reducer = (state: Record<string, any>, action: Action) => {
   }
 };
 
-export default function useForm<IState extends Record<string, any>>(initial: IState) {
+export default function useForm<IState extends Record<string, any>>(initial: IState, textClassNames: string) {
   const [state, dispatch] = useReducer(reducer, initial || {});
   const [errors, setErrors] = useState<ErrorState>({});
   const validators = React.useRef<Validator>({});
@@ -75,7 +75,7 @@ export default function useForm<IState extends Record<string, any>>(initial: ISt
       'aria-label': key,
       'aria-invalid': errors[key] ? true : false,
       'aria-describedby': errors[key] ? `${key}-error` : undefined,
-      className: errors[key] ? 'error' : '',
+      className: textClassNames + (errors[key] ? ' border-red-500' : ''),
     };
   };
   return {

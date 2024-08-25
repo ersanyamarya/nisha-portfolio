@@ -24,6 +24,7 @@ const PageContainer = styled.div({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+
   gap: '3rem',
   '& *': {
     color: 'var(--color-primary-500)',
@@ -37,46 +38,6 @@ const PageContainer = styled.div({
   },
 });
 
-const ContextAction = styled.aside({
-  position: 'fixed',
-  top: '50%',
-  right: '2%',
-  zIndex: 99,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  padding: '1rem',
-  borderRadius: '100%',
-  gap: '2rem',
-
-  backgroundColor: 'var(--color-primary-500)',
-  boxShadow: 'var(--elevation-dark)',
-  transition: 'var(--transition-ease)',
-
-  // hover
-  '&:hover': {
-    backgroundColor: 'var(--color-primary-600)',
-    cursor: 'pointer',
-    boxShadow: 'var(--elevation-dark-focus)',
-    padding: '1.2rem',
-  },
-
-  WebkitAnimation: 'bounce-top 0.9s both',
-  animation: 'bounce-top 0.9s both',
-
-  '@media only screen and (max-width: 920px)': {
-    // position: 'fixed',
-    top: '90%',
-    right: '5%',
-    padding: '0.5rem',
-  },
-});
-const DetailContainer = styled.article({
-  maxWidth: '1400px',
-  margin: '0 auto',
-  boxShadow: 'var(--elevation-paper)',
-  borderRadius: 'var(--dim-round-corner)',
-});
 export default function Details({ pageContext }: DetailsProps) {
   const { images, name, description, hiddenDescription, prototypeLink } = pageContext;
 
@@ -99,7 +60,7 @@ export default function Details({ pageContext }: DetailsProps) {
           allowFullScreen></iframe>
       </Modal>
       <Layout>
-        <ContextAction
+        {/* <ContextAction
           onClick={() => {
             if (!window.matchMedia('(max-width: 920px)').matches) setShowEmbed(true);
             else window.open(prototypeLink, '_blank');
@@ -130,23 +91,24 @@ export default function Details({ pageContext }: DetailsProps) {
               />
             </g>
           </svg>
-        </ContextAction>
+        </ContextAction> */}
         <PageContainer>
-          <h1 className="text-style-heading-h-1-semi-bold">{name}</h1>
-          <h2 className="text-style-heading-h-3-regular"> {description}</h2>
+          {/* <h1 className="text-style-heading-h-1-semi-bold">{name}</h1>
+          <h2 className="text-style-heading-h-3-regular"> {description}</h2> */}
           {/* A hidden paragraph which can only be read by Search engines */}
           <p style={{ display: 'none' }}>{hiddenDescription}</p>
-          <DetailContainer>
+          <div className="w-full max-w-5xl border-b-2 border-t-2 border-default-200">
             {images.map(image => {
               return (
                 <GatsbyImage
                   key={image.name}
                   image={image?.childImageSharp?.gatsbyImageData as any}
                   alt={image.name}
+                  className="border-l-2 border-r-2 border-default-200"
                 />
               );
             })}
-          </DetailContainer>
+          </div>
         </PageContainer>
       </Layout>
     </>
