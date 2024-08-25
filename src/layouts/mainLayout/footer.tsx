@@ -1,46 +1,6 @@
-import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { Logo, SvgBlob } from '../../components';
-import { SocialIcons } from '../../components/socialIcons';
-const FooterWrapper = styled.div({
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: '2rem',
-});
-const FooterContainer = styled.footer({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '8rem',
-  width: '100%',
-  padding: '4rem 8rem',
-  backgroundColor: 'var(--color-secondary-100)',
-  color: 'var(--color-primary-500)',
-
-  '@media (max-width: 768px)': {
-    flexDirection: 'column',
-    padding: '4rem 2rem',
-  },
-
-  '& > div': {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'start',
-    gap: '2rem',
-    flex: 1,
-  },
-});
-
-const Wave = styled(SvgBlob)({
-  width: '100%',
-  height: '10vh',
-  overflow: 'hidden',
-});
+import { Logo } from '../../components';
 
 export default function Footer() {
   const {
@@ -58,60 +18,108 @@ export default function Footer() {
       }
     }
   `);
-  return (
-    <FooterWrapper>
-      <Wave
-        viewBox="0 0 1200 201"
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        duration={5000}
-        fill="url(#paint_linear_gradient)"
-        paths={[
-          'M0 0L50 30C100 60 200 120 300 132C400 144 500 108 600 114C700 120 800 168 900 186C1000 204 1100 192 1150 186L1200 180V360H1150C1100 360 1000 360 900 360C800 360 700 360 600 360C500 360 400 360 300 360C200 360 100 360 50 360H0V0Z',
-          'M0 9.94947L50 45.9495C100 81.9495 200 153.949 300 183.949C400 213.949 500 201.949 600 153.949C700 105.949 800 21.9495 900 3.94947C1000 -14.0505 1100 33.9495 1150 57.9495L1200 81.9495V297.949H1150C1100 297.949 1000 297.949 900 297.949C800 297.949 700 297.949 600 297.949C500 297.949 400 297.949 300 297.949C200 297.949 100 297.949 50 297.949H0V9.94947Z',
-        ]}>
-        <linearGradient
-          id="paint_linear_gradient"
-          x1="657.5"
-          y1="212"
-          x2="654.5"
-          y2="-358"
-          gradientUnits="userSpaceOnUse">
-          <stop stopColor="var(--color-secondary-100)" />
-          <stop
-            offset="1"
-            stopColor="var(--color-secondary-0)"
-          />
-        </linearGradient>
-      </Wave>
-      <FooterContainer>
-        <div>
-          <Logo />
-          <p className="text-style-body-regular-semi-bold">{description}</p>
-        </div>
-        <div>
-          <p>
-            ©{' '}
-            <a
-              href="https://www.linkedin.com/in/nisha-kumari-de/"
-              target="_blank">
-              {copyWrite}
-            </a>{' '}
-            {new Date().getFullYear()}, Built with ❤️
-          </p>
 
-          <SocialIcons
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '2rem',
-            }}
-          />
+  return (
+    <>
+      <div
+        className="mx-8 mb-8 mt-32 rounded-md border-2 border-primary-900 px-8 py-8 md:px-24 md:py-16"
+        // style={{
+        //   backgroundImage: 'url(/bg.svg)',
+        //   backgroundSize: 'cover',
+        //   backgroundRepeat: 'no-repeat',
+        //   // backgroundPosition: 'bottom center',
+        // }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="flex w-[80%] flex-col gap-2">
+            <Logo />
+            <h3 className="text-style-display-1">{title}</h3>
+            <p className="text-sm">
+              <strong>What really drives me?</strong>
+              <br />
+              The thrill of stepping into the unknown, diving headfirst into challenges that make me think, grow, and ultimately become a better designer.
+            </p>
+          </div>
+          <div className="flex flex-row gap-8">
+            <a
+              title="Resume"
+              href="/Nisha_Kumari_Berlin_Resume.pdf"
+              className="text-lg text-primary hover:text-primary-900"
+              target="_blank">
+              Resume
+            </a>
+            <a
+              title="Resume"
+              href="https://www.linkedin.com/in/nisha-kumari-de/"
+              className="text-lg text-primary hover:text-primary-900"
+              target="_blank">
+              Linkedin
+            </a>
+            <a
+              title="Resume"
+              href="https://www.behance.net/nisha-kumari-de"
+              className="text-lg text-primary hover:text-primary-900"
+              target="_blank">
+              Behance
+            </a>
+          </div>
         </div>
-      </FooterContainer>
-    </FooterWrapper>
+      </div>
+      <div className="h-1" />
+    </>
+  );
+
+  return (
+    <div className="relative mt-32">
+      <div className="absolute left-5 top-0">
+        <Rectangle8 />
+      </div>
+      <div className="grid grid-cols-1 px-64 py-12 md:grid-cols-2">
+        <div className="flex w-[80%] flex-col gap-2">
+          <Logo />
+          <h3 className="text-style-display-1">{title}</h3>
+          <p className="text-sm">
+            <strong>What really drives me?</strong>
+            <br />
+            The thrill of stepping into the unknown, diving headfirst into challenges that make me think, grow, and ultimately become a better designer.
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
+
+export const Rectangle8 = () => {
+  const rectHeight = '16vh';
+  const rectWidth = '94vw';
+  const height = `calc(${rectHeight} + 40px)`;
+  const width = `calc(${rectWidth} + 40px)`;
+
+  return (
+    <svg
+      height={height}
+      width={width}
+      fill="none"
+      viewBox={`0 0 ${rectWidth} ${height}`}
+      xmlns="http://www.w3.org/2000/svg">
+      <rect
+        height={rectHeight}
+        width={rectWidth}
+        rx="7"
+        stroke="#DEF1FF"
+        strokeWidth="4"
+        x="10"
+        y="1"
+      />
+      <rect
+        height={rectHeight}
+        width={rectWidth}
+        rx="7"
+        stroke="#0064AA"
+        strokeWidth="4"
+        x="30"
+        y="20"
+      />
+    </svg>
+  );
+};

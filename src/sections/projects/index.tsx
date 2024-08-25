@@ -49,7 +49,7 @@ export default function ProjectsSection() {
 
         return (
           <div
-            className="relative grid min-h-96 grid-cols-1 rounded-lg shadow-lg md:grid-cols-2"
+            className="relative grid grid-cols-1 rounded-lg transition hover:shadow-xl md:grid-cols-2"
             style={{
               color: project.brand.primary,
             }}>
