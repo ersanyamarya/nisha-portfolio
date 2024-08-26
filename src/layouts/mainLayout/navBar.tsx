@@ -8,7 +8,7 @@ import Contact from '../../sections/contact';
 const NAVIGATION_LINKS = [
   {
     name: 'Home',
-    path: '/#hero',
+    path: '/',
   },
   {
     name: 'Projects',

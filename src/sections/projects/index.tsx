@@ -3,7 +3,7 @@ import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import MqtizerGraphic from '../../images/projects/mqtizer/iphone.png';
+import MqtizerGraphic from '../../images/projects/mqtizer/moc.gif';
 
 const projects = [
   {
@@ -51,7 +51,7 @@ export default function ProjectsSection() {
         return (
           <Link
             to={project.link}
-            className="relative grid grid-cols-1 rounded-lg transition hover:shadow-xl md:grid-cols-3"
+            className="relative grid grid-cols-1 rounded-lg p-8 transition hover:shadow-xl md:grid-cols-3"
             style={{
               color: project.brand.primary,
               // height: '32rem',
@@ -63,12 +63,17 @@ export default function ProjectsSection() {
             />
             <div className={index % 2 !== 0 ? 'col-span-1' : 'order-2 col-span-1' + ' relative flex items-center justify-center'}>
               <img
+                className="h-full w-full rounded-lg object-cover"
+                style={{
+                  // shadow to png
+                  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+                }}
                 src={project.graphic}
                 alt={project.name}
               />
             </div>
 
-            <div className="relative col-span-1 flex flex-col justify-center gap-6 p-8 md:col-span-2">
+            <div className="relative col-span-1 flex flex-col justify-center gap-6 md:col-span-2">
               <h3 className="text-4xl">{project.name}</h3>
               <p className="text-2xl">{project.description}</p>
               <ul className="flex flex-wrap gap-2">
