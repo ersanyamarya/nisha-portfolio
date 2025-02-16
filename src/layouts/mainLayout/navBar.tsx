@@ -14,10 +14,10 @@ const NAVIGATION_LINKS = [
     name: 'Projects',
     path: '/#projects',
   },
-  {
-    name: 'Blog',
-    path: '/blog',
-  },
+  // {
+  //   name: 'Blog',
+  //   path: '/blog',
+  // },
 ];
 
 const NavigationBar = styled.nav({

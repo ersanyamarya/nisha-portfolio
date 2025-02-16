@@ -3,6 +3,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import * as React from 'react';
 import { SEO, WordRotate } from '../components';
 import Layout from '../layouts/mainLayout';
+import Companies from '../sections/companies';
 import Contact from '../sections/contact';
 import ProjectsSection from '../sections/projects';
 
@@ -86,6 +87,9 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
 
           <ProjectsSection />
+          <br />
+          <br />
+          <Companies />
         </main>
       </Layout>
     </>
