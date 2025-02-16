@@ -11,7 +11,7 @@ const NAVIGATION_LINKS = [
     path: '/',
   },
   {
-    name: 'Projects',
+    name: 'Selected Work',
     path: '/#projects',
   },
   // {

@@ -18,7 +18,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Layout>
         <main>
           <div
-            className="my-32 grid w-full grid-cols-1 gap-2 font-light text-default md:grid-cols-3"
+            className="py-32 grid w-full grid-cols-1 gap-2 font-light text-default md:grid-cols-3"
             id="hero">
             <div className="col-span-1">
               <StaticImage
@@ -87,8 +87,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
 
           <ProjectsSection />
-          <br />
-          <br />
+        <span className="block w-full bg-gray-200 h-32"></span>
           <Companies />
         </main>
       </Layout>

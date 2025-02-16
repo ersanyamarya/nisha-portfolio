@@ -20,9 +20,9 @@ export default function Companies() {
     <section
       id="companies"
       className="font-light">
-      <h2 className="text-2xl font-medium">So far....</h2>
+      <h2 className="text-4xl ">So far....</h2>
 
-      <p className="text-lg">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
+      <p className="text-2xl py-2">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
       <br />
       <div className="flex flex-row gap-8">
         {allFile.nodes.map((node, index) => {

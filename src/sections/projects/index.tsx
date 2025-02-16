@@ -19,7 +19,7 @@ const projects = [
     },
     tags: ['iOS/Android Mobile App', 'IoT', 'UX Research & Design Case Study'],
     bullets: {
-      'Key Role': 'User research, ideation sessions, rigorous A/B testing and End-to-End visual design.',
+      'Key Role': 'User research, ideation workshops, A/B testing and End-to-End visual design.',
       Impact: 'Boosted navigation efficiency by 60%',
     },
     // backDrop: 'projects/mqtizer/backdrop.png',
@@ -86,10 +86,12 @@ export default function ProjectsSection() {
         const placeholderImage = allFile.nodes.find(node => node.relativePath === project.backDrop);
         const image = getImage(placeholderImage);
 
+        const order = index % 2 !== 0 ? 0 : 1;
+
         return (
           <Link
             to={project.link}
-            className="relative grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-3"
+            className="grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 md:p-0 md:px-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-5"
             style={{
               color: project.brand.primary,
 
@@ -102,19 +104,24 @@ export default function ProjectsSection() {
               imgClassName="h-full w-full rounded-lg object-cover"
             /> */}
 
-            <div className={index % 2 !== 0 ? 'col-span-1' : 'order-2 col-span-1' + ' relative flex items-center justify-center'}>
+            <div className='col-span-1 md:col-span-2 flex items-center justify-center'
+            style ={{
+              order
+            }}
+            >
+           
               <img
-                className="w-full rounded-lg object-cover"
+                className=""
                 style={{
-                  // shadow to png
                   filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
+              
                 }}
                 src={project.graphic}
                 alt={project.name}
               />
             </div>
 
-            <div className="relative col-span-1 flex flex-col justify-center gap-6 md:col-span-2">
+            <div className="col-span-1 flex flex-col justify-center gap-6 md:col-span-3">
               {/* <h3 className="text-4xl">{project.name}</h3> */}
               <p className="text-3xl">{project.description}</p>
               <ul className="flex flex-wrap gap-2">
