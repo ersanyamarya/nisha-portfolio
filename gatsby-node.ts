@@ -28,6 +28,40 @@ Revolutionize your IoT journey with the ultimate MQTT solution!`,
     image: '/mqtizerAppThumbnail.png',
     prototypeLink: 'https://www.youtube.com/embed/Kw5PtbWzuNk?si=RGj7QaefEDB02iSm',
   },
+  spektrum: {
+    name: 'Spektrum Akademie',
+    description: 'Spektrum Akademie: A digital platform for academic resource management and real-time progress tracking.',
+    hiddenDescription: `Spektrum Akademie is a digital platform designed to streamline academic resource management and real-time progress tracking. Our platform offers a comprehensive toolkit for educators, students, and administrators, enabling seamless collaboration and efficient resource allocation.
+With a user-centric design and AI-driven insights, Spektrum Akademie empowers educators to optimize their teaching strategies and enhance student learning outcomes. Dive into a realm where academic excellence thrives, guided by the pulse of real-time progress and the unwavering vision of educators.`,
+    keyWords: [
+      'Spektrum Akademie',
+      'Digital platform',
+      'Academic resource management',
+      'Real-time progress tracking',
+      'Education technology',
+      'EdTech',
+      'User-centric design',
+      'AI-driven insights',
+      'Optimized teaching strategies',
+      'Enhanced student learning outcomes',
+      'Academic excellence',
+      'Real-time progress',
+      'Collaboration',
+      'Resource allocation',
+      'Efficient',
+      'User experience design',
+      'Innovative solutions',
+      'Empowerment',
+      'Education',
+      'Academic',
+      'Learning outcomes',
+      'Optimized teaching',
+      'AI insights',
+      'User-centric',
+      'Efficient resource allocation',],
+    image: '/spektrumThumbnail.png'
+  },
+},
   mqtizerWeb: {
     name: 'Mqtizer Website',
     description: 'MQTIZER: Cross-platform MQTT client for industry grade IoT Solutions.',
@@ -80,7 +114,7 @@ Dive into a realm where creativity thrives, guided by the pulse of market dynami
     ],
     image: '/visionarAiThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FOEJMoWhUcHxO7yTrskLKT5%2FVisionarAI_Designs%3Ftype%3Ddesign%26node-id%3D348-12724%26t%3DeYxqN6aLN6z5Dlzk-1%26scaling%3Dscale-down%26page-id%3D1%253A2%26starting-point-node-id%3D348%253A12724%26mode%3Ddesign',
+    'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FOEJMoWhUcHxO7yTrskLKT5%2FVisionarAI_Designs%3Ftype%3Ddesign%26node-id%3D348-12724%26t%3DeYxqN6aLN6z5Dlzk-1%26scaling%3Dscale-down%26page-id%3D1%253A2%26starting-point-node-id%3D348%253A12724%26mode%3Ddesign',
   },
   watchAndBite: {
     name: 'Watch And Bite',
@@ -125,7 +159,7 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     ],
     image: '/watchAndBiteThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FadJbZIjy3sg1GEursehV33%2FDesigns%3Fnode-id%3D875%253A13025%26scaling%3Dscale-down%26page-id%3D304%253A3662%26starting-point-node-id%3D1061%253A17257',
+    'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FadJbZIjy3sg1GEursehV33%2FDesigns%3Fnode-id%3D875%253A13025%26scaling%3Dscale-down%26page-id%3D304%253A3662%26starting-point-node-id%3D1061%253A17257',
   },
   rollingAhead: {
     name: 'Rolling Ahead',
@@ -162,7 +196,7 @@ In addition to providing convenience, Watch and Bite also offers a range of filt
     ],
     image: '/rollingAheadThumbnail.png',
     prototypeLink:
-      'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHxm3IZE6FgHQNZmI09ufQz%2FHMI%3Fnode-id%3D41%253A9%26scaling%3Dcontain%26page-id%3D0%253A1%26starting-point-node-id%3D41%253A9',
+    'https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FHxm3IZE6FgHQNZmI09ufQz%2FHMI%3Fnode-id%3D41%253A9%26scaling%3Dcontain%26page-id%3D0%253A1%26starting-point-node-id%3D41%253A9',
   },
 };
 
