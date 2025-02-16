@@ -17,7 +17,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Layout>
         <main>
           <div
-            className="text-default my-32 grid w-full grid-cols-1 gap-2 font-light md:grid-cols-3"
+            className="my-32 grid w-full grid-cols-1 gap-2 font-light text-default md:grid-cols-3"
             id="hero">
             <div className="col-span-1">
               <StaticImage
@@ -79,7 +79,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 that are{' '}
                 <WordRotate
                   className="bg-gradient-to-r from-secondary-500 to-secondary-900 bg-clip-text font-medium text-transparent"
-                  words={['user-centric', 'data-driven', 'intuitive', 'engaging']}
+                  words={['intuitive', 'seamless', 'data-driven', 'user-centric']}
                 />
               </p>
             </div>

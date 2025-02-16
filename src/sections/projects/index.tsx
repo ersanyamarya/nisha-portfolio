@@ -2,8 +2,10 @@ import React from 'react';
 
 import { graphql, Link, useStaticQuery } from 'gatsby';
 
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { getImage } from 'gatsby-plugin-image';
 import MqtizerGraphic from '../../images/projects/mqtizer/moc.gif';
+import MqtizerWebGraphic from '../../images/projects/mqtizerWeb/moc.png';
+import SpektrumGraphic from '../../images/projects/spektrum/moc.png';
 
 const projects = [
   {
@@ -13,14 +15,50 @@ const projects = [
     brand: {
       primary: '#353D69',
       secondary: '#FFDEA2',
+      bg: '#FFFCF6',
     },
     tags: ['iOS/Android Mobile App', 'IoT', 'UX Research & Design Case Study'],
     bullets: {
       'Key Role': 'User research, ideation sessions, rigorous A/B testing and End-to-End visual design.',
       Impact: 'Boosted navigation efficiency by 60%',
     },
-    backDrop: 'projects/mqtizer/backdrop.png',
+    // backDrop: 'projects/mqtizer/backdrop.png',
     graphic: MqtizerGraphic,
+  },
+  {
+    name: 'Spektrum',
+    link: '/projects/spektrum',
+    description: 'Inability to track real-time progress of academic resources, leading to planning inefficiencies',
+    brand: {
+      primary: '#2A2244',
+      secondary: '#674EB4',
+      bg: '#F1F1FC',
+    },
+    tags: ['Web App', 'EdTech', 'UX Research & Design Case Study'],
+    bullets: {
+      'Key Role': 'UX Research, Information Architecture, End-to-End visual design, Usability Testing',
+      Impact: '90% scheduling accuracy, 90% reduction in manual tracking, and 75% faster timetable creation',
+    },
+    // // backDrop: 'projects/mqtizer/backdrop.png',
+    graphic: SpektrumGraphic,
+  },
+  {
+    name: 'MQTIZER Web',
+    link: '/projects/mqtizerWeb',
+    description: 'Increase Conversion Rate + Brand Awareness of App Through Website Design',
+    brand: {
+      primary: '#353D69',
+      secondary: '#DEE0FF',
+      bg: '#FCFCFF',
+    },
+
+    tags: ['Web Design', 'IoT', 'Marketing Strategy & Design Case Study'],
+    bullets: {
+      'Key Role': 'Data-driven design strategy, site map and End-to-End visual design.',
+      Impact: 'Achieved a 4% conversion rate and 100% accessibility and SEO scores.',
+    },
+    // // backDrop: 'projects/mqtizer/backdrop.png',
+    graphic: MqtizerWebGraphic,
   },
 ];
 
@@ -43,7 +81,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       className="gap-10vh flex w-full flex-col gap-16 font-light">
-      <h2 className="text-4xl font-medium">Projects</h2>
+      <h2 className="text-4xl font-medium">Selected Work</h2>
       {projects.map((project, index) => {
         const placeholderImage = allFile.nodes.find(node => node.relativePath === project.backDrop);
         const image = getImage(placeholderImage);
@@ -51,19 +89,22 @@ export default function ProjectsSection() {
         return (
           <Link
             to={project.link}
-            className="relative grid grid-cols-1 rounded-lg p-8 transition hover:shadow-xl md:grid-cols-3"
+            className="relative grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-3"
             style={{
               color: project.brand.primary,
-              // height: '32rem',
+
+              // backgroundColor: project.brand.bg,
             }}>
-            <GatsbyImage
+            {/* <GatsbyImage
               image={image}
               alt={project.name}
               className="absolute inset-0 z-0 h-full w-full rounded-lg"
-            />
+              imgClassName="h-full w-full rounded-lg object-cover"
+            /> */}
+
             <div className={index % 2 !== 0 ? 'col-span-1' : 'order-2 col-span-1' + ' relative flex items-center justify-center'}>
               <img
-                className="h-full w-full rounded-lg object-cover"
+                className="w-full rounded-lg object-cover"
                 style={{
                   // shadow to png
                   filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
@@ -74,13 +115,13 @@ export default function ProjectsSection() {
             </div>
 
             <div className="relative col-span-1 flex flex-col justify-center gap-6 md:col-span-2">
-              <h3 className="text-4xl">{project.name}</h3>
-              <p className="text-2xl">{project.description}</p>
+              {/* <h3 className="text-4xl">{project.name}</h3> */}
+              <p className="text-3xl">{project.description}</p>
               <ul className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
                   <li
                     key={index}
-                    className="rounded-md px-2 py-1 text-sm"
+                    className="rounded-md px-3 py-2 text-lg"
                     style={{
                       backgroundColor: project.brand.secondary,
                       color: contrastColor(project.brand.secondary),
@@ -89,10 +130,10 @@ export default function ProjectsSection() {
                   </li>
                 ))}
               </ul>
-              <ul className="flex flex-col gap-2 text-base">
+              <ul className="flex flex-col gap-2 text-lg">
                 {Object.entries(project.bullets).map(([key, value], index) => (
                   <li key={index}>
-                    <span className="font-semibold">{key}:</span> {value}
+                    <span className="text-xl font-normal">{key}:</span> {value}
                   </li>
                 ))}
               </ul>
