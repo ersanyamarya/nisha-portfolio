@@ -61,7 +61,6 @@ With a user-centric design and AI-driven insights, Spektrum Akademie empowers ed
       'Efficient resource allocation',],
     image: '/spektrumThumbnail.png'
   },
-},
   mqtizerWeb: {
     name: 'Mqtizer Website',
     description: 'MQTIZER: Cross-platform MQTT client for industry grade IoT Solutions.',
