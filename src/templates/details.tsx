@@ -13,7 +13,6 @@ interface DetailsProps extends PageProps {
     hiddenDescription: string;
     keyWords: string[];
     image: string;
-    icon: Queries.File;
     prototypeLink: string;
     images: Queries.Query['allFile']['nodes'];
   };
@@ -39,7 +38,7 @@ const PageContainer = styled.div({
 });
 
 export default function Details({ pageContext }: DetailsProps) {
-  const { images, name, description, hiddenDescription, prototypeLink } = pageContext;
+  const { images, hiddenDescription, prototypeLink } = pageContext;
 
   const [showEmbed, setShowEmbed] = useState(false);
 
