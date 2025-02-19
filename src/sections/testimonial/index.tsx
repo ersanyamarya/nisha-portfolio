@@ -106,10 +106,10 @@ export default function TestimonialSection() {
 
   return (
     <section
-      id="testimonials"
+      id="recommendations"
       className="gap-10vh flex w-full flex-col gap-8 font-light">
       <div className="relative flex items-center justify-between">
-        <h2 className="text-4xl font-medium">Testimonials</h2>
+        <h2 className="text-4xl font-medium">Recommendations</h2>
         <div>
           <button
             onClick={previousTestimonial}

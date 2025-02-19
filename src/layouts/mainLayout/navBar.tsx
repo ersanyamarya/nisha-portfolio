@@ -6,13 +6,17 @@ import useScrollPosition from '../../hooks/useScrollPosition';
 import Contact from '../../sections/contact';
 
 const NAVIGATION_LINKS = [
-  {
-    name: 'Home',
-    path: '/',
-  },
+  // {
+  //   name: 'Home',
+  //   path: '/',
+  // },
   {
     name: 'Selected Work',
     path: '/#projects',
+  },
+  {
+    name: 'Recommendations',
+    path: '/#recommendations',
   },
   // {
   //   name: 'Blog',
