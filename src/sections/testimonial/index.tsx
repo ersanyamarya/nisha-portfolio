@@ -170,7 +170,7 @@ export default function TestimonialSection() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-2 w-2 rounded-full transition-all ${index === currentIndex ? 'w-4 bg-primary' : 'bg-gray-300'}`}
+              className={`h-2 w-2 rounded-full transition-all ${index === currentIndex ? 'w-4 bg-primary' : 'bg-default-300'}`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
