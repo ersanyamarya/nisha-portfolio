@@ -6,6 +6,7 @@ import Layout from '../layouts/mainLayout';
 import Companies from '../sections/companies';
 import Contact from '../sections/contact';
 import ProjectsSection from '../sections/projects';
+import TestimonialSection from '../sections/testimonial';
 
 const IndexPage: React.FC<PageProps> = () => {
   const [showContact, setShowContact] = React.useState(false);
@@ -16,11 +17,11 @@ const IndexPage: React.FC<PageProps> = () => {
         onClose={() => setShowContact(false)}
       />
       <Layout>
-        <main>
+        <main className="space-y-16 md:space-y-32">
           <div
-            className="py-32 grid w-full grid-cols-1 gap-2 font-light text-default md:grid-cols-3"
+            className="grid w-full grid-cols-1 gap-16 font-light text-default md:grid-cols-3 md:gap-2 md:py-32"
             id="hero">
-            <div className="col-span-1">
+            <div className="col-span-1 p-4 md:p-0">
               <StaticImage
                 placeholder="blurred"
                 layout="fullWidth"
@@ -85,10 +86,30 @@ const IndexPage: React.FC<PageProps> = () => {
               </p>
             </div>
           </div>
-
           <ProjectsSection />
-        <span className="block w-full bg-gray-200 h-32"></span>
+
           <Companies />
+
+          <TestimonialSection />
+
+          <section
+            style={{
+              // padding: '16px',
+              height: '496px',
+              boxShadow: 'rgba(142, 151, 158, 0.15) 0px 4px 19px 0px',
+              borderRadius: '16px',
+              // overflow: 'hidden',
+              width: '100%',
+              // maxWidth: '650px',
+            }}>
+            <iframe
+              src="https://adplist.org/widgets/reviews?src=nisha-kumari"
+              title="All Reviews"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              style={{ border: '0px' }}></iframe>
+          </section>
         </main>
       </Layout>
     </>

@@ -20,11 +20,11 @@ export default function Companies() {
     <section
       id="companies"
       className="font-light">
-      <h2 className="text-4xl ">So far....</h2>
+      <h2 className="text-4xl">So far....</h2>
 
-      <p className="text-2xl py-2">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
+      <p className="py-2 text-2xl">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
       <br />
-      <div className="flex flex-row gap-8">
+      <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-nowrap md:overflow-x-auto">
         {allFile.nodes.map((node, index) => {
           const image = getImage(node);
 
@@ -32,7 +32,7 @@ export default function Companies() {
             <GatsbyImage
               image={image}
               alt={node.name}
-              className="w h-12"
+              className="h-8 w-64"
               key={node.name}
               objectFit="contain"
             />

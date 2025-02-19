@@ -33,14 +33,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="flex w-[80%] flex-col gap-2">
             <Logo />
-            <h3 className="text-style-display-1">{title}</h3>
-            <p className="text-sm">
-              <strong>What really drives me?</strong>
-              <br />
+            <h3 className="text-lg font-medium">{title}</h3>
+            <p className="mt-2 text-base">
+              <p className="font-medium">What really drives me?</p>
               The thrill of stepping into the unknown, diving headfirst into challenges that make me think, grow, and ultimately become a better designer.
             </p>
           </div>
-          <div className="flex flex-row items-start justify-end gap-16">
+          <div className="mt-10 flex flex-row items-start justify-between md:m-0 md:justify-end md:gap-16">
             <a
               title="Resume"
               href="/Nisha_Kumari_Berlin_Resume.pdf"
