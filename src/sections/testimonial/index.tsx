@@ -26,8 +26,7 @@ I wholeheartedly recommend Nisha for any endeavor she chooses to pursue. Her ble
     name: 'Sanyam Arya',
     title: 'Cloud Architect, PROTHINX',
     location: 'Berlin, Germany',
-    picture:
-      'https://media.licdn.com/dms/image/v2/D4D03AQHUmygvHbIL8w/profile-displayphoto-shrink_800_800/B4DZOSAZSwHcAg-/0/1733321398134?e=1745452800&v=beta&t=SkBbYrNTflaNpyIJTPTaMjTro5xo_k7tbOHX7toCc-k',
+    picture: 'https://sanyamarya.com/pp.jpg',
     link: 'https://www.linkedin.com/in/sanyam-arya/',
     testimonial: `Nisha Kumari is a UX designer dream come true! I had the pleasure of working with her on my new cross-platform MQTT client, Mqtizer. Nisha impressed me from the start. She conducted user research to ensure we built something users truly needed, then translated that knowledge into fantastic designs. From initial sketches to polished mockups, she brought Mqtizer to life. 
 Her talents extend beyond the app itself. Nisha designed a killer marketing website and crafted email templates to perfectly complement Mqtizer. She basically owned the entire user experience. Nisha is professional, reliable, and brings tons of creativity to the table. Don't hesitate to snag her up if you need a top-notch UX designer!`,

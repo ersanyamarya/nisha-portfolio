@@ -1,9 +1,22 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
-import React from 'react';
+import * as React from 'react';
+
+// Define the shape of our GraphQL response
+interface CompanyQueryResult {
+  allFile: {
+    nodes: Array<{
+      relativePath: string;
+      name: string;
+      childImageSharp: {
+        gatsbyImageData: any;
+      };
+    }>;
+  };
+}
 
 export default function Companies() {
-  const { allFile } = useStaticQuery(graphql`
+  const data = useStaticQuery<CompanyQueryResult>(graphql`
     query AllCompaniesImages {
       allFile(filter: { relativeDirectory: { regex: "/companies/" } }, sort: { name: ASC }) {
         nodes {
@@ -16,26 +29,32 @@ export default function Companies() {
       }
     }
   `);
+
+  const { allFile } = data;
+
   return (
     <section
       id="companies"
-      className="font-light">
-      <h2 className="text-4xl">So far....</h2>
+      className="my-8 px-4 font-light">
+      <h2 className="mb-2 text-3xl font-light">So far....</h2>
 
-      <p className="py-2 text-2xl">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
-      <br />
-      <div className="flex flex-row flex-wrap justify-center gap-4 md:flex-nowrap md:overflow-x-auto">
-        {allFile.nodes.map((node, index) => {
-          const image = getImage(node);
+      <p className="mb-6 text-xl">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
+
+      <div className="flex w-full flex-row items-center justify-between gap-2">
+        {allFile.nodes.map(node => {
+          const image = getImage(node.childImageSharp.gatsbyImageData);
 
           return image ? (
-            <GatsbyImage
-              image={image}
-              alt={node.name}
-              className="h-8 w-64"
-              key={node.name}
-              objectFit="contain"
-            />
+            <div
+              className="flex w-full max-w-[120px] items-center justify-center"
+              key={node.name}>
+              <GatsbyImage
+                image={image}
+                alt={node.name}
+                className="h-10 w-full"
+                objectFit="contain"
+              />
+            </div>
           ) : null;
         })}
       </div>

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import * as React from 'react';
 import useForm from '../../hooks/useForm';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i;
@@ -10,23 +10,20 @@ const Backdrop = styled.div({
   bottom: 0,
   left: 0,
   right: 0,
-  backgroundColor: 'rgba(10, 10, 10, 0.3)',
+  backgroundColor: 'rgba(10, 10, 10, 0.4)',
   paddingTop: 50,
   zIndex: 100,
-
-  //   transition: 'var(--transition-ease)',
-  //   backdropFilter: 'blur(5px)',
+  backdropFilter: 'blur(3px)',
 });
 
 const ModalWrapper = styled.div({
-  borderRadius: 'var(--dim-round-corner)',
-  width: 'min(92vw, 800px)',
-  minHeight: '400px',
+  borderRadius: '12px',
+  width: 'min(92vw, 650px)',
   margin: '0 auto',
   position: 'relative',
-  backgroundColor: 'rgba(250, 251, 255, 0.9)',
-  backdropFilter: 'blur(5px)',
-  boxShadow: 'var(--elevation-light)',
+  backgroundColor: 'rgba(250, 251, 255, 0.95)',
+  backdropFilter: 'blur(10px)',
+  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
   color: 'var(--color-primary-500)',
 });
 
@@ -36,15 +33,27 @@ export type ContactProps = {
 };
 
 export default function Contact({ open, onClose }: ContactProps) {
-  const textClassNames = 'p-4 border border-default-700 rounded-md';
+  const textClassNames =
+    'w-full p-3 border border-default-200 rounded-lg bg-white/60 focus:border-primary-400 focus:outline-none focus:ring-2 focus:ring-primary-100 transition-all duration-200 text-primary-900';
   const { state, registerField, noErrors, reset, valueExists } = useForm(
     {
       name: '',
       email: '',
-      message: `Let's talk about your project!`,
+      message: '',
     },
     textClassNames
   );
+
+  // Reset form when modal is closed
+  React.useEffect(() => {
+    if (!open) {
+      reset();
+    }
+  }, [open]);
+
+  const handleClose = () => {
+    onClose();
+  };
 
   const handleSubmit = async () => {
     onClose();
@@ -57,26 +66,22 @@ export default function Contact({ open, onClose }: ContactProps) {
       reset();
     } catch (error) {
       console.error(error);
-
       alert('Error sending message.');
       reset();
     }
   };
+
   return (
     <>
       {open ? (
         <Backdrop>
-          <ModalWrapper>
+          <ModalWrapper className="animate-fade-in">
             <button
-              className="absolute -right-2 -top-3 rounded-md bg-primary p-4 text-2xl text-primary-50"
-              onClick={() => onClose()}>
+              className="absolute -right-3 -top-3 rounded-full bg-primary-600 p-2 text-primary-50 shadow-md transition-colors duration-200 hover:bg-primary-700"
+              onClick={handleClose}>
               <svg
-                version="1.1"
-                id="Layer_1"
-                x="0px"
-                y="0px"
-                width="20px"
-                height="20px"
+                width="14px"
+                height="14px"
                 viewBox="0 0 122.878 122.88"
                 xmlSpace="preserve"
                 fill="currentColor">
@@ -85,17 +90,18 @@ export default function Contact({ open, onClose }: ContactProps) {
                 </g>
               </svg>
             </button>
-            <div className="text-default flex flex-col gap-4 p-8 px-32">
-              <h2 className="text-2xl">Send me a message</h2>
+            <div className="flex flex-col gap-5 p-8 md:p-10">
+              <h2 className="mb-2 text-2xl font-bold text-primary-800">Get in touch</h2>
               <label
                 style={{
                   display: 'none',
                 }}>
-                Don’t fill this out if you’re human: <input name="bot-field" />
+                Don't fill this out if you're human: <input name="bot-field" />
               </label>
               <input
                 type="text"
                 {...registerField('name', {
+                  placeholder: 'Your name',
                   validator: value => {
                     if (value.length < 0) {
                       return 'Name is required';
@@ -107,19 +113,20 @@ export default function Contact({ open, onClose }: ContactProps) {
               <input
                 type="email"
                 {...registerField('email', {
+                  placeholder: 'Email address',
                   validator: value => {
                     // validate email with regex
                     if (!value.match(EMAIL_REGEX)) {
                       return 'Invalid email';
                     }
-
                     return '';
                   },
                 })}
               />
               <textarea
-                rows={2}
+                rows={4}
                 {...registerField('message', {
+                  placeholder: 'What would you like to discuss?',
                   validator: value => {
                     if (value.length < 0) {
                       return 'Message is required';
@@ -128,14 +135,14 @@ export default function Contact({ open, onClose }: ContactProps) {
                   },
                 })}
               />
-              <div>
+              <div className="mt-2">
                 <button
-                  className="w-fit-content rounded-lg bg-primary px-8 py-2 text-xl text-primary-50"
+                  className="rounded-lg bg-primary-600 px-6 py-3 font-medium text-primary-50 transition-colors duration-200 hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-60"
                   disabled={!noErrors || !valueExists(['name', 'email', 'message'])}
                   onClick={async () => {
                     await handleSubmit();
                   }}>
-                  Send
+                  Send message
                 </button>
               </div>
             </div>
