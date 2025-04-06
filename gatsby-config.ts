@@ -7,7 +7,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Nisha Kumari | Senior UX Designer`,
     siteUrl: `https://nishakumari.art/`,
-    description: `Nisha Kumari, Senior UX designer in Berlin, passionate about creating user-centric designs. Completed course with Google, seeking opportunities to create user-friendly products.`,
+    description: `Nisha Kumari, Senior UX designer in Berlin, passionate about creating user-centric designs. Currently working on Cloud Cost Anomaly Management and FinOps capabilities.`,
     linkedinUsername: `nisha-kumari-de/`,
     twitterUsername: `nishakumari_de`,
     image: '/seoThumbnail.png',
@@ -36,6 +36,8 @@ const config: GatsbyConfig = {
       'Figma',
       'Adobe XD',
       'design tools',
+      'Cloud Cost Anomaly Management',
+      'FinOps',
     ],
   },
   graphqlTypegen: true,
