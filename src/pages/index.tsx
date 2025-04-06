@@ -8,6 +8,15 @@ import Contact from '../sections/contact';
 import ProjectsSection from '../sections/projects';
 import TestimonialSection from '../sections/testimonial';
 
+// Current employment information
+const current = {
+  company: 'Flexera',
+  role: 'Senior UX Designer',
+  description:
+    'At Flexera, I’m designing solutions for FinOps personas — from finance to engineering to product management. Currently, I’m focused on Cost Anomaly Management, capability that helps cloud engineers and financial analysts quickly spot and fix unexpected cloud spend spikes. This not only smooths out workflows but also improves financial predictability and cuts down on wasted resources.I’m also simplifying cost tracking through automation, freeing up teams to focus on strategic decisions instead of manual checks.',
+  logo: '../images/companies/01_company.png',
+};
+
 const IndexPage: React.FC<PageProps> = () => {
   const [showContact, setShowContact] = React.useState(false);
   return (
@@ -17,16 +26,17 @@ const IndexPage: React.FC<PageProps> = () => {
         onClose={() => setShowContact(false)}
       />
       <Layout>
-        <main className="space-y-16 md:space-y-32">
+        <main className="space-y-16 md:space-y-24">
           <div
-            className="grid w-full grid-cols-1 gap-16 font-light text-default md:grid-cols-3 md:gap-2 md:py-32"
+            className="grid w-full grid-cols-1 gap-16 font-light text-default md:grid-cols-3 md:gap-2 md:pt-24"
             id="hero">
             <div className="col-span-1 p-4 md:p-0">
               <StaticImage
                 placeholder="blurred"
                 layout="fullWidth"
                 src="../images/hero-img.png"
-                alt="REPLACE WITH ACTUAL COPY"></StaticImage>
+                alt="Nisha Kumari"
+              />
             </div>
             <div className="col-span-1 flex w-full flex-col justify-center gap-2 pb-16 md:col-span-2 md:pl-16">
               <h1 className="mb-2 text-4xl">
@@ -86,6 +96,31 @@ const IndexPage: React.FC<PageProps> = () => {
               </p>
             </div>
           </div>
+
+          <div className="rounded-lg bg-default-100/50 p-6">
+            <div className="flex flex-col items-start gap-8 md:flex-row md:gap-16">
+              <div className="flex flex-col">
+                <h3 className="text-2xl font-medium">Current Role</h3>
+                <span className="text-lg font-medium text-default-900">{current.role}</span>
+                <br />
+                <StaticImage
+                  src="../images/companies/01_company.png"
+                  alt={`${current.company} logo`}
+                  placeholder="blurred"
+                  height={28}
+                  layout="fixed"
+                  className="rounded-lg"
+                />
+              </div>
+              <p className="text-md flex-1 text-default-800">
+                At Flexera, I’m designing solutions for <strong>FinOps</strong> personas — from finance to engineering to product management. Currently, I’m
+                focused on <strong>Cloud Cost Anomaly Management</strong>, capability that helps cloud engineers and financial analysts quickly spot and fix
+                unexpected cloud spend spikes. This not only smooths out workflows but also improves financial predictability and cuts down on wasted resources.
+                I’m also simplifying cost tracking through automation, freeing up teams to focus on strategic decisions instead of manual checks.
+              </p>
+            </div>
+          </div>
+
           <ProjectsSection />
 
           <Companies />
