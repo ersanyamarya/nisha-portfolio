@@ -11,10 +11,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
         open={showContact}
         onClose={() => setShowContact(false)}
       />
-      <Layout
-        openContactForm={() => {
-          setShowContact(true);
-        }}>
+      <Layout>
         <main style={{}}>
           <Link
             style={{
