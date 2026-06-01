@@ -11,10 +11,10 @@ import TestimonialSection from '../sections/testimonial';
 // Current employment information
 const current = {
   company: 'Flexera',
-  role: 'Senior UX Designer',
+  role: 'UX Designer',
   description:
     'At Flexera, I’m designing solutions for FinOps personas — from finance to engineering to product management. Currently, I’m focused on Cost Anomaly Management, capability that helps cloud engineers and financial analysts quickly spot and fix unexpected cloud spend spikes. This not only smooths out workflows but also improves financial predictability and cuts down on wasted resources.I’m also simplifying cost tracking through automation, freeing up teams to focus on strategic decisions instead of manual checks.',
-  logo: '../images/companies/01_company.png',
+  logo: '../images/companies/00_company.png',
 };
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -102,21 +102,20 @@ const IndexPage: React.FC<PageProps> = () => {
               <div className="flex flex-col">
                 <h3 className="text-2xl font-medium">Current Role</h3>
                 <span className="text-lg font-medium text-default-900">{current.role}</span>
-                <br />
+
                 <StaticImage
-                  src="../images/companies/01_company.png"
+                  src="../images/companies/00_company.png"
                   alt={`${current.company} logo`}
                   placeholder="blurred"
-                  height={28}
+                  height={64}
                   layout="fixed"
-                  className="rounded-lg"
+                  className="mt-2 rounded-lg"
                 />
               </div>
               <p className="text-md flex-1 text-default-800">
-                At Flexera, I’m designing solutions for <strong>FinOps</strong> personas — from finance to engineering to product management. Currently, I’m
-                focused on <strong>Cloud Cost Anomaly Management</strong>, capability that helps cloud engineers and financial analysts quickly spot and fix
-                unexpected cloud spend spikes. This not only smooths out workflows but also improves financial predictability and cuts down on wasted resources.
-                I’m also simplifying cost tracking through automation, freeing up teams to focus on strategic decisions instead of manual checks.
+                At the Science Based Targets initiative (SBTi), leading the design of the Validation Portal to streamline complex climate target submissions for
+                near-term and net-zero targets aligned with the Paris Agreement. Work with environmental specialists, carbon policy experts, product owners, and
+                engineers to translate evolving standards into intuitive, user-centered journeys, while driving UX research and scaling design system adoption.
               </p>
             </div>
           </div>

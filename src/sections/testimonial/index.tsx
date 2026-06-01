@@ -11,11 +11,33 @@ type Testimonial = {
 
 const testimonials: Testimonial[] = [
   {
+    name: 'Joanna Kleinschmidt',
+    title: 'Sr. Manager, UX Design, Flexera',
+    location: 'Townsend, Massachusetts, United States',
+
+    picture:
+      'https://media.licdn.com/dms/image/v2/C4D03AQEx4CNB_TJCVg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516283979128?e=1781740800&v=beta&t=3vY4_s5JR6GRUjzlI2SE4YzY7i4fa6mKE-qMwHrUOkE',
+    link: 'https://www.linkedin.com/in/jkleinschmidt/',
+    testimonial: `Nisha worked within the UX group at Flexera for over a year, delivering excellent designs on some very challenging product capabilities in the FinOps domain.  She is a team player and skilled collaborator with PM and others in UX, always willing to share knowledge and insights.
+Nisha was able to handle some of the most technically challenging design work in our group - negotiating business & user needs with Product Managers and Engineers, resulting in detailed design specifications.  She's a great listener and approaches her work with calm determination and quiet good humor.  This level-headed, collaborative approach makes her a pleasure to work with.  Nisha is a great addition to any UX team working on complex software!`,
+  },
+  {
+    name: 'Jeffrey Gadzala',
+    title: 'Lead UX Designer, Flexera',
+    location: 'Greater Seattle Area',
+    picture:
+      'https://media.licdn.com/dms/image/v2/C4D03AQHzA6dWUpdETg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1537369120873?e=1781740800&v=beta&t=ni1dfB_D4dV5iMb7xPt9QAeVybV3PIo_LjaFnW7gIuc',
+    link: 'https://www.linkedin.com/in/jeffreygadzala/',
+    testimonial: `Nisha joined our team at a moment of significant change: acquisition integration, new investment, and shifting business priorities. For the company, this meant addressing complex challenges with lots of new people and limited shared context. 
+Nisha joined the UX team initially to work on other product areas, but was moved over to support the FinOps product most impacted by these changes at the company. Her ability to grasp complex big data problems quickly, work independently across domains, and produce thoughtful, high-quality concepts was key to helping Product Management make clear decisions and guide Engineering towards quality solutions. Throughout these efforts Nisha led her own work on problem discovery and solution design. UX leadership could always trust that her recommendations were evidence backed, critical of the status quo, and guided users toward desired outcomes while maintaining needed flexibility for bespoke use cases.
+Within the UX team, Nisha collaborated well with other designers and researchers to conduct user interviews and  share work internally for feedback. Nisha even went so far as to support our small designs system team with what they needed to request new components and patterns to build out the DS and support her work. Working with Nisha was a pleasure and she is a credit to any UX team.`,
+  },
+  {
     name: 'Gábor László Mándoki',
     title: 'CPO & Co-Founder, Beeta.one',
     location: 'Germany',
     picture:
-      'https://media.licdn.com/dms/image/C5603AQFAt2fHQQMzxQ/profile-displayphoto-shrink_800_800/0/1575900439657?e=2147483647&v=beta&t=mfU39BsSa7oF4I4eOJgBosDuwGJSNUZWGM57VGIiOW4',
+      'https://media.licdn.com/dms/image/v2/C5603AQFAt2fHQQMzxQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1575900439632?e=1781740800&v=beta&t=eZe3V2_wLby-VcQz-bZw_C-z8oY2HKG1gZUZ4ARMa2U',
     link: 'https://www.linkedin.com/in/gabormandoki/',
     testimonial: `I had the pleasure of working with Nisha and I must say, our collaboration was nothing short of exceptional. Her sharp intellect and quick-witted approach to problem-solving were evident in every project we undertook.
 What sets her apart is her ability to think holistically. She has an innate knack for exploring and delivering ideas swiftly, ensuring that no stone is left unturned when it comes to design thinking. Her speed does not compromise the quality of her work, but rather enhances it, making her an invaluable asset to any team.
@@ -26,7 +48,8 @@ I wholeheartedly recommend Nisha for any endeavor she chooses to pursue. Her ble
     name: 'Sanyam Arya',
     title: 'Cloud Architect, PROTHINX',
     location: 'Berlin, Germany',
-    picture: 'https://sanyamarya.com/pp.jpg',
+    picture:
+      'https://media.licdn.com/dms/image/v2/D4D03AQG_k9G0Ia1xhA/profile-displayphoto-scale_400_400/B4DZkFJLWxHYAo-/0/1756727941441?e=1781740800&v=beta&t=QPES6_P06f_mXjwxQ_4jM38UhhlFZyVAMo1LntcOsP0',
     link: 'https://www.linkedin.com/in/sanyam-arya/',
     testimonial: `Nisha Kumari is a UX designer dream come true! I had the pleasure of working with her on my new cross-platform MQTT client, Mqtizer. Nisha impressed me from the start. She conducted user research to ensure we built something users truly needed, then translated that knowledge into fantastic designs. From initial sketches to polished mockups, she brought Mqtizer to life. 
 Her talents extend beyond the app itself. Nisha designed a killer marketing website and crafted email templates to perfectly complement Mqtizer. She basically owned the entire user experience. Nisha is professional, reliable, and brings tons of creativity to the table. Don't hesitate to snag her up if you need a top-notch UX designer!`,
@@ -36,7 +59,7 @@ Her talents extend beyond the app itself. Nisha designed a killer marketing webs
     title: 'Director of UX/ CXA, Royal Cyber Inc.',
     location: 'Chicago, Illinois',
     picture:
-      'https://media.licdn.com/dms/image/v2/C5603AQGPkCf1tOkmMw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1551039351440?e=1745452800&v=beta&t=xrh5VkcMy81MHdKcp9LNbzcaxtZhPP2x_O58BLU8768',
+      'https://media.licdn.com/dms/image/v2/C5603AQGPkCf1tOkmMw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1551039351643?e=1781740800&v=beta&t=sEdwHIkaU2BZ3_e8KVz0J1Cw4WpNYZiTPB_O1haQRe0',
     link: 'https://www.linkedin.com/in/tonyhyun/',
     testimonial: `As our UX team grew at Royal Cyber, we needed qualified senior UX Designers. Being a small team, the senior designers needed to take on several roles on any given project, be it as a UX Researcher, UX Designer, or Test Moderator. Finding candidates that fit the bill was tough, as you can imagine, until we found Nisha. Nisha’s broad experience in all things UX made it easy for her to be assigned to complex projects with demanding clients. Her ease at approaching all challenges from a sound customer-focused mindset immediately instilled confidence in her from the team and the client. Nisha’s talents also extend into product design. Royal Cyber has developed a suite of products that have become very popular with our customers. Due to Nisha’s expert touch, many Royal Cyber products have undergone metamorphic change.
 If you’re reading this, you are probably considering talking to Nisha. Do it! It will be well worth your time.
