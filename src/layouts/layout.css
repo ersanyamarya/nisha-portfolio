@@ -47,6 +47,7 @@
   --font-sans: 'Lato', sans-serif;
 }
 
+@layer base {
 :root {
   --color-primary-0: rgba(239, 248, 255, 1);
   --color-primary-100: rgba(222, 241, 255, 1);
@@ -145,6 +146,7 @@ body::-webkit-scrollbar-thumb {
   background-color: var(--color-primary-500);
   border-radius: 20px;
   border: 3px solid var(--color-secondary-0);
+}
 }
 
 @-webkit-keyframes bounce-top {
