@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'gatsby';
 
+import { Badge } from '@/components/ui/badge';
 import MqtizerGraphic from '../../images/projects/mqtizer/moc.gif';
 import MqtizerWebGraphic from '../../images/projects/mqtizerWeb/moc.png';
 import SpektrumGraphic from '../../images/projects/spektrum/moc.png';
@@ -72,8 +73,9 @@ export default function ProjectsSection() {
 
         return (
           <Link
+            key={project.link}
             to={project.link}
-            className="grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
+            className="grid h-full grid-cols-1 gap-8 rounded-lg border border-border bg-card p-16 shadow-sm transition hover:shadow-lg md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
             style={{
               color: project.brand.primary,
 
@@ -104,19 +106,19 @@ export default function ProjectsSection() {
             <div className="col-span-1 flex flex-col justify-center gap-6 md:col-span-3">
               {/* <h3 className="text-4xl">{project.name}</h3> */}
               <p className="text-3xl">{project.description}</p>
-              <ul className="flex flex-wrap gap-2">
-                {project.tags.map((tag, index) => (
-                  <li
-                    key={index}
-                    className="rounded-md px-3 py-2 text-lg"
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map(tag => (
+                  <Badge
+                    key={tag}
+                    className="border-transparent px-3 py-2 text-base"
                     style={{
                       backgroundColor: project.brand.secondary,
                       color: contrastColor(project.brand.secondary),
                     }}>
                     {tag}
-                  </li>
+                  </Badge>
                 ))}
-              </ul>
+              </div>
               <ul className="flex flex-col gap-2 text-lg">
                 {Object.entries(project.bullets).map(([key, value], index) => (
                   <li key={index}>

@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { HeadFC, PageProps } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React, { useState } from 'react';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { SEO } from '../components';
-import Modal from '../components/modal';
 import Layout from '../layouts/mainLayout';
 
 interface DetailsProps extends PageProps {
@@ -44,20 +44,21 @@ export default function Details({ pageContext }: DetailsProps) {
 
   return (
     <>
-      <Modal
+      <Dialog
         open={showEmbed}
-        onClose={() => setShowEmbed(false)}>
-        <iframe
-          style={{
-            border: '1px solid rgba(0, 0, 0, 0.1)',
-            flex: 1,
-            width: '100%',
-          }}
-          // // width="800"
-          // height="100%"
-          src={prototypeLink}
-          allowFullScreen></iframe>
-      </Modal>
+        onOpenChange={isOpen => !isOpen && setShowEmbed(false)}>
+        <DialogContent className="flex h-[90vh] max-w-[90vw] flex-col">
+          <DialogTitle className="sr-only">Prototype preview</DialogTitle>
+          <iframe
+            style={{
+              border: '1px solid rgba(0, 0, 0, 0.1)',
+              flex: 1,
+              width: '100%',
+            }}
+            src={prototypeLink}
+            allowFullScreen></iframe>
+        </DialogContent>
+      </Dialog>
       <Layout>
         {/* <ContextAction
           onClick={() => {

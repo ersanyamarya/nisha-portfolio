@@ -1,4 +1,7 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
   --color-*: initial;
@@ -47,6 +50,29 @@
   --font-sans: 'Lato', sans-serif;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
 @layer base {
 :root {
   --color-primary-0: rgba(239, 248, 255, 1);
@@ -87,6 +113,41 @@
 
   --transition-ease: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --radius: 0.5rem;
+  --background: #ffffff;
+  --foreground: var(--color-default-950);
+  --card: #ffffff;
+  --card-foreground: var(--color-default-950);
+  --popover: #ffffff;
+  --popover-foreground: var(--color-default-950);
+  --primary-foreground: #ffffff;
+  --muted: var(--color-default-100);
+  --muted-foreground: var(--color-default-500);
+  --accent: var(--color-primary-50);
+  --accent-foreground: var(--color-primary-700);
+  --destructive: var(--color-secondary-600);
+  --destructive-foreground: #ffffff;
+  --border: var(--color-default-200);
+  --input: var(--color-default-200);
+  --ring: var(--color-primary-400);
+}
+
+.dark {
+  --color-secondary-0: #333333;
+  --background: var(--color-default-950);
+  --foreground: #ffffff;
+  --card: var(--color-default-900);
+  --card-foreground: #ffffff;
+  --popover: var(--color-default-900);
+  --popover-foreground: #ffffff;
+  --muted: var(--color-default-800);
+  --muted-foreground: var(--color-default-300);
+  --accent: var(--color-default-800);
+  --accent-foreground: var(--color-primary-300);
+  --border: var(--color-default-700);
+  --input: var(--color-default-700);
+  --ring: var(--color-primary-400);
 }
 
 * {
@@ -94,9 +155,7 @@
   padding: 0;
   margin: 0;
   font-family: 'Lato', sans-serif;
-  color: var(--color-primary-text);
-  padding: 0;
-  margin: 0;
+  color: var(--foreground);
 }
 
 html {
@@ -123,11 +182,6 @@ body {
   scrollbar-color: var(--color-primary-500) transparent;
   height: 100vh;
   width: 100vw;
-}
-
-.dark {
-  --color-secondary-0: #333333;
-  background: var(--color-secondary-0);
 }
 
 a {

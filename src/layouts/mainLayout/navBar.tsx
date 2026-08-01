@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 import { Logo } from '../../components';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import Contact from '../../sections/contact';
@@ -127,21 +128,25 @@ export default function NavBar() {
               {link.name}
             </NavLink>
           ))}
-          <a
-            title="Resume"
-            href="/Nisha_Kumari_Berlin_Resume.pdf"
-            className="ml-2 rounded-md border border-primary-300 px-4 py-1.5 text-primary transition-all duration-300 hover:bg-primary-50 hover:shadow-md"
-            target="_blank"
-            rel="noopener noreferrer">
-            Resume
-          </a>
-          <button
-            className="ml-2 rounded-md bg-primary px-4 py-1.5 text-primary-50 transition-all duration-300 hover:bg-primary-700 hover:shadow-md focus:outline-none"
+          <Button
+            asChild
+            variant="outline"
+            className="ml-2">
+            <a
+              title="Resume"
+              href="/Nisha_Kumari_Berlin_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Resume
+            </a>
+          </Button>
+          <Button
+            className="ml-2"
             onClick={() => {
               setShowContact(true);
             }}>
             Let's Talk
-          </button>
+          </Button>
         </nav>
 
         {/* Mobile Menu Overlay */}
@@ -189,25 +194,29 @@ export default function NavBar() {
           </div>
 
           <div className="flex flex-col gap-4 px-6 pb-8">
-            <a
-              title="Resume"
-              href="/Nisha_Kumari_Berlin_Resume.pdf"
-              className="w-full rounded-md border border-primary-300 py-2.5 text-center text-primary transition-all duration-300 hover:bg-primary-50"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                setOverlayVisible(false);
-              }}>
-              Resume
-            </a>
-            <button
-              className="w-full rounded-md bg-primary py-2.5 text-primary-50 transition-all duration-300 hover:bg-primary-700 hover:shadow-md focus:outline-none"
+            <Button
+              asChild
+              variant="outline"
+              size="lg">
+              <a
+                title="Resume"
+                href="/Nisha_Kumari_Berlin_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  setOverlayVisible(false);
+                }}>
+                Resume
+              </a>
+            </Button>
+            <Button
+              size="lg"
               onClick={() => {
                 setShowContact(true);
                 setOverlayVisible(false);
               }}>
               Let's Talk
-            </button>
+            </Button>
           </div>
         </Overlay>
       </NavigationBar>

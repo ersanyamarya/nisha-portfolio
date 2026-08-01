@@ -1,5 +1,6 @@
-import { Link } from 'gatsby';
 import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 type Testimonial = {
   name: string;
   title: string;
@@ -76,11 +77,13 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
   };
 
   return (
-    <div className="grid grid-cols-1 gap-6 rounded-lg bg-default-100 p-16 md:grid-cols-[300px_1fr] md:gap-8">
-      <Link
+    <Card className="grid grid-cols-1 gap-6 border-none bg-default-100 p-16 shadow-none md:grid-cols-[300px_1fr] md:gap-8">
+      <a
         className="flex flex-col gap-2"
-        to={link}>
-        <div className="border-gray-200 h-20 w-20 overflow-hidden rounded border">
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer">
+        <div className="h-20 w-20 overflow-hidden rounded border border-default-200">
           <img
             src={picture}
             alt={name}
@@ -89,29 +92,30 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
         </div>
         <div className="space-y-1">
           <h3 className="text-lg font-semibold">{name}</h3>
-          <p className="text-muted-foreground text-base">{title}</p>
-          <p className="text-muted-foreground text-sm">{location}</p>
+          <p className="text-base text-muted-foreground">{title}</p>
+          <p className="text-sm text-muted-foreground">{location}</p>
         </div>
-      </Link>
+      </a>
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className={`text-gray-700 whitespace-pre-line transition-all duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>
+          <p className={`whitespace-pre-line text-default-700 transition-all duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>
             <svg
-              className="text-gray-400 mb-4 h-8 w-8"
+              className="mb-4 h-8 w-8 text-default-400"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
             {testimonial}
           </p>
-          <button
-            onClick={toggleExpand}
-            className="font-medium text-primary transition-colors hover:text-primary-700">
+          <Button
+            variant="link"
+            className="h-auto p-0"
+            onClick={toggleExpand}>
             {isExpanded ? 'Show Less' : 'Read More'}
-          </button>
+          </Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
@@ -132,10 +136,13 @@ export default function TestimonialSection() {
       className="gap-10vh flex w-full flex-col gap-8 font-light">
       <div className="relative flex items-center justify-between">
         <h2 className="text-4xl font-medium">Recommendations</h2>
-        <div>
-          <button
-            onClick={previousTestimonial}
-            className="hover:bg-gray-50 rounded-full p-2 text-primary">
+        <div className="flex gap-1">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full text-primary"
+            aria-label="Previous testimonial"
+            onClick={previousTestimonial}>
             <svg
               className="h-6 w-6"
               fill="none"
@@ -148,10 +155,13 @@ export default function TestimonialSection() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="hover:bg-gray-50 rounded-full p-2 text-primary">
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="rounded-full text-primary"
+            aria-label="Next testimonial"
+            onClick={nextTestimonial}>
             <svg
               className="h-6 w-6"
               fill="none"
@@ -164,7 +174,7 @@ export default function TestimonialSection() {
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
       <div className="relative">
