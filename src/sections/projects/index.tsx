@@ -91,7 +91,7 @@ export default function ProjectsSection() {
         return (
           <Link
             to={project.link}
-            className="grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 md:p-0 md:px-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-5"
+            className="grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
             style={{
               color: project.brand.primary,
 
@@ -104,17 +104,15 @@ export default function ProjectsSection() {
               imgClassName="h-full w-full rounded-lg object-cover"
             /> */}
 
-            <div className='col-span-1 md:col-span-2 flex items-center justify-center'
-            style ={{
-              order
-            }}
-            >
-           
+            <div
+              className="col-span-1 flex items-center justify-center md:col-span-2"
+              style={{
+                order,
+              }}>
               <img
                 className=""
                 style={{
                   filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-              
                 }}
                 src={project.graphic}
                 alt={project.name}

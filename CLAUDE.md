@@ -6,12 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Remember, before writing any code:3
 
-1. Does this need to exist?   → no: skip it (YAGNI)
-2. Already in this codebase?  → reuse it, don't rewrite
-3. Stdlib does it?            → use it
-4. Native platform feature?   → use it
-5. Installed dependency?      → use it
-6. One line?                  → one line
+1. Does this need to exist? → no: skip it (YAGNI)
+2. Already in this codebase? → reuse it, don't rewrite
+3. Stdlib does it? → use it
+4. Native platform feature? → use it
+5. Installed dependency? → use it
+6. One line? → one line
 7. Only then: the minimum that works → If reusable, write it in a shared file/component.
 
 ## Commands
@@ -43,7 +43,7 @@ TypeError: Symbol "getByBinary" is missing a "ptr" field. When using linkSymbols
 
 This shows up twice: once from Gatsby's own `cache-lmdb.js`, and again from the bundled `@parcel/cache` (Gatsby's internal Parcel-based compiler for `gatsby-config`/`gatsby-node`), which vendors its own copy of `lmdb`. Overriding the top-level `lmdb` version fixes the first occurrence but not the second, since `@parcel/cache`'s copy isn't reachable through a simple package.json `overrides` entry. Running with `CI=true` avoids a separate, unrelated crash in `gatsby-cli`'s `yoga-layout-prebuilt` (used for its interactive terminal UI) but does not fix the `lmdb` issue.
 
-Net effect: `bun install` works fine (Bun as package manager), but running the Gatsby CLI scripts (`dev`/`build`/`start`/`serve`) *as JS via Bun's runtime* currently does not, in any environment where only Bun (no Node.js) is available. If you hit this, run the scripts with Node.js instead (e.g. via `nvm use` against `.nvmrc`, or system Node) while continuing to use `bun install`/`bun.lock` for dependency management.
+Net effect: `bun install` works fine (Bun as package manager), but running the Gatsby CLI scripts (`dev`/`build`/`start`/`serve`) _as JS via Bun's runtime_ currently does not, in any environment where only Bun (no Node.js) is available. If you hit this, run the scripts with Node.js instead (e.g. via `nvm use` against `.nvmrc`, or system Node) while continuing to use `bun install`/`bun.lock` for dependency management.
 
 ## Architecture
 
