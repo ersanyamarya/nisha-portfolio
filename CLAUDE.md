@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Implementation principles
+
+Remember, before writing any code:3
+
+1. Does this need to exist?   → no: skip it (YAGNI)
+2. Already in this codebase?  → reuse it, don't rewrite
+3. Stdlib does it?            → use it
+4. Native platform feature?   → use it
+5. Installed dependency?      → use it
+6. One line?                  → one line
+7. Only then: the minimum that works → If reusable, write it in a shared file/component.
+
 ## Commands
 
 Package manager is Bun (`bun.lock` is checked in).

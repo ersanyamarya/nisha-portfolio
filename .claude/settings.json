@@ -1,0 +1,51 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx context-mode hook vscode-copilot pretooluse"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx context-mode hook vscode-copilot posttooluse"
+          },
+          {
+            "type": "command",
+            "command": "bun run format"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npx context-mode hook vscode-copilot sessionstart"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun run format"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": ["Bash(bun run format)"]
+  }
+}
