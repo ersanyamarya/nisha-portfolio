@@ -96,14 +96,14 @@ export default function Details({ pageContext }: DetailsProps) {
           <h2 className="text-style-heading-h-3-regular"> {description}</h2> */}
           {/* A hidden paragraph which can only be read by Search engines */}
           <p style={{ display: 'none' }}>{hiddenDescription}</p>
-          <div className="w-full max-w-5xl border-b-2 border-t-2 border-default-200">
+          <div className="w-full max-w-5xl border-t-2 border-b-2 border-default-200">
             {images.map(image => {
               return (
                 <GatsbyImage
                   key={image.name}
                   image={image?.childImageSharp?.gatsbyImageData as any}
                   alt={image.name}
-                  className="border-l-2 border-r-2 border-default-200"
+                  className="border-r-2 border-l-2 border-default-200"
                 />
               );
             })}

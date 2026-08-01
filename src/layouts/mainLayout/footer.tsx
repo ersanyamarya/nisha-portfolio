@@ -22,7 +22,7 @@ export default function Footer() {
   return (
     <>
       <div
-        className="mx-8 mb-8 mt-32 rounded-md border-2 border-primary-900 px-8 py-8 md:px-24 md:py-16"
+        className="mx-8 mt-32 mb-8 rounded-md border-2 border-primary-900 px-8 py-8 md:px-24 md:py-16"
         // style={{
         //   backgroundImage: 'url(/bg.svg)',
         //   backgroundSize: 'cover',
@@ -70,7 +70,7 @@ export default function Footer() {
 
   return (
     <div className="relative mt-32">
-      <div className="absolute left-5 top-0">
+      <div className="absolute top-0 left-5">
         <Rectangle8 />
       </div>
       <div className="grid grid-cols-1 px-64 py-12 md:grid-cols-2">

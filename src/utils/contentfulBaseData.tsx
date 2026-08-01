@@ -16,10 +16,11 @@ export type ContentfulBaseData = {
   socialLinks: SocialLink[];
   // projects: Project[]
 };
-export function contentfulBaseData(query: Queries.Query): ContentfulBaseData {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function contentfulBaseData(query: any): ContentfulBaseData {
   const { allContentfulSocialLinks } = query;
   return {
-    socialLinks: allContentfulSocialLinks.nodes.map(social => {
+    socialLinks: allContentfulSocialLinks.nodes.map((social: any) => {
       const image = getImage(social.logo?.gatsbyImageData as IGatsbyImageData) as IGatsbyImageData;
       return {
         id: social.id,

@@ -147,7 +147,7 @@ export default function NavBar() {
         {/* Mobile Menu Overlay */}
         {isOverlayVisible && (
           <div
-            className="fixed inset-0 z-40 bg-primary-950 bg-opacity-30"
+            className="bg-opacity-30 fixed inset-0 z-40 bg-primary-950"
             onClick={() => setOverlayVisible(false)}
           />
         )}

@@ -77,7 +77,7 @@ export default function Contact({ open, onClose }: ContactProps) {
         <Backdrop>
           <ModalWrapper className="animate-fade-in">
             <button
-              className="absolute -right-3 -top-3 rounded-full bg-primary-600 p-2 text-primary-50 shadow-md transition-colors duration-200 hover:bg-primary-700"
+              className="absolute -top-3 -right-3 rounded-full bg-primary-600 p-2 text-primary-50 shadow-md transition-colors duration-200 hover:bg-primary-700"
               onClick={handleClose}>
               <svg
                 width="14px"

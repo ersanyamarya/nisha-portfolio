@@ -7,9 +7,9 @@ module.exports = {
   trailingComma: 'es5',
   bracketSpacing: true,
   bracketSameLine: true,
-  jsxBracketSameLine: true,
   singleAttributePerLine: true,
   arrowParens: 'avoid',
   proseWrap: 'never',
+  tailwindStylesheet: './src/layouts/layout.css',
   plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-tailwindcss'],
 };

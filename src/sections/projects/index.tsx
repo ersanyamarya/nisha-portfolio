@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 
-import { getImage } from 'gatsby-plugin-image';
 import MqtizerGraphic from '../../images/projects/mqtizer/moc.gif';
 import MqtizerWebGraphic from '../../images/projects/mqtizerWeb/moc.png';
 import SpektrumGraphic from '../../images/projects/spektrum/moc.png';
@@ -63,29 +62,12 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
-  const { allFile } = useStaticQuery(graphql`
-    query AllProjectImages {
-      allFile(filter: { relativeDirectory: { regex: "/projects/" } }) {
-        nodes {
-          relativePath
-          name
-          childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG, quality: 100)
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <section
       id="projects"
       className="gap-10vh flex w-full flex-col gap-16 font-light">
       <h2 className="text-4xl font-medium">Selected Work</h2>
       {projects.map((project, index) => {
-        const placeholderImage = allFile.nodes.find(node => node.relativePath === project.backDrop);
-        const image = getImage(placeholderImage);
-
         const order = index % 2 !== 0 ? 0 : 1;
 
         return (
