@@ -31,9 +31,12 @@ function DialogPortal({ ...props }: React.ComponentProps<typeof DialogPrimitive.
   );
 }
 
-function DialogOverlay({ className, ...props }: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
-  return (
+// Radix renders portal children through a Slot, which hands them a ref. On React 18
+// a plain function component can't receive one, so this must forward it explicitly.
+const DialogOverlay = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Overlay>, React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>>(
+  ({ className, ...props }, ref) => (
     <DialogPrimitive.Overlay
+      ref={ref}
       data-slot="dialog-overlay"
       className={cn(
         'bg-black/50 fixed inset-0 z-50 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0',
@@ -41,8 +44,9 @@ function DialogOverlay({ className, ...props }: React.ComponentProps<typeof Dial
       )}
       {...props}
     />
-  );
-}
+  )
+);
+DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 function DialogContent({
   className,
@@ -62,7 +66,7 @@ function DialogContent({
         {...props}>
         {children}
         {showCloseButton && (
-          <DialogPrimitive.Close className="absolute top-4 right-4 rounded-xs opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0">
+          <DialogPrimitive.Close className="absolute top-1.5 right-1.5 flex size-11 items-center justify-center rounded-md opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0">
             <XIcon />
             <span className="sr-only">Close</span>
           </DialogPrimitive.Close>

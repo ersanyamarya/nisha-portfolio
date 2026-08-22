@@ -75,7 +75,7 @@ export default function ProjectsSection() {
           <Link
             key={project.link}
             to={project.link}
-            className="grid h-full grid-cols-1 gap-8 rounded-lg border border-border bg-card p-16 shadow-sm transition hover:shadow-lg md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
+            className="grid h-full grid-cols-1 gap-8 rounded-lg border border-border bg-card p-6 shadow-sm transition hover:shadow-lg sm:p-10 md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
             style={{
               color: project.brand.primary,
 
@@ -105,7 +105,7 @@ export default function ProjectsSection() {
 
             <div className="col-span-1 flex flex-col justify-center gap-6 md:col-span-3">
               {/* <h3 className="text-4xl">{project.name}</h3> */}
-              <p className="text-3xl">{project.description}</p>
+              <p className="text-2xl md:text-3xl">{project.description}</p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map(tag => (
                   <Badge

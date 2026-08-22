@@ -38,7 +38,7 @@ export default function Companies() {
       className="my-8 px-4 font-light">
       <h2 className="mb-2 text-3xl font-light">So far....</h2>
 
-      <p className="mb-6 text-xl">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
+      <p className="mb-6 max-w-prose text-xl">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
 
       <div className="flex w-full flex-row items-center justify-between gap-2">
         {allFile.nodes.map(node => {

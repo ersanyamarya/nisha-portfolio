@@ -68,8 +68,16 @@ Thx!`,
   },
 ];
 
+// Falls back to the person's initials: the LinkedIn CDN URLs below are signed and
+// expire, so a dead `picture` should degrade to something legible, not an empty box.
+const initialsOf = (name: string) => {
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+};
+
 export function TestimonialCard({ name, title, location, picture, link, testimonial }: Testimonial) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [pictureFailed, setPictureFailed] = useState(false);
 
   const toggleExpand = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -77,18 +85,27 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
   };
 
   return (
-    <Card className="grid grid-cols-1 gap-6 border-none bg-default-100 p-16 shadow-none md:grid-cols-[300px_1fr] md:gap-8">
+    <Card className="grid grid-cols-1 gap-6 border-none bg-default-100 p-6 shadow-none sm:p-10 md:grid-cols-[300px_1fr] md:gap-8 md:p-16">
       <a
         className="flex flex-col gap-2"
         href={link}
         target="_blank"
         rel="noopener noreferrer">
-        <div className="h-20 w-20 overflow-hidden rounded border border-default-200">
-          <img
-            src={picture}
-            alt={name}
-            className="h-full w-full object-cover"
-          />
+        <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded border border-default-200 bg-default-100">
+          {pictureFailed ? (
+            <span
+              aria-hidden="true"
+              className="text-2xl font-medium text-default-600">
+              {initialsOf(name)}
+            </span>
+          ) : (
+            <img
+              src={picture}
+              alt={name}
+              className="h-full w-full object-cover"
+              onError={() => setPictureFailed(true)}
+            />
+          )}
         </div>
         <div className="space-y-1">
           <h3 className="text-lg font-semibold">{name}</h3>
@@ -109,7 +126,7 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
           </p>
           <Button
             variant="link"
-            className="h-auto p-0"
+            className="h-11 justify-start p-0 sm:h-auto"
             onClick={toggleExpand}>
             {isExpanded ? 'Show Less' : 'Read More'}
           </Button>
@@ -140,7 +157,7 @@ export default function TestimonialSection() {
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full text-primary"
+            className="size-11 rounded-full text-primary md:size-9"
             aria-label="Previous testimonial"
             onClick={previousTestimonial}>
             <svg
@@ -159,7 +176,7 @@ export default function TestimonialSection() {
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-full text-primary"
+            className="size-11 rounded-full text-primary md:size-9"
             aria-label="Next testimonial"
             onClick={nextTestimonial}>
             <svg
@@ -197,14 +214,15 @@ export default function TestimonialSection() {
         {/* Navigation Buttons */}
 
         {/* Pagination Indicators */}
-        <div className="mt-4 flex justify-center gap-2">
+        <div className="mt-4 flex justify-center">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-2 w-2 rounded-full transition-all ${index === currentIndex ? 'w-4 bg-primary' : 'bg-default-300'}`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
+              className="flex size-11 items-center justify-center"
+              aria-label={`Go to testimonial ${index + 1}`}>
+              <span className={`h-2 rounded-full transition-all ${index === currentIndex ? 'w-4 bg-primary' : 'w-2 bg-default-300'}`} />
+            </button>
           ))}
         </div>
       </div>

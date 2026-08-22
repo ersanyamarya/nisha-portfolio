@@ -100,7 +100,7 @@ export default function NavBar() {
           onClick={() => {
             setOverlayVisible(true);
           }}
-          className="z-30 block w-10 cursor-pointer border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none sm:hidden"
+          className="z-30 flex size-11 cursor-pointer items-center justify-center border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none md:hidden"
           aria-label="Open menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ export default function NavBar() {
           </svg>
         </button>
 
-        <nav className="hidden flex-row items-center justify-between gap-6 sm:flex">
+        <nav className="hidden flex-row items-center justify-between gap-6 md:flex">
           {NAVIGATION_LINKS.map(link => (
             <NavLink
               className="px-2 py-1 text-lg text-primary transition-all duration-300 hover:text-primary-800"
@@ -164,7 +164,7 @@ export default function NavBar() {
               onClick={() => {
                 setOverlayVisible(false);
               }}
-              className="z-50 w-10 cursor-pointer border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none"
+              className="z-50 flex size-11 cursor-pointer items-center justify-center border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none"
               aria-label="Close menu">
               <svg
                 version="1.1"
