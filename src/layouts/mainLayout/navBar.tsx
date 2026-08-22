@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React, { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 import { Logo } from '../../components';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import Contact from '../../sections/contact';
@@ -99,7 +100,7 @@ export default function NavBar() {
           onClick={() => {
             setOverlayVisible(true);
           }}
-          className="z-30 block w-10 cursor-pointer border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none sm:hidden"
+          className="z-30 flex size-11 cursor-pointer items-center justify-center border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none md:hidden"
           aria-label="Open menu">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +118,7 @@ export default function NavBar() {
           </svg>
         </button>
 
-        <nav className="hidden flex-row items-center justify-between gap-6 sm:flex">
+        <nav className="hidden flex-row items-center justify-between gap-6 md:flex">
           {NAVIGATION_LINKS.map(link => (
             <NavLink
               className="px-2 py-1 text-lg text-primary transition-all duration-300 hover:text-primary-800"
@@ -127,27 +128,31 @@ export default function NavBar() {
               {link.name}
             </NavLink>
           ))}
-          <a
-            title="Resume"
-            href="/Nisha_Kumari_Berlin_Resume.pdf"
-            className="ml-2 rounded-md border border-primary-300 px-4 py-1.5 text-primary transition-all duration-300 hover:bg-primary-50 hover:shadow-md"
-            target="_blank"
-            rel="noopener noreferrer">
-            Resume
-          </a>
-          <button
-            className="ml-2 rounded-md bg-primary px-4 py-1.5 text-primary-50 transition-all duration-300 hover:bg-primary-700 hover:shadow-md focus:outline-none"
+          <Button
+            asChild
+            variant="outline"
+            className="ml-2">
+            <a
+              title="Resume"
+              href="/Nisha_Kumari_Berlin_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer">
+              Resume
+            </a>
+          </Button>
+          <Button
+            className="ml-2"
             onClick={() => {
               setShowContact(true);
             }}>
             Let's Talk
-          </button>
+          </Button>
         </nav>
 
         {/* Mobile Menu Overlay */}
         {isOverlayVisible && (
           <div
-            className="fixed inset-0 z-40 bg-primary-950 bg-opacity-30"
+            className="bg-opacity-30 fixed inset-0 z-40 bg-primary-950"
             onClick={() => setOverlayVisible(false)}
           />
         )}
@@ -159,7 +164,7 @@ export default function NavBar() {
               onClick={() => {
                 setOverlayVisible(false);
               }}
-              className="z-50 w-10 cursor-pointer border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none"
+              className="z-50 flex size-11 cursor-pointer items-center justify-center border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none"
               aria-label="Close menu">
               <svg
                 version="1.1"
@@ -189,25 +194,29 @@ export default function NavBar() {
           </div>
 
           <div className="flex flex-col gap-4 px-6 pb-8">
-            <a
-              title="Resume"
-              href="/Nisha_Kumari_Berlin_Resume.pdf"
-              className="w-full rounded-md border border-primary-300 py-2.5 text-center text-primary transition-all duration-300 hover:bg-primary-50"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => {
-                setOverlayVisible(false);
-              }}>
-              Resume
-            </a>
-            <button
-              className="w-full rounded-md bg-primary py-2.5 text-primary-50 transition-all duration-300 hover:bg-primary-700 hover:shadow-md focus:outline-none"
+            <Button
+              asChild
+              variant="outline"
+              size="lg">
+              <a
+                title="Resume"
+                href="/Nisha_Kumari_Berlin_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  setOverlayVisible(false);
+                }}>
+                Resume
+              </a>
+            </Button>
+            <Button
+              size="lg"
               onClick={() => {
                 setShowContact(true);
                 setOverlayVisible(false);
               }}>
               Let's Talk
-            </button>
+            </Button>
           </div>
         </Overlay>
       </NavigationBar>

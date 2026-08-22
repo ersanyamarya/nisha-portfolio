@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 
-import { getImage } from 'gatsby-plugin-image';
+import { Badge } from '@/components/ui/badge';
 import MqtizerGraphic from '../../images/projects/mqtizer/moc.gif';
 import MqtizerWebGraphic from '../../images/projects/mqtizerWeb/moc.png';
 import SpektrumGraphic from '../../images/projects/spektrum/moc.png';
@@ -63,35 +63,19 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
-  const { allFile } = useStaticQuery(graphql`
-    query AllProjectImages {
-      allFile(filter: { relativeDirectory: { regex: "/projects/" } }) {
-        nodes {
-          relativePath
-          name
-          childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG, quality: 100)
-          }
-        }
-      }
-    }
-  `);
-
   return (
     <section
       id="projects"
       className="gap-10vh flex w-full flex-col gap-16 font-light">
       <h2 className="text-4xl font-medium">Selected Work</h2>
       {projects.map((project, index) => {
-        const placeholderImage = allFile.nodes.find(node => node.relativePath === project.backDrop);
-        const image = getImage(placeholderImage);
-
         const order = index % 2 !== 0 ? 0 : 1;
 
         return (
           <Link
+            key={project.link}
             to={project.link}
-            className="grid h-full grid-cols-1 gap-8 rounded-lg border-2 border-primary p-16 transition hover:shadow-xl md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
+            className="grid h-full grid-cols-1 gap-8 rounded-lg border border-border bg-card p-6 shadow-sm transition hover:shadow-lg sm:p-10 md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
             style={{
               color: project.brand.primary,
 
@@ -121,20 +105,20 @@ export default function ProjectsSection() {
 
             <div className="col-span-1 flex flex-col justify-center gap-6 md:col-span-3">
               {/* <h3 className="text-4xl">{project.name}</h3> */}
-              <p className="text-3xl">{project.description}</p>
-              <ul className="flex flex-wrap gap-2">
-                {project.tags.map((tag, index) => (
-                  <li
-                    key={index}
-                    className="rounded-md px-3 py-2 text-lg"
+              <p className="text-2xl md:text-3xl">{project.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map(tag => (
+                  <Badge
+                    key={tag}
+                    className="border-transparent px-3 py-2 text-base"
                     style={{
                       backgroundColor: project.brand.secondary,
                       color: contrastColor(project.brand.secondary),
                     }}>
                     {tag}
-                  </li>
+                  </Badge>
                 ))}
-              </ul>
+              </div>
               <ul className="flex flex-col gap-2 text-lg">
                 {Object.entries(project.bullets).map(([key, value], index) => (
                   <li key={index}>

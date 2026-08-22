@@ -1,5 +1,6 @@
-import { Link } from 'gatsby';
 import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 type Testimonial = {
   name: string;
   title: string;
@@ -67,8 +68,16 @@ Thx!`,
   },
 ];
 
+// Falls back to the person's initials: the LinkedIn CDN URLs below are signed and
+// expire, so a dead `picture` should degrade to something legible, not an empty box.
+const initialsOf = (name: string) => {
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+};
+
 export function TestimonialCard({ name, title, location, picture, link, testimonial }: Testimonial) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [pictureFailed, setPictureFailed] = useState(false);
 
   const toggleExpand = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -76,42 +85,54 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
   };
 
   return (
-    <div className="grid grid-cols-1 gap-6 rounded-lg bg-default-100 p-16 md:grid-cols-[300px_1fr] md:gap-8">
-      <Link
+    <Card className="grid grid-cols-1 gap-6 border-none bg-default-100 p-6 shadow-none sm:p-10 md:grid-cols-[300px_1fr] md:gap-8 md:p-16">
+      <a
         className="flex flex-col gap-2"
-        to={link}>
-        <div className="border-gray-200 h-20 w-20 overflow-hidden rounded border">
-          <img
-            src={picture}
-            alt={name}
-            className="h-full w-full object-cover"
-          />
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer">
+        <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded border border-default-200 bg-default-100">
+          {pictureFailed ? (
+            <span
+              aria-hidden="true"
+              className="text-2xl font-medium text-default-600">
+              {initialsOf(name)}
+            </span>
+          ) : (
+            <img
+              src={picture}
+              alt={name}
+              className="h-full w-full object-cover"
+              onError={() => setPictureFailed(true)}
+            />
+          )}
         </div>
         <div className="space-y-1">
           <h3 className="text-lg font-semibold">{name}</h3>
-          <p className="text-muted-foreground text-base">{title}</p>
-          <p className="text-muted-foreground text-sm">{location}</p>
+          <p className="text-base text-muted-foreground">{title}</p>
+          <p className="text-sm text-muted-foreground">{location}</p>
         </div>
-      </Link>
+      </a>
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className={`text-gray-700 whitespace-pre-line transition-all duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>
+          <p className={`whitespace-pre-line text-default-700 transition-all duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>
             <svg
-              className="text-gray-400 mb-4 h-8 w-8"
+              className="mb-4 h-8 w-8 text-default-400"
               fill="currentColor"
               viewBox="0 0 24 24">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
             {testimonial}
           </p>
-          <button
-            onClick={toggleExpand}
-            className="font-medium text-primary transition-colors hover:text-primary-700">
+          <Button
+            variant="link"
+            className="h-11 justify-start p-0 sm:h-auto"
+            onClick={toggleExpand}>
             {isExpanded ? 'Show Less' : 'Read More'}
-          </button>
+          </Button>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
@@ -132,10 +153,13 @@ export default function TestimonialSection() {
       className="gap-10vh flex w-full flex-col gap-8 font-light">
       <div className="relative flex items-center justify-between">
         <h2 className="text-4xl font-medium">Recommendations</h2>
-        <div>
-          <button
-            onClick={previousTestimonial}
-            className="hover:bg-gray-50 rounded-full p-2 text-primary">
+        <div className="flex gap-1">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="size-11 rounded-full text-primary md:size-9"
+            aria-label="Previous testimonial"
+            onClick={previousTestimonial}>
             <svg
               className="h-6 w-6"
               fill="none"
@@ -148,10 +172,13 @@ export default function TestimonialSection() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="hover:bg-gray-50 rounded-full p-2 text-primary">
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="size-11 rounded-full text-primary md:size-9"
+            aria-label="Next testimonial"
+            onClick={nextTestimonial}>
             <svg
               className="h-6 w-6"
               fill="none"
@@ -164,7 +191,7 @@ export default function TestimonialSection() {
                 d="M9 5l7 7-7 7"
               />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
       <div className="relative">
@@ -187,14 +214,15 @@ export default function TestimonialSection() {
         {/* Navigation Buttons */}
 
         {/* Pagination Indicators */}
-        <div className="mt-4 flex justify-center gap-2">
+        <div className="mt-4 flex justify-center">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-2 w-2 rounded-full transition-all ${index === currentIndex ? 'w-4 bg-primary' : 'bg-default-300'}`}
-              aria-label={`Go to testimonial ${index + 1}`}
-            />
+              className="flex size-11 items-center justify-center"
+              aria-label={`Go to testimonial ${index + 1}`}>
+              <span className={`h-2 rounded-full transition-all ${index === currentIndex ? 'w-4 bg-primary' : 'w-2 bg-default-300'}`} />
+            </button>
           ))}
         </div>
       </div>
