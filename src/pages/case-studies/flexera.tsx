@@ -7,16 +7,14 @@ import {
   ChallengeApproachOutcome,
   DarkStat,
   Eyebrow,
-  FlowChain,
-  FlowChainLegend,
   FooterNav,
   InsightCallout,
   PillTag,
   QuoteBlock,
   SectionHeading,
   StatChip,
-  Timeline,
 } from '../../components/caseStudy';
+import { DIAGRAM_FONT_LINK, JobTraceFlow, LifecycleFlow, QuarterTimeline } from '../../components/caseStudy/diagrams';
 import AnomalyGraph from '../../images/case-studies/flexera/flexera-anomaly-graph-branded.png';
 import CurrentExperienceAudit from '../../images/case-studies/flexera/flexera-current-experience-audit.png';
 import DiscoveryDiscussions from '../../images/case-studies/flexera/flexera-discovery-discussions.png';
@@ -129,30 +127,21 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="timeline">
         <Eyebrow>Project timeline</Eyebrow>
         <SectionHeading>Two quarters: discovery to ship</SectionHeading>
-        <Timeline
-          steps={[
-            {
-              tone: 'primary',
-              phase: 'Quarter 1',
-              title: 'Discovery',
-              description: 'Usage data review, stakeholder & FinOps interviews, current-state gap analysis, cross-functional lifecycle framework.',
-            },
-            {
-              tone: 'success',
-              phase: 'Q1 → Q2',
-              title: 'Design & prototyping',
-              description:
-                "Data model definition, user journey mapping, wireframing, iteration with algorithm and engineering teams on what's feasible for MVP.",
-            },
-            {
-              tone: 'secondary',
-              phase: 'End of Q2',
-              title: 'MVP delivery',
-              description:
-                'Shipped system-generated anomalies experience: navigation destination, filterable/groupable table, detail slide-out with root cause analysis concept.',
-            },
-          ]}
-        />
+        <QuarterTimeline />
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <p className="text-sm leading-relaxed text-default-500">
+            <strong className="text-default-700">Discovery:</strong> usage data review, stakeholder & FinOps interviews, current-state gap analysis,
+            cross-functional lifecycle framework.
+          </p>
+          <p className="text-sm leading-relaxed text-default-500">
+            <strong className="text-default-700">Design & prototyping:</strong> data model definition, user journey mapping, wireframing, iteration with
+            algorithm and engineering teams on what's feasible for MVP.
+          </p>
+          <p className="text-sm leading-relaxed text-default-500">
+            <strong className="text-default-700">MVP delivery:</strong> shipped system-generated anomalies experience: navigation destination,
+            filterable/groupable table, detail slide-out with root cause analysis concept.
+          </p>
+        </div>
       </section>
 
       <section id="scope">
@@ -310,15 +299,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           We mapped the full lifecycle of a cloud cost anomaly, assigned a RACI owner to every step, and used a crawl/walk/run maturity model to set a shared
           target instead of five different mental models of &ldquo;done.&rdquo;
         </p>
-        <FlowChain
-          steps={[
-            { tone: 'success', text: 'Detection' },
-            { tone: 'secondary', text: 'Notification (not implemented)' },
-            { tone: 'success', text: 'Analysis' },
-            { tone: 'default', text: 'Resolution' },
-            { tone: 'default', text: 'Retrospective ↻' },
-          ]}
-        />
+        <LifecycleFlow />
         <div className="mt-6 flex flex-col gap-2">
           <p className="text-sm leading-relaxed text-default-500">
             <strong>Detection:</strong> record created. <strong>Analysis:</strong> find the why / identify the root cause.
@@ -369,16 +350,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           Each job carries its own chain: a research finding exposed a pain point, the pain point implied a human need, and that need was restated as a job the
           MVP had to serve.
         </p>
-        <FlowChainLegend
-          items={[
-            { tone: 'secondary', label: 'Research finding' },
-            { tone: 'primary', label: 'Pain point → user need' },
-            { tone: 'success', label: 'Job → MVP decision' },
-            { tone: 'default', label: 'Why it fit / next' },
-          ]}
-        />
-
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-8">
           <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 1: CATCH IT EARLY</div>
             <p className="mb-2.5 text-base leading-relaxed text-default-800">
@@ -389,14 +361,17 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
               Evidence: &ldquo;We don't need what we have right now. Without doing anything our users want to know what is unusual.&rdquo; — internal Flexera
               FinOps advisor.
             </p>
-            <FlowChain
+            <JobTraceFlow
+              slug="flexera-job-1"
+              title="Job 1 trace: catch it early"
+              desc="From the finding that 92% of visitors dropped off before reaching the anomalies view, to the job of catching problems early, to the MVP's decision to detect on a daily/weekly grain, and what's next."
               steps={[
-                { tone: 'secondary', text: '92% of visitors dropped off before reaching the anomalies view' },
-                { tone: 'primary', text: "Need: know something's wrong while it's still small" },
-                { tone: 'success', text: 'Job: catch it early' },
-                { tone: 'default', text: 'Decision: daily/weekly detection grain only, monthly excluded' },
-                { tone: 'default', text: 'Q2 detection covers amortized unblended only, the most stable metric at that grain' },
-                { tone: 'default', text: 'Next: validate detection, then expand to the other 3 cost metrics' },
+                { kind: 'input', lines: ['92% dropped off', 'before anomalies view'] },
+                { kind: 'plain', lines: ["Know it's wrong", 'while still small'] },
+                { kind: 'focal', lines: ['Catch it', 'early'] },
+                { kind: 'plain', lines: ['Daily/weekly grain', 'only (no monthly)'] },
+                { kind: 'plain', lines: ['Amortized unblended,', 'most stable metric'] },
+                { kind: 'future', lines: ['Expand to other', '3 cost metrics'] },
               ]}
             />
           </div>
@@ -411,14 +386,17 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
               and a $500,000/month one. &ldquo;It would be great if the table had the feasibility to choose the dimensions.&rdquo; — internal Flexera FinOps
               advisor.
             </p>
-            <FlowChain
+            <JobTraceFlow
+              slug="flexera-job-2"
+              title="Job 2 trace: judge it in context"
+              desc="From advisors converging on the same service/region/billing-center dimensions, to the job of judging an anomaly in context, to the MVP's decision to auto-find the key dimension combination, and what's next."
               steps={[
-                { tone: 'secondary', text: 'Advisors converged on the same dimensions: service, region, billing center' },
-                { tone: 'primary', text: 'Need: see an anomaly against the numbers that matter to my team' },
-                { tone: 'success', text: 'Job: judge it in context' },
-                { tone: 'default', text: 'AI finds the right combination of key dimensions automatically' },
-                { tone: 'default', text: 'Default sort by cost impact; users can still filter/group/sort manually' },
-                { tone: 'default', text: 'Next: re-test grouping/filtering with power users tracking many dimensions' },
+                { kind: 'input', lines: ['Advisors converge on', 'service/region/billing'] },
+                { kind: 'plain', lines: ['See it against my', "team's own numbers"] },
+                { kind: 'focal', lines: ['Judge it in', 'context'] },
+                { kind: 'plain', lines: ['AI finds key dimension', 'combination automatically'] },
+                { kind: 'plain', lines: ['Default sort by', 'cost impact'] },
+                { kind: 'future', lines: ['Re-test with power', 'users, many dimensions'] },
               ]}
             />
           </div>
@@ -432,14 +410,17 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
               Evidence: when friction points were scored against UX impact and speed to fix, the absence of any root cause explanation ranked as the top
               priority, ahead of missing alerts and thin recommendations.
             </p>
-            <FlowChain
+            <JobTraceFlow
+              slug="flexera-job-3"
+              title="Job 3 trace: explain it confidently"
+              desc="From no-root-cause ranking as the top friction point, to the job of explaining an anomaly confidently, to the MVP's decision to pair a graph with an auto-built top-contributors table, and what's next."
               steps={[
-                { tone: 'secondary', text: 'No root cause ranked as the top friction point in prioritization' },
-                { tone: 'primary', text: 'Need: know why it happened before forwarding it' },
-                { tone: 'success', text: 'Job: explain it confidently' },
-                { tone: 'default', text: 'Pair a graph with a pre-configured, dynamically built table of top contributors' },
-                { tone: 'default', text: 'e.g. 4 of a billing center’s 100 accounts, not the full list' },
-                { tone: 'default', text: 'Next: drill-down to add more dimensions for deeper root cause work' },
+                { kind: 'input', lines: ['No root cause =', 'top friction point'] },
+                { kind: 'plain', lines: ['Know why before', 'forwarding it'] },
+                { kind: 'focal', lines: ['Explain it', 'confidently'] },
+                { kind: 'plain', lines: ['Graph + auto-built', 'top-contributors table'] },
+                { kind: 'plain', lines: ['4 of 100 accounts,', 'not the full list'] },
+                { kind: 'future', lines: ['Drill-down for deeper', 'root-cause work'] },
               ]}
             />
           </div>
@@ -568,10 +549,16 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
 export default FlexeraCaseStudy;
 
 export const Head: HeadFC = () => (
-  <SEO
-    title="Flexera cloud cost anomaly detection"
-    description="Discovery, research synthesis and UX design for Flexera's AI-based cloud cost anomaly detection MVP."
-    pathname="/case-studies/flexera"
-    keyWords={['Flexera', 'FinOps', 'cloud cost anomaly detection', 'AI/ML UX', 'discovery research']}
-  />
+  <>
+    <link
+      rel="stylesheet"
+      href={DIAGRAM_FONT_LINK}
+    />
+    <SEO
+      title="Flexera cloud cost anomaly detection"
+      description="Discovery, research synthesis and UX design for Flexera's AI-based cloud cost anomaly detection MVP."
+      pathname="/case-studies/flexera"
+      keyWords={['Flexera', 'FinOps', 'cloud cost anomaly detection', 'AI/ML UX', 'discovery research']}
+    />
+  </>
 );

@@ -202,44 +202,6 @@ export function ProsCons({ pros, cons }: { pros: string[]; cons: string[] }) {
   );
 }
 
-export interface TimelineStep {
-  tone: Tone;
-  phase: string;
-  title: string;
-  description: string;
-}
-
-/** A gradient progress bar plus N labelled phases underneath it — used for project timelines. */
-export function Timeline({ steps }: { steps: TimelineStep[] }) {
-  const stops = steps
-    .map((step, i) => {
-      const from = (i / steps.length) * 100;
-      const to = ((i + 1) / steps.length) * 100;
-      return `var(--color-${step.tone}-500) ${from}%, var(--color-${step.tone}-500) ${to}%`;
-    })
-    .join(', ');
-
-  return (
-    <div>
-      <div
-        className="mb-6 h-2 rounded-full"
-        style={{ background: `linear-gradient(90deg, ${stops})` }}
-      />
-      <div
-        className="grid grid-cols-1 gap-6 md:[grid-template-columns:repeat(var(--tl-cols),minmax(0,1fr))]"
-        style={{ '--tl-cols': steps.length } as React.CSSProperties}>
-        {steps.map(step => (
-          <div key={step.phase}>
-            <div className={`mb-2 text-xs font-bold tracking-wide ${TONE_TEXT[step.tone]}`}>{step.phase}</div>
-            <div className="mb-2 font-bold">{step.title}</div>
-            <p className="text-sm leading-relaxed text-default-500">{step.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function FooterNav({ prevLabel = 'All work', nextLabel, nextTo }: { prevLabel?: string; nextLabel: string; nextTo: string }) {
   return (
     <section className="mt-16 border-t border-default-200 bg-default-100 px-6 py-10 md:px-10">
