@@ -2,142 +2,106 @@ import React from 'react';
 
 import { Link } from 'gatsby';
 
-import { Badge } from '@/components/ui/badge';
-import MqtizerGraphic from '../../images/projects/mqtizer/moc.gif';
-import MqtizerWebGraphic from '../../images/projects/mqtizerWeb/moc.png';
-import SpektrumGraphic from '../../images/projects/spektrum/moc.png';
+import { Tone, TONE_GRADIENT_FROM, TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
+import FlexeraGraphic from '../../images/case-studies/flexera/flexera-anomaly-graph-branded.png';
+import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum-scheduler-hero.jpg';
 
-const projects = [
+const caseStudies: {
+  name: string;
+  link: string;
+  domain: string;
+  role: string;
+  description: string;
+  tags: string[];
+  statValue: string;
+  statLabel: string;
+  tone: Tone;
+  graphic: string;
+}[] = [
   {
-    name: 'MQTIZER',
-    link: '/projects/mqtizerApp',
-    description: 'Overcoming Configuration Challenges in MQTT for Industry 4.0',
-    brand: {
-      primary: '#353D69',
-      secondary: '#FFDEA2',
-      bg: '#FFFCF6',
-    },
-    tags: ['iOS/Android Mobile App', 'IoT', 'UX Research & Design Case Study'],
-    bullets: {
-      'Key Role': 'User research, ideation workshops, A/B testing and End-to-End visual design.',
-      Impact: 'Boosted navigation efficiency by 60%',
-    },
-    // backDrop: 'projects/mqtizer/backdrop.png',
-    graphic: MqtizerGraphic,
+    name: 'Flexera',
+    link: '/case-studies/flexera',
+    domain: 'FinOps',
+    role: 'UX Research & Design',
+    description: 'Rebuilding AI-based cloud cost anomaly detection that practitioners actually trust',
+    tags: ['Discovery research', 'AI/ML UX', 'Enterprise SaaS'],
+    statValue: '~5/6',
+    statLabel: 'customers identified the top cost contributor',
+    tone: 'primary',
+    graphic: FlexeraGraphic,
   },
   {
-    name: 'Spektrum',
-    link: '/projects/spektrum',
+    name: 'Spektrum Akademie',
+    link: '/case-studies/spektrum',
+    domain: 'EdTech',
+    role: 'UX Research & Design',
     description: 'Inability to track real-time progress of academic resources, leading to planning inefficiencies',
-    brand: {
-      primary: '#2A2244',
-      secondary: '#674EB4',
-      bg: '#F1F1FC',
-    },
-    tags: ['Web App', 'EdTech', 'UX Research & Design Case Study'],
-    bullets: {
-      'Key Role': 'UX Research, Information Architecture, End-to-End visual design, Usability Testing',
-      Impact: '90% scheduling accuracy, 90% reduction in manual tracking, and 75% faster timetable creation',
-    },
-    // // backDrop: 'projects/mqtizer/backdrop.png',
+    tags: ['Web App', 'EdTech', 'Information Architecture'],
+    statValue: '90%',
+    statLabel: 'less manual tracking',
+    tone: 'success',
     graphic: SpektrumGraphic,
-  },
-  {
-    name: 'MQTIZER Web',
-    link: '/projects/mqtizerWeb',
-    description: 'Increase Conversion Rate + Brand Awareness of App Through Website Design',
-    brand: {
-      primary: '#353D69',
-      secondary: '#DEE0FF',
-      bg: '#FCFCFF',
-    },
-
-    tags: ['Web Design', 'IoT', 'Marketing Strategy & Design Case Study'],
-    bullets: {
-      'Key Role': 'Data-driven design strategy, site map and End-to-End visual design.',
-      Impact: 'Achieved a 4% conversion rate and 100% accessibility and SEO scores.',
-    },
-    // // backDrop: 'projects/mqtizer/backdrop.png',
-    graphic: MqtizerWebGraphic,
   },
 ];
 
 export default function ProjectsSection() {
   return (
     <section
-      id="projects"
-      className="gap-10vh flex w-full flex-col gap-16 font-light">
-      <h2 className="text-4xl font-medium">Selected Work</h2>
-      {projects.map((project, index) => {
-        const order = index % 2 !== 0 ? 0 : 1;
+      id="work"
+      className="flex w-full flex-col gap-10">
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <div className="mb-4 text-sm font-semibold tracking-wide text-primary">SELECTED WORK</div>
+          <h2 className="text-4xl font-extrabold tracking-[-0.02em] md:text-5xl">Case studies.</h2>
+        </div>
+        <p className="max-w-sm text-default-600">Two problems worth brewing over. Role, domain and outcome, tasted before you read the full pour.</p>
+      </div>
 
-        return (
+      <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
+        {caseStudies.map(project => (
           <Link
             key={project.link}
             to={project.link}
-            className="grid h-full grid-cols-1 gap-8 rounded-lg border border-border bg-card p-6 shadow-sm transition hover:shadow-lg sm:p-10 md:h-[32rem] md:grid-cols-5 md:p-0 md:px-16"
-            style={{
-              color: project.brand.primary,
-
-              // backgroundColor: project.brand.bg,
-            }}>
-            {/* <GatsbyImage
-              image={image}
-              alt={project.name}
-              className="absolute inset-0 z-0 h-full w-full rounded-lg"
-              imgClassName="h-full w-full rounded-lg object-cover"
-            /> */}
-
-            <div
-              className="col-span-1 flex items-center justify-center md:col-span-2"
-              style={{
-                order,
-              }}>
+            className="group block overflow-hidden rounded-2xl border border-default-200 bg-background transition-all hover:-translate-y-1">
+            <div className="relative flex h-60 items-center justify-center overflow-hidden bg-default-100">
               <img
-                className=""
-                style={{
-                  filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-                }}
                 src={project.graphic}
                 alt={project.name}
+                className="h-full w-full object-cover"
               />
+              <div
+                className={`absolute inset-0 flex items-end justify-start bg-gradient-to-t to-transparent to-55% p-5 opacity-0 transition-opacity group-hover:opacity-100 ${TONE_GRADIENT_FROM[project.tone]}`}>
+                <span className="text-white text-sm font-bold">View case study →</span>
+              </div>
             </div>
 
-            <div className="col-span-1 flex flex-col justify-center gap-6 md:col-span-3">
-              {/* <h3 className="text-4xl">{project.name}</h3> */}
-              <p className="text-2xl md:text-3xl">{project.description}</p>
-              <div className="flex flex-wrap gap-2">
+            <div className="p-7">
+              <div className="mb-4 flex flex-wrap gap-2">
+                <span className={`rounded-full px-3 py-1.5 text-xs font-bold tracking-wide ${TONE_SOLID[project.tone]}`}>{project.domain}</span>
+                <span className="rounded-full bg-default-100 px-3 py-1.5 text-xs font-bold tracking-wide text-default-600">{project.role}</span>
+              </div>
+              <h3 className="mb-3 text-xl leading-snug font-extrabold tracking-[-0.01em]">{project.description}</h3>
+              <div className="mb-4 text-sm font-semibold text-default-500">{project.name}</div>
+              <div className="mb-5 flex flex-wrap gap-2">
                 {project.tags.map(tag => (
-                  <Badge
+                  <span
                     key={tag}
-                    className="border-transparent px-3 py-2 text-base"
-                    style={{
-                      backgroundColor: project.brand.secondary,
-                      color: contrastColor(project.brand.secondary),
-                    }}>
+                    className="rounded-full border border-default-200 px-3 py-1.5 text-xs font-medium">
                     {tag}
-                  </Badge>
+                  </span>
                 ))}
               </div>
-              <ul className="flex flex-col gap-2 text-lg">
-                {Object.entries(project.bullets).map(([key, value], index) => (
-                  <li key={index}>
-                    <span className="text-xl font-normal">{key}:</span> {value}
-                  </li>
-                ))}
-              </ul>
+              <div className="flex items-center justify-between border-t border-default-200 pt-4">
+                <div className="flex items-baseline gap-2">
+                  <span className={`text-xl font-extrabold ${TONE_TEXT[project.tone]}`}>{project.statValue}</span>
+                  <span className="text-xs font-medium text-default-500">{project.statLabel}</span>
+                </div>
+                <span className={`text-sm font-semibold ${TONE_TEXT[project.tone]}`}>View case study →</span>
+              </div>
             </div>
           </Link>
-        );
-      })}
+        ))}
+      </div>
     </section>
   );
 }
-
-const contrastColor = (hex: string) => {
-  const r = parseInt(hex.substr(1, 2), 16);
-  const g = parseInt(hex.substr(3, 2), 16);
-  const b = parseInt(hex.substr(5, 2), 16);
-  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-  return brightness >= 128 ? '#222' : '#fafafa';
-};

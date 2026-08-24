@@ -55,8 +55,8 @@ const config: GatsbyConfig = {
         short_name: 'Nisha Kumari',
         start_url: '/',
         display: 'standalone',
-        background_color: '#fffdfa',
-        theme_color: '#525c8f',
+        background_color: '#fbf6ef',
+        theme_color: '#a3552f',
         lang: 'en',
       },
     },
@@ -100,8 +100,12 @@ const config: GatsbyConfig = {
         preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
         web: [
           {
-            name: `Lato`,
-            file: `https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap`,
+            name: `Inter`,
+            file: `https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap`,
+          },
+          {
+            name: `Newsreader`,
+            file: `https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;1,400;1,500&display=swap`,
           },
         ],
       },

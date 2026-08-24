@@ -7,22 +7,18 @@ import useScrollPosition from '../../hooks/useScrollPosition';
 import Contact from '../../sections/contact';
 
 const NAVIGATION_LINKS = [
-  // {
-  //   name: 'Home',
-  //   path: '/',
-  // },
   {
     name: 'Selected Work',
-    path: '/#projects',
+    path: '/#work',
+  },
+  {
+    name: 'How I work',
+    path: '/#process',
   },
   {
     name: 'Recommendations',
     path: '/#recommendations',
   },
-  // {
-  //   name: 'Blog',
-  //   path: '/blog',
-  // },
 ];
 
 const NavigationBar = styled.nav({
@@ -79,9 +75,12 @@ export default function NavBar() {
   const scrollPosition = useScrollPosition();
   const [isOverlayVisible, setOverlayVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollPct, setScrollPct] = useState(0);
 
   useEffect(() => {
     setIsScrolled(scrollPosition > 0);
+    const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    setScrollPct(max > 0 ? Math.min((scrollPosition / max) * 100, 100) : 0);
   }, [scrollPosition]);
 
   return (
@@ -90,6 +89,12 @@ export default function NavBar() {
         open={showContact}
         onClose={() => setShowContact(false)}
       />
+      <div className="fixed top-0 right-0 left-0 z-20 h-[3px] bg-default-200">
+        <div
+          className="h-full bg-primary transition-[width] duration-150"
+          style={{ width: `${scrollPct}%` }}
+        />
+      </div>
       <NavigationBar
         className={`${isScrolled ? 'shadow' : ''} sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between px-4 py-6 transition-all duration-300 md:px-8 lg:px-24`}>
         <div className="z-30">

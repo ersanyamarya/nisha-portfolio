@@ -1,19 +1,79 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useRef, useState } from 'react';
 import { Logo } from '../../components';
+
+const SECTIONS = [
+  { name: 'About', path: '/#top' },
+  { name: 'Selected work', path: '/#work' },
+  { name: 'How I work', path: '/#process' },
+  { name: 'Contact', path: '/#contact' },
+];
+
+function BrewButton() {
+  const [pct, setPct] = useState(0);
+  const [brewing, setBrewing] = useState(false);
+  const [brewed, setBrewed] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (resetRef.current) clearTimeout(resetRef.current);
+    },
+    []
+  );
+
+  const startBrew = () => {
+    if (brewing) return;
+    if (resetRef.current) clearTimeout(resetRef.current);
+    setBrewing(true);
+    setBrewed(false);
+    setPct(0);
+    intervalRef.current = setInterval(() => {
+      setPct(prev => {
+        const next = prev + 8;
+        if (next >= 100) {
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          resetRef.current = setTimeout(() => {
+            setBrewed(false);
+            setPct(0);
+          }, 4000);
+          setBrewing(false);
+          setBrewed(true);
+          return 100;
+        }
+        return next;
+      });
+    }, 90);
+  };
+
+  let label = 'Brew me a coffee?';
+  if (brewing) label = `Brewing... ${pct}%`;
+  if (brewed) label = 'Order’s up, thanks for scrolling this far.';
+
+  return (
+    <button
+      onClick={startBrew}
+      className="inline-flex cursor-pointer items-center gap-2.5 rounded-full border border-default-50/25 bg-transparent px-4 py-2.5 text-xs font-semibold text-default-50">
+      <span
+        className="size-3.5 shrink-0 rounded-full"
+        style={{ background: `conic-gradient(var(--color-primary-400) ${pct}%, rgba(255,255,255,0.2) 0)` }}
+      />
+      {label}
+    </button>
+  );
+}
 
 export default function Footer() {
   const {
     site: {
-      siteMetadata: { description, title, copyWrite },
+      siteMetadata: { copyWrite },
     },
   } = useStaticQuery(graphql`
     query SiteData {
       site {
         siteMetadata {
-          description
-          title
           copyWrite
         }
       }
@@ -21,69 +81,67 @@ export default function Footer() {
   `);
 
   return (
-    <>
-      <div
-        className="mx-8 mt-32 mb-8 rounded-md border-2 border-primary-900 px-8 py-8 md:px-24 md:py-16"
-        // style={{
-        //   backgroundImage: 'url(/bg.svg)',
-        //   backgroundSize: 'cover',
-        //   backgroundRepeat: 'no-repeat',
-        //   // backgroundPosition: 'bottom center',
-        // }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="flex w-[80%] flex-col gap-2">
+    <div className="-mx-4 mt-24 bg-default-900 px-4 md:px-8 lg:px-24">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <div className="mb-3">
             <Logo />
-            <h3 className="text-lg font-medium">{title}</h3>
-            <p className="mt-2 text-base">
-              <span className="font-medium">What really drives me?</span> The thrill of stepping into the unknown, diving headfirst into challenges that make me
-              think, grow, and ultimately become a better designer.
-            </p>
           </div>
-          <div className="mt-10 flex flex-row items-start justify-between md:m-0 md:justify-end md:gap-4">
-            <Button
-              asChild
-              variant="ghost"
-              size="lg"
-              className="text-lg">
+          <p className="max-w-[260px] text-sm leading-relaxed text-default-50 opacity-55">
+            Senior UX designer in Berlin. Slow mornings, careful research, no shortcuts either way.
+          </p>
+        </div>
+
+        <div>
+          <div className="mb-4 text-xs font-bold tracking-widest text-default-50 opacity-50">SECTIONS</div>
+          <div className="flex flex-col gap-2.5 text-sm">
+            {SECTIONS.map(link => (
               <a
-                title="Resume"
-                href="/Nisha_Kumari_Berlin_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer">
-                Resume
+                key={link.name}
+                href={link.path}
+                className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
+                {link.name}
               </a>
-            </Button>
-            <Button
-              asChild
-              variant="ghost"
-              size="lg"
-              className="text-lg">
-              <a
-                title="LinkedIn"
-                href="https://www.linkedin.com/in/nisha-kumari-de/"
-                target="_blank"
-                rel="noopener noreferrer">
-                Linkedin
-              </a>
-            </Button>
-            <Button
-              asChild
-              variant="ghost"
-              size="lg"
-              className="text-lg">
-              <a
-                title="Behance"
-                href="https://www.behance.net/nisha-kumari-de"
-                target="_blank"
-                rel="noopener noreferrer">
-                Behance
-              </a>
-            </Button>
+            ))}
           </div>
         </div>
+
+        <div>
+          <div className="mb-4 text-xs font-bold tracking-widest text-default-50 opacity-50">CONNECT</div>
+          <div className="flex flex-col gap-2.5 text-sm">
+            <a
+              href="https://www.linkedin.com/in/nisha-kumari-de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
+              LinkedIn
+            </a>
+            <a
+              href="https://www.behance.net/nisha-kumari-de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
+              Behance
+            </a>
+            <a
+              href="/Nisha_Kumari_Berlin_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
+              Resume ↓
+            </a>
+            <span className="text-default-50 opacity-75">Berlin, Germany</span>
+          </div>
+        </div>
+
+        <div className="flex items-start md:justify-end">
+          <BrewButton />
+        </div>
       </div>
-      <div className="h-1" />
-    </>
+
+      <div className="mx-auto max-w-6xl border-t border-default-50/10 py-5 text-xs text-default-50 opacity-45">
+        © {new Date().getFullYear()} {copyWrite}
+      </div>
+    </div>
   );
 }
