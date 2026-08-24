@@ -4,6 +4,7 @@ import { Link } from 'gatsby';
 
 import { Tone, TONE_GRADIENT_FROM, TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
 import FlexeraGraphic from '../../images/case-studies/flexera/flexera-anomaly-graph-branded.png';
+import SanyamGraphic from '../../images/case-studies/sanyam-portfolio/sanyam-portfolio-hero.jpg';
 import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum-scheduler-hero.jpg';
 
 const caseStudies: {
@@ -42,6 +43,18 @@ const caseStudies: {
     tone: 'success',
     graphic: SpektrumGraphic,
   },
+  {
+    name: 'Sanyam Arya',
+    link: '/case-studies/sanyam-portfolio',
+    domain: 'Personal Brand',
+    role: 'IA & Content Strategy',
+    description: 'A portfolio that still read "developer" after the job had already changed',
+    tags: ['Personal Site', 'Information Architecture', 'Brand Positioning'],
+    statValue: 'Live',
+    statLabel: 'now leads with his current title, not his oldest one',
+    tone: 'secondary',
+    graphic: SanyamGraphic,
+  },
 ];
 
 export default function ProjectsSection() {
@@ -54,10 +67,10 @@ export default function ProjectsSection() {
           <div className="mb-4 text-sm font-semibold tracking-wide text-primary">SELECTED WORK</div>
           <h2 className="text-4xl font-extrabold tracking-[-0.02em] md:text-5xl">Case studies.</h2>
         </div>
-        <p className="max-w-sm text-default-600">Two problems worth brewing over. Role, domain and outcome, tasted before you read the full pour.</p>
+        <p className="max-w-sm text-default-600">Three problems worth brewing over. Role, domain and outcome, tasted before you read the full pour.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
         {caseStudies.map(project => (
           <Link
             key={project.link}

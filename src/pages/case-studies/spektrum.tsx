@@ -283,8 +283,8 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
       </section>
 
       <FooterNav
-        nextLabel="Flexera cloud cost anomaly detection"
-        nextTo="/case-studies/flexera"
+        nextLabel="Sanyam Arya portfolio redesign"
+        nextTo="/case-studies/sanyam-portfolio"
       />
     </CaseStudyShell>
   );
