@@ -1,5 +1,6 @@
 import { animate, motion, useMotionTemplate, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform, useVelocity } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
+import useScrollPosition from '../../hooks/useScrollPosition';
 import useTheme, { originOf, ROAST_LABEL } from '../../hooks/useTheme';
 import { BeanIcon } from './beanIcon';
 
@@ -9,6 +10,12 @@ const NEAR_RADIUS = 200;
 const ROLL_PER_PX = 0.45;
 /** Scroll speed (px/s) at which the bean is fully leaned over and glowing. */
 const FULL_TILT_VELOCITY = 2200;
+/**
+ * The bean stays out of the way over the hero, whose bottom-right snippet card shares
+ * that corner. Hiding it costs nothing: the nav's own toggle switches the roast above
+ * the fold, so the control is never actually unavailable.
+ */
+const REVEAL_AT = 200;
 
 /** A 3px-wide annulus, so the conic-gradient renders as a ring rather than a filled disc. */
 const RING_MASK = 'radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px))';
@@ -30,6 +37,7 @@ export function CoffeeBean() {
   const reducedMotion = useReducedMotion();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const { next, toggleTheme } = useTheme();
+  const revealed = useScrollPosition() > REVEAL_AT;
 
   const { scrollY, scrollYProgress } = useScroll();
 
@@ -90,10 +98,14 @@ export function CoffeeBean() {
   return (
     <div
       ref={wrapperRef}
-      className="fixed right-5 bottom-6 z-30 md:right-8 md:bottom-10">
+      className={`fixed right-5 bottom-6 z-30 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:right-8 md:bottom-10 ${
+        revealed ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-3 opacity-0'
+      }`}>
       <motion.button
         type="button"
         onClick={switchRoast}
+        tabIndex={revealed ? 0 : -1}
+        aria-hidden={!revealed}
         aria-label={`Switch to ${ROAST_LABEL[next].toLowerCase()}`}
         className="group relative flex size-14 cursor-pointer items-center justify-center rounded-full border-none bg-transparent p-0 focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none md:size-16"
         style={{ scale: reducedMotion ? 1 : scale }}>

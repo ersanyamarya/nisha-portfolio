@@ -19,8 +19,7 @@ const SNIPPETS = [
     label: 'UI craft',
     value: 'Pixel perfect.',
     accent: 'bg-primary/15 text-primary',
-    // Kept clear of the bottom-right corner, where the fixed bean and its tooltip live.
-    position: 'bottom-24 -right-2 md:bottom-28 md:-right-6',
+    position: 'bottom-8 -right-2 md:-right-6',
     animation: 'float 7s ease-in-out infinite 2s',
   },
 ];
