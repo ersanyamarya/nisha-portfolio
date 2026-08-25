@@ -40,7 +40,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Flexera already had a way to catch cloud cost spikes. Almost nobody used it
         </h1>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           Flexera's cloud cost optimization platform helps enterprises manage spend across AWS, Azure and GCP. I led discovery, research synthesis and design
           for a rebuilt AI-based anomaly detection experience, working across Product, Engineering and the Data Science team over two quarters, from usage data
           to a shipped MVP.
@@ -107,7 +107,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           FinOps practitioners, engineering leads and finance stakeholders needed a reliable way to detect, understand and act on unexpected cloud cost spikes
           before they compounded into budget overruns.
         </p>
-        <p className="mb-7 text-lg leading-relaxed text-default-600">
+        <p className="mb-7 text-lg leading-relaxed text-muted-foreground">
           The existing experience used basic Bollinger Bands to flag spikes with no explanation, no filtering, and a disconnected workflow that redirected users
           away from their cost view. Customers didn't lack demand for anomaly detection. They lacked a trustworthy, explainable way to act on it.
         </p>
@@ -130,15 +130,15 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <QuarterTimeline />
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           <p className="text-sm leading-relaxed text-default-500">
-            <strong className="text-default-700">Discovery:</strong> usage data review, stakeholder & FinOps interviews, current-state gap analysis,
+            <strong className="text-muted-foreground">Discovery:</strong> usage data review, stakeholder & FinOps interviews, current-state gap analysis,
             cross-functional lifecycle framework.
           </p>
           <p className="text-sm leading-relaxed text-default-500">
-            <strong className="text-default-700">Design & prototyping:</strong> data model definition, user journey mapping, wireframing, iteration with
+            <strong className="text-muted-foreground">Design & prototyping:</strong> data model definition, user journey mapping, wireframing, iteration with
             algorithm and engineering teams on what's feasible for MVP.
           </p>
           <p className="text-sm leading-relaxed text-default-500">
-            <strong className="text-default-700">MVP delivery:</strong> shipped system-generated anomalies experience: navigation destination,
+            <strong className="text-muted-foreground">MVP delivery:</strong> shipped system-generated anomalies experience: navigation destination,
             filterable/groupable table, detail slide-out with root cause analysis concept.
           </p>
         </div>
@@ -147,7 +147,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="scope">
         <Eyebrow>Scope, objectives & constraints</Eyebrow>
         <SectionHeading>What discovery and design needed to accomplish</SectionHeading>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           Before any design work began, we set clear objectives for what research needed to answer.
         </p>
         <h3 className="mb-4 text-xl font-bold">Key design & research objectives</h3>
@@ -170,7 +170,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="research">
         <Eyebrow>Research & findings</Eyebrow>
         <SectionHeading>The evidence base the MVP was built on</SectionHeading>
-        <p className="mb-10 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           Before talking to a single user, usage data already made the case that something structural was broken, not just a rough edge. That reframed the
           research question from &ldquo;how do we improve anomaly detection&rdquo; to &ldquo;why are practitioners choosing not to use it, and what would make
           them trust it.&rdquo;
@@ -211,7 +211,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           alt="Annotated audit of the existing Tabular View and Cloud Cost Anomalies pages, marking manual filter setup, low prominence of the anomalies entry point, and unexplained anomaly charts"
           className="mb-6 block h-auto w-full rounded-2xl ring-1 ring-default-200"
         />
-        <p className="mb-5 text-lg leading-relaxed text-default-600">
+        <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
           A current-state gap analysis of the existing Cost Anomalies tool surfaced concrete, fixable reasons for the drop-off.
         </p>
         <div className="mb-5 flex flex-col gap-4">
@@ -236,7 +236,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </InsightCallout>
 
         <h3 className="mt-12 mb-4 text-xl font-bold">What FinOps practitioners told us</h3>
-        <p className="mb-6 text-lg leading-relaxed text-default-600">
+        <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
           Stakeholder interviews kept circling back to the same moment: right after an anomaly fires, when someone has to figure out what actually happened.
           Practitioners weren't short on alerts. They were short on a trustworthy explanation and a next step they could hand off with confidence.
         </p>
@@ -266,7 +266,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </InsightCallout>
 
         <h3 className="mt-12 mb-4 text-xl font-bold">How usage actually varies by customer</h3>
-        <p className="mb-5 text-lg leading-relaxed text-default-600">
+        <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
           Follow-up conversations with the product and research team surfaced behavioral nuance that a single FinOps persona glosses over.
         </p>
         <div className="mb-5 flex flex-col gap-4">
@@ -295,7 +295,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </InsightCallout>
 
         <h3 className="mt-12 mb-4 text-xl font-bold">Aligning Product, Engineering and Data Science on a shared lifecycle</h3>
-        <p className="mb-6 text-lg leading-relaxed text-default-600">
+        <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
           We mapped the full lifecycle of a cloud cost anomaly, assigned a RACI owner to every step, and used a crawl/walk/run maturity model to set a shared
           target instead of five different mental models of &ldquo;done.&rdquo;
         </p>
@@ -315,7 +315,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <Eyebrow>Jobs to be done</Eyebrow>
         <SectionHeading>What FinOps advisors were actually hiring the anomalies page to do</SectionHeading>
 
-        <p className="mb-4 text-lg leading-relaxed text-default-600">
+        <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
           <em>
             FinOps practitioners are simply the people at a company whose job is watching the cloud bill, they're who gets asked &ldquo;why did our AWS spend
             jump&rdquo; and has to have an answer.
@@ -325,7 +325,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           accomplish when they open this page, and what would let them consider it done.&rdquo; That framing mattered here because the old tool wasn't failing
           at one task, it was failing to support the underlying reasons people came to it in the first place.
         </p>
-        <p className="mb-4 text-lg leading-relaxed text-default-600">
+        <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
           We didn't run a separate JTBD study. The jobs were extracted from research we'd already done: the funnel and audit data explaining <em>where</em>{' '}
           people dropped off, and structured working sessions with internal FinOps advisors explaining <em>why</em>, what they were actually trying to get done
           in that moment and where the old page left them stuck. Statements advisors repeated across sessions, wanting to know what's unusual without digging,
@@ -333,7 +333,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           jobs, then checked back against the friction-prioritization scoring to confirm each one tied to a top-ranked pain point rather than an isolated
           comment.
         </p>
-        <p className="mb-8 text-lg leading-relaxed text-default-600">
+        <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           The three jobs map onto the three moments anyone dealing with an unexpected cost spike goes through: <strong>catching it early</strong> (detect that
           something's off), <strong>judging it in context</strong> (investigate whether it's a real problem), and <strong>explaining it confidently</strong>{' '}
           (decide what to do next and hand it off). Working sessions with internal FinOps advisors and engineering surfaced these jobs directly, captured on the
@@ -346,14 +346,14 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         />
 
         <h3 className="mb-2 text-xl font-bold">How each job traces back to research</h3>
-        <p className="mb-5 text-base leading-relaxed text-default-600">
+        <p className="mb-5 text-base leading-relaxed text-muted-foreground">
           Each job carries its own chain: a research finding exposed a pain point, the pain point implied a human need, and that need was restated as a job the
           MVP had to serve.
         </p>
         <div className="flex flex-col gap-8">
           <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 1: CATCH IT EARLY</div>
-            <p className="mb-2.5 text-base leading-relaxed text-default-800">
+            <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When cloud spend moves across dozens of services and accounts, advisors wanted to know what's unusual without combing through raw cost dashboards,
               so they could catch a problem while it's still small, not find it in a monthly review after the money is gone.
             </p>
@@ -377,7 +377,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           </div>
           <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 2: JUDGE IT IN CONTEXT</div>
-            <p className="mb-2.5 text-base leading-relaxed text-default-800">
+            <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When an anomaly surfaces, advisors wanted to see it against the specific dimensions their team actually watches, service, region, usage type,
               billing center, so they could decide in seconds whether it's worth acting on instead of digging for context first.
             </p>
@@ -402,7 +402,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           </div>
           <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 3: EXPLAIN IT CONFIDENTLY</div>
-            <p className="mb-2.5 text-base leading-relaxed text-default-800">
+            <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When an anomaly needs to go to someone outside FinOps to get fixed, advisors wanted to explain why it fired before forwarding it, so it gets
               resolved instead of dismissed as noise, and their credibility with the receiving team stays intact.
             </p>
@@ -426,7 +426,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           </div>
         </div>
 
-        <p className="mt-8 mb-10 text-base leading-relaxed text-default-600">
+        <p className="mt-8 mb-10 text-base leading-relaxed text-muted-foreground">
           Lined up together, the three jobs are really one experience in three steps: <strong>detect</strong> that a cost anomaly happened,{' '}
           <strong>investigate</strong> whether it's a real problem worth acting on, and <strong>decide</strong> what to do next, with enough of an explanation
           to hand it off. That's the shape the MVP took: a table to detect and investigate, a detail view to explain.
@@ -434,11 +434,11 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
 
         <div className="border-t border-default-200 pt-10">
           <h3 className="mb-4 text-xl font-bold">From jobs to a tested user journey</h3>
-          <p className="mb-3 text-base leading-relaxed text-default-600">
+          <p className="mb-3 text-base leading-relaxed text-muted-foreground">
             <strong>What we learned:</strong> three jobs kept surfacing in every working session, catch it early, judge it in context, explain it confidently,
             and each traced back to a specific finding in the research.
           </p>
-          <p className="text-base leading-relaxed text-default-600">
+          <p className="text-base leading-relaxed text-muted-foreground">
             <strong>How we tested it:</strong> we walked each job back through the same internal FinOps advisors and engineering, and checked it against the
             friction-prioritization scoring, to make sure the proposed journey actually matched how they work, not just what they'd said in passing.
           </p>
@@ -448,7 +448,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="journey">
         <Eyebrow>User journey</Eyebrow>
         <SectionHeading>Two entry paths, one shipped, one sequenced for later</SectionHeading>
-        <p className="mb-6 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           Path 1, the system proactively surfacing AI-detected anomalies in a new Anomalies navigation, is what the MVP shipped. Path 2, users defining their
           own alert rules and thresholds with email or in-app notification, was mapped in full but marked &ldquo;not implemented in MVP.&rdquo;
         </p>
@@ -459,7 +459,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         />
 
         <h3 className="mb-3 text-xl font-bold">Why the journey is shaped this way</h3>
-        <p className="mb-6 text-base leading-relaxed text-default-600">
+        <p className="mb-6 text-base leading-relaxed text-muted-foreground">
           Strip away the domain and this is a familiar shape: someone gets a warning, and has to decide fast whether it's real and what to do about it. Three
           challenges in that shape drove the journey.
         </p>
@@ -517,14 +517,14 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
             <h3 className="mb-3.5 text-lg font-bold">User testing</h3>
-            <p className="text-base leading-relaxed text-default-700">
+            <p className="text-base leading-relaxed text-muted-foreground">
               Keep testing the shipped experience with users to catch usability issues the MVP timeline didn't leave room to chase down, and to find further
               opportunities for improvement.
             </p>
           </div>
           <div>
             <h3 className="mb-3.5 text-lg font-bold">Analytics</h3>
-            <p className="mb-2.5 text-base leading-relaxed text-default-700">Watch how people actually use the key areas of the product:</p>
+            <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">Watch how people actually use the key areas of the product:</p>
             <div className="flex flex-col gap-2.5">
               <Bullet>Table data, and how people explore it</Bullet>
               <Bullet>Date range picker usage</Bullet>
@@ -532,7 +532,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             </div>
           </div>
         </div>
-        <p className="mt-8 text-base leading-relaxed text-default-700">
+        <p className="mt-8 text-base leading-relaxed text-muted-foreground">
           Together, testing and analytics were meant to confirm what we assumed rather than leave it assumed: whether the new journey actually behaves the way
           the research said it would, and where it still needs another look.
         </p>

@@ -1,16 +1,29 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
-export function Logo({ ...props }) {
+interface LogoProps {
+  className?: string;
+  /** Renders on the dark footer plate, where the wordmark inverts to Oat Milk. */
+  inverted?: boolean;
+}
+
+/**
+ * The wordmark: a minimalist Playfair "Nisha." with a terracotta full stop.
+ * Per docs/Brand.md §5 the logo stays strictly typographic — the coffee bean
+ * character does the thematic lifting elsewhere in the UI.
+ */
+export function Logo({ className, inverted = false }: LogoProps) {
   return (
     <Link
-      {...props}
-      to="/">
-      {/* <StaticImage width={64} src="../../images/icon.png" alt="REPLACE WITH ACTUAL COPY" /> */}
-      <div className="gap-0.1 flex min-h-11 items-center text-3xl font-medium">
-        <span className="rounded-l-sm bg-primary-50 px-1 py-0.5 text-primary">N</span>
-        <span className="rounded-r-sm bg-primary px-1 py-0.5 text-primary-50">K</span>
-      </div>
+      to="/"
+      aria-label="Nisha Kumari — home"
+      className={cn(
+        'inline-flex min-h-11 items-center font-serif text-2xl font-medium tracking-tight transition-colors',
+        inverted ? 'text-default-50' : 'text-foreground hover:text-primary',
+        className
+      )}>
+      Nisha<span className="text-primary">.</span>
     </Link>
   );
 }

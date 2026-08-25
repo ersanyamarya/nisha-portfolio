@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import React from 'react';
 import {
   FacebookIcon,
@@ -17,45 +16,9 @@ interface ShareButtonsProps extends React.HTMLAttributes<HTMLDivElement> {
   description: string;
 }
 
-const ModalWrapper = styled.div`
-  padding: 1rem 2rem;
-  min-width: 160px;
-  display: none;
-
-  margin: 0 auto;
-
-  background: #fcfcff;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  background-size: cover;
-  backdrop-filter: blur(px);
-  border-radius: 0.4rem;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-
-  color: #191c1e;
-
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 1rem;
-    span {
-      font-size: 1.2rem;
-      line-height: 4rem;
-    }
-    :hover {
-      box-shadow: none;
-      filter: drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.25));
-    }
-  }
-`;
-
 export default function ShareButtons({ url, title, description }: ShareButtonsProps) {
   return (
-    <ModalWrapper className="modal-wrapper">
+    <div className="absolute top-16 right-4 z-10 mx-auto hidden min-w-40 flex-col items-start justify-center gap-4 rounded-lg bg-card px-8 py-4 text-card-foreground shadow-[var(--elevation-surface)] backdrop-blur-md group-hover:flex [&_button]:flex [&_button]:items-center [&_button]:justify-center [&_button]:gap-4 [&_button:hover]:shadow-none [&_button:hover]:[filter:drop-shadow(0px_2px_10px_rgba(41,37,36,0.25))] [&_span]:text-xl [&_span]:leading-[4rem]">
       <LinkedinShareButton
         url={url}
         title={title}
@@ -96,6 +59,6 @@ export default function ShareButtons({ url, title, description }: ShareButtonsPr
         />{' '}
         <span>Facebook</span>
       </FacebookShareButton>
-    </ModalWrapper>
+    </div>
   );
 }

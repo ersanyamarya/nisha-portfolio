@@ -58,7 +58,7 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
         </svg>
         <span className="text-[11px] font-extrabold tracking-widest text-primary-700">INSIGHT</span>
       </div>
-      <p className="text-base leading-relaxed text-default-800">{children}</p>
+      <p className="text-base leading-relaxed text-muted-foreground">{children}</p>
     </div>
   );
 }
@@ -66,7 +66,7 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
 export function QuoteBlock({ quote, attribution }: { quote: string; attribution?: string }) {
   return (
     <div className="rounded-xl bg-default-100 px-6 py-5">
-      <p className="mb-2 text-base leading-relaxed font-medium text-default-800 italic">&ldquo;{quote}&rdquo;</p>
+      <p className="mb-2 text-base leading-relaxed font-medium text-muted-foreground italic">&ldquo;{quote}&rdquo;</p>
       {attribution && <p className="text-sm font-semibold text-default-500">— {attribution}</p>}
     </div>
   );
@@ -80,7 +80,7 @@ export function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex gap-4">
       <div className="mt-2.5 size-1.5 flex-shrink-0 rounded-full bg-primary" />
-      <p className="text-base leading-relaxed text-default-700">{children}</p>
+      <p className="text-base leading-relaxed text-muted-foreground">{children}</p>
     </div>
   );
 }
@@ -104,7 +104,7 @@ export function ChallengeApproachOutcome({
       {items.map(item => (
         <div key={item.label}>
           <div className="mb-3.5 text-xs font-bold tracking-wide text-primary">{item.label}</div>
-          <p className="text-base leading-relaxed text-default-700">{item.body}</p>
+          <p className="text-base leading-relaxed text-muted-foreground">{item.body}</p>
         </div>
       ))}
     </div>
@@ -179,7 +179,7 @@ export function ProsCons({ pros, cons }: { pros: string[]; cons: string[] }) {
           {pros.map((p, i) => (
             <p
               key={i}
-              className="text-sm leading-relaxed text-default-800"
+              className="text-sm leading-relaxed text-muted-foreground"
               dangerouslySetInnerHTML={{ __html: p }}
             />
           ))}
@@ -192,7 +192,7 @@ export function ProsCons({ pros, cons }: { pros: string[]; cons: string[] }) {
           {cons.map((c, i) => (
             <p
               key={i}
-              className="text-sm leading-relaxed text-default-800"
+              className="text-sm leading-relaxed text-muted-foreground"
               dangerouslySetInnerHTML={{ __html: c }}
             />
           ))}
@@ -208,12 +208,12 @@ export function FooterNav({ prevLabel = 'All work', nextLabel, nextTo }: { prevL
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         <a
           href="/#work"
-          className="text-sm font-semibold text-default-500 hover:text-default-700">
+          className="text-sm font-semibold text-default-500 hover:text-muted-foreground">
           {prevLabel}
         </a>
         <a
           href={nextTo}
-          className="text-base font-bold text-default-900 hover:text-primary">
+          className="text-base font-bold text-foreground hover:text-primary">
           {nextLabel} →
         </a>
       </div>

@@ -1,3 +1,15 @@
+// View Transition API — not yet in the `dom` lib TypeScript ships with.
+interface ViewTransition {
+  readonly ready: Promise<void>;
+  readonly finished: Promise<void>;
+  readonly updateCallbackDone: Promise<void>;
+  skipTransition(): void;
+}
+
+interface Document {
+  startViewTransition?(callback: () => void | Promise<void>): ViewTransition;
+}
+
 declare module '*.css';
 declare module '*.png';
 declare module '*.gif';

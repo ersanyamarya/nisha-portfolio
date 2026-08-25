@@ -1,0 +1,75 @@
+/* Styles for markdown-rendered blog body HTML (dangerouslySetInnerHTML), which can't
+   carry Tailwind classes since it's raw injected content from gatsby-transformer-remark. */
+.html-content :is(h2, h3, h4, h5, h6) {
+  font-style: normal;
+  font-weight: 600;
+  margin: 4rem 0 2rem 0;
+}
+
+.html-content h1 {
+  font-weight: 600;
+  color: var(--foreground);
+  font-size: 3.25rem;
+  line-height: 4rem;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.html-content h2 {
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+}
+
+.html-content h3 {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+}
+
+.html-content h4 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.html-content a {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.html-content a:hover {
+  text-shadow: 0px 0px 1px rgba(41, 37, 36, 0.65);
+}
+
+.html-content ul {
+  list-style-type: none;
+  padding-bottom: 2rem;
+}
+
+.html-content ul li {
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.html-content ul li::before {
+  content: '👉';
+  color: var(--color-primary);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.html-content .gatsby-resp-image-wrapper {
+  border-radius: 24px;
+  aspect-ratio: 9/1;
+}
+
+.html-content p {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  text-align: justify;
+  color: var(--muted-foreground);
+}

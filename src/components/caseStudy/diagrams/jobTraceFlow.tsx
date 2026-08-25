@@ -30,7 +30,7 @@ function nodeFill(kind: TraceNodeKind) {
     case 'future':
       return `rgba(${DIAGRAM.inkRgb},0.02)`;
     default:
-      return '#ffffff';
+      return DIAGRAM.paper;
   }
 }
 
@@ -154,7 +154,7 @@ export function JobTraceFlow({
               width="14"
               height="14"
               rx="2"
-              fill="#ffffff"
+              fill={DIAGRAM.paper}
               stroke={DIAGRAM.ink}
             />
           }

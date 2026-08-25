@@ -5,21 +5,21 @@ dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Nisha Kumari | Senior UX Designer`,
+    title: `Nisha Kumari | Senior Product Designer`,
     siteUrl: `https://nishakumari.art/`,
-    description: `Nisha Kumari, Senior UX designer in Berlin, passionate about creating user-centric designs. Currently working on Cloud Cost Anomaly Management and FinOps capabilities.`,
+    description: `Precision in the process, delight in the details. Nisha Kumari is a Berlin-based Senior Product Designer blending rigorous UX strategy with an artist's touch, across climate-tech, cloud FinOps and security products.`,
     linkedinUsername: `nisha-kumari-de/`,
     twitterUsername: `nishakumari_de`,
     image: '/seoThumbnail.png',
     copyWrite: 'Nisha Kumari',
     keyWords: [
+      'Senior Product Designer',
       'Senior UX designer',
+      'product design Berlin',
       'user-centric design',
       'Berlin',
-      'IT experience',
-      'art',
-      'Google course',
-      'Coursera course',
+      'design systems',
+      'fine art painting',
       'user interface design',
       'user experience design',
       'user-friendly products',
@@ -42,7 +42,6 @@ const config: GatsbyConfig = {
   },
   graphqlTypegen: true,
   plugins: [
-    'gatsby-plugin-emotion',
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
@@ -51,12 +50,12 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         icon: 'src/images/icon.png',
-        name: 'Nisha Kumari | Senior UX Designer',
+        name: 'Nisha Kumari | Senior Product Designer',
         short_name: 'Nisha Kumari',
         start_url: '/',
         display: 'standalone',
-        background_color: '#fbf6ef',
-        theme_color: '#a3552f',
+        background_color: '#fdfbf7',
+        theme_color: '#c2785b',
         lang: 'en',
       },
     },
@@ -104,8 +103,10 @@ const config: GatsbyConfig = {
             file: `https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap`,
           },
           {
-            name: `Newsreader`,
-            file: `https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;1,400;1,500&display=swap`,
+            name: `Playfair Display`,
+            // Regular (400) is the H2 weight in docs/Brand.md, and italic 400 is used
+            // for the small serif accents on the hero cards.
+            file: `https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap`,
           },
         ],
       },

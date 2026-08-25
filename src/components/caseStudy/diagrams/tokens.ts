@@ -1,21 +1,21 @@
 /**
- * Diagram-design tokens for this project, extracted from src/layouts/layout.css
- * (see .diagram-design → ~/.diagram-design/profiles/nisha-portfolio-coffee-roast.md).
+ * Diagram-design tokens for this project, mirroring the brand palette in
+ * docs/Brand.md (Oat Milk / Dark Roast / Terracotta) via src/layouts/layout.css.
  * Diagrams use raw hex here (not Tailwind classes) because they're plain inline SVG,
  * evaluated outside Tailwind's class pipeline.
  */
 export const DIAGRAM = {
-  paper: '#fbf4eb',
-  paper2: '#f5e9dd',
-  ink: '#2d1a10',
-  inkRgb: '45,26,16',
-  muted: '#695347',
-  soft: '#856f62',
-  rule: 'rgba(45,26,16,0.12)',
-  ruleSolid: '#cdb9ab',
-  accent: '#b95c3a',
-  accentTint: 'rgba(185,92,58,0.08)',
-  fontSans: "'Geist', 'Inter', -apple-system, sans-serif",
+  paper: '#fdfbf7',
+  paper2: '#f5efe6',
+  ink: '#292524',
+  inkRgb: '41,37,36',
+  muted: '#57534e',
+  soft: '#85796f',
+  rule: 'rgba(41,37,36,0.12)',
+  ruleSolid: '#ebe5df',
+  accent: '#c2785b',
+  accentTint: 'rgba(194,120,91,0.08)',
+  fontSans: "'Inter', -apple-system, sans-serif",
   fontMono: "'Geist Mono', ui-monospace, 'SF Mono', monospace",
 } as const;
 

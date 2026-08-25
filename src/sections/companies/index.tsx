@@ -35,18 +35,21 @@ export default function Companies() {
   return (
     <section
       id="companies"
-      className="my-8 px-4 font-light">
-      <h2 className="mb-2 text-3xl font-light">So far....</h2>
+      className="flex w-full flex-col gap-8">
+      <div className="max-w-xl">
+        <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Where I've poured</div>
+        <p className="text-xl leading-relaxed text-muted-foreground">
+          Startups, enterprises, consultancies and freelance work — across climate-tech, cloud FinOps, security and education.
+        </p>
+      </div>
 
-      <p className="mb-6 max-w-prose text-xl">I've worked across startups, corporations, consultancies, and freelance projects in various domains</p>
-
-      <div className="flex w-full flex-row items-center justify-between gap-2">
+      <div className="flex w-full flex-wrap items-center justify-between gap-6 rounded-3xl px-8 py-8 glass-panel md:gap-2">
         {allFile.nodes.map(node => {
           const image = getImage(node.childImageSharp.gatsbyImageData);
 
           return image ? (
             <div
-              className="flex w-full max-w-[120px] items-center justify-center"
+              className="flex w-full max-w-[120px] items-center justify-center opacity-70 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
               key={node.name}>
               <GatsbyImage
                 image={image}

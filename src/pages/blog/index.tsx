@@ -1,28 +1,9 @@
-import styled from '@emotion/styled';
 import { HeadFC, PageProps, graphql } from 'gatsby';
 import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { BlogCard, SEO } from '../../components';
 import Layout from '../../layouts/mainLayout';
-const BlogsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  gap: 3rem;
-  width: 80vw;
-  min-height: calc(100vh - 36rem);
-  max-width: 1360px;
-  min-width: 320px;
-  margin: 0 auto;
-  padding: 4rem 0;
-  h1 {
-    font-size: 3.25rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 3.25rem;
-  }
-`;
+
 export default function Blog({ data }: PageProps<Queries.Query>) {
   let blogs = data.allMarkdownRemark.nodes as any[];
   blogs = blogs.sort(dateSort).filter(dataFilterShowDatedOnlyBeforeToday);
@@ -30,8 +11,8 @@ export default function Blog({ data }: PageProps<Queries.Query>) {
   return (
     <>
       <Layout>
-        <BlogsContainer>
-          <h1>Blogs</h1>
+        <div className="mx-auto flex min-h-[calc(100vh-36rem)] w-[80vw] max-w-[1360px] min-w-[320px] flex-col items-start justify-start gap-12 py-16">
+          <h1 className="text-[3.25rem] leading-[3.25rem] font-medium">Blogs</h1>
           {blogs.map((part, index) => {
             const featuredImg = getImage(part.frontmatter?.featuredImage?.childImageSharp?.gatsbyImageData as any);
             const reverse = index % 2 === 0;
@@ -47,7 +28,7 @@ export default function Blog({ data }: PageProps<Queries.Query>) {
               />
             );
           })}
-        </BlogsContainer>
+        </div>
       </Layout>
     </>
   );

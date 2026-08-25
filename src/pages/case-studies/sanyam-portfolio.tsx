@@ -23,7 +23,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           A portfolio that still read &ldquo;developer&rdquo; after the job had already changed
         </h1>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           Sanyam Arya is an IoT Cloud Architect in Berlin who spent a decade building industrial and B2B software, and has spent the last stretch restructuring
           how his teams build with AI-assisted tooling. I redesigned his personal site around that shift: from a flat portfolio to one that leads with the
           architect and AI-native practitioner he is today, and shows the arc that got him there.
@@ -58,7 +58,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
         className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
         <Eyebrow>The problem</Eyebrow>
         <p className="mb-4 text-2xl leading-snug font-semibold">A portfolio's job is to tell a visitor who you are before they read a single project.</p>
-        <p className="text-lg leading-relaxed text-default-600">
+        <p className="text-lg leading-relaxed text-muted-foreground">
           Sanyam's career had moved: from individual-contributor developer roles, into leading engineering teams, into a current role architecting IoT cloud
           platforms and wiring AI-assisted development into how his team ships. A personal site built for an earlier chapter doesn't automatically catch up with
           that — it needed a deliberate pass to make sure the first thing a visitor reads is the architect and AI-native practitioner he is now, not a résumé
@@ -69,7 +69,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
       <section id="approach">
         <Eyebrow>Approach</Eyebrow>
         <SectionHeading>Group by domain, not by chronology</SectionHeading>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           The site's technical range is genuinely broad — IoT protocols, cloud infrastructure, AI tooling, full-stack web work. Left as one flat list, breadth
           reads as unfocus. The fix was a skills taxonomy grouped by what each cluster is actually for, so a recruiter or collaborator scanning the page gets a
           shape, not a word cloud.
@@ -92,7 +92,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
       <section id="positioning">
         <Eyebrow>Leading with identity</Eyebrow>
         <SectionHeading>Why the arc matters, not just the current title</SectionHeading>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           A title alone ("IoT Cloud Architect") doesn't carry much weight without the path behind it. The redesign treats the career progression itself as
           content worth surfacing clearly, ending on the identity the rest of the page needs to justify.
         </p>
@@ -124,7 +124,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
         id="impact"
         className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
         <Eyebrow>Impact</Eyebrow>
-        <p className="text-lg leading-relaxed text-default-600">
+        <p className="text-lg leading-relaxed text-muted-foreground">
           The site now opens with the role Sanyam actually holds today, backed by a skills taxonomy that separates his AI-native practice and architecture
           leadership from a generic tools list, and a career arc that gives the current title context instead of asking a visitor to take it on faith.
         </p>

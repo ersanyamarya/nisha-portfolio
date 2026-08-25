@@ -1,115 +1,123 @@
 import { StaticImage } from 'gatsby-plugin-image';
+import { PenToolIcon, PieChartIcon } from 'lucide-react';
 import * as React from 'react';
-import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { HatchBackground } from '../../components';
 
-type RoastKey = 'light' | 'medium' | 'dark';
-
-const ROASTS: { key: RoastKey; label: string; tagline: string; bio: string }[] = [
+/** The two snippets that hover over the hero artwork. Only these drift — the portrait holds still. */
+const SNIPPETS = [
   {
-    key: 'light',
-    label: 'Light',
-    tagline: 'Quick taste — a quick intro to who I am and what I do.',
-    bio: '8+ years designing for climate-tech, cloud FinOps and security products. UX designer who likes things clear, fast, and to the point.',
+    icon: PieChartIcon,
+    label: 'Research-led',
+    value: 'UX strategy',
+    accent: 'bg-success/15 text-success',
+    position: 'top-8 -left-2 md:-left-8',
+    animation: 'float 6s ease-in-out infinite',
   },
   {
-    key: 'medium',
-    label: 'Medium',
-    tagline: 'Full story — selected projects and my design approach.',
-    bio: '8+ years leading research, design ops and prototyping for climate-tech, cloud FinOps and security products, for teams that need design decisions they can defend.',
-  },
-  {
-    key: 'dark',
-    label: 'Dark',
-    tagline: 'Deep dive — research, decisions and thinking behind the work.',
-    bio: '8+ years leading research, design ops and prototyping for climate-tech, cloud FinOps and security products. I’m also a home barista, and the habits carry over: weigh the inputs, respect the process, taste as you go, and don’t ship anything you wouldn’t stand behind.',
+    icon: PenToolIcon,
+    label: 'UI craft',
+    value: 'Pixel perfect.',
+    accent: 'bg-primary/15 text-primary',
+    // Kept clear of the bottom-right corner, where the fixed bean and its tooltip live.
+    position: 'bottom-24 -right-2 md:bottom-28 md:-right-6',
+    animation: 'float 7s ease-in-out infinite 2s',
   },
 ];
 
-const STEAM_DURATION: Record<RoastKey, string> = { light: '4.5s', medium: '3.2s', dark: '2s' };
-const RING_CLASS: Record<RoastKey, string> = {
-  light: 'border-primary-400',
-  medium: 'border-primary-800',
-  dark: 'border-default-900',
-};
-
 export default function HeroSection() {
-  const [roast, setRoast] = useState<RoastKey>('medium');
-  const active = ROASTS.find(r => r.key === roast)!;
-
   return (
-    <div
-      className="grid w-full grid-cols-1 items-center gap-16 text-default md:grid-cols-3 md:gap-2 md:pt-24"
-      id="top">
-      <div className="order-2 col-span-1 flex w-full flex-col justify-center gap-2 pb-16 md:order-1 md:col-span-2">
-        <div className="mb-2 flex items-center gap-2 text-sm font-semibold tracking-wide text-primary">
-          <span className="size-1.5 rounded-full bg-primary" />
-          SENIOR UX DESIGNER · BERLIN, GERMANY
-        </div>
+    // Full-bleed: the crosshatch and the warm wash need the whole viewport to fade out
+    // into. Clipped to the content column they ended on a hard vertical edge.
+    <section
+      id="top"
+      className="relative left-1/2 w-[calc(100vw-var(--scrollbar-w))] -translate-x-1/2 overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24">
+      <HatchBackground focalPoint={{ x: 0.72, y: 0.4 }} />
 
-        <h1 className="mb-6 text-[42px] leading-[1.05] font-extrabold tracking-[-0.03em] md:text-[68px]">
-          Hi, I'm Nisha. I design <span className="font-serif font-medium text-primary-800 italic">with intention.</span>
-        </h1>
-
-        <div className="mb-8">
-          <div className="mb-3 text-xs font-semibold tracking-widest text-default-500">HOW MUCH DO YOU WANT TO KNOW? PICK A ROAST.</div>
-          <div className="mb-2 inline-flex gap-1 rounded-full border border-default-200 p-1">
-            {ROASTS.map(r => (
-              <button
-                key={r.key}
-                onClick={() => setRoast(r.key)}
-                className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                  roast === r.key ? 'bg-default-900 text-default-50' : 'bg-transparent text-default-900'
-                }`}>
-                {r.label}
-              </button>
-            ))}
+      <div className="relative mx-auto flex min-h-[80vh] w-full max-w-7xl flex-col items-center gap-14 px-4 md:flex-row md:gap-10 md:px-8 lg:gap-16">
+        <div className="relative flex w-full flex-col items-start md:w-[58%] xl:w-[60%]">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold tracking-widest text-primary uppercase glass-panel">
+            <span className="size-2 animate-pulse rounded-full bg-primary" />
+            Open to senior product design roles
           </div>
-          <div className="min-h-[18px] text-sm text-default-500">{active.tagline}</div>
+
+          {/* Sized so each clause holds one line at xl; `balance` keeps the narrower
+              breakpoints from leaving a one-word orphan. */}
+          <h1 className="mb-6 font-serif text-[2.75rem] leading-[1.06] font-medium tracking-[-0.015em] text-balance sm:text-5xl xl:text-[3.75rem]">
+            Precision in the process.
+            <br />
+            <span className="text-primary italic">Delight</span> in the details.
+          </h1>
+
+          <p className="mb-10 max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Hi, I'm Nisha. A senior product designer in Berlin, eight years in climate-tech, cloud FinOps and security products. Research and interface, same
+            pair of hands.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <Button
+              asChild
+              size="lg">
+              <a href="#work">View selected work</a>
+            </Button>
+            <Button
+              asChild
+              variant="link"
+              size="lg">
+              <a
+                href="#about"
+                className="group gap-2 px-0">
+                Read my story
+                <span
+                  aria-hidden="true"
+                  className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </Button>
+          </div>
         </div>
 
-        <p className="mb-8 min-h-24 max-w-lg text-lg leading-relaxed text-default-600 transition-opacity duration-300">{active.bio}</p>
-
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="#work"
-            className="rounded-full bg-default-900 px-8 py-4 text-base font-semibold text-default-50 transition-transform hover:scale-[1.03]">
-            View Selected Work
-          </a>
-          <a
-            href="/Nisha_Kumari_Berlin_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-default-200 px-8 py-4 text-base font-semibold transition-colors hover:bg-default-100">
-            Download Resume
-          </a>
-        </div>
-      </div>
-
-      <div className="relative order-1 col-span-1 flex h-[420px] items-center justify-center md:order-2">
-        <div
-          className="absolute size-[400px] rounded-full opacity-40"
-          style={{
-            background: 'radial-gradient(circle at 50% 50%, var(--color-primary-200) 0%, transparent 70%)',
-            animation: 'ring-pulse 6s ease-in-out infinite',
-          }}
-        />
-        <div className={`absolute size-[320px] rounded-full border transition-colors duration-500 ${RING_CLASS[roast]}`} />
-        <div className="relative size-[296px] overflow-hidden rounded-full">
-          <StaticImage
-            placeholder="blurred"
-            layout="fixed"
-            width={296}
-            height={296}
-            src="../../images/hero-img.png"
-            alt="Nisha Kumari"
-            imgStyle={{ objectPosition: 'center 20%' }}
+        <div className="relative flex w-full items-center justify-center md:w-[42%] xl:w-[40%]">
+          {/* Warm backdrop wash — keeps the borderless artwork sitting in light, not floating on nothing. */}
+          <div
+            aria-hidden="true"
+            className="absolute size-[min(34rem,110%)] animate-[ring-pulse_8s_ease-in-out_infinite] rounded-full opacity-70 blur-3xl motion-reduce:animate-none"
+            style={{ background: 'radial-gradient(circle at 50% 50%, var(--color-primary-200) 0%, transparent 70%)' }}
           />
+
+          <div className="relative z-10 w-full max-w-md">
+            <StaticImage
+              placeholder="blurred"
+              layout="constrained"
+              width={560}
+              loading="eager"
+              src="../../images/hero-img.png"
+              alt="Nisha Kumari, product designer and home barista, Berlin"
+              className="drop-shadow-[0_24px_48px_rgba(41,37,36,0.18)]"
+              objectFit="contain"
+            />
+          </div>
+
+          {SNIPPETS.map(({ icon: Icon, label, value, accent, position, animation }) => (
+            <div
+              key={label}
+              className={`absolute z-20 flex items-center gap-3 rounded-2xl p-3.5 glass-panel motion-reduce:animate-none ${position}`}
+              style={{ animation }}>
+              <span className={`flex size-9 items-center justify-center rounded-full ${accent}`}>
+                <Icon
+                  strokeWidth={1.5}
+                  size={18}
+                />
+              </span>
+              <span>
+                <span className="block text-[10px] font-semibold tracking-widest uppercase">{label}</span>
+                <span className="block font-serif text-sm text-muted-foreground italic">{value}</span>
+              </span>
+            </div>
+          ))}
         </div>
-        <span
-          className="absolute bottom-2 h-4 w-0.5 rounded-full bg-default-500"
-          style={{ animation: `steam-rise ${STEAM_DURATION[roast]} ease-in-out infinite` }}
-        />
       </div>
-    </div>
+    </section>
   );
 }

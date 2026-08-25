@@ -85,17 +85,17 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
   };
 
   return (
-    <Card className="grid grid-cols-1 gap-6 border-none bg-default-100 p-6 shadow-none sm:p-10 md:grid-cols-[300px_1fr] md:gap-8 md:p-16">
+    <Card className="grid grid-cols-1 gap-6 p-6 sm:p-10 md:grid-cols-[300px_1fr] md:gap-8 md:p-16">
       <a
         className="flex flex-col gap-2"
         href={link}
         target="_blank"
         rel="noopener noreferrer">
-        <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded border border-default-200 bg-default-100">
+        <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-border bg-default-100">
           {pictureFailed ? (
             <span
               aria-hidden="true"
-              className="text-2xl font-medium text-default-600">
+              className="text-2xl font-medium text-muted-foreground">
               {initialsOf(name)}
             </span>
           ) : (
@@ -108,14 +108,14 @@ export function TestimonialCard({ name, title, location, picture, link, testimon
           )}
         </div>
         <div className="space-y-1">
-          <h3 className="text-lg font-semibold">{name}</h3>
+          <h3 className="font-serif text-lg font-medium">{name}</h3>
           <p className="text-base text-muted-foreground">{title}</p>
           <p className="text-sm text-muted-foreground">{location}</p>
         </div>
       </a>
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className={`whitespace-pre-line text-default-700 transition-all duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>
+          <p className={`whitespace-pre-line text-muted-foreground transition-all duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>
             <svg
               className="mb-4 h-8 w-8 text-default-400"
               fill="currentColor"
@@ -150,9 +150,12 @@ export default function TestimonialSection() {
   return (
     <section
       id="recommendations"
-      className="gap-10vh flex w-full flex-col gap-8 font-light">
+      className="flex w-full flex-col gap-8">
       <div className="relative flex items-center justify-between">
-        <h2 className="text-4xl font-medium">Recommendations</h2>
+        <div>
+          <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Kind words</div>
+          <h2 className="font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">What it's like to work with me.</h2>
+        </div>
         <div className="flex gap-1">
           <Button
             variant="ghost"

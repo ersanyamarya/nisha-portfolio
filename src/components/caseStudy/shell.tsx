@@ -8,7 +8,7 @@ export function CaseStudyShell({ sections, children }: { sections: CaseStudySect
     <Layout>
       <Link
         to="/#work"
-        className="mb-4 inline-block text-sm font-semibold text-default-600 hover:text-primary">
+        className="mb-4 inline-block text-sm font-semibold text-muted-foreground hover:text-primary">
         ← All work
       </Link>
 

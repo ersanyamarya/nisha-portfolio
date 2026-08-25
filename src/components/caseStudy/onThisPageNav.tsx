@@ -68,7 +68,7 @@ export function OnThisPageNav({ sections }: { sections: CaseStudySection[] }) {
           href={`#${s.id}`}
           onClick={e => scrollToSection(s.id, e)}
           className={`border-l-2 py-1.5 pl-3.5 text-sm transition-colors ${
-            activeId === s.id ? 'border-primary font-bold text-default-900' : 'border-transparent font-medium text-default-400 hover:text-default-600'
+            activeId === s.id ? 'border-primary font-bold text-foreground' : 'border-transparent font-medium text-default-400 hover:text-muted-foreground'
           }`}>
           {s.label}
         </a>

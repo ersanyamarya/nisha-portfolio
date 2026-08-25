@@ -1,175 +1,11 @@
-import styled from '@emotion/styled';
 import { HeadFC, PageProps, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import * as React from 'react';
 import { SEO } from '../../components';
 import ShareButtons from '../../components/blog/share_button';
 import Layout from '../../layouts/mainLayout';
-const BlogContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  gap: 1.4rem;
-  width: 80vw;
-  max-width: 1024px;
-  min-width: 320px;
-  margin: 0 auto;
-  padding: 4rem 0;
+import './blogContent.css';
 
-  .gatsby-image-wrapper {
-    width: 100%;
-    border-radius: 8px;
-    padding: 0;
-    margin: auto;
-    margin-bottom: 0rem;
-  }
-
-  .share-row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
-    position: relative;
-
-    .share {
-      color: #191c1e;
-      padding: 2rem;
-      cursor: pointer;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1.2rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.5rem;
-
-      :hover .modal-wrapper {
-        display: flex;
-        top: 4rem;
-        right: 1rem;
-        position: absolute;
-      }
-    }
-  }
-
-  .html-content {
-    & :is(h2, h3, h4, h5, h6) {
-      font-style: normal;
-      font-weight: 600;
-      margin: 4rem 0 2rem 0;
-    }
-
-    h1 {
-      font-weight: 600;
-      color: #191c1e;
-      font-size: 3.25rem;
-      line-height: 4rem;
-      padding: 1rem 0;
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      font-size: 2.25rem;
-      line-height: 2.25rem;
-    }
-    h3 {
-      font-size: 1.75rem;
-      line-height: 2.25rem;
-    }
-
-    h4 {
-      font-size: 1.5rem;
-      line-height: 2rem;
-    }
-
-    a {
-      font-weight: 400;
-      font-style: italic;
-      :hover {
-        text-shadow: 0px 0px 1px #191c1eaa;
-      }
-    }
-
-    ul {
-      list-style-type: none;
-      li {
-        font-size: 1.2rem;
-        line-height: 2rem;
-      }
-      li::before {
-        content: '👉';
-        color: #00115a;
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-right: 1rem;
-        margin-left: 1rem;
-      }
-      padding-bottom: 2rem;
-    }
-
-    .gatsby-resp-image-wrapper {
-      // margin: 2rem 0;
-      border-radius: 80px;
-      aspect-ratio: 9/1;
-      img {
-        // object-fit: cover !important;
-        // aspect-ratio: 9/6 auto;
-      }
-    }
-    p {
-      font-size: 1.5rem;
-      line-height: 1.75rem;
-      margin-bottom: 2rem;
-      font-weight: 300;
-      text-align: justify;
-    }
-  }
-`;
-const AuthorCard = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-
-  img {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    margin: auto;
-    object-fit: scale-down;
-  }
-  .information {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 0.2rem;
-    height: 100%;
-    .name {
-      font-size: 1.3rem;
-      font-style: normal;
-      font-weight: 600;
-    }
-    .sub {
-      font-weight: 300;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 0.5rem;
-      row-gap: 0rem;
-      flex-wrap: wrap;
-    }
-  }
-`;
 export default function BlogPostTemplate({ data, location: { href: url } }: PageProps<Queries.Query>) {
   const { markdownRemark } = data; // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark as any;
@@ -177,27 +13,28 @@ export default function BlogPostTemplate({ data, location: { href: url } }: Page
   const featuredImg = getImage(featuredImage?.childImageSharp?.gatsbyImageData as any) as any;
   return (
     <Layout>
-      <BlogContainer>
+      <div className="mx-auto flex w-[80vw] max-w-[1024px] min-w-[320px] flex-col items-start justify-center gap-6 py-16 [&_.gatsby-image-wrapper]:mx-auto [&_.gatsby-image-wrapper]:mb-0 [&_.gatsby-image-wrapper]:w-full [&_.gatsby-image-wrapper]:rounded-2xl [&_.gatsby-image-wrapper]:p-0">
         <GatsbyImage
           image={featuredImg}
           alt={title}
           aria-placeholder={title}
         />
-        <div className="share-row">
-          <AuthorCard>
+        <div className="flex w-full flex-row items-center justify-between gap-6">
+          <div className="flex flex-row items-center gap-6 rounded-lg p-4">
             <img
               src="https://nishakumari.art/static/3ac0be86d11bc04145b23b3a655962e5/6e082/person.webp"
               alt={title}
               aria-placeholder={title}
+              className="mx-auto size-14 rounded-full object-scale-down"
             />
-            <div className="information">
-              <span className="name">NIsha Kumari</span>
-              <span className="sub">
+            <div className="flex h-full flex-col items-start justify-center gap-1">
+              <span className="text-xl font-semibold text-foreground">Nisha Kumari</span>
+              <span className="flex flex-row flex-wrap items-center gap-2 font-light text-muted-foreground">
                 {date} · <span>{minutesToRead(html)}</span>
               </span>
             </div>
-          </AuthorCard>
-          <div className="share">
+          </div>
+          <div className="group relative flex cursor-pointer flex-row items-center justify-center gap-4 p-8 text-lg text-foreground">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -235,7 +72,7 @@ export default function BlogPostTemplate({ data, location: { href: url } }: Page
           className="html-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
-      </BlogContainer>
+      </div>
     </Layout>
   );
 }

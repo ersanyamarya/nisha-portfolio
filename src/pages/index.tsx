@@ -1,7 +1,8 @@
 import { HeadFC, PageProps } from 'gatsby';
 import * as React from 'react';
-import { SEO } from '../components';
+import { Reveal, SEO } from '../components';
 import Layout from '../layouts/mainLayout';
+import AboutSection from '../sections/about';
 import Companies from '../sections/companies';
 import CtaSection from '../sections/cta';
 import HeroSection from '../sections/hero';
@@ -12,7 +13,7 @@ import TestimonialSection from '../sections/testimonial';
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <main className="space-y-16 md:space-y-24">
+      <main className="space-y-24 md:space-y-36">
         <HeroSection />
 
         <ProjectsSection />
@@ -21,23 +22,22 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <ProcessSection />
 
+        <AboutSection />
+
         <TestimonialSection />
 
-        <section
-          style={{
-            height: '496px',
-            boxShadow: 'rgba(142, 151, 158, 0.15) 0px 4px 19px 0px',
-            borderRadius: '16px',
-            width: '100%',
-          }}>
-          <iframe
-            src="https://adplist.org/widgets/reviews?src=nisha-kumari"
-            title="All Reviews"
-            width="100%"
-            height="100%"
-            loading="lazy"
-            style={{ border: '0px' }}></iframe>
-        </section>
+        <Reveal>
+          <section className="h-[496px] w-full overflow-hidden rounded-3xl glass-panel">
+            <iframe
+              src="https://adplist.org/widgets/reviews?src=nisha-kumari"
+              title="ADPList reviews for Nisha Kumari"
+              width="100%"
+              height="100%"
+              loading="lazy"
+              style={{ border: '0px' }}
+            />
+          </section>
+        </Reveal>
 
         <CtaSection />
       </main>

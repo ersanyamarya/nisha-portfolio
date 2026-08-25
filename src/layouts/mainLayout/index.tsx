@@ -1,29 +1,35 @@
-import styled from '@emotion/styled';
-import React from 'react';
-import { SocialIcons } from '../../components';
+import React, { useEffect } from 'react';
+import { AmbientBeans, CoffeeBean } from '../../components';
 import '../layout.css';
 import Footer from './footer';
 import NavBar from './navBar';
 
-const SocialLinksContainer = styled(SocialIcons)({
-  '&:hover > :not(:hover) ': {
-    opacity: 0.5,
-  },
-});
 interface LayoutProps {
   children: React.ReactNode;
 }
 
+/** Keeps `--scrollbar-w` in sync so full-bleed sections can size to the viewport's
+ *  content width rather than 100vw, which counts the scrollbar in. */
+function useScrollbarWidth() {
+  useEffect(() => {
+    const sync = () => document.documentElement.style.setProperty('--scrollbar-w', `${window.innerWidth - document.documentElement.clientWidth}px`);
+    sync();
+    window.addEventListener('resize', sync);
+    return () => window.removeEventListener('resize', sync);
+  }, []);
+}
+
 export default function Layout({ children }: LayoutProps) {
+  useScrollbarWidth();
+
   return (
     <>
+      <AmbientBeans />
       <NavBar />
-      {/* <SocialLinksContainer
-        className="fixed left-1 top-1/2 z-10 hidden -translate-y-1/2 transform flex-col gap-4 rounded-lg bg-primary-50 p-4 shadow-lg md:flex"
-        showEmail={false}
-      /> */}
-      <div className="container mx-auto px-4">{children}</div>
+      {/* pt clears the fixed nav pill (h-16 + py-4). */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pt-28 md:px-8">{children}</div>
       <Footer />
+      <CoffeeBean />
     </>
   );
 }

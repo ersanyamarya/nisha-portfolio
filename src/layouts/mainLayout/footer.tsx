@@ -3,9 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Logo } from '../../components';
 
 const SECTIONS = [
-  { name: 'About', path: '/#top' },
-  { name: 'Selected work', path: '/#work' },
-  { name: 'How I work', path: '/#process' },
+  { name: 'Work', path: '/#work' },
+  { name: 'Process', path: '/#process' },
+  { name: 'About', path: '/#about' },
+  { name: 'Kind words', path: '/#recommendations' },
   { name: 'Contact', path: '/#contact' },
 ];
 
@@ -81,19 +82,19 @@ export default function Footer() {
   `);
 
   return (
-    <div className="-mx-4 mt-24 bg-default-900 px-4 md:px-8 lg:px-24">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <div className="relative z-10 mt-32 rounded-t-3xl bg-default-900 px-4 md:px-8 lg:px-24">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <div className="mb-3">
-            <Logo />
+          <div className="mb-4">
+            <Logo inverted />
           </div>
           <p className="max-w-[260px] text-sm leading-relaxed text-default-50 opacity-55">
-            Senior UX designer in Berlin. Slow mornings, careful research, no shortcuts either way.
+            Senior product designer in Berlin. Slow mornings, careful research, no shortcuts either way.
           </p>
         </div>
 
         <div>
-          <div className="mb-4 text-xs font-bold tracking-widest text-default-50 opacity-50">SECTIONS</div>
+          <div className="mb-4 text-xs font-medium tracking-widest text-default-50 uppercase opacity-50">Sections</div>
           <div className="flex flex-col gap-2.5 text-sm">
             {SECTIONS.map(link => (
               <a
@@ -107,7 +108,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <div className="mb-4 text-xs font-bold tracking-widest text-default-50 opacity-50">CONNECT</div>
+          <div className="mb-4 text-xs font-medium tracking-widest text-default-50 uppercase opacity-50">Connect</div>
           <div className="flex flex-col gap-2.5 text-sm">
             <a
               href="https://www.linkedin.com/in/nisha-kumari-de/"
@@ -139,8 +140,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl border-t border-default-50/10 py-5 text-xs text-default-50 opacity-45">
-        © {new Date().getFullYear()} {copyWrite}
+      <div className="mx-auto max-w-6xl border-t border-default-50/10 py-6 text-xs text-default-50 opacity-45">
+        © {new Date().getFullYear()} {copyWrite}. Precision in the process, delight in the details.
       </div>
     </div>
   );

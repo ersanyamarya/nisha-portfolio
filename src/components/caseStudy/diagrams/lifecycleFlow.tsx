@@ -99,7 +99,7 @@ export function LifecycleFlow() {
               width={BOX_W}
               height={BOX_H}
               rx="6"
-              fill={stage.shipped ? '#ffffff' : `rgba(${DIAGRAM.inkRgb},0.02)`}
+              fill={stage.shipped ? DIAGRAM.paper : `rgba(${DIAGRAM.inkRgb},0.02)`}
               stroke={stage.shipped ? DIAGRAM.ink : `rgba(${DIAGRAM.inkRgb},0.3)`}
               strokeWidth="1"
               strokeDasharray={stage.shipped ? undefined : '4,3'}
@@ -160,7 +160,7 @@ export function LifecycleFlow() {
               width="14"
               height="14"
               rx="2"
-              fill="#ffffff"
+              fill={DIAGRAM.paper}
               stroke={DIAGRAM.ink}
             />
           }

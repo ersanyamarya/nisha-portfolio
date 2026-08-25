@@ -8,60 +8,74 @@
 
   --color-transparent: transparent;
 
-  --color-primary-50: oklch(97% 0.02 40);
-  --color-primary-100: oklch(93% 0.035 40);
-  --color-primary-200: oklch(87% 0.06 40);
-  --color-primary-300: oklch(79% 0.09 40);
-  --color-primary-400: oklch(70% 0.115 40);
-  --color-primary-500: oklch(63% 0.13 40);
-  --color-primary-600: oklch(58% 0.13 40);
-  --color-primary-700: oklch(51% 0.125 40);
-  --color-primary-800: oklch(43% 0.11 40);
-  --color-primary-900: oklch(35% 0.09 40);
-  --color-primary-950: oklch(25% 0.07 40);
-  --color-primary: oklch(58% 0.13 40);
+  /* `--color-*: initial` above wipes Tailwind's built-ins, which silently turned
+     `bg-black/50`, `text-white` and friends into no-ops. Neither is a brand colour —
+     they exist for true black/white surfaces like modal scrims and device bezels. */
+  --color-black: #000000;
+  --color-white: #ffffff;
 
-  --color-secondary-50: #fff2f1;
-  --color-secondary-100: #ffe4e1;
-  --color-secondary-200: #ffccc7;
-  --color-secondary-300: #ffa8a0;
-  --color-secondary-400: #ff6f61;
-  --color-secondary-500: #f84c3b;
-  --color-secondary-600: #e52f1d;
-  --color-secondary-700: #c12314;
-  --color-secondary-800: #a02014;
-  --color-secondary-900: #842218;
-  --color-secondary-950: #480d07;
-  --color-secondary: #c12314;
+  /* Primary — Terracotta / Warm Roast (#C2785B), from docs/Brand.md */
+  --color-primary-50: #fbf1ec;
+  --color-primary-100: #f5e1d5;
+  --color-primary-200: #e9c4ab;
+  --color-primary-300: #daa480;
+  --color-primary-400: #cc9069;
+  --color-primary-500: #c2825f;
+  --color-primary-600: #c2785b;
+  --color-primary-700: #8f4e39;
+  --color-primary-800: #6e3b2b;
+  --color-primary-900: #4e2a1e;
+  --color-primary-950: #2e1811;
+  --color-primary: #c2785b;
 
-  --color-default-50: oklch(97% 0.014 75);
-  --color-default-100: oklch(94% 0.02 68);
-  --color-default-200: oklch(89% 0.025 62);
-  --color-default-300: oklch(80% 0.03 58);
-  --color-default-400: oklch(68% 0.032 55);
-  --color-default-500: oklch(56% 0.034 52);
-  --color-default-600: oklch(46% 0.035 50);
-  --color-default-700: oklch(38% 0.035 50);
-  --color-default-800: oklch(30% 0.035 50);
-  --color-default-900: oklch(24% 0.035 50);
-  --color-default-950: oklch(17% 0.03 48);
-  --color-default: oklch(24% 0.035 50);
+  /* Error / negative signal — Crimson (#B91C1C), from docs/Brand.md.
+     Also carries every former "secondary" usage across the case-study tone
+     system, which — per audit — always meant "negative/error", never a second
+     brand hue. */
+  --color-secondary-50: #fdeded;
+  --color-secondary-100: #fbd9d9;
+  --color-secondary-200: #f5b5b5;
+  --color-secondary-300: #ea8888;
+  --color-secondary-400: #da5c5c;
+  --color-secondary-500: #c93636;
+  --color-secondary-600: #b91c1c;
+  --color-secondary-700: #9c1717;
+  --color-secondary-800: #7a1212;
+  --color-secondary-900: #5c0e0e;
+  --color-secondary-950: #350808;
+  --color-secondary: #b91c1c;
 
-  --color-success-50: oklch(97% 0.02 150);
-  --color-success-100: oklch(93% 0.035 150);
-  --color-success-200: oklch(87% 0.06 150);
-  --color-success-300: oklch(79% 0.09 150);
-  --color-success-400: oklch(70% 0.1 150);
-  --color-success-500: oklch(58% 0.11 150);
-  --color-success-600: oklch(50% 0.11 150);
-  --color-success-700: oklch(42% 0.105 150);
-  --color-success-800: oklch(35% 0.09 150);
-  --color-success-900: oklch(28% 0.075 150);
-  --color-success-950: oklch(20% 0.06 150);
-  --color-success: oklch(50% 0.11 150);
+  /* Default — warm neutral scale spanning Oat Milk to Deep Espresso.
+     50/200/300/600/700/800/900/950 are exact docs/Brand.md hex values. */
+  --color-default-50: #fdfbf7;
+  --color-default-100: #f5efe6;
+  --color-default-200: #ebe5df;
+  --color-default-300: #d6d3d1;
+  --color-default-400: #b0a9a0;
+  --color-default-500: #85796f;
+  --color-default-600: #57534e;
+  --color-default-700: #3d3834;
+  --color-default-800: #2d2926;
+  --color-default-900: #292524;
+  --color-default-950: #1c1917;
+  --color-default: #292524;
+
+  /* Success — Matcha Green (#4D7C5F), from docs/Brand.md */
+  --color-success-50: #eef5f0;
+  --color-success-100: #d9ebe0;
+  --color-success-200: #b3d7c0;
+  --color-success-300: #8cc0a0;
+  --color-success-400: #6ba184;
+  --color-success-500: #5a8f72;
+  --color-success-600: #4d7c5f;
+  --color-success-700: #3d6249;
+  --color-success-800: #2e4b37;
+  --color-success-900: #223828;
+  --color-success-950: #142016;
+  --color-success: #4d7c5f;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: 'Newsreader', serif;
+  --font-serif: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
 }
 
 @theme inline {
@@ -87,34 +101,67 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* The single "floating frosted surface" of the Third-Wave Berlin Roastery aesthetic
+   (docs/Brand.md §5): frosted card fill, soft crema border, warm diffused shadow.
+   Every nav bar, card and callout on the site should reach for this rather than
+   re-spelling the four properties. */
+@utility glass-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--elevation-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Theme swap: suppress the default cross-fade so the outgoing theme simply sits
+   underneath while `useTheme` wipes the incoming one in behind an expanding circle. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2;
+}
+
 @layer base {
 :root {
   /* Only the `-0` stops live here; every other primary/secondary stop comes from
      the @theme block above. Redefining them here would silently override the brand
      palette, since Tailwind's `base` layer wins over its `theme` layer. */
-  --color-primary-0: rgba(239, 248, 255, 1);
-  --color-secondary-0: rgba(255, 253, 250, 1);
+  --color-primary-0: rgba(251, 241, 236, 1);
+  --color-secondary-0: rgba(255, 255, 255, 1);
 
-  --dim-round-corner: 4px;
-  --dim-round-corner-large: 8px;
-  --dim-round-corner-small: 2px;
+  --dim-round-corner: 8px;
+  --dim-round-corner-large: 16px;
+  --dim-round-corner-small: 4px;
 
   --dim-nav-height: 100px;
 
-  --elevation-surface: 12px 12px 21px #d4d2d0, -12px -12px 21px #ffffff;
-  --elevation-focus: 18px 18px 22px #d4d2d0, -18px -18px 22px #ffffff;
-  --elevation-light: 0px 8px 24px rgba(149, 157, 165, 0.2);
-  --elevation-dark: 4px 4.5px 11px 2px #33333366;
-  --elevation-dark-focus: 8px 8px 8px 2.5px #33333366;
-  --elevation-paper: 8px 8px 10px -2.5px #d4d2d0, -8px -8px 10px -2.5px #d4d2d0;
+  /* Width of the vertical scrollbar, published by mainLayout on mount. Full-bleed
+     sections size themselves as `100vw - var(--scrollbar-w)`, because 100vw counts
+     the scrollbar and would otherwise leave the page scrollable sideways. */
+  --scrollbar-w: 0px;
+
+  /* Glassmorphism surface: frosted card background + a soft, warm-tinted
+     (never harsh-black) diffused shadow, per docs/Brand.md §5. */
+  --card: rgba(255, 255, 255, 0.6);
+  --card-blur: blur(12px);
+  --elevation-surface: 0px 8px 32px rgba(41, 37, 36, 0.06), 0px 1px 2px rgba(41, 37, 36, 0.04);
+  --elevation-light: 0px 12px 32px rgba(194, 120, 91, 0.14), 0px 2px 8px rgba(41, 37, 36, 0.06);
+  --elevation-focus: 0px 0px 0px 4px rgba(194, 120, 91, 0.18);
 
   --transition-ease: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
   --background: var(--color-default-50);
   --foreground: var(--color-default-900);
-  --card: var(--color-default-50);
   --card-foreground: var(--color-default-900);
   --popover: var(--color-default-50);
   --popover-foreground: var(--color-default-900);
@@ -131,13 +178,16 @@
 }
 
 .dark {
-  --color-secondary-0: #333333;
+  --color-secondary-0: #2d2926;
+  --card: rgba(45, 41, 38, 0.6);
+  --elevation-surface: 0px 8px 32px rgba(0, 0, 0, 0.35), 0px 1px 2px rgba(0, 0, 0, 0.3);
+  --elevation-light: 0px 12px 32px rgba(0, 0, 0, 0.4), 0px 2px 8px rgba(0, 0, 0, 0.25);
+  --elevation-focus: 0px 0px 0px 4px rgba(194, 120, 91, 0.28);
   --background: var(--color-default-950);
-  --foreground: #ffffff;
-  --card: var(--color-default-900);
-  --card-foreground: #ffffff;
+  --foreground: var(--color-default-50);
+  --card-foreground: var(--color-default-50);
   --popover: var(--color-default-900);
-  --popover-foreground: #ffffff;
+  --popover-foreground: var(--color-default-50);
   --muted: var(--color-default-800);
   --muted-foreground: var(--color-default-300);
   --accent: var(--color-default-800);
@@ -151,8 +201,21 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--font-sans);
-  color: var(--foreground);
+}
+
+/* Colour is set once on <body> and inherited, rather than pinned onto every element
+   with `*`. A universal `color` beats inheritance, so a coloured wrapper (a dark
+   footer plate, the terracotta About panel) could never tint its own children. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
 }
 
 html {
@@ -166,18 +229,20 @@ html:focus-within {
 
 body {
   background-color: var(--background);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%232e2420' fill-opacity='0.035'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color: var(--foreground);
   font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.75;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   overflow-x: hidden;
   overflow-y: auto;
 
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary-500) transparent;
-  height: 100vh;
-  width: 100vw;
+  /* No 100vw/100vh here: 100vw counts the scrollbar, which pushed the body a few
+     pixels wider than the fixed nav's containing block and knocked the two out of
+     alignment (and forced the horizontal overflow this file then had to hide). */
 }
 
 a {
@@ -197,6 +262,19 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   border: 3px solid var(--color-secondary-0);
 }
+
+.social-icon:hover::before {
+  content: attr(title);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background-color: var(--color-primary-500);
+  color: var(--color-secondary-0);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--dim-round-corner-small);
+  box-shadow: var(--elevation-light);
+  z-index: 100;
+  transition: var(--transition-ease);
 }
 
 @keyframes steam-rise {
@@ -223,122 +301,25 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-@-webkit-keyframes bounce-top {
-  0% {
-    -webkit-transform: translateY(-45px);
-    transform: translateY(-45px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 1;
+/* Fills one segment of the story reel's progress bar over its dwell time. */
+@keyframes story-fill {
+  from {
+    transform: scaleX(0);
   }
-
-  24% {
-    opacity: 1;
-  }
-
-  40% {
-    -webkit-transform: translateY(-24px);
-    transform: translateY(-24px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  65% {
-    -webkit-transform: translateY(-12px);
-    transform: translateY(-12px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  82% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  93% {
-    -webkit-transform: translateY(-4px);
-    transform: translateY(-4px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  25%,
-  55%,
-  75%,
-  87% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-
-  100% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    opacity: 1;
+  to {
+    transform: scaleX(1);
   }
 }
 
-@keyframes bounce-top {
-  0% {
-    -webkit-transform: translateY(-45px);
-    transform: translateY(-45px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-    opacity: 1;
-  }
-
-  24% {
-    opacity: 1;
-  }
-
-  40% {
-    -webkit-transform: translateY(-24px);
-    transform: translateY(-24px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  65% {
-    -webkit-transform: translateY(-12px);
-    transform: translateY(-12px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  82% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  93% {
-    -webkit-transform: translateY(-4px);
-    transform: translateY(-4px);
-    -webkit-animation-timing-function: ease-in;
-    animation-timing-function: ease-in;
-  }
-
-  25%,
-  55%,
-  75%,
-  87% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-  }
-
+/* Slow, weightless drift for hero artwork and ambient beans — the "spatial
+   storytelling" layer in docs/Brand.md §5. Never fast enough to read as goofy. */
+@keyframes float {
+  0%,
   100% {
-    -webkit-transform: translateY(0px);
-    transform: translateY(0px);
-    -webkit-animation-timing-function: ease-out;
-    animation-timing-function: ease-out;
-    opacity: 1;
+    transform: translateY(0) rotate(0deg);
   }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
 }

@@ -1,87 +1,43 @@
-import styled from '@emotion/styled';
 import { Link } from 'gatsby';
+import { MenuIcon, XIcon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Logo } from '../../components';
+import { Logo, ThemeToggle } from '../../components';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import Contact from '../../sections/contact';
 
 const NAVIGATION_LINKS = [
-  {
-    name: 'Selected Work',
-    path: '/#work',
-  },
-  {
-    name: 'How I work',
-    path: '/#process',
-  },
-  {
-    name: 'Recommendations',
-    path: '/#recommendations',
-  },
+  { name: 'Work', path: '/#work' },
+  { name: 'Process', path: '/#process' },
+  { name: 'About', path: '/#about' },
+  { name: 'Kind words', path: '/#recommendations' },
 ];
 
-const NavigationBar = styled.nav({
-  '&.shadow': {
-    transition: 'all 0.3s ease',
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-    backdropFilter: 'blur(10px)',
-    backgroundColor: 'rgba(239, 248, 255, 0.4)', // primary-50 with opacity
-  },
-});
-
-const Overlay = styled.div({
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  width: '100%',
-  height: 'auto',
-  transform: 'translateY(-100%)',
-  opacity: 0,
-  transition: 'all 0.3s ease-in-out',
-  zIndex: 50,
-  visibility: 'hidden',
-  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
-  '&.visible': {
-    opacity: 1,
-    visibility: 'visible',
-    transform: 'translateY(0)',
-  },
-});
-
-const NavLink = styled(Link)({
-  position: 'relative',
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    width: '0',
-    height: '2px',
-    bottom: '-2px',
-    left: '50%',
-    backgroundColor: 'var(--color-primary)',
-    transition: 'all 0.3s ease',
-    transform: 'translateX(-50%)',
-  },
-  '&:hover::after': {
-    width: '100%',
-  },
-  '&.active::after': {
-    width: '100%',
-  },
-});
+const navLinkClasses =
+  "relative text-sm font-medium tracking-wide uppercase text-foreground transition-colors duration-300 hover:text-primary after:absolute after:bottom-[-6px] after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-primary after:transition-all after:duration-300 after:content-[''] hover:after:w-full";
 
 export default function NavBar() {
-  const [showContact, setShowContact] = React.useState(false);
+  const [showContact, setShowContact] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const scrollPosition = useScrollPosition();
-  const [isOverlayVisible, setOverlayVisible] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [scrollPct, setScrollPct] = useState(0);
 
+  const isScrolled = scrollPosition > 8;
+
   useEffect(() => {
-    setIsScrolled(scrollPosition > 0);
     const max = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     setScrollPct(max > 0 ? Math.min((scrollPosition / max) * 100, 100) : 0);
   }, [scrollPosition]);
+
+  // The mobile sheet covers the page; letting the page scroll behind it feels broken.
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
@@ -89,116 +45,95 @@ export default function NavBar() {
         open={showContact}
         onClose={() => setShowContact(false)}
       />
-      <div className="fixed top-0 right-0 left-0 z-20 h-[3px] bg-default-200">
+
+      {/* Brew-progress line: how far down the pour you are. */}
+      <div className="fixed top-0 right-0 left-0 z-50 h-[2px] bg-transparent">
         <div
           className="h-full bg-primary transition-[width] duration-150"
           style={{ width: `${scrollPct}%` }}
         />
       </div>
-      <NavigationBar
-        className={`${isScrolled ? 'shadow' : ''} sticky top-0 z-10 flex h-16 w-full flex-row items-center justify-between px-4 py-6 transition-all duration-300 md:px-8 lg:px-24`}>
-        <div className="z-30">
+
+      <header className="fixed top-0 right-0 left-0 z-40 px-4 py-4 md:px-8">
+        <nav
+          className={`mx-auto flex h-16 w-full max-w-7xl items-center justify-between rounded-full px-5 transition-all duration-300 md:px-6 ${
+            isScrolled ? 'glass-panel' : 'border border-transparent bg-transparent'
+          }`}>
           <Logo />
-        </div>
 
-        <button
-          onClick={() => {
-            setOverlayVisible(true);
-          }}
-          className="z-30 flex size-11 cursor-pointer items-center justify-center border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none md:hidden"
-          aria-label="Open menu">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            shapeRendering="geometricPrecision"
-            textRendering="geometricPrecision"
-            imageRendering="optimizeQuality"
-            fillRule="evenodd"
-            clipRule="evenodd"
-            viewBox="0 0 512 351.67"
-            className="text-primary">
-            <path
-              fillRule="nonzero"
-              d="M0 0h512v23.91H0V0zm0 327.76h512v23.91H0v-23.91zm0-163.88h512v23.91H0v-23.91z"
-            />
-          </svg>
-        </button>
-
-        <nav className="hidden flex-row items-center justify-between gap-6 md:flex">
-          {NAVIGATION_LINKS.map(link => (
-            <NavLink
-              className="px-2 py-1 text-lg text-primary transition-all duration-300 hover:text-primary-800"
-              activeClassName="active"
-              to={link.path}
-              key={link.name}>
-              {link.name}
-            </NavLink>
-          ))}
-          <Button
-            asChild
-            variant="outline"
-            className="ml-2">
-            <a
-              title="Resume"
-              href="/Nisha_Kumari_Berlin_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer">
-              Resume
-            </a>
-          </Button>
-          <Button
-            className="ml-2"
-            onClick={() => {
-              setShowContact(true);
-            }}>
-            Let's Talk
-          </Button>
-        </nav>
-
-        {/* Mobile Menu Overlay */}
-        {isOverlayVisible && (
-          <div
-            className="bg-opacity-30 fixed inset-0 z-40 bg-primary-950"
-            onClick={() => setOverlayVisible(false)}
-          />
-        )}
-
-        <Overlay className={`${isOverlayVisible ? 'visible' : ''} flex w-full flex-col bg-primary-50`}>
-          <div className="flex w-full flex-row items-center justify-between border-b border-primary-100 px-6 py-4">
-            <Logo />
-            <button
-              onClick={() => {
-                setOverlayVisible(false);
-              }}
-              className="z-50 flex size-11 cursor-pointer items-center justify-center border-none bg-none p-1 transition-transform hover:scale-105 focus:outline-none"
-              aria-label="Close menu">
-              <svg
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 122.878 122.88"
-                className="h-6 w-6 text-primary">
-                <g>
-                  <path d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" />
-                </g>
-              </svg>
-            </button>
-          </div>
-
-          <div className="flex flex-col space-y-6 px-6 py-8">
+          <div className="hidden items-center gap-8 md:flex">
             {NAVIGATION_LINKS.map(link => (
               <Link
-                className="text-lg font-medium text-primary transition-all duration-300 hover:text-primary-800"
-                activeClassName="text-primary-800"
-                to={link.path}
                 key={link.name}
-                onClick={() => {
-                  setOverlayVisible(false);
-                }}>
+                to={link.path}
+                className={navLinkClasses}
+                activeClassName="text-primary">
                 {link.name}
               </Link>
             ))}
+
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button
+                asChild
+                variant="outline"
+                size="sm">
+                <a
+                  title="Resume"
+                  href="/Nisha_Kumari_Berlin_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Resume
+                </a>
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => setShowContact(true)}>
+                Let's brew
+              </Button>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-4 px-6 pb-8">
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMenuOpen(open => !open)}
+              aria-expanded={isMenuOpen}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              className="flex size-11 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:text-primary focus:outline-none">
+              {isMenuOpen ? (
+                <XIcon
+                  strokeWidth={1.5}
+                  size={22}
+                />
+              ) : (
+                <MenuIcon
+                  strokeWidth={1.5}
+                  size={22}
+                />
+              )}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile sheet */}
+        <div
+          className={`absolute top-24 right-4 left-4 flex flex-col gap-1 rounded-3xl p-4 glass-panel transition-all duration-300 md:hidden ${
+            isMenuOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-3 opacity-0'
+          }`}>
+          {NAVIGATION_LINKS.map(link => (
+            <Link
+              key={link.name}
+              to={link.path}
+              onClick={closeMenu}
+              className="rounded-2xl px-4 py-3 text-sm font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-accent hover:text-primary"
+              activeClassName="text-primary">
+              {link.name}
+            </Link>
+          ))}
+
+          <div className="mt-2 flex flex-col gap-2 border-t border-border pt-4">
             <Button
               asChild
               variant="outline"
@@ -208,9 +143,7 @@ export default function NavBar() {
                 href="/Nisha_Kumari_Berlin_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => {
-                  setOverlayVisible(false);
-                }}>
+                onClick={closeMenu}>
                 Resume
               </a>
             </Button>
@@ -218,13 +151,23 @@ export default function NavBar() {
               size="lg"
               onClick={() => {
                 setShowContact(true);
-                setOverlayVisible(false);
+                closeMenu();
               }}>
-              Let's Talk
+              Let's brew
             </Button>
           </div>
-        </Overlay>
-      </NavigationBar>
+        </div>
+      </header>
+
+      {isMenuOpen && (
+        <button
+          type="button"
+          tabIndex={-1}
+          aria-hidden="true"
+          className="fixed inset-0 z-30 cursor-default bg-default-950/15 backdrop-blur-sm md:hidden"
+          onClick={closeMenu}
+        />
+      )}
     </>
   );
 }

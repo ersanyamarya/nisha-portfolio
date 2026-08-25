@@ -41,7 +41,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Administrators had no way to track scheduling progress in real time
         </h1>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-default-600">
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
           Spektrum Akademie is a vocational education institution in Berlin, training students across Occupational Therapy, Physiotherapy, Speech Therapy and
           Early Childhood Education. I designed the real-time scheduling and resource-tracking system its administrators now plan every semester around.
         </p>
@@ -91,7 +91,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           Spektrum Akademie's current system couldn't track real-time progress of key academic resources: class schedules, teacher hours, subject completion and
           internship requirements.
         </p>
-        <p className="text-lg leading-relaxed text-default-600">
+        <p className="text-lg leading-relaxed text-muted-foreground">
           This forced administrators and educators to estimate progress retrospectively, leaving gaps in planning and resource allocation.
         </p>
       </section>
@@ -99,10 +99,10 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
       <section id="research">
         <Eyebrow>Gathering evidence</Eyebrow>
         <SectionHeading>Understanding the problem</SectionHeading>
-        <p className="mb-3 text-lg leading-relaxed text-default-600">
+        <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
           We conducted in-depth interviews with administrators to dive into their day-to-day processes and uncover the limitations of the current system.
         </p>
-        <p className="mb-10 text-lg leading-relaxed text-default-600">
+        <p className="mb-10 text-lg leading-relaxed text-muted-foreground">
           To bring these insights to life, we crafted short stories depicting the real struggles administrators faced, surfacing the key user journeys behind
           the eventual design.
         </p>
@@ -141,7 +141,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         />
 
         <h3 className="mb-3.5 text-xl font-bold">User flow for idea implementation</h3>
-        <p className="mb-7 text-lg leading-relaxed text-default-600">
+        <p className="mb-7 text-lg leading-relaxed text-muted-foreground">
           To ensure the solution aligned with the legacy system, technical constraints and enhanced usability, we collaborated closely with the product manager,
           development team and stakeholders, thoroughly assessing the proposed approach and its impact.
         </p>
@@ -177,7 +177,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <div className="mb-14">
           <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 1</div>
           <h3 className="mb-3.5 text-xl font-bold">Putting ideas through wireframes</h3>
-          <p className="mb-3 text-lg leading-relaxed text-default-600">
+          <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             The product manager facilitated review discussions with the client while I observed to ensure alignment with stakeholder expectations. We gathered
             and annotated feedback directly on the wireframes, letting us iterate before moving forward and build interchangeable steps for class, subject,
             teacher and room selection.
@@ -192,7 +192,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <div className="mb-14">
           <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 2</div>
           <h3 className="mb-3.5 text-xl font-bold">Moderated prototype testing using Maze</h3>
-          <p className="mb-3 text-lg leading-relaxed text-default-600">
+          <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             We tested a calendar view for scheduling classes, annotated below with the dropdown selectors for class, subject, teacher and room.
           </p>
           <img
@@ -204,10 +204,10 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             tone="secondary"
             label="NEGATIVE FEEDBACK">
             <div className="flex flex-col gap-3">
-              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-default-800 italic">
+              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-muted-foreground italic">
                 &ldquo;It's very difficult to view subjects scheduled by period.&rdquo;
               </p>
-              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-default-800 italic">
+              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-muted-foreground italic">
                 &ldquo;Switching between classes to schedule subjects is cumbersome. Can I see all the semester's classes together?&rdquo;
               </p>
             </div>
@@ -217,7 +217,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <div>
           <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 3</div>
           <h3 className="mb-3.5 text-xl font-bold">Moderated prototype testing: the improved period view</h3>
-          <p className="mb-3 text-lg leading-relaxed text-default-600">
+          <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             Based on that feedback, we redesigned around a period view that lists every class per row across the week, with a &ldquo;Schedule Class&rdquo; panel
             for assigning subject, teacher, room and duration, closer to the familiar Google Calendar layout and built to support recurring subject scheduling.
           </p>
@@ -229,7 +229,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           <FeedbackCallout
             tone="success"
             label="POSITIVE FEEDBACK">
-            <p className="text-base leading-relaxed text-default-800">
+            <p className="text-base leading-relaxed text-muted-foreground">
               It made scanning the scheduled periods much more intuitive and significantly simplified the process of scheduling classes and internships.
             </p>
           </FeedbackCallout>
@@ -253,7 +253,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <p className="mb-3 text-xl leading-snug font-semibold">
           Designed a real-time tracking and scheduling system that integrates with Spektrum Akademie's legacy platform.
         </p>
-        <p className="mb-10 text-lg leading-relaxed text-default-600">
+        <p className="mb-10 text-lg leading-relaxed text-muted-foreground">
           Administrators can now monitor class schedules, teacher hours, internships and subject progress, while the advanced timetable scheduler enables
           efficient planning for upcoming semesters, reducing manual tracking and improving resource management.
         </p>

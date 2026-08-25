@@ -1,27 +1,14 @@
-import styled from '@emotion/styled';
 import React from 'react';
 
-const SocialIcon = styled.a({
-  width: '40px',
-  height: '40px',
-  transition: 'var(--transition-ease)',
-  '&:hover': {
-    transform: 'scale(1.3)',
-    '&:before': {
-      content: 'attr(title)',
-      position: 'absolute',
-      top: '-100%',
-      left: '0',
-      backgroundColor: 'var(--color-primary-500)',
-      color: 'var(--color-secondary-0)',
-      padding: '0.1rem 0.5rem',
-      borderRadius: 'var(--dim-round-corner-small)',
-      boxShadow: 'var(--elevation-light)',
-      zIndex: 100,
-      transition: 'var(--transition-ease)',
-    },
-  },
-});
+function SocialIcon({ title, className = '', ...props }: React.ComponentPropsWithoutRef<'a'>) {
+  return (
+    <a
+      title={title}
+      className={`social-icon relative size-10 transition-[var(--transition-ease)] hover:scale-[1.3] ${className}`}
+      {...props}
+    />
+  );
+}
 
 interface SocialIconsProps extends React.HTMLAttributes<HTMLDivElement> {
   showEmail?: boolean;
