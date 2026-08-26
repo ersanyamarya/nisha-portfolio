@@ -8,184 +8,127 @@ const STEPS = [
     step: '01',
     brewTerm: 'GRIND',
     title: 'Research',
-    caption: 'Break the problem down before assuming a solution by understanding the users, context, and constraints.',
+    caption: 'Understand the users, their context, and the constraints before jumping to a solution.',
   },
   {
     step: '02',
     brewTerm: 'FILTER',
     title: 'Define',
-    caption: 'Turn messy findings into clear problems, journeys, and priorities.',
+    caption: 'Turn messy findings into clear problems, user journeys, and priorities to tackle.',
   },
   {
     step: '03',
     brewTerm: 'BLEND',
     title: 'Explore',
-    caption: 'Pair AI with rapid prototyping and experimentation to test ideas, challenge assumptions, and find stronger solutions.',
+    caption: 'Pair AI with rapid prototyping to test ideas and find stronger solutions, fast.',
   },
   {
     step: '04',
     brewTerm: 'BREW',
     title: 'Design',
-    caption: 'Bring the experience to life through design tokens, thoughtful interactions, and developer-ready handoff.',
+    caption: 'Bring the experience to life with design tokens, thoughtful interactions, and clean handoff.',
   },
   {
     step: '05',
     brewTerm: 'TASTE',
     title: 'Validate',
-    caption: 'Test, measure, and learn from real behaviour to improve the experience.',
+    caption: 'Test, measure, and learn from real user behaviour to sharpen the experience.',
   },
 ];
 
 /** How long a step holds before the panel auto-advances, in ms. */
 const STEP_DWELL = 5000;
 
-/** Shadowless Polaroid frame: white mat, thicker at the bottom, no drop shadow. */
-function Polaroid({ className = '', children }: { className?: string; children: React.ReactNode }) {
-  return <div className={`bg-white p-2.5 pb-6 ${className}`}>{children}</div>;
-}
-
-function GrindCollage() {
+/** Full-bleed gradient backdrop for a step's featured image, centered and unrotated, no shadow/frame. */
+function ImageFrame({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-full items-center justify-center gap-4 bg-gradient-to-br from-primary-50 to-muted p-6 sm:gap-6 dark:from-primary-950/40 dark:to-muted">
-      <Polaroid className="w-1/2 max-w-96 -rotate-3">
-        <StaticImage
-          src="../../images/process/grind-configs.png"
-          alt="Interview questions probing MQTT broker configuration sharing and debugging workflows"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-      <Polaroid className="w-1/2 max-w-96 translate-y-4 rotate-2">
-        <StaticImage
-          src="../../images/process/grind-card-sort.png"
-          alt="Card-sorting board grouping research notes into problem statements on configuration sharing, sensor simulation, and message logs"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
+    <div className="flex h-full items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 to-muted p-8 sm:p-12 dark:from-primary-950/40 dark:to-muted">
+      {children}
     </div>
   );
 }
 
-function BlendCollage() {
+function GrindImage() {
   return (
-    <div className="flex h-full items-center justify-center gap-4 bg-gradient-to-br from-primary-50 to-muted p-6 sm:gap-6 dark:from-primary-950/40 dark:to-muted">
-      <Polaroid className="w-1/2 max-w-96 -rotate-3">
-        <StaticImage
-          src="../../images/process/blend-claude-prototype.png"
-          alt="Claude conversation adding validation logic to a Figma prototype, next to the resulting interactive form"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-      <Polaroid className="w-1/2 max-w-96 translate-y-4 rotate-2">
-        <StaticImage
-          src="../../images/process/blend-figma-skill.png"
-          alt="Figma AI Skills feedback collector summarizing dozens of prototype review comments into priorities"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-    </div>
+    <ImageFrame>
+      <StaticImage
+        src="../../images/process/grind.png"
+        alt="Interview questions probing MQTT broker configuration sharing and debugging workflows"
+        placeholder="blurred"
+        layout="constrained"
+        width={900}
+        height={651}
+        objectFit="contain"
+      />
+    </ImageFrame>
   );
 }
 
-function FilterCollage() {
+function FilterImage() {
   return (
-    <div className="flex h-full items-center justify-center gap-3 bg-gradient-to-br from-primary-50 to-muted p-6 sm:gap-5 dark:from-primary-950/40 dark:to-muted">
-      <Polaroid className="w-1/3 max-w-72 -rotate-3">
+    <ImageFrame>
+      <div style={{ transform: 'scale(1.25)', transformOrigin: 'left center' }}>
         <StaticImage
-          src="../../images/process/filter-use-case-1.png"
+          src="../../images/process/filter.png"
           alt="Use case 1: cost allocation split across multiple rules and routed to destination teams"
           placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
+          layout="constrained"
+          width={900}
+          height={531}
+          objectFit="contain"
         />
-      </Polaroid>
-      <Polaroid className="w-1/3 max-w-72 translate-y-3 rotate-2">
-        <StaticImage
-          src="../../images/process/filter-use-case-2.png"
-          alt="Use case 2: reallocating a cost from one destination dimension to another"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-      <Polaroid className="w-1/3 max-w-72 -rotate-1">
-        <StaticImage
-          src="../../images/process/filter-use-case-3.png"
-          alt="Use case 3: cost-based allocation where each team's share is recalculated daily from actual spend"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-    </div>
+      </div>
+    </ImageFrame>
   );
 }
 
-function BrewCollage() {
+function BlendImage() {
   return (
-    <div className="flex h-full items-center justify-center gap-3 bg-gradient-to-br from-primary-50 to-muted p-6 sm:gap-5 dark:from-primary-950/40 dark:to-muted">
-      <Polaroid className="w-1/3 max-w-72 -rotate-2">
+    <ImageFrame>
+      <div style={{ transform: 'scale(1.25)', transformOrigin: 'left center' }}>
         <StaticImage
-          src="../../images/process/brew-handoff.png"
-          alt="Figma file annotated for developer handoff, showing typography specs and generated CSS from design tokens"
+          src="../../images/process/blend.png"
+          alt="Claude conversation adding validation logic to a Figma prototype, next to the resulting interactive form"
           placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
+          layout="constrained"
+          width={900}
+          height={482}
+          objectFit="contain"
         />
-      </Polaroid>
-      <Polaroid className="w-1/3 max-w-72 translate-y-3 rotate-3">
-        <StaticImage
-          src="../../images/process/brew-css-token.png"
-          alt="globals.css theme tokens mapping CSS custom properties to color and radius variables"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-      <Polaroid className="w-1/3 max-w-72 -rotate-1">
-        <StaticImage
-          src="../../images/process/brew-variables.png"
-          alt="Figma variables panel listing theme colors mapped to Tailwind color tokens"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-    </div>
+      </div>
+    </ImageFrame>
   );
 }
 
-function TasteCollage() {
+function BrewImage() {
   return (
-    <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary-50 to-muted p-6 dark:from-primary-950/40 dark:to-muted">
-      <Polaroid className="w-full max-w-96 rotate-1">
-        <StaticImage
-          src="../../images/process/taste-evaluation-plan.png"
-          alt="MVP evaluation framework mapping research questions to metrics, methods, and priority"
-          placeholder="blurred"
-          layout="fullWidth"
-          aspectRatio={5 / 4}
-          objectFit="cover"
-        />
-      </Polaroid>
-    </div>
+    <ImageFrame>
+      <StaticImage
+        src="../../images/process/brew.png"
+        alt="Figma file annotated for developer handoff, showing typography specs and generated CSS from design tokens"
+        placeholder="blurred"
+        layout="constrained"
+        width={900}
+        height={726}
+        objectFit="contain"
+      />
+    </ImageFrame>
+  );
+}
+
+function TasteImage() {
+  return (
+    <ImageFrame>
+      <StaticImage
+        src="../../images/process/taste.png"
+        alt="MVP evaluation framework mapping research questions to metrics, methods, and priority"
+        placeholder="blurred"
+        layout="constrained"
+        width={800}
+        height={510}
+        objectFit="contain"
+      />
+    </ImageFrame>
   );
 }
 
@@ -221,7 +164,7 @@ export default function ProcessSection() {
       </Reveal>
 
       <Reveal>
-        <div className="grid grid-cols-1 overflow-hidden rounded-3xl glass-panel md:h-[540px] md:grid-cols-[280px_1fr]">
+        <div className="grid grid-cols-1 overflow-hidden rounded-3xl glass-panel md:h-[620px] md:grid-cols-[300px_1fr]">
           <div className="flex flex-col border-b border-border md:border-r md:border-b-0">
             <div>
               {STEPS.map((s, i) => {
@@ -231,10 +174,10 @@ export default function ProcessSection() {
                     key={s.step}
                     onClick={() => selectStep(i)}
                     aria-current={isActive ? 'step' : undefined}
-                    className={`block w-full cursor-pointer border-l-2 px-7 py-4 text-left transition-all ${
-                      isActive ? 'border-l-primary bg-primary-50/40 dark:bg-primary-950/40' : 'border-l-transparent bg-transparent hover:bg-muted/50'
+                    className={`block w-full cursor-pointer border-b border-border px-7 py-6 text-left transition-colors last:border-none ${
+                      isActive ? '' : 'hover:bg-muted/40'
                     }`}>
-                    <div className={`mb-1 text-xs font-semibold tracking-widest ${isActive ? 'text-primary' : 'text-default-400'}`}>
+                    <div className={`mb-1.5 text-xs font-semibold tracking-widest ${isActive ? 'text-primary' : 'text-default-400'}`}>
                       {s.step} · {s.brewTerm}
                     </div>
                     <div className={`text-lg font-medium ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>{s.title}</div>
@@ -246,39 +189,28 @@ export default function ProcessSection() {
                         <p className="pt-1.5 text-xs leading-relaxed text-muted-foreground">{s.caption}</p>
                       </div>
                     </div>
+                    {/* Auto-progress underline: fills over STEP_DWELL, then hands off to the next step. Remounted by `cycle` so a manual click restarts it. */}
+                    {isActive && (
+                      <div className="mt-3 h-0.5 w-10 overflow-hidden rounded-full bg-primary/20">
+                        <div
+                          key={cycle}
+                          className="h-full w-full origin-left rounded-full bg-primary motion-safe:animate-[story-fill_var(--dwell)_linear_forwards] motion-reduce:hidden"
+                          style={{ '--dwell': `${STEP_DWELL}ms` } as React.CSSProperties}
+                        />
+                      </div>
+                    )}
                   </button>
                 );
               })}
             </div>
-
-            {/* Auto-progress: fills over STEP_DWELL, then hands off to the next step. Remounted by `cycle` so a manual click restarts it. */}
-            <div className="mt-auto px-7 py-4">
-              <div className="h-1 w-full overflow-hidden rounded-full bg-border">
-                <div
-                  key={cycle}
-                  className="h-full w-full origin-left rounded-full bg-primary motion-safe:animate-[story-fill_var(--dwell)_linear_forwards] motion-reduce:hidden"
-                  style={{ '--dwell': `${STEP_DWELL}ms` } as React.CSSProperties}
-                />
-              </div>
-            </div>
           </div>
 
-          {/* Right panel: full-bleed collage only, no padding, filling edge-to-edge at a fixed height across steps. */}
-          <div className="h-72 overflow-hidden md:h-full">
+          {/* Right panel: single large featured image, no padding on the wrapper so it fills edge-to-edge at a fixed height across steps. */}
+          <div className="h-80 overflow-hidden sm:h-96 md:h-full">
             <div
               key={active}
               className="h-full w-full motion-safe:animate-in motion-safe:duration-700 motion-safe:fade-in">
-              {active === 0 ? (
-                <GrindCollage />
-              ) : active === 1 ? (
-                <FilterCollage />
-              ) : active === 2 ? (
-                <BlendCollage />
-              ) : active === 3 ? (
-                <BrewCollage />
-              ) : (
-                <TasteCollage />
-              )}
+              {active === 0 ? <GrindImage /> : active === 1 ? <FilterImage /> : active === 2 ? <BlendImage /> : active === 3 ? <BrewImage /> : <TasteImage />}
             </div>
           </div>
         </div>
