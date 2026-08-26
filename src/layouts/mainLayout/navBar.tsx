@@ -2,7 +2,7 @@ import { Link } from 'gatsby';
 import { MenuIcon, XIcon } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Logo, ThemeToggle } from '../../components';
+import { Logo } from '../../components';
 import useScrollPosition from '../../hooks/useScrollPosition';
 import Contact from '../../sections/contact';
 
@@ -73,7 +73,6 @@ export default function NavBar() {
             ))}
 
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <Button
                 asChild
                 variant="outline"
@@ -95,7 +94,6 @@ export default function NavBar() {
           </div>
 
           <div className="flex items-center gap-1 md:hidden">
-            <ThemeToggle />
             <button
               type="button"
               onClick={() => setMenuOpen(open => !open)}

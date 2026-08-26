@@ -37,7 +37,7 @@ export default function HeroSection() {
         <div className="relative flex w-full flex-col items-start md:w-[58%] xl:w-[60%]">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold tracking-widest text-primary uppercase glass-panel">
             <span className="size-2 animate-pulse rounded-full bg-primary" />
-            Open to senior product design roles
+            Open to UX/Product design role
           </div>
 
           {/* Sized so each clause holds one line at xl; `balance` keeps the narrower
@@ -49,8 +49,9 @@ export default function HeroSection() {
           </h1>
 
           <p className="mb-10 max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Hi, I'm Nisha. A senior product designer in Berlin, eight years in climate-tech, cloud FinOps and security products. Research and interface, same
-            pair of hands.
+            I&rsquo;ve worked across startups, corporations, consultancies, and freelance projects, adapting to different products, domains, and ways of
+            working. I bring 9-bar precision to that variety: enough precision to get the details right, enough adaptability to work through whatever comes my
+            way.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
