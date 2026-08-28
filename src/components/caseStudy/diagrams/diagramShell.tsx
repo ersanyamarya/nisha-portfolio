@@ -109,13 +109,15 @@ export function LegendStrip({ y, width, children }: { y: number; width: number; 
 }
 
 /**
- * Wraps a diagram render function with click-to-zoom: hover shows a magnifying-glass cursor,
- * clicking (or Enter/Space) opens the same diagram enlarged in an overlay. Click the overlay,
- * press Escape, or click the diagram again to close. `render` is called once per slug so the
- * inline and zoomed copies get distinct SVG ids and don't collide in the DOM.
+ * Wraps a diagram render function with the same two-step zoom as `ZoomableImage`: hover shows
+ * a magnifying-glass cursor; click (or Enter/Space) opens it enlarged in a scrollable overlay;
+ * clicking the enlarged diagram zooms it further (scroll to pan around); click it again, press
+ * Escape, or click outside the diagram to close. `render` is called once per slug so the inline
+ * and zoomed copies get distinct SVG ids and don't collide in the DOM.
  */
 export function ZoomableDiagram({ baseSlug, title, render }: { baseSlug: string; title: string; render: (slug: string) => React.ReactNode }) {
   const [zoomed, setZoomed] = useState(false);
+  const [fullSize, setFullSize] = useState(false);
 
   useEffect(() => {
     if (!zoomed) return;
@@ -129,6 +131,11 @@ export function ZoomableDiagram({ baseSlug, title, render }: { baseSlug: string;
       document.body.style.overflow = '';
     };
   }, [zoomed]);
+
+  const close = () => {
+    setZoomed(false);
+    setFullSize(false);
+  };
 
   return (
     <>
@@ -152,9 +159,30 @@ export function ZoomableDiagram({ baseSlug, title, render }: { baseSlug: string;
           role="dialog"
           aria-modal="true"
           aria-label={title}
-          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-default-950/80 p-6"
-          onClick={() => setZoomed(false)}>
-          <div className="w-full max-w-5xl">{render(`${baseSlug}-zoomed`)}</div>
+          className="fixed inset-0 z-50 flex flex-col overflow-auto bg-default-950/80 p-6"
+          onClick={close}>
+          <div className="m-auto w-fit">
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label={fullSize ? `Zoom out of diagram: ${title}` : `Zoom into diagram: ${title}`}
+              className={fullSize ? 'w-[1800px] max-w-none cursor-zoom-out' : 'w-[min(90vw,1024px)] cursor-zoom-in'}
+              onClick={e => {
+                e.stopPropagation();
+                setFullSize(f => !f);
+              }}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setFullSize(f => !f);
+                }
+              }}>
+              {render(`${baseSlug}-zoomed`)}
+            </div>
+          </div>
+          <div className="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-default-900/80 px-4 py-1.5 text-xs font-medium text-default-50">
+            {fullSize ? 'Click diagram to zoom out' : 'Click diagram to zoom in'} · Esc to close
+          </div>
         </div>
       )}
     </>
