@@ -11,17 +11,19 @@ import {
   FooterNav,
   PillTag,
   ProsCons,
-  QuoteBlock,
   SectionHeading,
+  StatChip,
+  ZoomableImage,
 } from '../../components/caseStudy';
-import Mindmap from '../../images/case-studies/spektrum/spektrum-mindmap.jpg';
-import Periodview from '../../images/case-studies/spektrum/spektrum-periodview.png';
-import SchedulerFinal from '../../images/case-studies/spektrum/spektrum-scheduler-final.jpg';
-import SchedulerHero from '../../images/case-studies/spektrum/spektrum-scheduler-hero.jpg';
-import UserJourneyResources from '../../images/case-studies/spektrum/spektrum-user-journey-resources.jpg';
-import UserJourney from '../../images/case-studies/spektrum/spektrum-user-journey.jpg';
-import Userflow from '../../images/case-studies/spektrum/spektrum-userflow.jpg';
-import WireframeDropdown from '../../images/case-studies/spektrum/spektrum-wireframe-dropdown.png';
+import Dashboard from '../../images/case-studies/spektrum/spektrum_iterations_3.jpg';
+import Mindmap from '../../images/case-studies/spektrum/spektrum_strategy_1.jpg';
+import Periodview from '../../images/case-studies/spektrum/spektrum_iterations_4.png';
+import SchedulerFinal from '../../images/case-studies/spektrum/spektrum_iterations_2.jpg';
+import SchedulerHero from '../../images/case-studies/spektrum/spektrum_overview.jpg';
+import UserJourneyResources from '../../images/case-studies/spektrum/spektrum_research_1.jpg';
+import UserJourney from '../../images/case-studies/spektrum/spektrum_research_2.jpg';
+import Userflow from '../../images/case-studies/spektrum/spektrum_strategy_2.jpg';
+import WireframeDropdown from '../../images/case-studies/spektrum/spektrum_iterations_1.png';
 
 const SECTIONS = [
   { id: 'overview', label: 'Overview' },
@@ -29,7 +31,6 @@ const SECTIONS = [
   { id: 'research', label: 'Gathering evidence' },
   { id: 'strategy', label: 'Strategy & idea exploration' },
   { id: 'iterations', label: 'Ideation & design iteration' },
-  { id: 'final-design', label: 'Final design' },
   { id: 'impact', label: 'Impact' },
 ];
 
@@ -37,46 +38,37 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Spektrum Akademie · EdTech</Eyebrow>
+        <Eyebrow>Spektrum Akademie · EdTech · Web app</Eyebrow>
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Administrators had no way to track scheduling progress in real time
         </h1>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           Spektrum Akademie is a vocational education institution in Berlin, training students across Occupational Therapy, Physiotherapy, Speech Therapy and
           Early Childhood Education. I designed the real-time scheduling and resource-tracking system its administrators now plan every semester around.
         </p>
-        <div className="flex flex-wrap gap-10">
-          <div className="flex items-baseline gap-2.5">
-            <span className="text-4xl font-extrabold tracking-[-0.02em] text-primary">90%</span>
-            <span className="text-sm font-medium text-default-500">less manual tracking effort</span>
-          </div>
-          <div className="flex items-baseline gap-2.5">
-            <span className="text-4xl font-extrabold tracking-[-0.02em] text-primary">75%</span>
-            <span className="text-sm font-medium text-default-500">faster timetable creation</span>
-          </div>
+        <div className="mb-10 flex flex-wrap gap-4">
+          <StatChip
+            eyebrow="Manual tracking"
+            value="90% less"
+            label="manual tracking effort, replacing spreadsheets administrators used to maintain by hand"
+          />
+          <StatChip
+            eyebrow="Timetable creation"
+            value="75% faster"
+            label="timetable creation, letting administrators plan a full semester in a fraction of the time"
+          />
         </div>
-      </section>
-
-      <section>
-        <div className="overflow-hidden rounded-3xl shadow-2xl">
-          <img
+        <div className="mb-10 overflow-hidden rounded-3xl shadow-2xl">
+          <ZoomableImage
             src={SchedulerHero}
             alt="Zeitplaner scheduler view showing a weekly class timetable with teacher and room availability"
             className="block h-auto w-full"
           />
         </div>
-      </section>
-
-      <section>
-        <ChallengeApproachOutcome
-          challenge="Spektrum Akademie had no way to track real-time progress on class schedules, teacher hours, subject completion and internship requirements, leaving administrators to estimate progress after the fact."
-          approach="Interviewed administrators to map their day-to-day process, explored the strategy in mind maps and user flows with the product and dev teams, then benchmarked wireframes before designing the full scheduler."
-          outcome="A real-time tracking and scheduling system integrated with Spektrum Akademie's legacy platform, cutting manual tracking effort by 90% and speeding up timetable creation by 75%."
-        />
-        <div className="mt-10">
+        <div>
           <div className="mb-4 text-xs font-bold tracking-wide text-primary">Skills applied</div>
           <div className="flex flex-wrap gap-2.5">
-            {['UX research', 'Information architecture', 'Wireframing', 'Prototyping', 'Usability testing', 'Interaction design'].map(s => (
+            {['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'].map(s => (
               <PillTag key={s}>{s}</PillTag>
             ))}
           </div>
@@ -96,6 +88,15 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         </p>
       </section>
 
+      <section>
+        <div className="rounded-3xl border border-default-200 px-6 py-10 md:px-10 md:py-12">
+          <ChallengeApproachOutcome
+            approach="Interviewed administrators to map their day-to-day process, explored the strategy in mind maps and user flows with the product and dev teams, then benchmarked wireframes before designing the full scheduler."
+            outcome="A real-time tracking and scheduling system integrated with Spektrum Akademie's legacy platform, cutting manual tracking effort by 90% and speeding up timetable creation by 75%."
+          />
+        </div>
+      </section>
+
       <section id="research">
         <Eyebrow>Gathering evidence</Eyebrow>
         <SectionHeading>Understanding the problem</SectionHeading>
@@ -107,14 +108,14 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           the eventual design.
         </p>
         <div className="flex flex-col gap-5">
-          <img
-            src={UserJourney}
-            alt="User journey mapping the administrator's day-to-day scheduling struggles"
-            className="block h-auto w-full rounded-2xl ring-1 ring-default-200"
-          />
-          <img
+          <ZoomableImage
             src={UserJourneyResources}
             alt="User journey tracking academic resources across the current manual process"
+            className="block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          />
+          <ZoomableImage
+            src={UserJourney}
+            alt="User journey mapping the administrator's day-to-day scheduling struggles"
             className="block h-auto w-full rounded-2xl ring-1 ring-default-200"
           />
         </div>
@@ -134,7 +135,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             <strong>Consistent naming conventions:</strong> ensuring terminology stayed consistent to enable smooth data import/export with the legacy system.
           </Bullet>
         </div>
-        <img
+        <ZoomableImage
           src={Mindmap}
           alt="Mind map visualizing the relationships between academic resources"
           className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-default-200"
@@ -145,7 +146,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           To ensure the solution aligned with the legacy system, technical constraints and enhanced usability, we collaborated closely with the product manager,
           development team and stakeholders, thoroughly assessing the proposed approach and its impact.
         </p>
-        <img
+        <ZoomableImage
           src={Userflow}
           alt="User flow diagram for the scheduling idea implementation"
           className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-default-200"
@@ -182,20 +183,24 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             and annotated feedback directly on the wireframes, letting us iterate before moving forward and build interchangeable steps for class, subject,
             teacher and room selection.
           </p>
-          <img
-            src={WireframeDropdown}
-            alt="Early wireframe of the interchangeable class, subject, teacher and room selection steps"
-            className="mt-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
-          />
+          <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-default-200">
+            <ZoomableImage
+              src={WireframeDropdown}
+              alt="Early wireframe of the interchangeable class, subject, teacher and room selection steps"
+              className="block h-auto w-full scale-110"
+            />
+          </div>
         </div>
 
         <div className="mb-14">
           <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 2</div>
-          <h3 className="mb-3.5 text-xl font-bold">Moderated prototype testing using Maze</h3>
+          <h3 className="mb-3.5 text-xl font-bold">Moderated prototype testing, built on iteration 1 feedback</h3>
+
+          <h4 className="mb-2 text-base font-bold">Scheduler</h4>
           <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             We tested a calendar view for scheduling classes, annotated below with the dropdown selectors for class, subject, teacher and room.
           </p>
-          <img
+          <ZoomableImage
             src={SchedulerFinal}
             alt="Second iteration: calendar view for scheduling with class, subject, teacher and room selectors"
             className="my-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
@@ -212,6 +217,24 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
               </p>
             </div>
           </FeedbackCallout>
+
+          <h4 className="mt-10 mb-2 text-base font-bold">Dashboard</h4>
+          <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
+            We tested a class dashboard summarizing scheduled hours and subject progress, with a drill-down panel showing each teacher's contribution and hours
+            taught per subject.
+          </p>
+          <ZoomableImage
+            src={Dashboard}
+            alt="Class dashboard showing scheduled hours, subject progress and a teaching-details panel with hours taught per teacher"
+            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          />
+          <FeedbackCallout
+            tone="success"
+            label="POSITIVE FEEDBACK">
+            <p className="text-base leading-relaxed text-muted-foreground">
+              Users praised the analytics, the granularity of the data, and how easily they could see hours taught by teachers.
+            </p>
+          </FeedbackCallout>
         </div>
 
         <div>
@@ -221,7 +244,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             Based on that feedback, we redesigned around a period view that lists every class per row across the week, with a &ldquo;Schedule Class&rdquo; panel
             for assigning subject, teacher, room and duration, closer to the familiar Google Calendar layout and built to support recurring subject scheduling.
           </p>
-          <img
+          <ZoomableImage
             src={Periodview}
             alt="Third iteration: period view scheduler with a Schedule Class panel for assigning subject, teacher, room and duration"
             className="my-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
@@ -234,16 +257,6 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             </p>
           </FeedbackCallout>
         </div>
-      </section>
-
-      <section id="final-design">
-        <Eyebrow>Final design</Eyebrow>
-        <SectionHeading>The scheduler, shipped</SectionHeading>
-        <img
-          src={SchedulerHero}
-          alt="Final Zeitplaner scheduler showing the weekly class timetable with teacher and room availability"
-          className="block h-auto w-full rounded-3xl ring-1 ring-default-200"
-        />
       </section>
 
       <section
@@ -276,10 +289,13 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           in follow-up interviews after the product entered daily use.
         </p>
 
-        <QuoteBlock
-          quote="Diese Software hat unsere Stundenplanung revolutioniert. Wir sparen nicht nur Zeit, sondern haben auch einen viel besseren Überblick über unsere Ressourcen."
-          attribution="Spektrum Akademie"
-        />
+        <div className="flex flex-col gap-3">
+          <p className="border-l-2 border-primary pl-4 text-lg leading-relaxed italic">
+            &ldquo;Diese Software hat unsere Stundenplanung revolutioniert. Wir sparen nicht nur Zeit, sondern haben auch einen viel besseren Überblick über
+            unsere Ressourcen.&rdquo;
+          </p>
+          <p className="text-sm font-semibold text-default-500">— Spektrum Akademie</p>
+        </div>
       </section>
 
       <FooterNav

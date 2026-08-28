@@ -17,11 +17,11 @@ import {
   ZoomableImage,
 } from '../../components/caseStudy';
 import { DIAGRAM_FONT_LINK, JobTraceFlow, LifecycleFlow, QuarterTimeline } from '../../components/caseStudy/diagrams';
-import AnomalyGraph from '../../images/case-studies/flexera/flexera-anomaly-graph-branded.png';
-import CurrentExperienceAudit from '../../images/case-studies/flexera/flexera-current-experience-audit.png';
-import DiscoveryDiscussions from '../../images/case-studies/flexera/flexera-discovery-discussions.png';
-import MvpDesignAnnotated from '../../images/case-studies/flexera/flexera-mvp-design-annotated.png';
-import UserJourney from '../../images/case-studies/flexera/flexera-user-journey.png';
+import AnomalyGraph from '../../images/case-studies/flexera/flexera_overview.png';
+import CurrentExperienceAudit from '../../images/case-studies/flexera/flexera_research.png';
+import DiscoveryDiscussions from '../../images/case-studies/flexera/flexera_jobs-to-be-done.png';
+import MvpDesignAnnotated from '../../images/case-studies/flexera/flexera_final-design.png';
+import UserJourney from '../../images/case-studies/flexera/flexera_journey.png';
 
 const SECTIONS = [
   { id: 'overview', label: 'Overview' },
@@ -39,7 +39,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Flexera · FinOps / cloud cost management</Eyebrow>
+        <Eyebrow>Flexera · FinOps / cloud cost management · Web app</Eyebrow>
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Flexera already had a way to catch cloud cost spikes. Almost nobody used it
         </h1>

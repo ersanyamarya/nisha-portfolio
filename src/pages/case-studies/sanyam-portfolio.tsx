@@ -3,8 +3,8 @@ import * as React from 'react';
 import { SEO } from '../../components';
 import { Bullet, CaseStudyShell, ChallengeApproachOutcome, Eyebrow, FooterNav, PillTag, SectionHeading } from '../../components/caseStudy';
 import { CareerTimeline, DIAGRAM_FONT_LINK } from '../../components/caseStudy/diagrams';
-import FinalDesign from '../../images/case-studies/sanyam-portfolio/sanyam-portfolio-final-design.jpg';
-import Hero from '../../images/case-studies/sanyam-portfolio/sanyam-portfolio-hero.jpg';
+import FinalDesign from '../../images/case-studies/sanyam-portfolio/sanyam_final-design.jpg';
+import Hero from '../../images/case-studies/sanyam-portfolio/sanyam_overview.jpg';
 
 const SECTIONS = [
   { id: 'overview', label: 'Overview' },
@@ -19,7 +19,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Sanyam Arya · Personal portfolio · Brand repositioning</Eyebrow>
+        <Eyebrow>Sanyam Arya · Personal branding · Portfolio website</Eyebrow>
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           A portfolio that still read &ldquo;developer&rdquo; after the job had already changed
         </h1>

@@ -3,15 +3,16 @@ import React from 'react';
 
 import { Reveal, TiltCard } from '../../components';
 import { Tone, TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
-import FlexeraGraphic from '../../images/case-studies/flexera/flexera-anomaly-graph-branded.png';
-import SanyamGraphic from '../../images/case-studies/sanyam-portfolio/sanyam-portfolio-hero.jpg';
-import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum-scheduler-hero.jpg';
+import FlexeraGraphic from '../../images/case-studies/flexera/flexera_overview.png';
+import SanyamGraphic from '../../images/case-studies/sanyam-portfolio/sanyam_overview.jpg';
+import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum_overview.jpg';
 
 const caseStudies: {
   name: string;
   link: string;
   domain: string;
-  role: string;
+  platformType: string;
+  caseStudyType: string;
   description: string;
   tags: string[];
   statValue: string;
@@ -23,7 +24,8 @@ const caseStudies: {
     name: 'Flexera',
     link: '/case-studies/flexera',
     domain: 'FinOps',
-    role: 'UX Research & Design',
+    platformType: 'Web app',
+    caseStudyType: 'UX Research & Design',
     description: 'Flexera already had a way to catch cloud cost spikes. Almost nobody used it',
     tags: ['Discovery research', 'Stakeholder interviews', 'Product analytics', 'Prototyping', 'AI/ML UX'],
     statValue: '~5/6',
@@ -35,9 +37,10 @@ const caseStudies: {
     name: 'Spektrum Akademie',
     link: '/case-studies/spektrum',
     domain: 'EdTech',
-    role: 'UX Research & Design',
-    description: 'Inability to track real-time progress of academic resources, leading to planning inefficiencies',
-    tags: ['Web App', 'EdTech', 'Information Architecture'],
+    platformType: 'Web app',
+    caseStudyType: 'UX Research & Design',
+    description: 'Administrators had no way to track scheduling progress in real time',
+    tags: ['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'],
     statValue: '90%',
     statLabel: 'less manual tracking',
     tone: 'success',
@@ -47,7 +50,8 @@ const caseStudies: {
     name: 'Sanyam Arya',
     link: '/case-studies/sanyam-portfolio',
     domain: 'Personal Brand',
-    role: 'IA & Content Strategy',
+    platformType: 'Portfolio website',
+    caseStudyType: 'IA & Content Strategy',
     description: 'A portfolio that still read "developer" after the job had already changed',
     tags: ['Personal Site', 'Information Architecture', 'Brand Positioning'],
     statValue: 'Live',
@@ -88,13 +92,13 @@ export default function ProjectsSection() {
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <span className={`absolute top-4 left-4 rounded-full px-3 py-1.5 text-xs font-bold tracking-wide ${TONE_SOLID[project.tone]}`}>
-                    {project.domain}
+                    {project.name}
                   </span>
                 </div>
 
                 <div className="flex flex-1 flex-col p-7 md:p-8">
                   <div className="mb-2 text-xs font-medium tracking-widest text-muted-foreground uppercase">
-                    {project.name} · {project.role}
+                    {project.domain} · {project.platformType} · {project.caseStudyType}
                   </div>
                   <h3 className="mb-4 font-serif text-2xl leading-snug font-medium transition-colors group-hover:text-primary">{project.description}</h3>
 
