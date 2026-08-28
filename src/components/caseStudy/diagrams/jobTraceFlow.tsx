@@ -1,5 +1,5 @@
 import React from 'react';
-import { Diagram, DiagramDefs, LegendItem, LegendStrip } from './diagramShell';
+import { Diagram, DiagramDefs, LegendItem, LegendStrip, ZoomableDiagram } from './diagramShell';
 import { DIAGRAM } from './tokens';
 
 export type TraceNodeKind = 'input' | 'plain' | 'focal' | 'future';
@@ -47,22 +47,7 @@ function nodeStroke(kind: TraceNodeKind) {
   }
 }
 
-/**
- * A 6-step research → decision trace: what we found, the need it implied, the job that
- * followed, the decision the MVP made, why it fit, and what's next. One focal (accent) node —
- * the job itself — is the only coral in the diagram, per the "1-2 focal elements" rule.
- */
-export function JobTraceFlow({
-  slug,
-  title,
-  desc,
-  steps,
-}: {
-  slug: string;
-  title: string;
-  desc: string;
-  steps: [TraceNode, TraceNode, TraceNode, TraceNode, TraceNode, TraceNode];
-}) {
+function TraceDiagram({ slug, title, desc, steps }: { slug: string; title: string; desc: string; steps: TraceNode[] }) {
   const idPrefix = slug;
 
   return (
@@ -191,5 +176,40 @@ export function JobTraceFlow({
         />
       </LegendStrip>
     </Diagram>
+  );
+}
+
+/**
+ * A 6-step research → decision trace: what we found, the need it implied, the job that
+ * followed, the decision the MVP made, why it fit, and what's next. One focal (accent) node —
+ * the job itself — is the only coral in the diagram, per the "1-2 focal elements" rule.
+ *
+ * Click (or Enter/Space) zooms the diagram into a larger overlay; click again, press Escape,
+ * or click outside to close it.
+ */
+export function JobTraceFlow({
+  slug,
+  title,
+  desc,
+  steps,
+}: {
+  slug: string;
+  title: string;
+  desc: string;
+  steps: [TraceNode, TraceNode, TraceNode, TraceNode, TraceNode, TraceNode];
+}) {
+  return (
+    <ZoomableDiagram
+      baseSlug={slug}
+      title={title}
+      render={s => (
+        <TraceDiagram
+          slug={s}
+          title={title}
+          desc={desc}
+          steps={steps}
+        />
+      )}
+    />
   );
 }

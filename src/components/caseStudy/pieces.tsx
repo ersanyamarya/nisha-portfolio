@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tone, TONE_SOLID, TONE_TEXT } from './tone';
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -7,6 +7,80 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
 
 export function SectionHeading({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <h2 className={`mb-5 text-3xl font-extrabold tracking-[-0.01em] md:text-4xl ${className}`}>{children}</h2>;
+}
+
+/**
+ * A case-study screenshot/diagram image with the same click-to-zoom behavior as the SVG
+ * diagrams, plus a second zoom step for actually reading detail: hover shows a
+ * magnifying-glass cursor; click (or Enter/Space) opens it enlarged in a scrollable overlay;
+ * clicking the enlarged image zooms it to full resolution (scroll to pan around); click it
+ * again, press Escape, or click outside the image to close.
+ */
+export function ZoomableImage({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
+  const [zoomed, setZoomed] = useState(false);
+  const [fullSize, setFullSize] = useState(false);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setZoomed(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [zoomed]);
+
+  const close = () => {
+    setZoomed(false);
+    setFullSize(false);
+  };
+
+  return (
+    <>
+      <img
+        src={src}
+        alt={alt}
+        role="button"
+        tabIndex={0}
+        aria-label={`Zoom into image: ${alt}`}
+        className={`cursor-zoom-in ${className}`}
+        onClick={() => setZoomed(true)}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setZoomed(true);
+          }
+        }}
+      />
+
+      {zoomed && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={alt}
+          className="fixed inset-0 z-50 flex flex-col overflow-auto bg-default-950/80 p-6"
+          onClick={close}>
+          <div className="m-auto w-fit">
+            <img
+              src={src}
+              alt={alt}
+              onClick={e => {
+                e.stopPropagation();
+                setFullSize(f => !f);
+              }}
+              className={fullSize ? 'max-w-none cursor-zoom-out rounded-2xl' : 'max-h-[85vh] max-w-[90vw] cursor-zoom-in rounded-2xl object-contain'}
+            />
+          </div>
+          <div className="pointer-events-none fixed bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-default-900/80 px-4 py-1.5 text-xs font-medium text-default-50">
+            {fullSize ? 'Click image to zoom out' : 'Click image to zoom in'} · Esc to close
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
 
 export function StatChip({ eyebrow, value, label }: { eyebrow: string; value: string; label: string }) {
@@ -63,6 +137,75 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
   );
 }
 
+export function FunnelBreakdown({
+  eyebrow,
+  from,
+  to,
+  dropLabel,
+  dropSub,
+  notes,
+  className = '',
+}: {
+  eyebrow: string;
+  from: { label: string; value: string; sub: string };
+  to: { label: string; value: string; sub: string };
+  dropLabel: string;
+  dropSub: string;
+  notes: React.ReactNode[];
+  className?: string;
+}) {
+  return (
+    <div className={`rounded-3xl border border-default-200 px-6 py-8 md:px-10 ${className}`}>
+      <div className="mb-8 text-[11px] font-extrabold tracking-widest text-default-500">{eyebrow}</div>
+      <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div className="mb-1 text-base font-bold">{from.label}</div>
+          <div className="text-4xl font-extrabold tracking-[-0.02em]">{from.value}</div>
+          <div className="text-sm text-default-500">{from.sub}</div>
+        </div>
+        <div className="flex flex-1 flex-col items-center gap-1.5 px-4">
+          <span className="text-sm font-bold text-secondary-600">{dropLabel}</span>
+          <svg
+            width="100%"
+            height="12"
+            viewBox="0 0 200 12"
+            preserveAspectRatio="none"
+            className="w-full max-w-60 text-secondary-400">
+            <line
+              x1="0"
+              y1="6"
+              x2="188"
+              y2="6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeDasharray="6,5"
+            />
+            <polygon
+              points="188,1 200,6 188,11"
+              fill="currentColor"
+            />
+          </svg>
+          <span className="text-xs text-default-500">{dropSub}</span>
+        </div>
+        <div className="text-left md:text-right">
+          <div className="mb-1 text-base font-bold">{to.label}</div>
+          <div className="text-4xl font-extrabold tracking-[-0.02em]">{to.value}</div>
+          <div className="text-sm text-default-500">{to.sub}</div>
+        </div>
+      </div>
+      <div className="mt-8 flex flex-col gap-2 border-t border-default-200 pt-6 sm:flex-row sm:gap-8">
+        {notes.map((note, i) => (
+          <p
+            key={i}
+            className="text-sm text-muted-foreground">
+            {note}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function QuoteBlock({ quote, attribution }: { quote: string; attribution?: string }) {
   return (
     <div className="rounded-xl bg-default-100 px-6 py-5">
@@ -90,20 +233,20 @@ export function ChallengeApproachOutcome({
   approach,
   outcome,
 }: {
-  challenge: React.ReactNode;
+  challenge?: React.ReactNode;
   approach: React.ReactNode;
   outcome: React.ReactNode;
 }) {
   const items = [
-    { label: 'Challenge', body: challenge },
+    challenge !== undefined && { label: 'Challenge', body: challenge },
     { label: 'Approach', body: approach },
     { label: 'Outcome', body: outcome },
-  ];
+  ].filter(Boolean) as { label: string; body: React.ReactNode }[];
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div className={`grid grid-cols-1 gap-8 ${items.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
       {items.map(item => (
         <div key={item.label}>
-          <div className="mb-3.5 text-xs font-bold tracking-wide text-primary">{item.label}</div>
+          <div className="mb-3.5 text-[11px] font-extrabold tracking-widest text-default-500">{item.label}</div>
           <p className="text-base leading-relaxed text-muted-foreground">{item.body}</p>
         </div>
       ))}

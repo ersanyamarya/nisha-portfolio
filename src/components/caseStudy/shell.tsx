@@ -13,7 +13,7 @@ export function CaseStudyShell({ sections, children }: { sections: CaseStudySect
       </Link>
 
       <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[1fr_200px]">
-        <div className="flex min-w-0 flex-col gap-16">{children}</div>
+        <div className="flex min-w-0 flex-col gap-16 md:gap-24">{children}</div>
         <OnThisPageNav sections={sections} />
       </div>
     </Layout>

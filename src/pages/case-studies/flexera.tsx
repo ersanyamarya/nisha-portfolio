@@ -8,11 +8,13 @@ import {
   DarkStat,
   Eyebrow,
   FooterNav,
+  FunnelBreakdown,
   InsightCallout,
   PillTag,
   QuoteBlock,
   SectionHeading,
   StatChip,
+  ZoomableImage,
 } from '../../components/caseStudy';
 import { DIAGRAM_FONT_LINK, JobTraceFlow, LifecycleFlow, QuarterTimeline } from '../../components/caseStudy/diagrams';
 import AnomalyGraph from '../../images/case-studies/flexera/flexera-anomaly-graph-branded.png';
@@ -24,6 +26,7 @@ import UserJourney from '../../images/case-studies/flexera/flexera-user-journey.
 const SECTIONS = [
   { id: 'overview', label: 'Overview' },
   { id: 'problem', label: 'The problem' },
+  { id: 'timeline', label: 'Project timeline' },
   { id: 'scope', label: 'Project scope' },
   { id: 'research', label: 'Research & findings' },
   { id: 'jobs-to-be-done', label: 'Jobs to be done' },
@@ -40,12 +43,17 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Flexera already had a way to catch cloud cost spikes. Almost nobody used it
         </h1>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           Flexera's cloud cost optimization platform helps enterprises manage spend across AWS, Azure and GCP. I led discovery, research synthesis and design
-          for a rebuilt AI-based anomaly detection experience, working across Product, Engineering and the Data Science team over two quarters, from usage data
-          to a shipped MVP.
+          for a rebuilt AI-based anomaly detection experience, working across Product, Engineering and the Data Science team over a single quarter, from usage
+          data to a shipped MVP.
         </p>
-        <div className="flex flex-wrap gap-4">
+        <p className="mb-8 border-l-2 border-primary pl-4 text-lg leading-relaxed italic">
+          &ldquo;In plain terms: an anomaly is just a point where a number breaks its usual pattern, like a spike in a graph. Here, the number is cloud spend,
+          and each spike is money someone didn't expect to pay. Catching it fast is the difference between a quick fix and a budget surprise a month
+          later.&rdquo;
+        </p>
+        <div className="mb-10 flex flex-wrap gap-4">
           <StatChip
             eyebrow="Design target"
             value="20–30% faster"
@@ -57,40 +65,15 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             label="correctly identified the top cost contributor"
           />
         </div>
-      </section>
-
-      <section>
-        <div className="overflow-hidden rounded-3xl shadow-2xl">
-          <img
+        <div className="mb-10 overflow-hidden rounded-3xl shadow-2xl">
+          <ZoomableImage
             src={AnomalyGraph}
             alt="Line graph of daily cloud spend with two sharp spikes marked as anomalous"
             className="block h-auto w-full"
           />
         </div>
-        <p className="mt-4 text-base leading-relaxed text-default-500">
-          In plain terms: an anomaly is just a point where a number breaks its usual pattern, like a spike in the graph above. Here, the number is cloud spend,
-          and each spike is money someone didn't expect to pay. Catching it fast is the difference between a quick fix and a budget surprise a month later.
-        </p>
-      </section>
-
-      <section>
-        <ChallengeApproachOutcome
-          challenge={
-            <>
-              The existing anomaly detection ran on a <strong>basic statistical check with no explanation attached</strong>, sent users to a{' '}
-              <strong>disconnected page</strong>, and had <strong>close to zero adoption</strong> despite live usage data proving demand for cost visibility.
-            </>
-          }
-          approach="Spent a full quarter on discovery: auditing usage data and the current tool, interviewing FinOps practitioners, and building a shared anomaly lifecycle with Product, Engineering and Data Science before designing anything."
-          outcome={
-            <>
-              Shipped <strong>AI-based anomaly detection</strong> with a <strong>root cause analysis</strong> concept, giving practitioners a trustworthy{' '}
-              <strong>&ldquo;what changed and why&rdquo;</strong> in place of an unexplained alert.
-            </>
-          }
-        />
-        <div className="mt-10">
-          <div className="mb-4 text-xs font-bold tracking-wide text-primary">Skills applied</div>
+        <div>
+          <div className="mb-4 text-[11px] font-extrabold tracking-widest text-default-500">Skills applied</div>
           <div className="flex flex-wrap gap-2.5">
             {['Discovery research', 'Stakeholder interviews', 'Product analytics', 'Prototyping', 'AI/ML UX'].map(s => (
               <PillTag key={s}>{s}</PillTag>
@@ -108,8 +91,9 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           before they compounded into budget overruns.
         </p>
         <p className="mb-7 text-lg leading-relaxed text-muted-foreground">
-          The existing experience used basic Bollinger Bands to flag spikes with no explanation, no filtering, and a disconnected workflow that redirected users
-          away from their cost view. Customers didn't lack demand for anomaly detection. They lacked a trustworthy, explainable way to act on it.
+          The existing experience required users to manually define dimensions and filters just to surface anomalies in the first place, and once something did
+          get flagged, it came with no explanation, no way to filter further, and a disconnected workflow that redirected users away from their cost view.
+          Customers didn't lack demand for anomaly detection. They lacked a trustworthy, explainable way to act on it.
         </p>
         <div className="flex flex-col gap-3">
           <p className="border-l-2 border-primary pl-4 text-lg leading-relaxed italic">
@@ -124,30 +108,25 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </div>
       </section>
 
+      <section>
+        <div className="rounded-3xl border border-default-200 px-6 py-10 md:px-10 md:py-12">
+          <ChallengeApproachOutcome
+            approach="Led with research over assumptions: audited usage data, interviewed FinOps practitioners on how they actually chase cost spikes, and aligned Product, Engineering and Data Science on a shared anomaly lifecycle before any design work began."
+            outcome="Shipped automatic AI-based anomaly detection with root cause analysis, giving practitioners a trustworthy “what changed and why” with no manual configuration."
+          />
+        </div>
+      </section>
+
       <section id="timeline">
         <Eyebrow>Project timeline</Eyebrow>
-        <SectionHeading>Two quarters: discovery to ship</SectionHeading>
+        <SectionHeading>One quarter: discovery to ship</SectionHeading>
         <QuarterTimeline />
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <p className="text-sm leading-relaxed text-default-500">
-            <strong className="text-muted-foreground">Discovery:</strong> usage data review, stakeholder & FinOps interviews, current-state gap analysis,
-            cross-functional lifecycle framework.
-          </p>
-          <p className="text-sm leading-relaxed text-default-500">
-            <strong className="text-muted-foreground">Design & prototyping:</strong> data model definition, user journey mapping, wireframing, iteration with
-            algorithm and engineering teams on what's feasible for MVP.
-          </p>
-          <p className="text-sm leading-relaxed text-default-500">
-            <strong className="text-muted-foreground">MVP delivery:</strong> shipped system-generated anomalies experience: navigation destination,
-            filterable/groupable table, detail slide-out with root cause analysis concept.
-          </p>
-        </div>
       </section>
 
       <section id="scope">
         <Eyebrow>Scope, objectives & constraints</Eyebrow>
         <SectionHeading>What discovery and design needed to accomplish</SectionHeading>
-        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           Before any design work began, we set clear objectives for what research needed to answer.
         </p>
         <h3 className="mb-4 text-xl font-bold">Key design & research objectives</h3>
@@ -162,7 +141,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             Define an <strong>anomaly data model and lifecycle</strong> that design, product, and the algorithm team could all build against.
           </Bullet>
           <Bullet>
-            Decide, <strong>with evidence rather than opinion,</strong> what belonged in a Quarter 2 MVP versus a later iteration.
+            Decide, <strong>with evidence rather than opinion,</strong> what belonged in the Weeks 9–12 MVP versus a later iteration.
           </Bullet>
         </div>
       </section>
@@ -170,13 +149,13 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="research">
         <Eyebrow>Research & findings</Eyebrow>
         <SectionHeading>The evidence base the MVP was built on</SectionHeading>
-        <p className="mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-10 text-lg leading-relaxed text-muted-foreground">
           Before talking to a single user, usage data already made the case that something structural was broken, not just a rough edge. That reframed the
           research question from &ldquo;how do we improve anomaly detection&rdquo; to &ldquo;why are practitioners choosing not to use it, and what would make
           them trust it.&rdquo;
         </p>
 
-        <h3 className="mb-4 text-xl font-bold">What the usage data already told us</h3>
+        <h3 className="mb-4 text-xl font-bold">1. What the usage data already told us</h3>
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <DarkStat
             value="0.7%"
@@ -199,14 +178,31 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             detail="Down 40.4%"
           />
         </div>
+
+        <FunnelBreakdown
+          className="mb-5"
+          eyebrow="30-DAY FUNNEL — TABULAR COST VIEW → COST ANOMALIES PAGE"
+          from={{ label: 'Tabular view', value: '235', sub: 'unique visitors started' }}
+          to={{ label: 'Cost anomalies page', value: '37', sub: 'unique visitors reached it' }}
+          dropLabel="216 dropped, 92%"
+          dropSub="avg. 4d 17h before moving on"
+          notes={[
+            <>
+              <strong>19</strong> of those 37 arrived from the tabular view, the intended path
+            </>,
+            <>
+              <strong>18</strong> arrived from the incidents page instead
+            </>,
+          ]}
+        />
+
         <InsightCallout>
-          Even among the small number of people who opened the cost tabular view, most never continued into the anomalies view: a 30-day funnel showed{' '}
-          <strong>216 of 235 unique visitors, 92%, dropping off</strong> before reaching it, taking an average of <strong>4 days 17 hours</strong> from the
-          previous step when they did.
+          Most of the <strong>235 people</strong> who opened the tabular cost view never continued into the anomalies view. Of the <strong>37</strong> who did,
+          only 19 came through that intended path; the rest arrived from the incidents page instead.
         </InsightCallout>
 
-        <h3 className="mt-12 mb-4 text-xl font-bold">Auditing the current experience</h3>
-        <img
+        <h3 className="mt-12 mb-4 text-xl font-bold">2. Auditing the current experience</h3>
+        <ZoomableImage
           src={CurrentExperienceAudit}
           alt="Annotated audit of the existing Tabular View and Cloud Cost Anomalies pages, marking manual filter setup, low prominence of the anomalies entry point, and unexplained anomaly charts"
           className="mb-6 block h-auto w-full rounded-2xl ring-1 ring-default-200"
@@ -235,7 +231,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           from.
         </InsightCallout>
 
-        <h3 className="mt-12 mb-4 text-xl font-bold">What FinOps practitioners told us</h3>
+        <h3 className="mt-12 mb-4 text-xl font-bold">3. What FinOps practitioners told us</h3>
         <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
           Stakeholder interviews kept circling back to the same moment: right after an anomaly fires, when someone has to figure out what actually happened.
           Practitioners weren't short on alerts. They were short on a trustworthy explanation and a next step they could hand off with confidence.
@@ -265,7 +261,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           search moved to the backlog as lower-impact.
         </InsightCallout>
 
-        <h3 className="mt-12 mb-4 text-xl font-bold">How usage actually varies by customer</h3>
+        <h3 className="mt-12 mb-4 text-xl font-bold">4. How usage actually varies by customer</h3>
         <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
           Follow-up conversations with the product and research team surfaced behavioral nuance that a single FinOps persona glosses over.
         </p>
@@ -289,12 +285,11 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           </Bullet>
         </div>
         <InsightCallout>
-          The current approach is retrospective: users bring the context to the system. They define the dimensions and filters, tags, billing centers, or other
-          parameters, then tell the system where to look. Finding an anomaly this way is only step one; from there, users still dig through graph after graph on
-          their own to trace the root cause.
+          Users brought the context themselves: scan the <strong>percent-change table</strong> to guess which dimension moved, then{' '}
+          <strong>manually set up that exact combination of filters</strong> just to confirm it. The system never looked for the anomaly on its own.
         </InsightCallout>
 
-        <h3 className="mt-12 mb-4 text-xl font-bold">Aligning Product, Engineering and Data Science on a shared lifecycle</h3>
+        <h3 className="mt-12 mb-4 text-xl font-bold">5. Aligning Product, Engineering and Data Science on a shared lifecycle</h3>
         <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
           We mapped the full lifecycle of a cloud cost anomaly, assigned a RACI owner to every step, and used a crawl/walk/run maturity model to set a shared
           target instead of five different mental models of &ldquo;done.&rdquo;
@@ -326,12 +321,8 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           at one task, it was failing to support the underlying reasons people came to it in the first place.
         </p>
         <p className="mb-4 text-lg leading-relaxed text-muted-foreground">
-          We didn't run a separate JTBD study. The jobs were extracted from research we'd already done: the funnel and audit data explaining <em>where</em>{' '}
-          people dropped off, and structured working sessions with internal FinOps advisors explaining <em>why</em>, what they were actually trying to get done
-          in that moment and where the old page left them stuck. Statements advisors repeated across sessions, wanting to know what's unusual without digging,
-          needing to judge an anomaly against the dimensions their team watches, needing to explain a spike before forwarding it, got grouped and restated as
-          jobs, then checked back against the friction-prioritization scoring to confirm each one tied to a top-ranked pain point rather than an isolated
-          comment.
+          We didn't run a separate JTBD study. We derived the jobs from our existing research, combining behavioral and analytical data. We grouped repeated
+          needs into jobs, then validated them against the highest-impact friction points.
         </p>
         <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           The three jobs map onto the three moments anyone dealing with an unexpected cost spike goes through: <strong>catching it early</strong> (detect that
@@ -339,7 +330,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           (decide what to do next and hand it off). Working sessions with internal FinOps advisors and engineering surfaced these jobs directly, captured on the
           research board below.
         </p>
-        <img
+        <ZoomableImage
           src={DiscoveryDiscussions}
           alt="Discovery board showing anomaly table iterations, engineering discussion notes and sticky-note feedback from FinOps advisors"
           className="mb-12 block h-auto w-full rounded-2xl ring-1 ring-default-200"
@@ -369,7 +360,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
                 { kind: 'input', lines: ['92% dropped off', 'before anomalies view'] },
                 { kind: 'plain', lines: ["Know it's wrong", 'while still small'] },
                 { kind: 'focal', lines: ['Catch it', 'early'] },
-                { kind: 'plain', lines: ['Daily/weekly grain', 'only (no monthly)'] },
+                { kind: 'plain', lines: ['Creates records at', 'daily/weekly granularity'] },
                 { kind: 'plain', lines: ['Amortized unblended,', 'most stable metric'] },
                 { kind: 'future', lines: ['Expand to other', '3 cost metrics'] },
               ]}
@@ -391,7 +382,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
               title="Job 2 trace: judge it in context"
               desc="From advisors converging on the same service/region/billing-center dimensions, to the job of judging an anomaly in context, to the MVP's decision to auto-find the key dimension combination, and what's next."
               steps={[
-                { kind: 'input', lines: ['Advisors converge on', 'service/region/billing'] },
+                { kind: 'input', lines: ['Converge on baseline', 'dimension: service'] },
                 { kind: 'plain', lines: ['See it against my', "team's own numbers"] },
                 { kind: 'focal', lines: ['Judge it in', 'context'] },
                 { kind: 'plain', lines: ['AI finds key dimension', 'combination automatically'] },
@@ -448,17 +439,17 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="journey">
         <Eyebrow>User journey</Eyebrow>
         <SectionHeading>Two entry paths, one shipped, one sequenced for later</SectionHeading>
-        <p className="mb-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
           Path 1, the system proactively surfacing AI-detected anomalies in a new Anomalies navigation, is what the MVP shipped. Path 2, users defining their
           own alert rules and thresholds with email or in-app notification, was mapped in full but marked &ldquo;not implemented in MVP.&rdquo;
         </p>
-        <img
+        <ZoomableImage
           src={UserJourney}
           alt="Cloud cost anomaly detection user journey showing the shipped system-generated anomalies path into a detail slide-out, and the not-yet-implemented alert configuration path"
           className="mb-10 block h-auto w-full rounded-2xl ring-1 ring-default-200"
         />
 
-        <h3 className="mb-3 text-xl font-bold">Why the journey is shaped this way</h3>
+        <h3 className="mb-4 text-xl font-bold">Why the journey is shaped this way</h3>
         <p className="mb-6 text-base leading-relaxed text-muted-foreground">
           Strip away the domain and this is a familiar shape: someone gets a warning, and has to decide fast whether it's real and what to do about it. Three
           challenges in that shape drove the journey.
@@ -500,9 +491,9 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       </section>
 
       <section id="final-design">
-        <Eyebrow>MVP design & prototype</Eyebrow>
+        <Eyebrow>MVP design</Eyebrow>
         <SectionHeading>The experience we shipped</SectionHeading>
-        <img
+        <ZoomableImage
           src={MvpDesignAnnotated}
           alt="Annotated MVP anomaly detection design: navigation, anomalies table with date range and row grouping, and the detail slide-out with cost trend graph and top contributors table"
           className="block h-auto w-full rounded-3xl ring-1 ring-default-200"
@@ -528,7 +519,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             <div className="flex flex-col gap-2.5">
               <Bullet>Table data, and how people explore it</Bullet>
               <Bullet>Date range picker usage</Bullet>
-              <Bullet>Slide-out interactions for root cause analysis</Bullet>
+              <Bullet>Setting up the funnel for slide-out interactions for root cause analysis</Bullet>
             </div>
           </div>
         </div>

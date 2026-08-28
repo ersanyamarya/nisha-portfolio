@@ -37,6 +37,7 @@ export function TiltCard({ max = 8, className, children, ...props }: TiltCardPro
     <div
       onPointerMove={handleMove}
       onPointerLeave={handleLeave}
+      className="h-full"
       style={{ perspective: '1200px' }}
       {...props}>
       <div

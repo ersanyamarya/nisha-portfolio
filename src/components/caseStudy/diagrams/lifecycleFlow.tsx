@@ -1,5 +1,5 @@
 import React from 'react';
-import { Diagram, DiagramDefs, LegendItem, LegendStrip } from './diagramShell';
+import { Diagram, DiagramDefs, LegendItem, LegendStrip, ZoomableDiagram } from './diagramShell';
 import { DIAGRAM } from './tokens';
 
 interface StageNode {
@@ -30,13 +30,11 @@ function boxX(i: number) {
   return MARGIN + i * (BOX_W + GAP);
 }
 
-/**
- * Flexera's cost-anomaly lifecycle: five stages, only two of them shipped in the MVP.
- * Solid stroke = shipped this quarter; dashed stroke = not built yet. The dashed return
- * path from Retrospective back to Detection shows the loop is designed, not closed yet.
- */
-export function LifecycleFlow() {
-  const slug = 'flexera-lifecycle';
+const TITLE = 'Flexera cost-anomaly lifecycle';
+const DESC =
+  'Five lifecycle stages — Detection, Notification, Analysis, Resolution, Retrospective — where only Detection and Analysis shipped in the MVP; a dashed path shows Retrospective feeding back into Detection for a future closed loop.';
+
+function LifecycleDiagram({ slug }: { slug: string }) {
   const lastBoxCx = boxX(STAGES.length - 1) + BOX_W / 2;
   const firstBoxCx = boxX(0) + BOX_W / 2;
   const loopY = BOX_Y + BOX_H + 24;
@@ -44,8 +42,8 @@ export function LifecycleFlow() {
   return (
     <Diagram
       slug={slug}
-      title="Flexera cost-anomaly lifecycle"
-      desc="Five lifecycle stages — Detection, Notification, Analysis, Resolution, Retrospective — where only Detection and Analysis shipped in the MVP; a dashed path shows Retrospective feeding back into Detection for a future closed loop."
+      title={TITLE}
+      desc={DESC}
       viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}>
       <DiagramDefs idPrefix={slug} />
 
@@ -182,5 +180,23 @@ export function LifecycleFlow() {
         />
       </LegendStrip>
     </Diagram>
+  );
+}
+
+/**
+ * Flexera's cost-anomaly lifecycle: five stages, only two of them shipped in the MVP.
+ * Solid stroke = shipped this quarter; dashed stroke = not built yet. The dashed return
+ * path from Retrospective back to Detection shows the loop is designed, not closed yet.
+ *
+ * Click (or Enter/Space) zooms the diagram into a larger overlay; click again, press Escape,
+ * or click outside to close it.
+ */
+export function LifecycleFlow() {
+  return (
+    <ZoomableDiagram
+      baseSlug="flexera-lifecycle"
+      title={TITLE}
+      render={slug => <LifecycleDiagram slug={slug} />}
+    />
   );
 }

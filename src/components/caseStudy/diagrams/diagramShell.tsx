@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DIAGRAM } from './tokens';
 
 export function DiagramDefs({ idPrefix }: { idPrefix: string }) {
@@ -105,5 +105,58 @@ export function LegendStrip({ y, width, children }: { y: number; width: number; 
       />
       {children}
     </g>
+  );
+}
+
+/**
+ * Wraps a diagram render function with click-to-zoom: hover shows a magnifying-glass cursor,
+ * clicking (or Enter/Space) opens the same diagram enlarged in an overlay. Click the overlay,
+ * press Escape, or click the diagram again to close. `render` is called once per slug so the
+ * inline and zoomed copies get distinct SVG ids and don't collide in the DOM.
+ */
+export function ZoomableDiagram({ baseSlug, title, render }: { baseSlug: string; title: string; render: (slug: string) => React.ReactNode }) {
+  const [zoomed, setZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setZoomed(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [zoomed]);
+
+  return (
+    <>
+      <div
+        role="button"
+        tabIndex={0}
+        aria-label={`Zoom into diagram: ${title}`}
+        className="cursor-zoom-in"
+        onClick={() => setZoomed(true)}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setZoomed(true);
+          }
+        }}>
+        {render(baseSlug)}
+      </div>
+
+      {zoomed && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={title}
+          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-default-950/80 p-6"
+          onClick={() => setZoomed(false)}>
+          <div className="w-full max-w-5xl">{render(`${baseSlug}-zoomed`)}</div>
+        </div>
+      )}
+    </>
   );
 }
