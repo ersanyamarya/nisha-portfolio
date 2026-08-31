@@ -5,7 +5,7 @@ import { Reveal, TiltCard } from '../../components';
 import { Tone, TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
 import FlexeraGraphic from '../../images/case-studies/flexera/flexera_overview.png';
 import SanyamGraphic from '../../images/case-studies/sanyam-portfolio/sanyam_overview.jpg';
-import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum_overview.jpg';
+import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum_card.jpg';
 
 const caseStudies: {
   name: string;
@@ -24,7 +24,7 @@ const caseStudies: {
     name: 'Flexera',
     link: '/case-studies/flexera',
     domain: 'FinOps',
-    platformType: 'Web app',
+    platformType: 'B2B SaaS',
     caseStudyType: 'UX Research & Design',
     description: 'Flexera already had a way to catch cloud cost spikes. Almost nobody used it',
     tags: ['Discovery research', 'Stakeholder interviews', 'Product analytics', 'Prototyping', 'AI/ML UX'],
@@ -37,7 +37,7 @@ const caseStudies: {
     name: 'Spektrum Akademie',
     link: '/case-studies/spektrum',
     domain: 'EdTech',
-    platformType: 'Web app',
+    platformType: 'SaaS',
     caseStudyType: 'UX Research & Design',
     description: 'Administrators had no way to track scheduling progress in real time',
     tags: ['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'],
@@ -50,7 +50,7 @@ const caseStudies: {
     name: 'Sanyam Arya',
     link: '/case-studies/sanyam-portfolio',
     domain: 'Personal Brand',
-    platformType: 'Portfolio website',
+    platformType: 'Portfolio site',
     caseStudyType: 'IA & Content Strategy',
     description: 'A portfolio that still read "developer" after the job had already changed',
     tags: ['Personal Site', 'Information Architecture', 'Brand Positioning'],
@@ -66,14 +66,10 @@ export default function ProjectsSection() {
     <section
       id="work"
       className="flex w-full flex-col gap-12">
-      <Reveal className="flex flex-wrap items-end justify-between gap-6">
-        <div>
-          <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Selective brews</div>
-          <h2 className="font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">Case studies.</h2>
-        </div>
-        <p className="max-w-md text-muted-foreground">
-          A short menu, poured slowly. Complex FinOps platforms, inclusive EdTech, and the research behind each decision.
-        </p>
+      <Reveal>
+        <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Selective brews</div>
+        <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">Case studies.</h2>
+        <p className="text-muted-foreground">A few case studies, brewed with patience over time.</p>
       </Reveal>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
@@ -97,7 +93,7 @@ export default function ProjectsSection() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <div className="mb-2 text-xs font-medium tracking-widest text-muted-foreground uppercase">
+                  <div className="mb-2 text-xs font-medium tracking-widest text-muted-foreground">
                     {project.domain} · {project.platformType} · {project.caseStudyType}
                   </div>
                   <h3 className="mb-4 font-serif text-2xl leading-snug font-medium transition-colors group-hover:text-primary">{project.description}</h3>

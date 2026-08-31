@@ -9,10 +9,10 @@ import { PhoneMock, Reveal, Story, StoryReel } from '../../components';
  * here. Anything without an entry is skipped, and the order follows the filenames.
  */
 const FRAMES: Record<string, { tag: string; alt: string; caption: string }> = {
-  '01-pour': { tag: 'Saturday', alt: 'Three coffees held together over a café table', caption: 'Three cups, one table. The good kind of Saturday.' },
-  '02-beans': { tag: 'The source', alt: 'Close-up of freshly roasted coffee beans', caption: 'A single origin from the roastery down the road.' },
-  '03-v60': { tag: 'Slow', alt: 'Iced coffee with milk swirling through it', caption: 'Sixteen hours of cold brew. Worth the wait.' },
-  '04-paint': { tag: 'Off the clock', alt: 'Paint brushes resting on a wet orange canvas', caption: 'Colour theory, learned the messy way.' },
+  '01_coffee': { tag: 'Saturday', alt: 'Three coffees held together over a café table', caption: 'Three cups, one table. The good kind of Saturday.' },
+  '02_coffee': { tag: 'The source', alt: 'Close-up of freshly roasted coffee beans', caption: 'A single origin from the roastery down the road.' },
+  '03_coffee': { tag: 'Slow', alt: 'Iced coffee with milk swirling through it', caption: 'Sixteen hours of cold brew. Worth the wait.' },
+  '04_coffee': { tag: 'Off the clock', alt: 'Paint brushes resting on a wet orange canvas', caption: 'Colour theory, learned the messy way.' },
   '05-espresso': { tag: 'Morning', alt: 'A glass cup of black filter coffee in hard morning light', caption: 'Filter, 6am, before anyone needs anything.' },
   '06-palette': { tag: 'Studio', alt: 'A loaded painter’s palette with a brush across it', caption: 'Every palette becomes a design system eventually.' },
 };
@@ -29,7 +29,7 @@ export default function AboutSection() {
           name
           childImageSharp {
             # 402:874 — the phone's screen, so sharp crops to what actually shows.
-            gatsbyImageData(layout: CONSTRAINED, width: 804, aspectRatio: 0.46, placeholder: BLURRED, quality: 85)
+            gatsbyImageData(layout: CONSTRAINED, width: 804, aspectRatio: 0.46, placeholder: BLURRED, quality: 85, transformOptions: { cropFocus: CENTER })
           }
         }
       }

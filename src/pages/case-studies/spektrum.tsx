@@ -38,7 +38,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Spektrum Akademie · EdTech · Web app</Eyebrow>
+        <Eyebrow>Spektrum Akademie · EdTech · SaaS</Eyebrow>
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Administrators had no way to track scheduling progress in real time
         </h1>

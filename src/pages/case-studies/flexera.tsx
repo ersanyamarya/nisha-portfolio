@@ -39,7 +39,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Flexera · FinOps / cloud cost management · Web app</Eyebrow>
+        <Eyebrow>Flexera · FinOps / cloud cost management · B2B SaaS</Eyebrow>
         <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
           Flexera already had a way to catch cloud cost spikes. Almost nobody used it
         </h1>

@@ -28,7 +28,8 @@ export default function CtaSection() {
           <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Let's talk</div>
           <h2 className="mx-auto mb-6 max-w-2xl font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">Let's brew something together.</h2>
           <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground">
-            Open to senior product design roles across Europe. A complex problem to untangle, or just coffee and design talk — either is a good reason to write.
+            Open to product or UX designer roles in Berlin or remote across Germany and Europe. A complex problem to untangle, or just coffee and design talk.
+            Either is a good reason to write.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
