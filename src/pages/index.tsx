@@ -19,9 +19,9 @@ const IndexPage: React.FC<PageProps> = () => {
 
         <ProcessSection />
 
-        <AboutSection />
-
         <TestimonialSection />
+
+        <AboutSection />
 
         <CtaSection />
       </main>

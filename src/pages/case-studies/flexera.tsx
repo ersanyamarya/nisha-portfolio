@@ -73,7 +73,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           />
         </div>
         <div>
-          <div className="mb-4 text-[11px] font-extrabold tracking-widest text-default-500">Skills applied</div>
+          <div className="mb-4 text-[11px] font-extrabold tracking-widest text-muted-foreground">Skills applied</div>
           <div className="flex flex-wrap gap-2.5">
             {['Discovery research', 'Stakeholder interviews', 'Product analytics', 'Prototyping', 'AI/ML UX'].map(s => (
               <PillTag key={s}>{s}</PillTag>
@@ -84,7 +84,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
 
       <section
         id="problem"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>The problem</Eyebrow>
         <p className="mb-4 text-2xl leading-snug font-semibold">
           FinOps practitioners, engineering leads and finance stakeholders needed a reliable way to detect, understand and act on unexpected cloud cost spikes
@@ -104,12 +104,12 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             &ldquo;Before I forward an anomaly to an engineering owner, I need to be able to explain why it fired. If I can't, they'll just close it out as
             noise and I've burned my credibility.&rdquo;
           </p>
-          <p className="text-sm font-semibold text-default-500">— Head of FinOps, Flexera enterprise customer</p>
+          <p className="text-sm font-semibold text-muted-foreground">— Head of FinOps, Flexera enterprise customer</p>
         </div>
       </section>
 
       <section>
-        <div className="rounded-3xl border border-default-200 px-6 py-10 md:px-10 md:py-12">
+        <div className="rounded-3xl border border-border px-6 py-10 md:px-10 md:py-12">
           <ChallengeApproachOutcome
             approach="Led with research over assumptions: audited usage data, interviewed FinOps practitioners on how they actually chase cost spikes, and aligned Product, Engineering and Data Science on a shared anomaly lifecycle before any design work began."
             outcome="Shipped automatic AI-based anomaly detection with root cause analysis, giving practitioners a trustworthy “what changed and why” with no manual configuration."
@@ -205,7 +205,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <ZoomableImage
           src={CurrentExperienceAudit}
           alt="Annotated audit of the existing Tabular View and Cloud Cost Anomalies pages, marking manual filter setup, low prominence of the anomalies entry point, and unexplained anomaly charts"
-          className="mb-6 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          className="mb-6 block h-auto w-full rounded-2xl ring-1 ring-border"
         />
         <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
           A current-state gap analysis of the existing Cost Anomalies tool surfaced concrete, fixable reasons for the drop-off.
@@ -296,10 +296,10 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </p>
         <LifecycleFlow />
         <div className="mt-6 flex flex-col gap-2">
-          <p className="text-sm leading-relaxed text-default-500">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             <strong>Detection:</strong> record created. <strong>Analysis:</strong> find the why / identify the root cause.
           </p>
-          <p className="text-sm leading-relaxed text-default-500">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             <strong>Notification:</strong> stakeholders alerted. Email and in-app alerts are not implemented; instead, important alerts surface within the
             anomaly record itself.
           </p>
@@ -333,7 +333,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <ZoomableImage
           src={DiscoveryDiscussions}
           alt="Discovery board showing anomaly table iterations, engineering discussion notes and sticky-note feedback from FinOps advisors"
-          className="mb-12 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          className="mb-12 block h-auto w-full rounded-2xl ring-1 ring-border"
         />
 
         <h3 className="mb-2 text-xl font-bold">How each job traces back to research</h3>
@@ -342,13 +342,13 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           MVP had to serve.
         </p>
         <div className="flex flex-col gap-8">
-          <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
+          <div className="rounded-2xl border border-border bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 1: CATCH IT EARLY</div>
             <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When cloud spend moves across dozens of services and accounts, advisors wanted to know what's unusual without combing through raw cost dashboards,
               so they could catch a problem while it's still small, not find it in a monthly review after the money is gone.
             </p>
-            <p className="mb-4 text-sm leading-relaxed text-default-500">
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
               Evidence: &ldquo;We don't need what we have right now. Without doing anything our users want to know what is unusual.&rdquo; — internal Flexera
               FinOps advisor.
             </p>
@@ -366,13 +366,13 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
               ]}
             />
           </div>
-          <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
+          <div className="rounded-2xl border border-border bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 2: JUDGE IT IN CONTEXT</div>
             <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When an anomaly surfaces, advisors wanted to see it against the specific dimensions their team actually watches, service, region, usage type,
               billing center, so they could decide in seconds whether it's worth acting on instead of digging for context first.
             </p>
-            <p className="mb-4 text-sm leading-relaxed text-default-500">
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
               Evidence: advisors converged on the same baseline dimensions repeatedly, and were explicit that one threshold can't fit a $50/month billing center
               and a $500,000/month one. &ldquo;It would be great if the table had the feasibility to choose the dimensions.&rdquo; — internal Flexera FinOps
               advisor.
@@ -391,13 +391,13 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
               ]}
             />
           </div>
-          <div className="rounded-2xl border border-default-200 bg-background px-6 py-6">
+          <div className="rounded-2xl border border-border bg-background px-6 py-6">
             <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 3: EXPLAIN IT CONFIDENTLY</div>
             <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When an anomaly needs to go to someone outside FinOps to get fixed, advisors wanted to explain why it fired before forwarding it, so it gets
               resolved instead of dismissed as noise, and their credibility with the receiving team stays intact.
             </p>
-            <p className="mb-4 text-sm leading-relaxed text-default-500">
+            <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
               Evidence: when friction points were scored against UX impact and speed to fix, the absence of any root cause explanation ranked as the top
               priority, ahead of missing alerts and thin recommendations.
             </p>
@@ -423,7 +423,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           to hand it off. That's the shape the MVP took: a table to detect and investigate, a detail view to explain.
         </p>
 
-        <div className="border-t border-default-200 pt-10">
+        <div className="border-t border-border pt-10">
           <h3 className="mb-4 text-xl font-bold">From jobs to a tested user journey</h3>
           <p className="mb-3 text-base leading-relaxed text-muted-foreground">
             <strong>What we learned:</strong> three jobs kept surfacing in every working session, catch it early, judge it in context, explain it confidently,
@@ -446,7 +446,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <ZoomableImage
           src={UserJourney}
           alt="Cloud cost anomaly detection user journey showing the shipped system-generated anomalies path into a detail slide-out, and the not-yet-implemented alert configuration path"
-          className="mb-10 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          className="mb-10 block h-auto w-full rounded-2xl ring-1 ring-border"
         />
 
         <h3 className="mb-4 text-xl font-bold">Why the journey is shaped this way</h3>
@@ -455,33 +455,33 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           challenges in that shape drove the journey.
         </p>
         <div className="flex flex-col gap-5">
-          <div className="rounded-2xl bg-default-100 px-6 py-6">
-            <div className="mb-1.5 text-xs font-bold text-default-400">Challenge</div>
+          <div className="rounded-2xl bg-muted px-6 py-6">
+            <div className="mb-1.5 text-xs font-bold text-muted-foreground">Challenge</div>
             <p className="mb-3 text-base leading-relaxed">
               A warning with <strong>no explanation</strong> gets ignored. People don't act on alerts they can't <strong>justify</strong> to someone else.
             </p>
-            <div className="mb-1.5 text-xs font-bold text-default-400">UX thinking</div>
+            <div className="mb-1.5 text-xs font-bold text-muted-foreground">UX thinking</div>
             <p className="mb-3 text-base leading-relaxed">
               The moment that decides whether the product gets used isn't when the alert fires, it's right after, when the person has to decide whether to{' '}
               <strong>trust</strong> it.
             </p>
-            <div className="mb-1.5 text-xs font-bold text-default-400">Journey decision</div>
+            <div className="mb-1.5 text-xs font-bold text-muted-foreground">Journey decision</div>
             <p className="text-base leading-relaxed">
               <strong>One click</strong> takes someone straight from a flagged item to its explanation, so the trust-deciding moment happens{' '}
               <strong>immediately</strong>, not several screens later.
             </p>
           </div>
-          <div className="rounded-2xl bg-default-100 px-6 py-6">
-            <div className="mb-1.5 text-xs font-bold text-default-400">Challenge</div>
+          <div className="rounded-2xl bg-muted px-6 py-6">
+            <div className="mb-1.5 text-xs font-bold text-muted-foreground">Challenge</div>
             <p className="mb-3 text-base leading-relaxed">
               Asking someone to <strong>set up rules and filters</strong> before they can see anything useful is asking for work <strong>up front</strong>,
               before they know it'll pay off. Most people won't do it.
             </p>
-            <div className="mb-1.5 text-xs font-bold text-default-400">UX thinking</div>
+            <div className="mb-1.5 text-xs font-bold text-muted-foreground">UX thinking</div>
             <p className="mb-3 text-base leading-relaxed">
               <strong>Show value before asking for setup.</strong> Let configuration come later, once someone already has a reason to dig deeper.
             </p>
-            <div className="mb-1.5 text-xs font-bold text-default-400">Journey decision</div>
+            <div className="mb-1.5 text-xs font-bold text-muted-foreground">Journey decision</div>
             <p className="text-base leading-relaxed">
               The system <strong>surfaces likely problems on its own</strong>, with no setup required. Manual configuration exists, but it's a{' '}
               <strong>later option</strong>, not the entry point.
@@ -496,13 +496,13 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         <ZoomableImage
           src={MvpDesignAnnotated}
           alt="Annotated MVP anomaly detection design: navigation, anomalies table with date range and row grouping, and the detail slide-out with cost trend graph and top contributors table"
-          className="block h-auto w-full rounded-3xl ring-1 ring-default-200"
+          className="block h-auto w-full rounded-3xl ring-1 ring-border"
         />
       </section>
 
       <section
         id="next-steps"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>Next steps</Eyebrow>
         <SectionHeading>What we planned to validate after the MVP</SectionHeading>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">

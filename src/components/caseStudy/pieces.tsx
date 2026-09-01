@@ -85,19 +85,19 @@ export function ZoomableImage({ src, alt, className = '' }: { src: string; alt: 
 
 export function StatChip({ eyebrow, value, label }: { eyebrow: string; value: string; label: string }) {
   return (
-    <div className="min-w-60 flex-1 rounded-2xl border border-default-200 bg-default-100 px-5 py-5">
-      <div className="mb-2.5 inline-block rounded-full bg-primary-100 px-2.5 py-1 text-[10px] font-bold tracking-wider whitespace-nowrap text-primary-800">
+    <div className="min-w-60 flex-1 rounded-2xl border border-border bg-muted px-5 py-5">
+      <div className="mb-2.5 inline-block rounded-full bg-primary-100 px-2.5 py-1 text-[10px] font-bold tracking-wider whitespace-nowrap text-primary-800 dark:bg-primary-900/50 dark:text-primary-200">
         {eyebrow}
       </div>
       <div className="mb-1 text-3xl font-extrabold tracking-[-0.02em]">{value}</div>
-      <div className="text-sm leading-snug text-default-500">{label}</div>
+      <div className="text-sm leading-snug text-muted-foreground">{label}</div>
     </div>
   );
 }
 
 export function DarkStat({ value, label, detail }: { value: string; label: string; detail: string }) {
   return (
-    <div className="rounded-2xl bg-default-900 px-6 py-6">
+    <div className="rounded-2xl bg-default-900 px-6 py-6 dark:bg-default-800">
       <div className="mb-1.5 text-4xl font-extrabold tracking-[-0.02em] text-primary-300">{value}</div>
       <div className="mb-1.5 text-sm font-semibold text-default-50">{label}</div>
       <p className="text-sm leading-snug text-default-50 opacity-60">{detail}</p>
@@ -107,7 +107,7 @@ export function DarkStat({ value, label, detail }: { value: string; label: strin
 
 export function InsightCallout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-primary-200 bg-primary-50 px-6 py-5">
+    <div className="rounded-2xl border border-primary-200 bg-primary-50 px-6 py-5 dark:border-primary-800 dark:bg-primary-950/40">
       <div className="mb-2.5 flex items-center gap-2">
         <svg
           width="15"
@@ -119,7 +119,7 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
             stroke="currentColor"
             strokeWidth="1.5"
             strokeLinecap="round"
-            className="text-primary-700"
+            className="text-primary-700 dark:text-primary-300"
           />
           <circle
             cx="8"
@@ -127,10 +127,10 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
             r="3"
             stroke="currentColor"
             strokeWidth="1.5"
-            className="text-primary-700"
+            className="text-primary-700 dark:text-primary-300"
           />
         </svg>
-        <span className="text-[11px] font-extrabold tracking-widest text-primary-700">INSIGHT</span>
+        <span className="text-[11px] font-extrabold tracking-widest text-primary-700 dark:text-primary-300">INSIGHT</span>
       </div>
       <p className="text-base leading-relaxed text-muted-foreground">{children}</p>
     </div>
@@ -155,22 +155,22 @@ export function FunnelBreakdown({
   className?: string;
 }) {
   return (
-    <div className={`rounded-3xl border border-default-200 px-6 py-8 md:px-10 ${className}`}>
-      <div className="mb-8 text-[11px] font-extrabold tracking-widest text-default-500">{eyebrow}</div>
+    <div className={`rounded-3xl border border-border px-6 py-8 md:px-10 ${className}`}>
+      <div className="mb-8 text-[11px] font-extrabold tracking-widest text-muted-foreground">{eyebrow}</div>
       <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="mb-1 text-base font-bold">{from.label}</div>
           <div className="text-4xl font-extrabold tracking-[-0.02em]">{from.value}</div>
-          <div className="text-sm text-default-500">{from.sub}</div>
+          <div className="text-sm text-muted-foreground">{from.sub}</div>
         </div>
         <div className="flex flex-1 flex-col items-center gap-1.5 px-4">
-          <span className="text-sm font-bold text-secondary-600">{dropLabel}</span>
+          <span className="text-sm font-bold text-secondary-600 dark:text-secondary-400">{dropLabel}</span>
           <svg
             width="100%"
             height="12"
             viewBox="0 0 200 12"
             preserveAspectRatio="none"
-            className="w-full max-w-60 text-secondary-400">
+            className="w-full max-w-60 text-secondary-400 dark:text-secondary-600">
             <line
               x1="0"
               y1="6"
@@ -185,15 +185,15 @@ export function FunnelBreakdown({
               fill="currentColor"
             />
           </svg>
-          <span className="text-xs text-default-500">{dropSub}</span>
+          <span className="text-xs text-muted-foreground">{dropSub}</span>
         </div>
         <div className="text-left md:text-right">
           <div className="mb-1 text-base font-bold">{to.label}</div>
           <div className="text-4xl font-extrabold tracking-[-0.02em]">{to.value}</div>
-          <div className="text-sm text-default-500">{to.sub}</div>
+          <div className="text-sm text-muted-foreground">{to.sub}</div>
         </div>
       </div>
-      <div className="mt-8 flex flex-col gap-2 border-t border-default-200 pt-6 sm:flex-row sm:gap-8">
+      <div className="mt-8 flex flex-col gap-2 border-t border-border pt-6 sm:flex-row sm:gap-8">
         {notes.map((note, i) => (
           <p
             key={i}
@@ -208,9 +208,9 @@ export function FunnelBreakdown({
 
 export function QuoteBlock({ quote, attribution }: { quote: string; attribution?: string }) {
   return (
-    <div className="rounded-xl bg-default-100 px-6 py-5">
+    <div className="rounded-xl bg-muted px-6 py-5">
       <p className="mb-2 text-base leading-relaxed font-medium text-muted-foreground italic">&ldquo;{quote}&rdquo;</p>
-      {attribution && <p className="text-sm font-semibold text-default-500">— {attribution}</p>}
+      {attribution && <p className="text-sm font-semibold text-muted-foreground">— {attribution}</p>}
     </div>
   );
 }
@@ -246,7 +246,7 @@ export function ChallengeApproachOutcome({
     <div className={`grid grid-cols-1 gap-8 ${items.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
       {items.map(item => (
         <div key={item.label}>
-          <div className="mb-3.5 text-[11px] font-extrabold tracking-widest text-default-500">{item.label}</div>
+          <div className="mb-3.5 text-[11px] font-extrabold tracking-widest text-muted-foreground">{item.label}</div>
           <p className="text-base leading-relaxed text-muted-foreground">{item.body}</p>
         </div>
       ))}
@@ -302,7 +302,12 @@ const CrossIcon = () => (
 /** A labelled callout for user-test/feedback moments. `tone="success"` for positive feedback, `tone="secondary"` for negative. */
 export function FeedbackCallout({ tone, label, children }: { tone: 'success' | 'secondary'; label: string; children: React.ReactNode }) {
   return (
-    <div className={`rounded-2xl border px-6 py-6 ${tone === 'success' ? 'border-success-200 bg-success-50' : 'border-secondary-200 bg-secondary-50'}`}>
+    <div
+      className={`rounded-2xl border px-6 py-6 ${
+        tone === 'success'
+          ? 'border-success-200 bg-success-50 dark:border-success-800 dark:bg-success-950/40'
+          : 'border-secondary-200 bg-secondary-50 dark:border-secondary-800 dark:bg-secondary-950/40'
+      }`}>
       <div className={`mb-4 flex items-center gap-2 text-xs font-bold tracking-wide ${TONE_TEXT[tone]}`}>
         {tone === 'success' ? <CheckIcon /> : <CrossIcon />}
         {label}
@@ -347,11 +352,11 @@ export function ProsCons({ pros, cons }: { pros: string[]; cons: string[] }) {
 
 export function FooterNav({ prevLabel = 'All work', nextLabel, nextTo }: { prevLabel?: string; nextLabel: string; nextTo: string }) {
   return (
-    <section className="mt-16 border-t border-default-200 bg-default-100 px-6 py-10 md:px-10">
+    <section className="mt-16 border-t border-border bg-muted px-6 py-10 md:px-10">
       <div className="mx-auto flex max-w-5xl items-center justify-between">
         <a
           href="/#work"
-          className="text-sm font-semibold text-default-500 hover:text-muted-foreground">
+          className="text-sm font-semibold text-muted-foreground hover:text-foreground">
           {prevLabel}
         </a>
         <a

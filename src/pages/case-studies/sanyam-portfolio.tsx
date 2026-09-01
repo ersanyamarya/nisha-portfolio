@@ -55,7 +55,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
 
       <section
         id="problem"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>The problem</Eyebrow>
         <p className="mb-4 text-2xl leading-snug font-semibold">A portfolio's job is to tell a visitor who you are before they read a single project.</p>
         <p className="text-lg leading-relaxed text-muted-foreground">
@@ -105,9 +105,9 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
         <img
           src={FinalDesign}
           alt="Full page view of the redesigned sanyamarya.com"
-          className="block h-auto w-full rounded-3xl ring-1 ring-default-200"
+          className="block h-auto w-full rounded-3xl ring-1 ring-border"
         />
-        <p className="mt-4 text-base leading-relaxed text-default-500">
+        <p className="mt-4 text-base leading-relaxed text-muted-foreground">
           Live at{' '}
           <a
             href="https://www.sanyamarya.com/"
@@ -122,7 +122,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
 
       <section
         id="impact"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>Impact</Eyebrow>
         <p className="text-lg leading-relaxed text-muted-foreground">
           The site now opens with the role Sanyam actually holds today, backed by a skills taxonomy that separates his AI-native practice and architecture

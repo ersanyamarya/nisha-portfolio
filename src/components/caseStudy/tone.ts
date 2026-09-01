@@ -14,17 +14,17 @@ export const TONE_SURFACE: Record<Tone, string> = {
 };
 
 export const TONE_SOLID: Record<Tone, string> = {
-  primary: 'bg-primary-100 text-primary-800',
-  secondary: 'bg-secondary-100 text-secondary-800',
-  success: 'bg-success-100 text-success-800',
-  default: 'bg-default-100 text-default-600',
+  primary: 'bg-primary-100 text-primary-800 dark:bg-primary-900/50 dark:text-primary-200',
+  secondary: 'bg-secondary-100 text-secondary-800 dark:bg-secondary-900/50 dark:text-secondary-200',
+  success: 'bg-success-100 text-success-800 dark:bg-success-900/50 dark:text-success-200',
+  default: 'bg-muted text-muted-foreground',
 };
 
 export const TONE_TEXT: Record<Tone, string> = {
-  primary: 'text-primary-700',
-  secondary: 'text-secondary-700',
-  success: 'text-success-700',
-  default: 'text-default-500',
+  primary: 'text-primary-700 dark:text-primary-300',
+  secondary: 'text-secondary-700 dark:text-secondary-300',
+  success: 'text-success-700 dark:text-success-300',
+  default: 'text-muted-foreground',
 };
 
 export const TONE_DOT: Record<Tone, string> = {

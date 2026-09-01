@@ -8,11 +8,28 @@ import { PhoneMock, Reveal, Story, StoryReel } from '../../components';
  * To change the reel: drop a numbered portrait image in that folder and add an entry
  * here. Anything without an entry is skipped, and the order follows the filenames.
  */
-const FRAMES: Record<string, { tag: string; alt: string; caption: string }> = {
-  '01_coffee': { tag: 'Saturday', alt: 'Three coffees held together over a café table', caption: 'Three cups, one table. The good kind of Saturday.' },
-  '02_coffee': { tag: 'The source', alt: 'Close-up of freshly roasted coffee beans', caption: 'A single origin from the roastery down the road.' },
-  '03_coffee': { tag: 'Slow', alt: 'Iced coffee with milk swirling through it', caption: 'Sixteen hours of cold brew. Worth the wait.' },
-  '04_coffee': { tag: 'Off the clock', alt: 'Paint brushes resting on a wet orange canvas', caption: 'Colour theory, learned the messy way.' },
+const FRAMES: Record<string, { tag: string; alt: string; caption: string; focus?: string }> = {
+  '01_coffee': {
+    tag: 'Sunlit',
+    alt: 'Overhead shot of latte art beside a potted succulent on a sunlit wooden table',
+    caption: 'Fern art and a stubborn succulent, both catching the morning sun.',
+  },
+  '02_coffee': {
+    tag: 'Saturday',
+    alt: 'Two lattes with rosetta art on the counter in front of the espresso machine',
+    caption: 'Two cups, one dialled-in machine.',
+    focus: '25% center',
+  },
+  '03_coffee': {
+    tag: 'Heart',
+    alt: 'A heart latte art in a glass mug, lit by hard directional light with a leaf shadow',
+    caption: 'Hard light, a leaf shadow, and a heart I am still trying to get right.',
+  },
+  '04_coffee': {
+    tag: 'Practice',
+    alt: 'Saved story of a heart latte art captioned patience plus practice',
+    caption: 'Saved this one for the reminder more than the pour.',
+  },
   '05-espresso': { tag: 'Morning', alt: 'A glass cup of black filter coffee in hard morning light', caption: 'Filter, 6am, before anyone needs anything.' },
   '06-palette': { tag: 'Studio', alt: 'A loaded painter’s palette with a brush across it', caption: 'Every palette becomes a design system eventually.' },
 };

@@ -15,16 +15,16 @@ const PHASES: Phase[] = [
     range: 'Weeks 1–3',
     title: 'Discovery',
     description: 'Usage data review, stakeholder & FinOps interviews, current-state gap analysis, cross-functional lifecycle framework.',
-    barClass: 'bg-default-300',
-    labelClass: 'text-default-600',
+    barClass: 'bg-default-300 dark:bg-default-600',
+    labelClass: 'text-default-600 dark:text-default-300',
   },
   {
     weeks: 5,
     range: 'Weeks 4–8',
     title: 'Design & prototyping',
     description: "Data model definition, user journey mapping, wireframing, iteration with algorithm and engineering teams on what's feasible for MVP.",
-    barClass: 'bg-success-400',
-    labelClass: 'text-success-700',
+    barClass: 'bg-success-400 dark:bg-success-600',
+    labelClass: 'text-success-700 dark:text-success-400',
   },
   {
     weeks: 4,
@@ -33,7 +33,7 @@ const PHASES: Phase[] = [
     description:
       'Shipped system-generated anomalies experience: navigation destination, filterable/groupable table, detail slide-out with root cause analysis concept.',
     barClass: 'bg-primary-500',
-    labelClass: 'text-primary-700',
+    labelClass: 'text-primary-700 dark:text-primary-400',
   },
 ];
 

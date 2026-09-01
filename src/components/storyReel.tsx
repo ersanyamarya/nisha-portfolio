@@ -9,6 +9,8 @@ export interface Story {
   alt: string;
   tag: string;
   caption: string;
+  /** CSS `object-position` for the frame's image; defaults to centered. */
+  focus?: string;
 }
 
 interface StoryReelProps {
@@ -67,7 +69,7 @@ export function StoryReel({ stories, handle, chromeOffset }: StoryReelProps) {
             objectFit="cover"
             // Warm cinematic grade, per docs/Brand.md §5 — keeps a mixed set of photos
             // reading as one roll of film against the terracotta panel.
-            imgStyle={{ filter: 'saturate(0.88) sepia(0.16) contrast(1.04)' }}
+            imgStyle={{ filter: 'saturate(0.88) sepia(0.16) contrast(1.04)', objectPosition: story.focus }}
           />
         </div>
       ))}

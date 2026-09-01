@@ -77,7 +77,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
 
       <section
         id="problem"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>The problem</Eyebrow>
         <p className="mb-4 text-2xl leading-snug font-semibold">
           Spektrum Akademie's current system couldn't track real-time progress of key academic resources: class schedules, teacher hours, subject completion and
@@ -89,7 +89,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
       </section>
 
       <section>
-        <div className="rounded-3xl border border-default-200 px-6 py-10 md:px-10 md:py-12">
+        <div className="rounded-3xl border border-border px-6 py-10 md:px-10 md:py-12">
           <ChallengeApproachOutcome
             approach="Interviewed administrators to map their day-to-day process, explored the strategy in mind maps and user flows with the product and dev teams, then benchmarked wireframes before designing the full scheduler."
             outcome="A real-time tracking and scheduling system integrated with Spektrum Akademie's legacy platform, cutting manual tracking effort by 90% and speeding up timetable creation by 75%."
@@ -111,12 +111,12 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           <ZoomableImage
             src={UserJourneyResources}
             alt="User journey tracking academic resources across the current manual process"
-            className="block h-auto w-full rounded-2xl ring-1 ring-default-200"
+            className="block h-auto w-full rounded-2xl ring-1 ring-border"
           />
           <ZoomableImage
             src={UserJourney}
             alt="User journey mapping the administrator's day-to-day scheduling struggles"
-            className="block h-auto w-full rounded-2xl ring-1 ring-default-200"
+            className="block h-auto w-full rounded-2xl ring-1 ring-border"
           />
         </div>
       </section>
@@ -138,7 +138,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <ZoomableImage
           src={Mindmap}
           alt="Mind map visualizing the relationships between academic resources"
-          className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-border"
         />
 
         <h3 className="mb-3.5 text-xl font-bold">User flow for idea implementation</h3>
@@ -149,7 +149,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <ZoomableImage
           src={Userflow}
           alt="User flow diagram for the scheduling idea implementation"
-          className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+          className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-border"
         />
 
         <h3 className="mb-6 text-xl font-bold">Key insights</h3>
@@ -171,7 +171,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
 
       <section
         id="iterations"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>Ideation & design iteration</Eyebrow>
         <SectionHeading>From wireframe to working scheduler, in three rounds</SectionHeading>
 
@@ -183,7 +183,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             and annotated feedback directly on the wireframes, letting us iterate before moving forward and build interchangeable steps for class, subject,
             teacher and room selection.
           </p>
-          <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-default-200">
+          <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-border">
             <ZoomableImage
               src={WireframeDropdown}
               alt="Early wireframe of the interchangeable class, subject, teacher and room selection steps"
@@ -203,16 +203,16 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           <ZoomableImage
             src={SchedulerFinal}
             alt="Second iteration: calendar view for scheduling with class, subject, teacher and room selectors"
-            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-border"
           />
           <FeedbackCallout
             tone="secondary"
             label="NEGATIVE FEEDBACK">
             <div className="flex flex-col gap-3">
-              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-muted-foreground italic">
+              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-muted-foreground italic dark:border-secondary-700">
                 &ldquo;It's very difficult to view subjects scheduled by period.&rdquo;
               </p>
-              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-muted-foreground italic">
+              <p className="border-l-2 border-secondary-300 pl-3.5 text-base leading-relaxed text-muted-foreground italic dark:border-secondary-700">
                 &ldquo;Switching between classes to schedule subjects is cumbersome. Can I see all the semester's classes together?&rdquo;
               </p>
             </div>
@@ -226,7 +226,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           <ZoomableImage
             src={Dashboard}
             alt="Class dashboard showing scheduled hours, subject progress and a teaching-details panel with hours taught per teacher"
-            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-border"
           />
           <FeedbackCallout
             tone="success"
@@ -247,7 +247,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           <ZoomableImage
             src={Periodview}
             alt="Third iteration: period view scheduler with a Schedule Class panel for assigning subject, teacher, room and duration"
-            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-default-200"
+            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-border"
           />
           <FeedbackCallout
             tone="success"
@@ -261,7 +261,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
 
       <section
         id="impact"
-        className="rounded-3xl bg-default-100 px-6 py-12 md:px-10">
+        className="rounded-3xl bg-muted px-6 py-12 md:px-10">
         <Eyebrow>Impact</Eyebrow>
         <p className="mb-3 text-xl leading-snug font-semibold">
           Designed a real-time tracking and scheduling system that integrates with Spektrum Akademie's legacy platform.
@@ -284,7 +284,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           />
         </div>
 
-        <p className="mb-8 text-sm leading-relaxed text-default-500">
+        <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
           We calculated this impact by recording baseline metrics during discovery interviews and comparing them with feedback and performance metrics gathered
           in follow-up interviews after the product entered daily use.
         </p>
@@ -294,7 +294,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             &ldquo;Diese Software hat unsere Stundenplanung revolutioniert. Wir sparen nicht nur Zeit, sondern haben auch einen viel besseren Überblick über
             unsere Ressourcen.&rdquo;
           </p>
-          <p className="text-sm font-semibold text-default-500">— Spektrum Akademie</p>
+          <p className="text-sm font-semibold text-muted-foreground">— Spektrum Akademie</p>
         </div>
       </section>
 
