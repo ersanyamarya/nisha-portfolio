@@ -22,7 +22,7 @@ export function TiltCard({ max = 8, className, children, ...props }: TiltCardPro
     const rect = e.currentTarget.getBoundingClientRect();
     const rotateX = ((e.clientY - rect.top) / rect.height - 0.5) * -2 * max;
     const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * 2 * max;
-    el.style.transition = 'transform 0.1s ease-out';
+    el.style.transition = '';
     el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
   };
 
