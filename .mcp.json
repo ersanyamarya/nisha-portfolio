@@ -1,12 +1,37 @@
 {
   "mcpServers": {
     "context-mode": {
-      "command": "npx",
-      "args": ["context-mode"]
+      "command": "context-mode"
     },
     "context7": {
+      "command": "context7-mcp",
+      "args": ["--api-key", "ctx7sk-48946159-7552-450b-b0a2-69d48de0dca6"]
+    },
+    "shadcn": {
+      "command": "shadcn",
+      "args": ["mcp"]
+    },
+    "netlify": {
       "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest", "--api-key", "ctx7sk-48946159-7552-450b-b0a2-69d48de0dca6"]
+      "args": ["-y", "@netlify/mcp"]
+    },
+    "fallow": {
+      "command": "fallow-mcp"
+    },
+    "chrome-devtools": {
+      "command": "chrome-devtools-mcp"
+    },
+    "playwright-chrome": {
+      "command": "playwright-mcp",
+      "args": ["--browser", "chrome", "--output-dir", ".playwright-mcp"]
+    },
+    "playwright-firefox": {
+      "command": "playwright-mcp",
+      "args": ["--browser", "firefox", "--output-dir", ".playwright-mcp"]
+    },
+    "playwright-webkit": {
+      "command": "playwright-mcp",
+      "args": ["--browser", "webkit", "--output-dir", ".playwright-mcp"]
     }
   }
 }
