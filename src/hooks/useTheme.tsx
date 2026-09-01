@@ -52,14 +52,19 @@ function applyTheme(next: Theme, origin?: WipeOrigin) {
     return;
   }
 
-  document.startViewTransition(commit).ready.then(() => {
-    const { x, y } = origin;
-    const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-    document.documentElement.animate(
-      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-      { duration: WIPE_DURATION, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' }
-    );
-  });
+  document
+    .startViewTransition(commit)
+    .ready.then(() => {
+      const { x, y } = origin;
+      const radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      document.documentElement.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: WIPE_DURATION, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    })
+    // `ready` rejects when the transition is skipped (a second click mid-wipe, a hidden
+    // tab). The swap has already committed by then — only the wipe is lost.
+    .catch(() => {});
 }
 
 export default function useTheme() {
