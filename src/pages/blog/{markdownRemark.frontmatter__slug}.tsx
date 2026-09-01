@@ -104,6 +104,7 @@ export const Head: HeadFC = ({ data, location }) => {
   );
 };
 
+// fallow-ignore-next-line unused-export — Gatsby's page-query convention picks this up by name, not import
 export const pageQuery = graphql`
   query ($id: String!) {
     markdownRemark(id: { eq: $id }) {

@@ -22,6 +22,46 @@ const MILESTONES: Milestone[] = [
 const VIEW_W = 920;
 const VIEW_H = 344;
 
+function getMilestoneStyle(major: boolean | undefined) {
+  return major
+    ? {
+        r: 6,
+        circleFill: DIAGRAM.accentTint,
+        circleStroke: DIAGRAM.accent,
+        circleStrokeWidth: 1.2,
+        titleFill: DIAGRAM.accent,
+        fontWeight: 700,
+      }
+    : {
+        r: 4,
+        circleFill: DIAGRAM.ink,
+        circleStroke: 'none',
+        circleStrokeWidth: 0,
+        titleFill: DIAGRAM.ink,
+        fontWeight: 600,
+      };
+}
+
+function getMilestonePosition(above: boolean, r: number) {
+  return above
+    ? {
+        tickTop: BASELINE_Y - 4,
+        tickBottom: BASELINE_Y - r,
+        connectorNear: BASELINE_Y - r - 4,
+        connectorFar: BASELINE_Y - 48,
+        titleY: BASELINE_Y - 56,
+        eyebrowY: BASELINE_Y - 76,
+      }
+    : {
+        tickTop: BASELINE_Y + r,
+        tickBottom: BASELINE_Y + 4,
+        connectorNear: BASELINE_Y + r + 4,
+        connectorFar: BASELINE_Y + 48,
+        titleY: BASELINE_Y + 68,
+        eyebrowY: BASELINE_Y + 88,
+      };
+}
+
 /** Sanyam's career arc: five roles, ending on the AI-native identity the redesign had to foreground. */
 export function CareerTimeline() {
   const slug = 'sanyam-portfolio-career';
@@ -42,42 +82,38 @@ export function CareerTimeline() {
       />
 
       {MILESTONES.map((m, i) => {
-        const r = m.major ? 6 : 4;
-        const tickTop = m.above ? BASELINE_Y - 4 : BASELINE_Y + r;
-        const tickBottom = m.above ? BASELINE_Y - r : BASELINE_Y + 4;
-        const connectorFar = m.above ? BASELINE_Y - 48 : BASELINE_Y + 48;
-        const titleY = m.above ? BASELINE_Y - 56 : BASELINE_Y + 68;
-        const eyebrowY = m.above ? BASELINE_Y - 76 : BASELINE_Y + 88;
+        const style = getMilestoneStyle(m.major);
+        const pos = getMilestonePosition(m.above, style.r);
 
         return (
           <g key={i}>
             <line
               x1={m.x}
-              y1={m.above ? BASELINE_Y - r - 4 : BASELINE_Y + r + 4}
+              y1={pos.connectorNear}
               x2={m.x}
-              y2={connectorFar}
+              y2={pos.connectorFar}
               stroke={DIAGRAM.rule}
               strokeWidth="0.8"
             />
             <line
               x1={m.x}
-              y1={tickTop}
+              y1={pos.tickTop}
               x2={m.x}
-              y2={tickBottom}
+              y2={pos.tickBottom}
               stroke={DIAGRAM.ruleSolid}
               strokeWidth="1"
             />
             <circle
               cx={m.x}
               cy={BASELINE_Y}
-              r={r}
-              fill={m.major ? DIAGRAM.accentTint : DIAGRAM.ink}
-              stroke={m.major ? DIAGRAM.accent : 'none'}
-              strokeWidth={m.major ? 1.2 : 0}
+              r={style.r}
+              fill={style.circleFill}
+              stroke={style.circleStroke}
+              strokeWidth={style.circleStrokeWidth}
             />
             <text
               x={m.x}
-              y={eyebrowY}
+              y={pos.eyebrowY}
               textAnchor="middle"
               className="dd-mono"
               fontSize="8"
@@ -87,12 +123,12 @@ export function CareerTimeline() {
             </text>
             <text
               x={m.x}
-              y={titleY}
+              y={pos.titleY}
               textAnchor="middle"
               className="dd-sans"
               fontSize="12"
-              fontWeight={m.major ? 700 : 600}
-              fill={m.major ? DIAGRAM.accent : DIAGRAM.ink}>
+              fontWeight={style.fontWeight}
+              fill={style.titleFill}>
               {m.title}
             </text>
           </g>

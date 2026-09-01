@@ -13,21 +13,9 @@ export default function Blog({ data }: PageProps<Queries.Query>) {
       <Layout>
         <div className="mx-auto flex min-h-[calc(100vh-36rem)] w-[80vw] max-w-[1360px] min-w-[320px] flex-col items-start justify-start gap-12 py-16">
           <h1 className="text-[3.25rem] leading-[3.25rem] font-medium">Blogs</h1>
-          {blogs.map((part, index) => {
-            const featuredImg = getImage(part.frontmatter?.featuredImage?.childImageSharp?.gatsbyImageData as any);
-            const reverse = index % 2 === 0;
-
-            return (
-              <BlogCard
-                title={part.frontmatter?.title || 'title'}
-                slug={part.frontmatter?.slug || 'slug'}
-                executiveSummary={part.frontmatter?.executiveSummary || 'description'}
-                image={featuredImg}
-                date={part.frontmatter?.date || 'date'}
-                reverse={reverse}
-              />
-            );
-          })}
+          {blogs.map((part, index) => (
+            <BlogCard {...toBlogCardProps(part, index)} />
+          ))}
         </div>
       </Layout>
     </>
@@ -55,6 +43,22 @@ export const query = graphql`
 `;
 
 export const Head: HeadFC = () => <SEO title=" Blog" />;
+
+function getFeaturedImage(frontmatter: any) {
+  return getImage(frontmatter.featuredImage?.childImageSharp?.gatsbyImageData as any);
+}
+
+function toBlogCardProps(part: any, index: number) {
+  const fm = part.frontmatter ?? {};
+  return {
+    title: fm.title || 'title',
+    slug: fm.slug || 'slug',
+    executiveSummary: fm.executiveSummary || 'description',
+    image: getFeaturedImage(fm),
+    date: fm.date || 'date',
+    reverse: index % 2 === 0,
+  };
+}
 
 // Sort function for blogs comparing the date
 function dateSort(a: { frontmatter: { date: string } }, b: { frontmatter: { date: string } }) {
