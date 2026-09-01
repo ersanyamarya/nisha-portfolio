@@ -45,7 +45,6 @@ const config: GatsbyConfig = {
     'gatsby-plugin-image',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-robots-txt',
-    `gatsby-plugin-minify`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

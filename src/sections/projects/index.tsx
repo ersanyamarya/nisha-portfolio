@@ -1,11 +1,9 @@
 import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { Reveal, TiltCard } from '../../components';
 import { Tone, TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
-import FlexeraGraphic from '../../images/case-studies/flexera/flexera_overview.png';
-import SanyamGraphic from '../../images/case-studies/sanyam-portfolio/sanyam_overview.jpg';
-import SpektrumGraphic from '../../images/case-studies/spektrum/spektrum_card.jpg';
 
 const caseStudies: {
   name: string;
@@ -18,7 +16,6 @@ const caseStudies: {
   statValue: string;
   statLabel: string;
   tone: Tone;
-  graphic: string;
 }[] = [
   {
     name: 'Flexera',
@@ -31,7 +28,6 @@ const caseStudies: {
     statValue: '~5/6',
     statLabel: 'customers identified the top cost contributor',
     tone: 'primary',
-    graphic: FlexeraGraphic,
   },
   {
     name: 'Spektrum Akademie',
@@ -44,7 +40,6 @@ const caseStudies: {
     statValue: '90%',
     statLabel: 'less manual tracking',
     tone: 'success',
-    graphic: SpektrumGraphic,
   },
   {
     name: 'Sanyam Arya',
@@ -57,9 +52,54 @@ const caseStudies: {
     statValue: 'Live',
     statLabel: 'now leads with his current title, not his oldest one',
     tone: 'secondary',
-    graphic: SanyamGraphic,
   },
 ];
+
+const CARD_IMAGE_CLASS = 'h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]';
+
+/** StaticImage needs a literal src per call site, so each case study gets its own branch. */
+function CaseStudyImage({ link }: { link: string }) {
+  switch (link) {
+    case '/case-studies/flexera':
+      return (
+        <StaticImage
+          src="../../images/case-studies/flexera/flexera_overview.png"
+          alt=""
+          layout="fullWidth"
+          aspectRatio={16 / 10}
+          loading="lazy"
+          objectFit="cover"
+          className={CARD_IMAGE_CLASS}
+        />
+      );
+    case '/case-studies/spektrum':
+      return (
+        <StaticImage
+          src="../../images/case-studies/spektrum/spektrum_card.jpg"
+          alt=""
+          layout="fullWidth"
+          aspectRatio={16 / 10}
+          loading="lazy"
+          objectFit="cover"
+          className={CARD_IMAGE_CLASS}
+        />
+      );
+    case '/case-studies/sanyam-portfolio':
+      return (
+        <StaticImage
+          src="../../images/case-studies/sanyam-portfolio/sanyam_overview.jpg"
+          alt=""
+          layout="fullWidth"
+          aspectRatio={16 / 10}
+          loading="lazy"
+          objectFit="cover"
+          className={CARD_IMAGE_CLASS}
+        />
+      );
+    default:
+      return null;
+  }
+}
 
 export default function ProjectsSection() {
   return (
@@ -82,11 +122,7 @@ export default function ProjectsSection() {
               className="group block h-full">
               <TiltCard className="flex h-full flex-col overflow-hidden rounded-3xl glass-panel">
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img
-                    src={project.graphic}
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                  />
+                  <CaseStudyImage link={project.link} />
                   <span className={`absolute top-4 left-4 rounded-full px-3 py-1.5 text-xs font-bold tracking-wide ${TONE_SOLID[project.tone]}`}>
                     {project.name}
                   </span>

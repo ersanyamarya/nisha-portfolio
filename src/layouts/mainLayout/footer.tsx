@@ -70,6 +70,7 @@ export default function Footer() {
   const {
     site: {
       siteMetadata: { copyWrite },
+      buildTime,
     },
   } = useStaticQuery(graphql`
     query SiteData {
@@ -77,9 +78,13 @@ export default function Footer() {
         siteMetadata {
           copyWrite
         }
+        buildTime
       }
     }
   `);
+  // Reading the build-time timestamp (baked into the query result at build) instead of
+  // `new Date()` keeps the year identical between SSR output and client hydration.
+  const year = new Date(buildTime).getFullYear();
 
   return (
     <div className="relative z-10 mt-32 rounded-t-3xl bg-default-900 px-4 md:px-8 lg:px-24">
@@ -140,8 +145,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl border-t border-default-50/10 py-6 text-xs text-default-50 opacity-45">
-        © {new Date().getFullYear()} {copyWrite}. Precision in the process, delight in the details.
+      <div className="mx-auto max-w-6xl border-t border-default-50/10 py-6 text-xs text-default-50 opacity-60">
+        © {year} {copyWrite}. Precision in the process, delight in the details.
       </div>
     </div>
   );

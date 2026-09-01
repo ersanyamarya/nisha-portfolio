@@ -11,3 +11,5 @@ src/gatsby-types.d.ts
 .claude/tasks/
 
 **/.DS_Store
+lighthouse-*.json
+lighthouse-*.md
