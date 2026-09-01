@@ -156,7 +156,7 @@ export default function ProcessSection() {
       id="process"
       className="relative flex w-full flex-col gap-12">
       <Reveal className="mx-auto max-w-2xl text-center">
-        <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">The roasting process</div>
+        <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">The roasting process</div>
         <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">How I work.</h2>
         <p className="text-muted-foreground">
           Good design, like a good brew, rewards patience — the right steps, in the right order, given time to come together.
@@ -177,7 +177,7 @@ export default function ProcessSection() {
                     className={`block w-full cursor-pointer border-b border-border px-7 py-6 text-left transition-colors last:border-none ${
                       isActive ? '' : 'hover:bg-muted/40'
                     }`}>
-                    <div className={`mb-1.5 text-xs font-semibold tracking-widest ${isActive ? 'text-primary' : 'text-default-400'}`}>
+                    <div className={`mb-1.5 text-xs font-semibold tracking-widest ${isActive ? 'text-accent-foreground' : 'text-muted-foreground'}`}>
                       {s.step} · {s.brewTerm}
                     </div>
                     <div className={`text-lg font-medium ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>{s.title}</div>

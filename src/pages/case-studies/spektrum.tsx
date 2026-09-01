@@ -66,7 +66,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           />
         </div>
         <div>
-          <div className="mb-4 text-xs font-bold tracking-wide text-primary">Skills applied</div>
+          <div className="mb-4 text-xs font-bold tracking-wide text-accent-foreground">Skills applied</div>
           <div className="flex flex-wrap gap-2.5">
             {['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'].map(s => (
               <PillTag key={s}>{s}</PillTag>
@@ -176,7 +176,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         <SectionHeading>From wireframe to working scheduler, in three rounds</SectionHeading>
 
         <div className="mb-14">
-          <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 1</div>
+          <div className="mb-1.5 text-xs font-bold tracking-wide text-accent-foreground">Iteration 1</div>
           <h3 className="mb-3.5 text-xl font-bold">Putting ideas through wireframes</h3>
           <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             The product manager facilitated review discussions with the client while I observed to ensure alignment with stakeholder expectations. We gathered
@@ -193,7 +193,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         </div>
 
         <div className="mb-14">
-          <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 2</div>
+          <div className="mb-1.5 text-xs font-bold tracking-wide text-accent-foreground">Iteration 2</div>
           <h3 className="mb-3.5 text-xl font-bold">Moderated prototype testing, built on iteration 1 feedback</h3>
 
           <h4 className="mb-2 text-base font-bold">Scheduler</h4>
@@ -238,7 +238,7 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
         </div>
 
         <div>
-          <div className="mb-1.5 text-xs font-bold tracking-wide text-primary">Iteration 3</div>
+          <div className="mb-1.5 text-xs font-bold tracking-wide text-accent-foreground">Iteration 3</div>
           <h3 className="mb-3.5 text-xl font-bold">Moderated prototype testing: the improved period view</h3>
           <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             Based on that feedback, we redesigned around a period view that lists every class per row across the week, with a &ldquo;Schedule Class&rdquo; panel

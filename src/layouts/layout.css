@@ -165,7 +165,9 @@
   --card-foreground: var(--color-default-900);
   --popover: var(--color-default-50);
   --popover-foreground: var(--color-default-900);
-  --primary-foreground: var(--color-default-50);
+  /* Dark espresso, not white — white-on-terracotta only clears 3.3:1 (buttons,
+     text selection), which fails 4.5:1 body-text contrast. */
+  --primary-foreground: var(--color-default-950);
   --muted: var(--color-default-100);
   --muted-foreground: var(--color-default-600);
   --accent: var(--color-primary-50);
@@ -173,8 +175,11 @@
   --destructive: var(--color-secondary-600);
   --destructive-foreground: #ffffff;
   --border: var(--color-default-200);
-  --input: var(--color-default-200);
-  --ring: var(--color-primary-400);
+  /* -400 (2.1-2.3:1) reads as decorative and is fine for card outlines, but this
+     token also draws the only visible boundary on transparent form fields, which
+     needs 3:1 (WCAG 1.4.11). -500 clears every surface with margin. */
+  --input: var(--color-default-500);
+  --ring: var(--color-primary-700);
 }
 
 .dark {
@@ -193,8 +198,13 @@
   --accent: var(--color-default-800);
   --accent-foreground: var(--color-primary-300);
   --border: var(--color-default-700);
-  --input: var(--color-default-700);
+  --input: var(--color-default-500);
   --ring: var(--color-primary-400);
+  /* The light-mode crimson (-600) drops to ~2.2-2.7:1 on dark surfaces — inherited
+     silently since this theme never redeclared it. -300 restores 5.7-7:1 for error
+     text, and its foreground flips dark so the destructive button still reads. */
+  --destructive: var(--color-secondary-300);
+  --destructive-foreground: var(--color-default-950);
 }
 
 * {

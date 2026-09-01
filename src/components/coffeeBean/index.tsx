@@ -140,7 +140,7 @@ export function CoffeeBean() {
           aria-hidden="true"
           className={`${TOOLTIP_BASE} ${TOOLTIP_REST} ${TOOLTIP_SHOWN}`}>
           <span className="block text-[9px] font-semibold tracking-[0.18em] text-muted-foreground uppercase">Switch to</span>
-          <span className="block font-serif text-sm text-primary italic">{ROAST_LABEL[next]}</span>
+          <span className="block font-serif text-sm text-accent-foreground italic">{ROAST_LABEL[next]}</span>
         </span>
       </motion.button>
     </div>

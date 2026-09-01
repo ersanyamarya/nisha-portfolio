@@ -14,7 +14,7 @@ const NAVIGATION_LINKS = [
 ];
 
 const navLinkClasses =
-  "relative text-sm font-medium tracking-wide uppercase text-foreground transition-colors duration-300 hover:text-primary after:absolute after:bottom-[-6px] after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-primary after:transition-all after:duration-300 after:content-[''] hover:after:w-full";
+  "relative text-sm font-medium tracking-wide uppercase text-foreground transition-colors duration-300 hover:text-accent-foreground after:absolute after:bottom-[-6px] after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-primary after:transition-all after:duration-300 after:content-[''] hover:after:w-full";
 
 export default function NavBar() {
   const [showContact, setShowContact] = useState(false);
@@ -67,7 +67,7 @@ export default function NavBar() {
                 key={link.name}
                 to={link.path}
                 className={navLinkClasses}
-                activeClassName="text-primary">
+                activeClassName="text-accent-foreground">
                 {link.name}
               </Link>
             ))}
@@ -99,7 +99,7 @@ export default function NavBar() {
               onClick={() => setMenuOpen(open => !open)}
               aria-expanded={isMenuOpen}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-              className="flex size-11 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:text-primary focus:outline-none">
+              className="flex size-11 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:text-accent-foreground focus:outline-none">
               {isMenuOpen ? (
                 <XIcon
                   strokeWidth={1.5}
@@ -125,8 +125,8 @@ export default function NavBar() {
               key={link.name}
               to={link.path}
               onClick={closeMenu}
-              className="rounded-2xl px-4 py-3 text-sm font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-accent hover:text-primary"
-              activeClassName="text-primary">
+              className="rounded-2xl px-4 py-3 text-sm font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-accent hover:text-accent-foreground"
+              activeClassName="text-accent-foreground">
               {link.name}
             </Link>
           ))}

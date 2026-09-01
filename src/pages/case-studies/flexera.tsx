@@ -343,7 +343,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </p>
         <div className="flex flex-col gap-8">
           <div className="rounded-2xl border border-border bg-background px-6 py-6">
-            <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 1: CATCH IT EARLY</div>
+            <div className="mb-3 text-[11px] font-extrabold tracking-widest text-accent-foreground">JOB 1: CATCH IT EARLY</div>
             <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When cloud spend moves across dozens of services and accounts, advisors wanted to know what's unusual without combing through raw cost dashboards,
               so they could catch a problem while it's still small, not find it in a monthly review after the money is gone.
@@ -367,7 +367,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             />
           </div>
           <div className="rounded-2xl border border-border bg-background px-6 py-6">
-            <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 2: JUDGE IT IN CONTEXT</div>
+            <div className="mb-3 text-[11px] font-extrabold tracking-widest text-accent-foreground">JOB 2: JUDGE IT IN CONTEXT</div>
             <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When an anomaly surfaces, advisors wanted to see it against the specific dimensions their team actually watches, service, region, usage type,
               billing center, so they could decide in seconds whether it's worth acting on instead of digging for context first.
@@ -392,7 +392,7 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             />
           </div>
           <div className="rounded-2xl border border-border bg-background px-6 py-6">
-            <div className="mb-3 text-[11px] font-extrabold tracking-widest text-primary">JOB 3: EXPLAIN IT CONFIDENTLY</div>
+            <div className="mb-3 text-[11px] font-extrabold tracking-widest text-accent-foreground">JOB 3: EXPLAIN IT CONFIDENTLY</div>
             <p className="mb-2.5 text-base leading-relaxed text-muted-foreground">
               When an anomaly needs to go to someone outside FinOps to get fixed, advisors wanted to explain why it fired before forwarding it, so it gets
               resolved instead of dismissed as noise, and their credibility with the receiving team stays intact.

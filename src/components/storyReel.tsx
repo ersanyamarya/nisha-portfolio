@@ -107,7 +107,10 @@ export function StoryReel({ stories, handle, chromeOffset }: StoryReelProps) {
             <BeanIcon className="size-full" />
           </span>
           <span className="text-xs font-semibold tracking-wide text-default-50">{handle}</span>
-          <span className="text-xs text-default-50/60">{current.tag}</span>
+          {/* Solid, not diluted — this row sits directly on the photo (outside the
+              bottom scrim), so a translucent value is only as safe as the pixels
+              underneath it, which vary per photo. */}
+          <span className="text-xs text-default-50">{current.tag}</span>
         </div>
       </div>
 

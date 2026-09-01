@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Tone, TONE_SOLID, TONE_TEXT } from './tone';
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <div className="mb-4 text-sm font-bold tracking-wide text-primary">{children}</div>;
+  return <div className="mb-4 text-sm font-bold tracking-wide text-accent-foreground">{children}</div>;
 }
 
 export function SectionHeading({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -361,7 +361,7 @@ export function FooterNav({ prevLabel = 'All work', nextLabel, nextTo }: { prevL
         </a>
         <a
           href={nextTo}
-          className="text-base font-bold text-foreground hover:text-primary">
+          className="text-base font-bold text-foreground hover:text-accent-foreground">
           {nextLabel} →
         </a>
       </div>

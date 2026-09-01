@@ -44,7 +44,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
           outcome="A site that opens with his current AI-native / IoT Cloud Architect identity, backed by a skills taxonomy and a visible career progression, rather than a list of past job titles competing for attention equally."
         />
         <div className="mt-10">
-          <div className="mb-4 text-xs font-bold tracking-wide text-primary">Skills applied</div>
+          <div className="mb-4 text-xs font-bold tracking-wide text-accent-foreground">Skills applied</div>
           <div className="flex flex-wrap gap-2.5">
             {['Personal-brand strategy', 'Information architecture', 'Content structuring', 'Visual design'].map(s => (
               <PillTag key={s}>{s}</PillTag>
@@ -113,7 +113,7 @@ const SanyamPortfolioCaseStudy: React.FC<PageProps> = () => {
             href="https://www.sanyamarya.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-primary hover:underline">
+            className="font-semibold text-accent-foreground hover:underline">
             sanyamarya.com
           </a>
           .

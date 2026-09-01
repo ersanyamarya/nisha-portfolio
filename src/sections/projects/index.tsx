@@ -67,7 +67,7 @@ export default function ProjectsSection() {
       id="work"
       className="flex w-full flex-col gap-12">
       <Reveal>
-        <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Selective brews</div>
+        <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">Selective brews</div>
         <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">Case studies.</h2>
         <p className="text-muted-foreground">A few case studies, brewed with patience over time.</p>
       </Reveal>

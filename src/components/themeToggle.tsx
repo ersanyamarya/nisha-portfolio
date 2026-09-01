@@ -13,7 +13,7 @@ export function ThemeToggle({ className = '', ...props }: ThemeToggleProps) {
       onClick={e => toggleTheme(originOf(e.currentTarget))}
       aria-label={`Switch to ${ROAST_LABEL[next].toLowerCase()}`}
       title={ROAST_LABEL[next]}
-      className={`flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-default-200 bg-card text-muted-foreground transition-colors duration-300 hover:text-primary focus:outline-none ${className}`}
+      className={`flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-default-200 bg-card text-muted-foreground transition-colors duration-300 hover:text-accent-foreground focus:outline-none ${className}`}
       {...props}>
       {theme === 'dark' ? (
         <SunIcon

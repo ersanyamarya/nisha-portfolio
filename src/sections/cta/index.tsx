@@ -25,7 +25,7 @@ export default function CtaSection() {
             className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
           />
 
-          <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Let's talk</div>
+          <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">Let's talk</div>
           <h2 className="mx-auto mb-6 max-w-2xl font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">Let's brew something together.</h2>
           <p className="mx-auto mb-10 max-w-xl text-lg text-muted-foreground">
             Open to product or UX designer roles in Berlin or remote across Germany and Europe. A complex problem to untangle, or just coffee and design talk.

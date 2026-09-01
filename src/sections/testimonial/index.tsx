@@ -100,7 +100,7 @@ function Avatar({ name, picture, className }: { name: string; picture: string; c
   const [failed, setFailed] = useState(false);
 
   return (
-    <span className={cn('flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-default-100', className)}>
+    <span className={cn('flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-muted', className)}>
       {failed ? (
         <span
           aria-hidden="true"
@@ -149,7 +149,7 @@ function TestimonialCard({ index, name, title, location, picture, link, excerpt,
           {/* Front — the badge */}
           <div className="absolute inset-0 flex flex-col overflow-hidden rounded-3xl glass-panel backface-hidden">
             <div className="flex items-center justify-between border-b border-border bg-primary/10 px-5 py-3">
-              <span className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">
+              <span className="flex items-center gap-2 text-[10px] font-semibold tracking-[0.18em] text-accent-foreground uppercase">
                 <BeanIcon className="size-3.5" />
                 Recommendation
               </span>
@@ -170,7 +170,7 @@ function TestimonialCard({ index, name, title, location, picture, link, excerpt,
               />
               <h3 className="mt-6 font-serif text-xl leading-snug font-medium">{name}</h3>
               <p className="mt-1.5 text-sm leading-snug text-muted-foreground">{title}</p>
-              <p className="mt-1 text-xs text-muted-foreground/80">{location}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{location}</p>
 
               {/* A verbatim line from the note, so the card says something before it's turned. */}
               <p className="mt-auto line-clamp-3 w-full border-t border-dashed border-border pt-5 font-serif leading-relaxed text-muted-foreground italic">
@@ -178,7 +178,7 @@ function TestimonialCard({ index, name, title, location, picture, link, excerpt,
               </p>
             </div>
 
-            <div className="mx-6 mb-6 flex items-center justify-center gap-1.5 pt-4 text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">
+            <div className="mx-6 mb-6 flex items-center justify-center gap-1.5 pt-4 text-[10px] font-semibold tracking-[0.18em] text-accent-foreground uppercase">
               <RotateCwIcon
                 size={12}
                 strokeWidth={2}
@@ -188,7 +188,7 @@ function TestimonialCard({ index, name, title, location, picture, link, excerpt,
           </div>
 
           {/* Back — the note */}
-          <div className="absolute inset-0 flex rotate-y-180 flex-col overflow-hidden rounded-3xl bg-primary p-7 text-default-50 shadow-[var(--elevation-light)] backface-hidden">
+          <div className="absolute inset-0 flex rotate-y-180 flex-col overflow-hidden rounded-3xl bg-primary p-7 text-primary-foreground shadow-[var(--elevation-light)] backface-hidden">
             {/* Roasted-paper texture, matching the About panel. */}
             <div
               aria-hidden="true"
@@ -200,7 +200,10 @@ function TestimonialCard({ index, name, title, location, picture, link, excerpt,
               aria-hidden="true"
               className="relative size-8 fill-default-50/25 text-default-50/25"
             />
-            <p className="relative mt-4 line-clamp-[8] text-[0.95rem] leading-relaxed text-default-50/90">{testimonial}</p>
+            {/* Solid, not diluted — text-primary-foreground at 90% opacity over this
+                fill lands under 4.5:1 (opacity dims toward the fill it sits on, not
+                toward white), so hierarchy here comes from type scale, not alpha. */}
+            <p className="relative mt-4 line-clamp-[8] text-[0.95rem] leading-relaxed text-primary-foreground">{testimonial}</p>
 
             <div className="relative mt-auto pt-5">
               <button
@@ -209,14 +212,14 @@ function TestimonialCard({ index, name, title, location, picture, link, excerpt,
                   e.stopPropagation();
                   setOpen(true);
                 }}
-                className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-default-50/40 bg-default-50/10 px-4 py-2 text-[11px] font-semibold tracking-[0.12em] text-default-50 uppercase transition-colors hover:bg-default-50/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-default-50">
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-default-50/40 bg-default-50/10 px-4 py-2 text-[11px] font-semibold tracking-[0.12em] text-primary-foreground uppercase transition-colors hover:bg-default-50/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-foreground">
                 Read the full note
                 <ArrowUpRightIcon size={14} />
               </button>
 
               <div className="mt-5 border-t border-default-50/25 pt-4">
                 <div className="font-serif text-base leading-snug">{name}</div>
-                <div className="text-xs text-default-50/75">{title}</div>
+                <div className="text-xs text-primary-foreground">{title}</div>
               </div>
             </div>
           </div>
@@ -290,7 +293,7 @@ export default function TestimonialSection() {
       className="flex w-full flex-col gap-10">
       <Reveal className="flex flex-wrap items-end justify-between gap-6">
         <div className="max-w-xl">
-          <div className="mb-4 text-xs font-medium tracking-widest text-primary uppercase">Kind words</div>
+          <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">Kind words</div>
           <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">What it's like to work with me.</h2>
           <p className="text-muted-foreground">Managers, founders and engineers I've built things with. Turn a card over to read what they wrote.</p>
         </div>

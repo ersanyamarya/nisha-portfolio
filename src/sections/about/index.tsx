@@ -70,9 +70,9 @@ export default function AboutSection() {
 
       <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-14 md:flex-row md:gap-16">
         <Reveal className="w-full md:w-1/2">
-          <div className="mb-4 text-xs font-medium tracking-widest text-default-50/70 uppercase">Off the clock</div>
-          <h2 className="mb-6 font-serif text-4xl font-medium tracking-[-0.01em] text-default-50 md:text-5xl">A designer, and a home barista.</h2>
-          <div className="space-y-4 text-lg leading-relaxed text-default-50/90">
+          <div className="mb-4 text-xs font-medium tracking-widest text-primary-foreground uppercase">Off the clock</div>
+          <h2 className="mb-6 font-serif text-4xl font-medium tracking-[-0.01em] text-primary-foreground md:text-5xl">A designer, and a home barista.</h2>
+          <div className="space-y-4 text-lg leading-relaxed text-primary-foreground">
             <p>Away from the screen I paint, and I spend more time than is reasonable dialling in a single cup. Both feed the work.</p>
             <p>
               Painting taught me composition, and that colour is a decision rather than a preference. Coffee taught me patience, and that the variable you

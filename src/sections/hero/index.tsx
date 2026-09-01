@@ -10,7 +10,7 @@ const SNIPPETS = [
     icon: PieChartIcon,
     label: 'Research-led',
     value: 'UX strategy',
-    accent: 'bg-success/15 text-success',
+    accent: 'bg-success/15 text-success-700 dark:text-success-300',
     position: 'top-8 -left-2 md:-left-8',
     animation: 'float 6s ease-in-out infinite',
   },
@@ -18,7 +18,7 @@ const SNIPPETS = [
     icon: PenToolIcon,
     label: 'UI craft',
     value: 'Pixel perfect.',
-    accent: 'bg-primary/15 text-primary',
+    accent: 'bg-primary/15 text-accent-foreground',
     position: 'bottom-8 -right-2 md:-right-6',
     animation: 'float 7s ease-in-out infinite 2s',
   },
@@ -35,7 +35,7 @@ export default function HeroSection() {
 
       <div className="relative mx-auto flex min-h-[80vh] w-full max-w-7xl flex-col items-center gap-14 px-4 md:flex-row md:gap-10 md:px-8 lg:gap-16">
         <div className="relative flex w-full flex-col items-start md:w-[58%] xl:w-[60%]">
-          <div className="mb-8 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold tracking-widest text-primary uppercase glass-panel">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold tracking-widest text-accent-foreground uppercase glass-panel">
             <span className="size-2 animate-pulse rounded-full bg-primary" />
             Open to UX/Product design role
           </div>

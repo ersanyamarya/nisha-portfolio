@@ -76,7 +76,7 @@ export default function useForm<IState extends Record<string, any>>(initial: ISt
       'aria-label': key,
       'aria-invalid': errors[key] ? true : false,
       'aria-describedby': errors[key] ? `${key}-error` : undefined,
-      className: textClassNames + (errors[key] ? ' border-red-500' : ''),
+      className: textClassNames + (errors[key] ? ' border-destructive' : ''),
     };
   };
   return {
