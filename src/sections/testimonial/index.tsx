@@ -5,6 +5,11 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { cn } from '@/lib/utils';
 import { Reveal } from '../../components';
 import { BeanIcon } from '../../components/coffeeBean/beanIcon';
+import gaborMandokiPicture from '../../images/testimonials/gabor-mandoki.jpg';
+import jeffreyGadzalaPicture from '../../images/testimonials/jeffrey-gadzala.jpg';
+import joannaKleinschmidtPicture from '../../images/testimonials/joanna-kleinschmidt.jpg';
+import sanyamAryaPicture from '../../images/testimonials/sanyam-arya.jpg';
+import tonyHyunPicture from '../../images/testimonials/tony-hyun.jpg';
 
 type Testimonial = {
   name: string;
@@ -23,8 +28,7 @@ const testimonials: Testimonial[] = [
     title: 'Sr. Manager, UX Design, Flexera',
     location: 'Townsend, Massachusetts, United States',
 
-    picture:
-      'https://media.licdn.com/dms/image/v2/C4D03AQEx4CNB_TJCVg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1516283979128?e=1781740800&v=beta&t=3vY4_s5JR6GRUjzlI2SE4YzY7i4fa6mKE-qMwHrUOkE',
+    picture: joannaKleinschmidtPicture,
     link: 'https://www.linkedin.com/in/jkleinschmidt/',
     excerpt: 'A great listener who approaches her work with calm determination and quiet good humor.',
     testimonial: `Nisha worked within the UX group at Flexera for over a year, delivering excellent designs on some very challenging product capabilities in the FinOps domain.  She is a team player and skilled collaborator with PM and others in UX, always willing to share knowledge and insights.
@@ -34,8 +38,7 @@ Nisha was able to handle some of the most technically challenging design work in
     name: 'Jeffrey Gadzala',
     title: 'Lead UX Designer, Flexera',
     location: 'Greater Seattle Area',
-    picture:
-      'https://media.licdn.com/dms/image/v2/C4D03AQHzA6dWUpdETg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1537369120873?e=1781740800&v=beta&t=ni1dfB_D4dV5iMb7xPt9QAeVybV3PIo_LjaFnW7gIuc',
+    picture: jeffreyGadzalaPicture,
     link: 'https://www.linkedin.com/in/jeffreygadzala/',
     excerpt: 'Evidence backed, critical of the status quo, and guided users toward desired outcomes.',
     testimonial: `Nisha joined our team at a moment of significant change: acquisition integration, new investment, and shifting business priorities. For the company, this meant addressing complex challenges with lots of new people and limited shared context. 
@@ -46,8 +49,7 @@ Within the UX team, Nisha collaborated well with other designers and researchers
     name: 'Gábor László Mándoki',
     title: 'CPO & Co-Founder, Beeta.one',
     location: 'Germany',
-    picture:
-      'https://media.licdn.com/dms/image/v2/C5603AQFAt2fHQQMzxQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1575900439632?e=1781740800&v=beta&t=eZe3V2_wLby-VcQz-bZw_C-z8oY2HKG1gZUZ4ARMa2U',
+    picture: gaborMandokiPicture,
     link: 'https://www.linkedin.com/in/gabormandoki/',
     excerpt: 'Her blend of speed, precision, and clear communication makes her a standout UX designer.',
     testimonial: `I had the pleasure of working with Nisha and I must say, our collaboration was nothing short of exceptional. Her sharp intellect and quick-witted approach to problem-solving were evident in every project we undertook.
@@ -59,8 +61,7 @@ I wholeheartedly recommend Nisha for any endeavor she chooses to pursue. Her ble
     name: 'Sanyam Arya',
     title: 'Cloud Architect, PROTHINX',
     location: 'Berlin, Germany',
-    picture:
-      'https://media.licdn.com/dms/image/v2/D4D03AQG_k9G0Ia1xhA/profile-displayphoto-scale_400_400/B4DZkFJLWxHYAo-/0/1756727941441?e=1781740800&v=beta&t=QPES6_P06f_mXjwxQ_4jM38UhhlFZyVAMo1LntcOsP0',
+    picture: sanyamAryaPicture,
     link: 'https://www.linkedin.com/in/sanyam-arya/',
     excerpt: 'From initial sketches to polished mockups, she basically owned the entire user experience.',
     testimonial: `Nisha Kumari is a UX designer dream come true! I had the pleasure of working with her on my new cross-platform MQTT client, Mqtizer. Nisha impressed me from the start. She conducted user research to ensure we built something users truly needed, then translated that knowledge into fantastic designs. From initial sketches to polished mockups, she brought Mqtizer to life. 
@@ -70,8 +71,7 @@ Her talents extend beyond the app itself. Nisha designed a killer marketing webs
     name: 'Tony Hyun',
     title: 'Director of UX/ CXA, Royal Cyber Inc.',
     location: 'Chicago, Illinois',
-    picture:
-      'https://media.licdn.com/dms/image/v2/C5603AQGPkCf1tOkmMw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1551039351643?e=1781740800&v=beta&t=sEdwHIkaU2BZ3_e8KVz0J1Cw4WpNYZiTPB_O1haQRe0',
+    picture: tonyHyunPicture,
     link: 'https://www.linkedin.com/in/tonyhyun/',
     excerpt: 'Her customer-focused mindset immediately instilled confidence in the team and the client.',
     testimonial: `As our UX team grew at Royal Cyber, we needed qualified senior UX Designers. Being a small team, the senior designers needed to take on several roles on any given project, be it as a UX Researcher, UX Designer, or Test Moderator. Finding candidates that fit the bill was tough, as you can imagine, until we found Nisha. Nisha’s broad experience in all things UX made it easy for her to be assigned to complex projects with demanding clients. Her ease at approaching all challenges from a sound customer-focused mindset immediately instilled confidence in her from the team and the client. Nisha’s talents also extend into product design. Royal Cyber has developed a suite of products that have become very popular with our customers. Due to Nisha’s expert touch, many Royal Cyber products have undergone metamorphic change.
@@ -89,8 +89,8 @@ const GAP = 28;
  */
 const CARD_WIDTH = 'w-[calc(85%-1.75rem)] sm:w-[calc(60%-1.75rem)] lg:w-[calc(40%-1.75rem)]';
 
-// Falls back to the person's initials: the LinkedIn CDN URLs above are signed and
-// expire, so a dead `picture` should degrade to something legible, not an empty box.
+// Falls back to the person's initials so a dead `picture` degrades to something
+// legible, not an empty box.
 const initialsOf = (name: string) => {
   const parts = name.trim().split(/\s+/);
   return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();

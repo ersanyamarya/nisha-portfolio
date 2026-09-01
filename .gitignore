@@ -13,3 +13,4 @@ src/gatsby-types.d.ts
 **/.DS_Store
 lighthouse-*.json
 lighthouse-*.md
+.playwright-mcp
