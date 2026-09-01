@@ -41,19 +41,10 @@ const caseStudies: {
     statLabel: 'less manual tracking',
     tone: 'success',
   },
-  {
-    name: 'Sanyam Arya',
-    link: '/case-studies/sanyam-portfolio',
-    domain: 'Personal Brand',
-    platformType: 'Portfolio site',
-    caseStudyType: 'IA & Content Strategy',
-    description: 'A portfolio that still read "developer" after the job had already changed',
-    tags: ['Personal Site', 'Information Architecture', 'Brand Positioning'],
-    statValue: 'Live',
-    statLabel: 'now leads with his current title, not his oldest one',
-    tone: 'secondary',
-  },
 ];
+
+const numberOfCaseStudies = caseStudies.length;
+const isOddNumberOfCaseStudies = numberOfCaseStudies % 2 !== 0;
 
 const CARD_IMAGE_CLASS = 'h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]';
 
@@ -76,18 +67,6 @@ function CaseStudyImage({ link }: { link: string }) {
       return (
         <StaticImage
           src="../../images/case-studies/spektrum/spektrum_card.jpg"
-          alt=""
-          layout="fullWidth"
-          aspectRatio={16 / 10}
-          loading="lazy"
-          objectFit="cover"
-          className={CARD_IMAGE_CLASS}
-        />
-      );
-    case '/case-studies/sanyam-portfolio':
-      return (
-        <StaticImage
-          src="../../images/case-studies/sanyam-portfolio/sanyam_overview.jpg"
           alt=""
           layout="fullWidth"
           aspectRatio={16 / 10}
@@ -163,22 +142,23 @@ export default function ProjectsSection() {
             </Link>
           </Reveal>
         ))}
-
-        <Reveal delay={0.1}>
-          <div className="flex h-full min-h-[320px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-border p-10 text-center">
-            <span
-              aria-hidden="true"
-              className="relative mb-6 flex size-16 items-center justify-center">
-              <span className="absolute inset-0 rounded-full border-4 border-border" />
-              <span className="absolute inset-0 animate-spin rounded-full border-4 border-primary border-t-transparent motion-reduce:animate-none" />
-              <span className="text-xl">☕</span>
-            </span>
-            <h3 className="mb-2 font-serif text-2xl font-medium">Still roasting…</h3>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              Another case study is brewing behind the scenes — a complex workflow, taken apart and put back together. Check back soon for the perfect pour.
-            </p>
-          </div>
-        </Reveal>
+        {isOddNumberOfCaseStudies && (
+          <Reveal delay={0.1}>
+            <div className="flex h-full min-h-[320px] flex-col items-center justify-center rounded-3xl border-2 border-dashed border-border p-10 text-center">
+              <span
+                aria-hidden="true"
+                className="relative mb-6 flex size-16 items-center justify-center">
+                <span className="absolute inset-0 rounded-full border-4 border-border" />
+                <span className="absolute inset-0 animate-spin rounded-full border-4 border-primary border-t-transparent motion-reduce:animate-none" />
+                <span className="text-xl">☕</span>
+              </span>
+              <h3 className="mb-2 font-serif text-2xl font-medium">Still roasting…</h3>
+              <p className="max-w-sm text-sm text-muted-foreground">
+                Another case study is brewing behind the scenes — a complex workflow, taken apart and put back together. Check back soon for the perfect pour.
+              </p>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

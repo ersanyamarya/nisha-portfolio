@@ -299,8 +299,8 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
       </section>
 
       <FooterNav
-        nextLabel="Sanyam Arya portfolio redesign"
-        nextTo="/case-studies/sanyam-portfolio"
+        nextLabel="Flexera cloud cost anomaly detection"
+        nextTo="/case-studies/flexera"
       />
     </CaseStudyShell>
   );
