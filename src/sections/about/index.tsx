@@ -78,7 +78,7 @@ export default function AboutSection() {
               Painting taught me composition, and that colour is a decision rather than a preference. Coffee taught me patience, and that the variable you
               didn't measure is the one that ruined the shot.
             </p>
-            <p>So I weigh the inputs, taste as I go, and don't ship anything I wouldn't stand behind.</p>
+            <p>So I measure the inputs and taste as I go. Nothing ships that I wouldn&rsquo;t put my name on.</p>
           </div>
         </Reveal>
 

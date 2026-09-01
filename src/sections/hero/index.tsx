@@ -9,7 +9,7 @@ const SNIPPETS = [
   {
     icon: PieChartIcon,
     label: 'Research-led',
-    value: 'UX strategy',
+    value: 'Evidence first.',
     accent: 'bg-success/15 text-success-700 dark:text-success-300',
     position: 'top-8 -left-2 md:-left-8',
     animation: 'float 6s ease-in-out infinite',
@@ -17,7 +17,7 @@ const SNIPPETS = [
   {
     icon: PenToolIcon,
     label: 'UI craft',
-    value: 'Pixel perfect.',
+    value: 'Specced, not guessed.',
     accent: 'bg-primary/15 text-accent-foreground',
     position: 'bottom-8 -right-2 md:-right-6',
     animation: 'float 7s ease-in-out infinite 2s',
@@ -49,9 +49,8 @@ export default function HeroSection() {
           </h1>
 
           <p className="mb-10 max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">
-            I&rsquo;ve worked across startups, corporations, consultancies, and freelance projects, adapting to different products, domains, and ways of
-            working. I bring 9-bar precision to that variety: enough precision to get the details right, enough adaptability to work through whatever comes my
-            way.
+            I design research-led product UX. Startups, corporates, consultancies, freelance. Cloud cost tooling one year, course scheduling the next. The
+            domain keeps changing and the habit doesn&rsquo;t. Weigh every input, pull it at nine bars, pour out the shot that tastes wrong.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">

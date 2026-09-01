@@ -8,31 +8,31 @@ const STEPS = [
     step: '01',
     brewTerm: 'GRIND',
     title: 'Research',
-    caption: 'Understand the users, their context, and the constraints before jumping to a solution.',
+    caption: 'Talk to the people who use it, and to the ones who have to build it. The constraints show up in that second conversation.',
   },
   {
     step: '02',
     brewTerm: 'FILTER',
     title: 'Define',
-    caption: 'Turn messy findings into clear problems, user journeys, and priorities to tackle.',
+    caption: 'Sort the findings into problems worth solving and problems worth ignoring. The second list is usually longer.',
   },
   {
     step: '03',
     brewTerm: 'BLEND',
     title: 'Explore',
-    caption: 'Pair AI with rapid prototyping to test ideas and find stronger solutions, fast.',
+    caption: 'Prototype with AI in the loop, so a bad idea costs an afternoon instead of a sprint.',
   },
   {
     step: '04',
     brewTerm: 'BREW',
     title: 'Design',
-    caption: 'Bring the experience to life with design tokens, thoughtful interactions, and clean handoff.',
+    caption: 'Design against tokens, and spec the states engineers ask about anyway. Empty, loading, error, name-too-long.',
   },
   {
     step: '05',
     brewTerm: 'TASTE',
     title: 'Validate',
-    caption: 'Test, measure, and learn from real user behaviour to sharpen the experience.',
+    caption: 'Put it in front of real users and watch what they actually do. Then fix the part I got wrong.',
   },
 ];
 
@@ -158,9 +158,7 @@ export default function ProcessSection() {
       <Reveal className="mx-auto max-w-2xl text-center">
         <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">The roasting process</div>
         <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">How I work.</h2>
-        <p className="text-muted-foreground">
-          Good design, like a good brew, rewards patience — the right steps, in the right order, given time to come together.
-        </p>
+        <p className="text-muted-foreground">Same five steps, same order, every time. Skipping one is how you end up redesigning the same screen twice.</p>
       </Reveal>
 
       <Reveal>

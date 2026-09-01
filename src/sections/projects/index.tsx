@@ -88,7 +88,7 @@ export default function ProjectsSection() {
       <Reveal>
         <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">Selective brews</div>
         <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">Case studies.</h2>
-        <p className="text-muted-foreground">A few case studies, brewed with patience over time.</p>
+        <p className="text-muted-foreground">Not everything I&rsquo;ve shipped. Just the ones with a problem worth explaining.</p>
       </Reveal>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
@@ -154,7 +154,7 @@ export default function ProjectsSection() {
               </span>
               <h3 className="mb-2 font-serif text-2xl font-medium">Still roasting…</h3>
               <p className="max-w-sm text-sm text-muted-foreground">
-                Another case study is brewing behind the scenes — a complex workflow, taken apart and put back together. Check back soon for the perfect pour.
+                One more is being written up. A messy workflow, taken apart and put back together. It lands here once it&rsquo;s honest about what went wrong.
               </p>
             </div>
           </Reveal>

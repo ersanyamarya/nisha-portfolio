@@ -295,7 +295,7 @@ export default function TestimonialSection() {
         <div className="max-w-xl">
           <div className="mb-4 text-xs font-medium tracking-widest text-accent-foreground uppercase">Kind words</div>
           <h2 className="mb-4 font-serif text-4xl font-medium tracking-[-0.01em] md:text-5xl">What it's like to work with me.</h2>
-          <p className="text-muted-foreground">Managers, founders and engineers I've built things with. Turn a card over to read what they wrote.</p>
+          <p className="text-muted-foreground">Managers, founders and engineers I've shipped with. Turn a card over to read what they wrote.</p>
         </div>
 
         <div className="flex gap-2">
