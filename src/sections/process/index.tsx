@@ -161,9 +161,54 @@ export default function ProcessSection() {
         <p className="text-muted-foreground">Same five steps, same order, every time. Skipping one is how you end up redesigning the same screen twice.</p>
       </Reveal>
 
-      <Reveal>
-        <div className="grid grid-cols-1 overflow-hidden rounded-3xl glass-panel md:h-[620px] md:grid-cols-[300px_1fr]">
-          <div className="flex flex-col border-b border-border md:border-r md:border-b-0">
+      {/* Mobile: accordion — each step's image sits directly under its own caption instead of scrolling past the whole list. */}
+      <Reveal className="md:hidden">
+        <div className="overflow-hidden rounded-3xl glass-panel">
+          {STEPS.map((s, i) => {
+            const isActive = i === active;
+            return (
+              <div
+                key={s.step}
+                className="border-b border-border last:border-none">
+                <button
+                  onClick={() => selectStep(i)}
+                  aria-expanded={isActive}
+                  className={`block w-full cursor-pointer px-7 py-6 text-left transition-colors ${isActive ? '' : 'hover:bg-muted/40'}`}>
+                  <div className={`mb-1.5 text-xs font-semibold tracking-widest ${isActive ? 'text-accent-foreground' : 'text-muted-foreground'}`}>
+                    {s.step} · {s.brewTerm}
+                  </div>
+                  <div className={`text-lg font-medium ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>{s.title}</div>
+                  {isActive && (
+                    <div className="mt-3 h-0.5 w-10 overflow-hidden rounded-full bg-primary/20">
+                      <div
+                        key={cycle}
+                        className="h-full w-full origin-left rounded-full bg-primary motion-safe:animate-[story-fill_var(--dwell)_linear_forwards] motion-reduce:hidden"
+                        style={{ '--dwell': `${STEP_DWELL}ms` } as React.CSSProperties}
+                      />
+                    </div>
+                  )}
+                </button>
+                {/* Grid-rows 0fr/1fr trick: animates from/to the panel's natural height without a hardcoded value. */}
+                <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isActive ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                  <div
+                    aria-hidden={!isActive}
+                    className="overflow-hidden">
+                    <p className="px-7 pb-4 text-xs leading-relaxed text-muted-foreground">{s.caption}</p>
+                    <div className="h-64 overflow-hidden sm:h-80">
+                      {i === 0 ? <GrindImage /> : i === 1 ? <FilterImage /> : i === 2 ? <BlendImage /> : i === 3 ? <BrewImage /> : <TasteImage />}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Reveal>
+
+      {/* Desktop/tablet: side-by-side tabs with a shared featured-image panel. */}
+      <Reveal className="hidden md:block">
+        <div className="grid overflow-hidden rounded-3xl glass-panel md:h-[620px] md:grid-cols-[300px_1fr]">
+          <div className="flex flex-col border-r border-border">
             <div>
               {STEPS.map((s, i) => {
                 const isActive = i === active;
@@ -204,7 +249,7 @@ export default function ProcessSection() {
           </div>
 
           {/* Right panel: single large featured image, no padding on the wrapper so it fills edge-to-edge at a fixed height across steps. */}
-          <div className="h-80 overflow-hidden sm:h-96 md:h-full">
+          <div className="h-full overflow-hidden">
             <div
               key={active}
               className="h-full w-full motion-safe:animate-in motion-safe:duration-700 motion-safe:fade-in">
