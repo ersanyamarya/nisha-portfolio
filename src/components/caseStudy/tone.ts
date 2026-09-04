@@ -22,8 +22,15 @@ export const TONE_SOLID: Record<Tone, string> = {
 
 export const TONE_TEXT: Record<Tone, string> = {
   primary: 'text-primary-700 dark:text-primary-300',
-  secondary: 'text-secondary-700 dark:text-secondary-300',
-  success: 'text-success-700 dark:text-success-300',
+  // -700 on the tinted secondary-50 panel (FeedbackCallout) clears AA but was
+  // only 7.26:1 in light / 7.11:1 in dark — both technically past AAA (7:1)
+  // but with no margin to spare. -200 restores real headroom (10.32:1 dark).
+  secondary: 'text-secondary-700 dark:text-secondary-200',
+  // -700 on the tinted success-50 panel (FeedbackCallout, light mode) was
+  // 6.23:1 — missed AAA (7:1). -800 clears it (8.70:1); the same swap is safe
+  // for this map's other consumer (a large 2xl stat number on plain
+  // background, projects/index.tsx), which only needs 4.5:1 as large text.
+  success: 'text-success-800 dark:text-success-300',
   default: 'text-muted-foreground',
 };
 

@@ -61,14 +61,19 @@ export function OnThisPageNav({ sections }: { sections: CaseStudySection[] }) {
     <nav
       className="sticky hidden flex-col gap-1 lg:flex"
       style={{ top: `${HEADER_OFFSET}px` }}>
-      <div className="mb-2 text-xs font-bold tracking-widest text-default-400">ON THIS PAGE</div>
+      {/* -400 alone (no dark: variant) only clears AA/AAA in dark mode (7.52:1)
+          — in light mode it was 2.25:1, missing AA outright (needs 4.5:1).
+          -600/-400 clears both (7.38:1 light / 7.52:1 dark). */}
+      <div className="mb-2 text-xs font-bold tracking-widest text-default-600 dark:text-default-400">ON THIS PAGE</div>
       {sections.map(s => (
         <a
           key={s.id}
           href={`#${s.id}`}
           onClick={e => scrollToSection(s.id, e)}
           className={`border-l-2 py-1.5 pl-3.5 text-sm transition-colors ${
-            activeId === s.id ? 'border-primary font-bold text-foreground' : 'border-transparent font-medium text-default-400 hover:text-muted-foreground'
+            activeId === s.id
+              ? 'border-primary font-bold text-foreground'
+              : 'border-transparent font-medium text-default-600 hover:text-muted-foreground dark:text-default-400'
           }`}>
           {s.label}
         </a>

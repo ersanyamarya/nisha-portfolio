@@ -119,7 +119,7 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
             stroke="currentColor"
             strokeWidth="1.5"
             strokeLinecap="round"
-            className="text-primary-700 dark:text-primary-300"
+            className="text-primary-800 dark:text-primary-300"
           />
           <circle
             cx="8"
@@ -127,10 +127,12 @@ export function InsightCallout({ children }: { children: React.ReactNode }) {
             r="3"
             stroke="currentColor"
             strokeWidth="1.5"
-            className="text-primary-700 dark:text-primary-300"
+            className="text-primary-800 dark:text-primary-300"
           />
         </svg>
-        <span className="text-[11px] font-extrabold tracking-widest text-primary-700 dark:text-primary-300">INSIGHT</span>
+        {/* -700 on this panel's bg-primary-50 cleared AA but missed AAA (5.70:1,
+            needs 7:1); -800 clears it (8.13:1). Dark already clears AAA (7.88:1). */}
+        <span className="text-[11px] font-extrabold tracking-widest text-primary-800 dark:text-primary-300">INSIGHT</span>
       </div>
       <p className="text-base leading-relaxed text-muted-foreground">{children}</p>
     </div>
@@ -164,7 +166,8 @@ export function FunnelBreakdown({
           <div className="text-sm text-muted-foreground">{from.sub}</div>
         </div>
         <div className="flex flex-1 flex-col items-center gap-1.5 px-4">
-          <span className="text-sm font-bold text-secondary-600 dark:text-secondary-400">{dropLabel}</span>
+          {/* -600/-400 cleared AA but missed AAA (7:1); -700/-200 clear it (7.97:1 / 10.13:1). */}
+          <span className="text-sm font-bold text-secondary-700 dark:text-secondary-200">{dropLabel}</span>
           <svg
             width="100%"
             height="12"

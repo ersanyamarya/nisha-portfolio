@@ -135,7 +135,12 @@ export default function ProjectsSection() {
                   <div className="mb-2 text-xs font-medium tracking-widest text-muted-foreground">
                     {project.domain} · {project.platformType} · {project.caseStudyType}
                   </div>
-                  <h3 className="mb-4 font-serif text-2xl leading-snug font-medium transition-colors group-hover:text-primary">{project.description}</h3>
+                  {/* -700/-300, not bare `text-primary` (see logo.tsx/hero for why):
+                      this is hover-state foreground text, and the bare token alone
+                      fails AA on the light page background (2.12:1, needs 3:1). */}
+                  <h3 className="mb-4 font-serif text-2xl leading-snug font-medium transition-colors group-hover:text-primary-700 dark:group-hover:text-primary-300">
+                    {project.description}
+                  </h3>
 
                   <div className="mb-6 flex flex-wrap gap-2">
                     {project.tags.map(tag => (

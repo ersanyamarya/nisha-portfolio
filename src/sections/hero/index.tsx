@@ -45,7 +45,11 @@ export default function HeroSection() {
           <h1 className="mb-6 font-serif text-[2.75rem] leading-[1.06] font-medium tracking-[-0.015em] text-balance sm:text-5xl xl:text-[3.75rem]">
             Precision in the process.
             <br />
-            <span className="text-primary italic">Delight</span> in the details.
+            {/* -700/-300, not bare `text-primary`: this is foreground text, and the
+                global `--color-primary` recolor (see layout.css) is tuned for text
+                sitting ON a solid primary fill, not primary text on the page bg —
+                the bare token alone fails AA here (2.12:1, needs 3:1 at this size). */}
+            <span className="text-primary-700 italic dark:text-primary-300">Delight</span> in the details.
           </h1>
 
           <p className="mb-10 max-w-md text-lg leading-relaxed text-muted-foreground md:text-xl">

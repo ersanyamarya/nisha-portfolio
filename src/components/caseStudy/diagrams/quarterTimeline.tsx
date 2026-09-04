@@ -24,7 +24,9 @@ const PHASES: Phase[] = [
     title: 'Design & prototyping',
     description: "Data model definition, user journey mapping, wireframing, iteration with algorithm and engineering teams on what's feasible for MVP.",
     barClass: 'bg-success-400 dark:bg-success-600',
-    labelClass: 'text-success-700 dark:text-success-400',
+    // -700/-400 cleared AA but missed AAA (7:1) against the page background;
+    // -800/-300 clear it (9.33:1 / 8.46:1).
+    labelClass: 'text-success-800 dark:text-success-300',
   },
   {
     weeks: 4,
@@ -33,7 +35,8 @@ const PHASES: Phase[] = [
     description:
       'Shipped system-generated anomalies experience: navigation destination, filterable/groupable table, detail slide-out with root cause analysis concept.',
     barClass: 'bg-primary-500',
-    labelClass: 'text-primary-700 dark:text-primary-400',
+    // -700/-400 cleared AA but missed AAA (7:1); -800/-300 clear it (8.74:1 / 8.00:1).
+    labelClass: 'text-primary-800 dark:text-primary-300',
   },
 ];
 

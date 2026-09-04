@@ -26,7 +26,15 @@
   --color-primary-800: #6e3b2b;
   --color-primary-900: #4e2a1e;
   --color-primary-950: #2e1811;
-  --color-primary: #c2785b;
+  /* -600 (the swatch above) is what "Terracotta / Warm Roast" means in
+     docs/Brand.md, but --primary-foreground (dark espresso, --color-
+     default-950) only clears 5.11:1 against it — AAA (1.4.6) needs 7:1, and
+     no text colour gets there against -600 (even pure black caps at 6.13:1).
+     -300 is the first step up the ramp that clears it (8.00:1), so the bare
+     `bg-primary`/`text-primary`/`border-primary` utilities point here now.
+     The deeper -600 stays reachable as `bg-primary-600` etc. for anyone who
+     wants the original depth. */
+  --color-primary: #daa480;
 
   /* Error / negative signal — Crimson (#B91C1C), from docs/Brand.md.
      Also carries every former "secondary" usage across the case-study tone
@@ -169,10 +177,16 @@
      text selection), which fails 4.5:1 body-text contrast. */
   --primary-foreground: var(--color-default-950);
   --muted: var(--color-default-100);
-  --muted-foreground: var(--color-default-600);
+  /* -600 cleared AA (6.7-7.5:1) but missed AAA (7:1) on --muted/--accent by a
+     hair. -700 clears AAA on every surface with margin. */
+  --muted-foreground: var(--color-default-700);
   --accent: var(--color-primary-50);
-  --accent-foreground: var(--color-primary-700);
-  --destructive: var(--color-secondary-600);
+  /* -700 cleared AA (5.7:1) but missed AAA (7:1). -800 clears it (8.13:1). */
+  --accent-foreground: var(--color-primary-800);
+  /* -600 cleared AA everywhere (5.66-6.47:1) but missed AAA (7:1) on every
+     surface it sits on, including as the destructive-button fill. -700 clears
+     AAA on every surface (7.21-8.11:1) and pushes white-on-fill to 8.24:1. */
+  --destructive: var(--color-secondary-700);
   --destructive-foreground: #ffffff;
   --border: var(--color-default-200);
   /* -400 (2.1-2.3:1) reads as decorative and is fine for card outlines, but this
@@ -196,14 +210,16 @@
   --muted: var(--color-default-800);
   --muted-foreground: var(--color-default-300);
   --accent: var(--color-default-800);
-  --accent-foreground: var(--color-primary-300);
+  /* -300 cleared AA (6.59:1) but missed AAA (7:1). -200 clears it (8.89:1). */
+  --accent-foreground: var(--color-primary-200);
   --border: var(--color-default-700);
   --input: var(--color-default-500);
   --ring: var(--color-primary-400);
-  /* The light-mode crimson (-600) drops to ~2.2-2.7:1 on dark surfaces — inherited
-     silently since this theme never redeclared it. -300 restores 5.7-7:1 for error
-     text, and its foreground flips dark so the destructive button still reads. */
-  --destructive: var(--color-secondary-300);
+  /* The light-mode crimson (-700, see above) drops well below both AA and AAA on
+     dark surfaces — inherited silently since this theme never redeclared it.
+     -200 restores 8.35-10.13:1 for error text (AAA needs 7:1), and its
+     foreground flips dark so the destructive button still reads at 10.13:1. */
+  --destructive: var(--color-secondary-200);
   --destructive-foreground: var(--color-default-950);
 }
 
