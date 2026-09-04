@@ -90,7 +90,10 @@ export function buildPalettes(themes) {
 
 // ------------------------------------------------------------- pair inference
 
-const TEXT = 4.5, UI = 3;
+// AA is the legally-normative floor (1.4.3 / 1.4.11). AAA (1.4.6) only raises
+// the *text* thresholds — 1.4.11 non-text contrast has no AAA tier, so UI
+// pairs (boundaries, graphics) are scored against AA only, always.
+const TEXT_AA = 4.5, TEXT_AAA = 7, UI = 3;
 
 /**
  * Derive the pairs worth testing from naming convention.
@@ -125,26 +128,29 @@ export function inferPairs(names, config) {
   const surfaces = SURFACE_ROOTS.filter(has);
   const pairs = [];
   const seen = new Set();
-  const add = (fg, bg, need, note, advisory = false) => {
+  // `kind: 'text'` pairs get scored against both AA (4.5) and AAA (7); `kind:
+  // 'ui'` pairs (boundaries, graphics) only ever have an AA threshold (3) —
+  // 1.4.11 Non-text Contrast has no AAA tier, so there is nothing to raise.
+  const add = (fg, bg, kind, note, advisory = false) => {
     const k = `${fg}|${bg}`;
     if (fg === bg || seen.has(k) || !has(fg) || !has(bg)) return;
     seen.add(k);
-    pairs.push({ fg, bg, need, note, advisory });
+    pairs.push({ fg, bg, kind, note, advisory });
   };
 
   // 1. every fill and the text that sits on it
   for (const n of names) {
-    if (n.endsWith('-foreground')) add(n, n.replace(/-foreground$/, ''), TEXT, 'text on its own fill');
+    if (n.endsWith('-foreground')) add(n, n.replace(/-foreground$/, ''), 'text', 'text on its own fill');
   }
 
   // 2. body text that travels across surfaces
   const bodyText = ['--foreground', '--muted-foreground', '--sidebar-foreground'].filter(has);
-  for (const fg of bodyText) for (const bg of surfaces) add(fg, bg, TEXT, 'body text on surface');
+  for (const fg of bodyText) for (const bg of surfaces) add(fg, bg, 'text', 'body text on surface');
 
   // 3. semantic colours that get used as text as well as fill
   const semantic = names.filter(n =>
     /^--(primary|destructive|success|warning|info|error|danger|link)$/.test(n));
-  for (const fg of semantic) for (const bg of surfaces) add(fg, bg, TEXT, 'semantic text on surface');
+  for (const fg of semantic) for (const bg of surfaces) add(fg, bg, 'text', 'semantic text on surface');
 
   // 4. boundaries — only against surfaces a control is actually drawn on.
   //    `--input`/`--ring`/`--outline` identify a control or its focus state, so
@@ -154,8 +160,8 @@ export function inferPairs(names, config) {
   const outlined = ['--background', '--card', '--popover', '--accent'].filter(has);
   const required = names.filter(n => /^--(input|ring|outline)$/.test(n));
   const advisory = names.filter(n => /^--(border|divider|separator|rule)$/.test(n));
-  for (const fg of required) for (const bg of outlined) add(fg, bg, UI, 'control boundary');
-  for (const fg of advisory) for (const bg of outlined) add(fg, bg, UI, 'decorative boundary', true);
+  for (const fg of required) for (const bg of outlined) add(fg, bg, 'ui', 'control boundary');
+  for (const fg of advisory) for (const bg of outlined) add(fg, bg, 'ui', 'decorative boundary', true);
 
   // 5. graphical objects against the page they sit on. `-background` and
   //    `-foreground` suffixes mark surfaces and their text, not graphics —
@@ -163,7 +169,7 @@ export function inferPairs(names, config) {
   const graphics = names.filter(n =>
     /^--(chart|timer|timeline|status|sparkline|series|badge|swatch)-/.test(n) &&
     !/-(foreground|background|surface|bg|text)$/.test(n));
-  for (const fg of graphics) add(fg, '--background', UI, 'graphical object');
+  for (const fg of graphics) add(fg, '--background', 'ui', 'graphical object');
 
   return pairs;
 }
@@ -175,26 +181,39 @@ export function score(palettes, config) {
   for (const [theme, scope] of palettes) {
     const names = [...scope.keys()];
     const bgBase = resolve('--background', scope) ?? [0, 0, 0, 1];
-    for (const { fg, bg, need, note, advisory } of inferPairs(names, config)) {
+    for (const pairDef of inferPairs(names, config)) {
+      // Legacy config files may still supply a numeric `need` instead of
+      // `kind` — treat that as an AA-only, no-AAA-tier pair (old behaviour).
+      const { fg, bg, note, advisory } = pairDef;
+      const kind = pairDef.kind ?? (pairDef.need != null ? 'legacy' : 'text');
+      const need = pairDef.need ?? (kind === 'ui' ? UI : TEXT_AA);
+      const needAAA = kind === 'text' ? TEXT_AAA : null;
+
       const fgc = resolve(fg, scope), bgRaw = resolve(bg, scope);
       if (!fgc || !bgRaw) continue;
       const bgc = bgRaw[3] < 1 ? over(bgRaw, bgBase) : bgRaw;
       const composited = over(fgc, bgc);
       const r = contrast(composited, bgc);
+      const passAA = r >= need;
+      const passAAA = needAAA == null ? null : r >= needAAA;
       const rec = {
-        theme, fg, bg, note, need, advisory: !!advisory,
+        theme, fg, bg, note, kind, advisory: !!advisory,
         ratio: +r.toFixed(2),
-        pass: r >= need,
+        need, needAAA,
+        pass: passAA, passAA, passAAA,
         fgHex: hex(composited), bgHex: hex(bgc),
         fgRaw: scope.get(fg), bgRaw: scope.get(bg),
       };
-      if (!rec.pass) {
+      // Suggest a fix for whichever threshold is currently unmet — AAA if the
+      // pair already clears AA, otherwise AA (the normative floor).
+      const target = !passAA ? need : (passAAA === false ? needAAA : null);
+      if (target != null) {
         const raw = String(scope.get(fg) ?? '');
         if (/\/\s*[\d.]+\s*\)$/.test(raw)) {
-          const a = solveAlpha(fgc, bgc, need);
-          if (a) rec.suggestion = `raise alpha to ~${a} (currently ${(fgc[3]).toFixed(2)})`;
+          const a = solveAlpha(fgc, bgc, target);
+          if (a) rec.suggestion = `raise alpha to ~${a} (currently ${(fgc[3]).toFixed(2)}) → ${target}:1`;
         } else if (/^oklch\(/i.test(raw)) {
-          const s = solveLightness(raw, bgc, need);
+          const s = solveLightness(raw, bgc, target);
           if (s) rec.suggestion = `${s.css} → ${s.ratio}:1`;
         }
       }
@@ -215,17 +234,22 @@ if (isMain) {
   const config = args.includes('--config') && fs.existsSync(cfgPath) ? JSON.parse(fs.readFileSync(cfgPath, 'utf8')) : null;
 
   if (!files.length) {
-    console.error('usage: node token_matrix.mjs <css-file...> [--json] [--fail-only] [--config pairs.json]');
+    console.error('usage: node token_matrix.mjs <css-file...> [--json] [--fail-only] [--fail-on-aaa] [--config pairs.json]');
     process.exit(2);
   }
 
   const rows = score(buildPalettes(extractThemes(files)), config);
+  // AA is the normative floor (1.4.3 / 1.4.11) — these are real WCAG violations.
   const fails = rows.filter(r => !r.pass && !r.advisory);
   const notes = rows.filter(r => !r.pass && r.advisory);
+  // AAA (1.4.6) only exists for text pairs, and only among rows that already
+  // clear AA — a row failing AA is reported there, never double-counted here.
+  const aaaMisses = rows.filter(r => r.pass && r.kind === 'text' && r.passAAA === false);
+  const interesting = r => !r.pass || (r.kind === 'text' && r.passAAA === false);
 
   if (flag('--json')) {
     console.log(JSON.stringify(
-      { total: rows.length, failures: fails.length, advisories: notes.length, rows }, null, 2));
+      { total: rows.length, failures: fails.length, advisories: notes.length, aaaMisses: aaaMisses.length, rows }, null, 2));
   } else {
     for (const theme of new Set(rows.map(r => r.theme))) {
       // Rank by how far short of its own threshold each pair falls, so a 2.4:1
@@ -233,21 +257,29 @@ if (isMain) {
       const set = rows.filter(r => r.theme === theme).sort((a, b) => a.ratio / a.need - b.ratio / b.need);
       console.log(`\n===== theme: ${theme} =====`);
       for (const r of set) {
-        if (flag('--fail-only') && r.pass) continue;
-        const tag = r.pass ? '  ' : r.advisory ? '~~' : 'XX';
+        if (flag('--fail-only') && !interesting(r)) continue;
+        const tag = !r.pass ? (r.advisory ? '~~' : 'XX') : (r.kind === 'text' && r.passAAA === false ? 'A-' : '  ');
+        const needStr = r.needAAA != null ? `need ${r.need}, AAA ${r.needAAA}` : `need ${r.need}`;
         console.log(
-          `${tag} ${String(r.ratio).padStart(6)} (need ${r.need})  ${(r.fg + ' on ' + r.bg).padEnd(48)} ${r.fgHex} on ${r.bgHex}` +
+          `${tag} ${String(r.ratio).padStart(6)} (${needStr})  ${(r.fg + ' on ' + r.bg).padEnd(48)} ${r.fgHex} on ${r.bgHex}` +
           (r.suggestion ? `\n         ↳ ${r.suggestion}` : '')
         );
       }
     }
-    console.log(`\n${fails.length} violation(s), ${notes.length} advisory, of ${rows.length} pairs checked.`);
+    console.log(
+      `\n${fails.length} AA violation(s), ${aaaMisses.length} AAA-only miss(es), ${notes.length} advisory, of ${rows.length} pairs checked.`);
     if (notes.length) {
       console.log(
         `~~ = decorative boundary below 3:1. WCAG 1.4.11 exempts borders that don't\n` +
         `   identify a control. Check what actually uses the token before "fixing" it —\n` +
         `   if it only draws card outlines and separators, leaving it is the right call.`);
     }
+    if (aaaMisses.length) {
+      console.log(
+        `A- = clears AA (1.4.3, the legal floor) but falls short of AAA (1.4.6, 7:1 /\n` +
+        `   4.5:1 for large text). Not a violation unless the project targets AAA —\n` +
+        `   report it as an opportunity, not alongside real failures.`);
+    }
   }
-  process.exit(fails.length ? 1 : 0);
+  process.exit((fails.length || (flag('--fail-on-aaa') && aaaMisses.length)) ? 1 : 0);
 }

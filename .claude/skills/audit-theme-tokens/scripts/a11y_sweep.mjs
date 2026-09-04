@@ -11,10 +11,16 @@
  *   node a11y_sweep.mjs --base http://localhost:8080 \
  *        --paths / /blog/ /tools/ \
  *        --themes default:'' developer:'data-theme=developer' \
- *        [--viewport 1440x1000] [--json out.json] [--include-passing]
+ *        [--viewport 1440x1000] [--json out.json] [--include-passing] [--fail-on-aaa]
  *
  * Themes are given as `label:spec`, where spec is empty for the default, or
  * `attr=value` / `.class` to apply to <html>.
+ *
+ * Reports two independent counts: AA violations (1.4.3, the legally-normative
+ * floor — a nonzero count here is a real failure) and AAA-only misses (1.4.6,
+ * a node that already clears AA but falls short of 7:1 / 4.5:1 for large
+ * text). AAA misses never overlap AA failures. The exit code is nonzero on AA
+ * failures only, unless `--fail-on-aaa` is passed.
  */
 
 import fs from 'node:fs';
@@ -83,14 +89,14 @@ const main = async () => {
   const page = await ctx.newPage();
 
   const report = { base: args.base, viewport: args.viewport, pages: [] };
-  let totalFail = 0, totalChecked = 0;
+  let totalFailAA = 0, totalFailAAA = 0, totalChecked = 0;
 
   for (const spec of args.themes) {
     const [label, ...rest] = spec.split(':');
     const themeSpec = rest.join(':');
     for (const p of args.paths) {
       const url = args.base.replace(/\/$/, '') + p;
-      const entry = { theme: label, path: p, failures: [], checked: 0 };
+      const entry = { theme: label, path: p, failuresAA: [], failuresAAA: [], checked: 0 };
       try {
         await page.goto(url, { waitUntil: 'networkidle', timeout: 45000 });
         await page.evaluate(themeApplier(), themeSpec);
@@ -103,46 +109,66 @@ const main = async () => {
           { includePassing: !!args['include-passing'] }
         );
         entry.checked = res.checked;
-        entry.failures = res.failures;
+        entry.failuresAA = res.failuresAA;
+        entry.failuresAAA = res.failuresAAA;
         totalChecked += res.checked;
-        totalFail += res.failures.length;
+        totalFailAA += res.failuresAA.length;
+        totalFailAAA += res.failuresAAA.length;
       } catch (e) {
         entry.error = String(e.message || e).slice(0, 160);
       }
       report.pages.push(entry);
 
-      const uniq = [...new Map(entry.failures.map(f => [f.color + f.bg + f.size, f])).values()];
-      console.log(`\n[${label}] ${p} — ${entry.checked} text nodes, ${entry.failures.length} failing (${uniq.length} distinct)`);
+      const uniqAA = [...new Map(entry.failuresAA.map(f => [f.color + f.bg + f.size, f])).values()];
+      const uniqAAA = [...new Map(entry.failuresAAA.map(f => [f.color + f.bg + f.size, f])).values()];
+      console.log(
+        `\n[${label}] ${p} — ${entry.checked} text nodes, ${entry.failuresAA.length} AA violation(s) ` +
+        `(${uniqAA.length} distinct), ${entry.failuresAAA.length} AAA-only miss(es) (${uniqAAA.length} distinct)`
+      );
       if (entry.error) console.log(`   ERROR ${entry.error}`);
-      for (const f of uniq.slice(0, 12)) {
+      for (const f of uniqAA.slice(0, 12)) {
         console.log(
-          `   ${String(f.ratio).padStart(5)} < ${f.need}  ${f.size}px/${f.weight}  "${f.text.slice(0, 40)}"` +
+          `   XX ${String(f.ratio).padStart(5)} < ${f.needAA}  ${f.size}px/${f.weight}  "${f.text.slice(0, 40)}"` +
           (f.backdropUncertain ? '  [backdrop is a gradient/image — ratio varies]' : '') +
           `\n        ${f.color} on ${f.bg}\n        ${f.cls || f.path}`
         );
       }
-      if (uniq.length > 12) console.log(`   … ${uniq.length - 12} more distinct failure(s)`);
+      if (uniqAA.length > 12) console.log(`   … ${uniqAA.length - 12} more distinct AA violation(s)`);
+      for (const f of uniqAAA.slice(0, 12)) {
+        console.log(
+          `   A- ${String(f.ratio).padStart(5)} < ${f.needAAA}  ${f.size}px/${f.weight}  "${f.text.slice(0, 40)}"` +
+          (f.backdropUncertain ? '  [backdrop is a gradient/image — ratio varies]' : '') +
+          `\n        ${f.color} on ${f.bg}\n        ${f.cls || f.path}`
+        );
+      }
+      if (uniqAAA.length > 12) console.log(`   … ${uniqAAA.length - 12} more distinct AAA-only miss(es)`);
     }
   }
 
   await browser.close();
 
-  report.summary = { totalChecked, totalFailures: totalFail };
+  report.summary = { totalChecked, totalFailuresAA: totalFailAA, totalFailuresAAA: totalFailAAA };
   if (args.json) {
     const dest = typeof args.json === 'string' ? args.json : 'contrast-sweep.json';
     fs.writeFileSync(dest, JSON.stringify(report, null, 2));
     console.log(`\nWrote ${dest}`);
   }
-  console.log(`\n${totalFail} failing text node(s) across ${report.pages.length} page/theme combinations (${totalChecked} checked).`);
+  console.log(
+    `\n${totalFailAA} AA violation(s), ${totalFailAAA} AAA-only miss(es) across ` +
+    `${report.pages.length} page/theme combinations (${totalChecked} checked).`
+  );
+  if (totalFailAAA && !totalFailAA) {
+    console.log('AA (the legally-normative floor) is clean; the AAA misses above are an aspirational target, not violations.');
+  }
 
-  if (totalFail === 0) {
+  if (totalFailAA === 0 && totalFailAAA === 0) {
     console.log(
       '\nBefore trusting a clean sweep: confirm the probe can actually fail. Revert\n' +
       'the theme to its pre-fix state (git stash) and re-run — if it still reports\n' +
       'zero, the probe is not reaching your content and the result means nothing.'
     );
   }
-  process.exit(totalFail ? 1 : 0);
+  process.exit((totalFailAA || (args['fail-on-aaa'] && totalFailAAA)) ? 1 : 0);
 };
 
 main();

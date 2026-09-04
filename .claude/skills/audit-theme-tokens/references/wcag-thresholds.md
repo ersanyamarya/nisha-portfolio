@@ -13,13 +13,19 @@ The whole value of an audit is that its findings are _true_. A report that chase
 
 ## The three thresholds
 
-| Ratio     | Applies to                                                                      | Success criterion            |
-| --------- | ------------------------------------------------------------------------------- | ---------------------------- |
-| **4.5:1** | Normal body text and images of text                                             | 1.4.3 Contrast (Minimum), AA |
-| **3:1**   | Large text                                                                      | 1.4.3, AA                    |
-| **3:1**   | UI component boundaries and meaningful graphics, each against _adjacent_ colour | 1.4.11 Non-text Contrast, AA |
+| Ratio       | Applies to                                                                      | Success criterion             |
+| ----------- | -------------------------------------------------------------------------------- | ------------------------------ |
+| **4.5:1**   | Normal body text and images of text                                             | 1.4.3 Contrast (Minimum), AA   |
+| **3:1**     | Large text                                                                      | 1.4.3, AA                      |
+| **3:1**     | UI component boundaries and meaningful graphics, each against _adjacent_ colour | 1.4.11 Non-text Contrast, AA   |
+| **7:1**     | Normal body text and images of text                                             | 1.4.6 Contrast (Enhanced), AAA |
+| **4.5:1**   | Large text                                                                      | 1.4.6, AAA                     |
 
-AAA raises text to 7:1 / 4.5:1. Only audit against AAA if the project has said it targets AAA — reporting AAA misses as failures against an AA target inflates the finding count and buries the real problems.
+There is no AAA tier for 1.4.11 — non-text contrast tops out at 3:1 regardless of the level the project targets, because the spec never raised it.
+
+**Run both levels by default, and report them as two different kinds of finding — never blend them into one count.** AA is the legally-normative floor: a real AA failure is a violation regardless of what the project has said about its ambitions. An AAA miss on a pair that already clears AA is not a violation of anything the project has committed to unless it explicitly targets AAA — it is an opportunity, reported separately, with its own severity. `token_matrix.mjs` and `probe.js`/`a11y_sweep.mjs` both do this: every result carries a `pass`/`passAA` and a `passAAA`, and the two failure sets never overlap (an AA failure is never also listed as an AAA miss — that would double-count the same defect at two severities). The CLI tag is `XX` for an AA violation, `A-` for "clears AA, falls short of AAA", `~~` for exempt decorative boundaries.
+
+When writing up findings, lead with AA violations — they are the real defects. List AAA misses in their own section, and say plainly that they are not violations unless the project has stated an AAA target; inflating the finding count by treating them the same way buries the real problems and teaches the reader to distrust the report.
 
 ## What counts as large text
 

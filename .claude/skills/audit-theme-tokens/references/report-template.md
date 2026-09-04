@@ -12,9 +12,9 @@ Two rules that matter more than the layout:
 ```markdown
 ## Theme audit — <project>
 
-Checked <N> token pairs across <themes> statically, and <M> rendered text nodes across <P> pages × <T> themes. <One sentence: overall state.>
+Checked <N> token pairs across <themes> statically, and <M> rendered text nodes across <P> pages × <T> themes, against both AA and AAA. <One sentence: overall state.>
 
-### Contrast failures
+### AA violations (1.4.3 / 1.4.11 — the normative floor)
 
 | Issue                          | Theme   | Before          | After           | Threshold |
 | ------------------------------ | ------- | --------------- | --------------- | --------- |
@@ -23,6 +23,14 @@ Checked <N> token pairs across <themes> statically, and <M> rendered text nodes 
 | `text-muted-foreground/70`     | default | 3.17:1          | 7.27:1          | 4.5:1     |
 
 <One or two sentences on the most consequential one — what breaks for a user, not just which rule it violates.>
+
+### AAA misses (1.4.6 — aspirational, not violations unless the project targets AAA)
+
+| Issue                          | Theme | Ratio | AAA needs |
+| ------------------------------ | ----- | ----- | --------- |
+| `--muted-foreground` body text | dark  | 6.67:1 | 7:1      |
+
+<Say explicitly that these already clear AA and are listed as opportunities, not defects. Never merge this table with the AA one — they carry different weight.>
 
 ### Focus indicators
 

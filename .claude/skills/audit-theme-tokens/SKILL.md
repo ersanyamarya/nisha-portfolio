@@ -7,7 +7,7 @@ description: Audit a project's theme, design tokens, and colour accessibility �
 
 Two questions, answered with measurements rather than impressions:
 
-1. **Is it legible?** Does every token pair clear its WCAG threshold, in every theme, as actually rendered?
+1. **Is it legible?** Does every token pair clear its WCAG threshold, in every theme, as actually rendered — at both AA (the normative floor) and AAA (the enhanced target)?
 2. **Is the system holding together?** Or are colours hardcoded around the tokens, tokens defined and never used, themes quietly drifted apart?
 
 Both matter, and they fail differently: a palette can be perfectly accessible and structurally rotten, or beautifully organised and unreadable.
@@ -35,9 +35,9 @@ Scores the semantic pairs the naming convention implies, for every theme, from t
 node .claude/skills/audit-theme-tokens/scripts/token_matrix.mjs src/styles/global.css --fail-only
 ```
 
-Catches what a crawl never renders: error text, destructive buttons, empty states, disabled rows. Flags `XX` for violations and `~~` for advisory (decorative boundaries), and suggests a concrete replacement value — a solved alpha for translucent tokens, a lightness-adjusted `oklch()` for solid ones.
+Catches what a crawl never renders: error text, destructive buttons, empty states, disabled rows. Scores every text pair against **both** AA and AAA at once — `XX` for an AA violation (real defect), `A-` for a pair that clears AA but misses AAA (7:1 / 4.5:1 large — an opportunity, not a violation, and never double-counted against the same `XX`), `~~` for advisory (decorative boundaries, which have no AAA tier at all since 1.4.11 never raises). Suggests a concrete replacement value for whichever threshold is unmet — a solved alpha for translucent tokens, a lightness-adjusted `oklch()` for solid ones.
 
-`--json` for machine-readable output; `--config pairs.json` to replace the inference entirely when a project doesn't follow the `-foreground` convention.
+`--fail-only` shows both AA violations and AAA-only misses (tagged separately); `--fail-on-aaa` also makes AAA misses exit non-zero, for a project that has said it targets AAA. `--json` for machine-readable output; `--config pairs.json` to replace the inference entirely when a project doesn't follow the `-foreground` convention.
 
 ### 2. Token hygiene — `scripts/token_audit.py`
 
@@ -63,7 +63,9 @@ node .claude/skills/audit-theme-tokens/scripts/a11y_sweep.mjs \
   --themes "default:" "developer:data-theme=developer"
 ```
 
-Needs a dev server and Playwright. **No Playwright?** Read `probe.js`, pass its body to any browser tool's `evaluate` (Playwright MCP, Chrome DevTools MCP), then call `window.__contrastProbe()`. The probe is deliberately self-contained for exactly this.
+Reports `failuresAA` and `failuresAAA` as two separate, non-overlapping lists (a node failing AA is never also listed as an AAA miss). `--fail-on-aaa` makes the run exit non-zero on AAA misses too, not just AA violations.
+
+Needs a dev server and Playwright. **No Playwright?** Read `probe.js`, pass its body to any browser tool's `evaluate` (Playwright MCP, Chrome DevTools MCP), then call `window.__contrastProbe()`. The probe is deliberately self-contained for exactly this — it returns `{ checked, failuresAA, failuresAAA, failures (alias of failuresAA), all }`.
 
 Pick paths that cover distinct layouts, not distinct content — one blog post, not twelve.
 
@@ -77,9 +79,11 @@ Chasing exempt decoration is not a harmless excess of rigour. Raising a decorati
 
 Also flag, though it isn't contrast: **information carried by colour alone** (1.4.1) — chart series identified only by hue, calendar states only by fill. It surfaces from the same review and nobody else will catch it.
 
+**Keep AA and AAA as two different severities, never one merged list.** An AA failure is a real defect regardless of what the project has said about its ambitions — 1.4.3/1.4.11 are the normative floor. An AAA miss (`A-`) is only ever reported on a pair that already clears AA, and is an opportunity, not a defect, unless the project has explicitly said it targets AAA. Reporting the two with equal weight inflates the finding count and buries the AA violations that actually need fixing first.
+
 ## Then: present before fixing
 
-Give the user the prioritised findings and let them choose. Rank by user impact, not by ratio: unreadable body text and form errors first, then controls with no visible boundary, then focus indicators, then meaningful graphics.
+Give the user the prioritised findings and let them choose. Rank by user impact, not by ratio: unreadable body text and form errors first, then controls with no visible boundary, then focus indicators, then meaningful graphics — and put every AAA-only miss below all of that, in its own section, clearly labeled as aspirational.
 
 Say plainly which findings you consider exempt and why. That list is evidence you knew where the line was.
 

@@ -22,8 +22,12 @@
  *     invents failures on any page with reveal animations, and those settle at
  *     opacity 1 anyway. So ancestor opacity is ignored outright.
  *
- * Returns { checked, failures: [...] }. A failure carries enough context
- * (selector path, class list, both colours) to find it in source.
+ * Returns { checked, failuresAA, failuresAAA, failures (alias of failuresAA),
+ * all }. AA (1.4.3) is the legally-normative floor; AAA (1.4.6) only raises
+ * the *text* thresholds to 7:1 / 4.5:1 for large text, so `failuresAAA` only
+ * ever contains nodes that already clear AA — a node failing AA is never
+ * double-counted there. Each entry carries enough context (selector path,
+ * class list, both colours) to find it in source.
  */
 window.__contrastProbe = function contrastProbe(options) {
   const opts = Object.assign({ minArea: 4, includePassing: false }, options || {});
@@ -152,15 +156,20 @@ window.__contrastProbe = function contrastProbe(options) {
     const weight = parseInt(cs.fontWeight) || 400;
     // WCAG "large text": >=24px, or >=18.66px when bold.
     const large = size >= 24 || (size >= 18.66 && weight >= 700);
-    const need = large ? 3 : 4.5;
+    // AA (1.4.3): 3:1 large / 4.5:1 normal. AAA (1.4.6): 4.5:1 large / 7:1
+    // normal — text only, there is no AAA tier for non-text contrast.
+    const needAA = large ? 3 : 4.5;
+    const needAAA = large ? 4.5 : 7;
     const ratio = cr(fg, bg);
+    const passAA = ratio >= needAA;
+    const passAAA = ratio >= needAAA;
 
-    if (ratio >= need && !opts.includePassing) continue;
+    if (passAA && passAAA && !opts.includePassing) continue;
     results.push({
       text: text.slice(0, 60),
       ratio: Math.round(ratio * 100) / 100,
-      need,
-      pass: ratio >= need,
+      needAA, needAAA,
+      pass: passAA, passAA, passAAA,
       size: Math.round(size * 10) / 10,
       weight,
       color: cs.color,
@@ -173,5 +182,9 @@ window.__contrastProbe = function contrastProbe(options) {
       path: pathOf(el),
     });
   }
-  return { checked: seen.size, failures: results.filter(r => !r.pass), all: results };
+  const failuresAA = results.filter(r => !r.passAA);
+  // Only ever nodes that already clear AA — an AA failure is never also
+  // listed here, so the two counts can be added without double-counting.
+  const failuresAAA = results.filter(r => r.passAA && !r.passAAA);
+  return { checked: seen.size, failuresAA, failuresAAA, failures: failuresAA, all: results };
 };
