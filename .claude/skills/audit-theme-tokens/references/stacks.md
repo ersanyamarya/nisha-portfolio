@@ -60,6 +60,8 @@ python3 token_audit.py --css src/styles/global.css --src src
 
 Note the naming shift: `@theme` declares `--color-x`, and the utility suffix is `x`. `token_audit.py` maps between the two so `text-primary` counts as usage of `--primary`.
 
+**Watch for a base colour with no bare alias.** Most surfaces get a `:root` indirection (`--color-background: var(--background)`), so both spellings resolve. But it's common for a brand/base colour to be declared *only* in `@theme` — `--color-primary: #c2785b;`, with no `--primary` anywhere in `:root` — while `--primary-foreground` still exists as a real semantic token. `token_matrix.mjs`'s rule 1 (`--x-foreground` on `--x`) falls back to the `--color-x` spelling for exactly this case, so the pair still gets scored — but the printed row will read `--primary-foreground on --color-primary` rather than the tidier `--primary-foreground on --primary`. If a pair you know exists doesn't show up in the matrix at all, check for this asymmetry before assuming the pair is fine.
+
 ## Tailwind v3
 
 Tokens live in `tailwind.config.{js,ts}`, usually referencing CSS variables:

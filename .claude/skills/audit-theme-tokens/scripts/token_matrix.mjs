@@ -74,10 +74,25 @@ function resolve(name, scope, depth = 0) {
  * Merge theme blocks into concrete palettes. Every non-root theme inherits
  * from `:root` and overrides it — which is exactly how the cascade behaves,
  * and is why a token missing from an override silently keeps the base value.
+ *
+ * Tailwind v4 typically declares the numbered palette scale directly in
+ * `@theme` (`--color-primary-600: #c2785b;`), with `:root` holding only the
+ * semantic aliases that reference it (`--background: var(--color-default-50)`).
+ * Both `@theme` (literal colours) and `@theme inline` (pure `var()` wiring)
+ * get merged into the base scope here — without this, `resolve()` dead-ends
+ * on the very first `var(--color-*)` chain and *every* pair using it
+ * disappears silently: not a violation, not an advisory, just an empty
+ * report. `token_audit.py` separately flags `@theme inline` entries that
+ * never made it into `@theme` as "unwired"; this merge is only about making
+ * colour resolution work, not re-litigating that check.
  */
 export function buildPalettes(themes) {
   const rootKey = [...themes.keys()].find(k => k.startsWith(':root') && !k.includes('[')) || ':root';
-  const base = themes.get(rootKey) ?? new Map();
+  let themeColors = new Map();
+  for (const [sel, decls] of themes) {
+    if (/^@theme/.test(sel)) themeColors = new Map([...themeColors, ...decls]);
+  }
+  const base = new Map([...themeColors, ...(themes.get(rootKey) ?? new Map())]);
   const palettes = new Map([['default', new Map(base)]]);
   for (const [sel, decls] of themes) {
     if (sel === rootKey || /^@theme/.test(sel)) continue;
@@ -138,9 +153,24 @@ export function inferPairs(names, config) {
     pairs.push({ fg, bg, kind, note, advisory });
   };
 
-  // 1. every fill and the text that sits on it
+  // 1. every fill and the text that sits on it. The fill is usually a bare
+  //    name (`--primary`) aliased from `--color-primary` in :root — but a
+  //    Tailwind v4 project sometimes declares a base/brand colour directly in
+  //    `@theme` with no bare alias at all (`--color-primary: #c2785b;`, no
+  //    `--primary` anywhere). Falling back to the `--color-` spelling here
+  //    (rule 1 only, not the surface/semantic lists below) catches that case
+  //    without inventing a bare `--secondary`/`--success` that would otherwise
+  //    make rules 2-4 treat a scale anchor as if it were a live surface —
+  //    exactly the "two fills that never touch" false positive this function
+  //    exists to avoid.
   for (const n of names) {
-    if (n.endsWith('-foreground')) add(n, n.replace(/-foreground$/, ''), 'text', 'text on its own fill');
+    // Skip the `--color-x-foreground` spelling: it's `@theme inline`'s pure
+    // `var()` mirror of the semantic `--x-foreground`, so scoring both would
+    // print the identical pairing twice under two names for the same value.
+    if (!n.endsWith('-foreground') || n.startsWith('--color-')) continue;
+    const base = n.replace(/-foreground$/, '');
+    const bg = has(base) ? base : (has(`--color-${base.slice(2)}`) ? `--color-${base.slice(2)}` : null);
+    if (bg) add(n, bg, 'text', 'text on its own fill');
   }
 
   // 2. body text that travels across surfaces
