@@ -41,6 +41,18 @@ const caseStudies: {
     statLabel: 'less manual tracking',
     tone: 'success',
   },
+  {
+    name: 'Visionar.ai',
+    link: '/case-studies/visionarai',
+    domain: 'AI consultancy',
+    platformType: 'Brand & web UI',
+    caseStudyType: 'Brand & Design System',
+    description: 'Designing the UI system behind an AI strategy consultancy',
+    tags: ['Brand identity', 'Design systems', 'Web UI design', 'Motion design', 'AI-assisted iteration'],
+    statValue: '4',
+    statLabel: 'color restrained brand palette',
+    tone: 'secondary',
+  },
 ];
 
 const numberOfCaseStudies = caseStudies.length;
@@ -67,6 +79,18 @@ function CaseStudyImage({ link }: { link: string }) {
       return (
         <StaticImage
           src="../../images/case-studies/spektrum/spektrum_card.jpg"
+          alt=""
+          layout="fullWidth"
+          aspectRatio={16 / 10}
+          loading="lazy"
+          objectFit="cover"
+          className={CARD_IMAGE_CLASS}
+        />
+      );
+    case '/case-studies/visionarai':
+      return (
+        <StaticImage
+          src="../../images/case-studies/visionarai/crop-motion.png"
           alt=""
           layout="fullWidth"
           aspectRatio={16 / 10}
