@@ -43,7 +43,7 @@ export const caseStudies: Record<'flexera' | 'spektrum' | 'visionarai', CaseStud
     tags: ['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'],
     statValue: '90%',
     statLabel: 'less manual tracking',
-    tone: 'success',
+    tone: 'primary',
   },
   visionarai: {
     link: '/case-studies/visionarai',
@@ -54,8 +54,8 @@ export const caseStudies: Record<'flexera' | 'spektrum' | 'visionarai', CaseStud
     caseStudyType: 'Brand & Design System',
     title: 'Designing the UI system behind Visionar.ai',
     tags: ['Web UI design', 'Brand identity', 'AI-augmented product design', 'Design systems', 'Motion design'],
-    statValue: '4',
-    statLabel: 'color restrained brand palette',
-    tone: 'secondary',
+    statValue: '65%',
+    statLabel: 'faster design-to-code handoff',
+    tone: 'primary',
   },
 } as const;

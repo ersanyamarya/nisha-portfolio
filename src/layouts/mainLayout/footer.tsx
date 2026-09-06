@@ -123,13 +123,6 @@ export default function Footer() {
               LinkedIn
             </a>
             <a
-              href="https://www.behance.net/nisha-kumari-de"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
-              Behance
-            </a>
-            <a
               href="/Nisha_Kumari_Berlin_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"

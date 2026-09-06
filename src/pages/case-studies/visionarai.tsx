@@ -1,7 +1,18 @@
 import { HeadFC, PageProps } from 'gatsby';
 import * as React from 'react';
 import { SEO } from '../../components';
-import { Bullet, CaseStudyShell, Eyebrow, FeedbackCallout, FooterNav, ImageFrame, MicroLabel, PillTag, SectionHeading } from '../../components/caseStudy';
+import {
+  Bullet,
+  CaseStudyShell,
+  Eyebrow,
+  FeedbackCallout,
+  FooterNav,
+  ImageFrame,
+  MicroLabel,
+  PillTag,
+  SectionHeading,
+  StatChip,
+} from '../../components/caseStudy';
 import { caseStudies } from '../../data/caseStudies';
 import { useCaseStudyImages } from '../../hooks/useCaseStudyImages';
 import Components from '../../images/case-studies/visionarai/components.png';
@@ -152,6 +163,13 @@ const VisionarAiCaseStudy: React.FC<PageProps> = () => {
         <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           A brand and web UI for a Berlin AI strategy consultancy, built to read as a confident strategic guide instead of another cold tech interface.
         </p>
+        <div className="mb-10 flex flex-wrap gap-4">
+          <StatChip
+            eyebrow="Impact"
+            value="65% faster"
+            label="design-to-code handoff, from combining AI-augmented rapid prototyping with a tokenized design system"
+          />
+        </div>
         <ImageFrame
           variant="hero"
           src={Overview}
