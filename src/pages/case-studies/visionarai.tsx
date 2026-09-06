@@ -457,6 +457,8 @@ const VisionarAiCaseStudy: React.FC<PageProps> = () => {
             src="https://www.visionar.ai/"
             title="Visionar.ai live site"
             className="block h-[640px] w-full border-0"
+            // Browser zoom level 90% and scale the height to 110%
+            style={{ zoom: '88%' }}
           />
         </div>
       </section>
