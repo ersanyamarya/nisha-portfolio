@@ -48,7 +48,7 @@ const caseStudies: {
     platformType: 'Brand & web UI',
     caseStudyType: 'Brand & Design System',
     description: 'Designing the UI system behind an AI strategy consultancy',
-    tags: ['Brand identity', 'Design systems', 'Web UI design', 'Motion design', 'AI-assisted iteration'],
+    tags: ['Web UI design', 'Brand identity', 'AI-augmented product design', 'Design systems', 'Motion design'],
     statValue: '4',
     statLabel: 'color restrained brand palette',
     tone: 'secondary',
@@ -90,7 +90,7 @@ function CaseStudyImage({ link }: { link: string }) {
     case '/case-studies/visionarai':
       return (
         <StaticImage
-          src="../../images/case-studies/visionarai/crop-motion.png"
+          src="../../images/case-studies/visionarai/overview.png"
           alt=""
           layout="fullWidth"
           aspectRatio={16 / 10}
