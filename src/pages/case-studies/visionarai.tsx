@@ -520,6 +520,7 @@ export const Head: HeadFC = () => (
     title="Visionar.ai brand & UI system"
     description="Brand identity and web UI design system for Visionar.ai, a Berlin AI strategy consultancy."
     pathname="/case-studies/visionarai"
+    image="/og/visionarai.png"
     keyWords={['Visionar.ai', 'AI consultancy', 'brand identity', 'design system', 'web UI design']}
   />
 );

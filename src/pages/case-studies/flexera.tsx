@@ -558,6 +558,7 @@ export const Head: HeadFC = () => (
       title="Flexera cloud cost anomaly detection"
       description="Discovery, research synthesis and UX design for Flexera's AI-based cloud cost anomaly detection MVP."
       pathname="/case-studies/flexera"
+      image="/og/flexera.png"
       keyWords={['Flexera', 'FinOps', 'cloud cost anomaly detection', 'AI/ML UX', 'discovery research']}
     />
   </>

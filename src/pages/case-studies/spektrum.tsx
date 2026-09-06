@@ -323,6 +323,7 @@ export const Head: HeadFC = () => (
     title="Spektrum Akademie scheduler"
     description="UX research and design for Spektrum Akademie's real-time scheduling and academic resource tracking system."
     pathname="/case-studies/spektrum"
+    image="/og/spektrum.png"
     keyWords={['Spektrum Akademie', 'EdTech', 'scheduling', 'information architecture', 'UX research']}
   />
 );
