@@ -9,12 +9,15 @@ import {
   Eyebrow,
   FeedbackCallout,
   FooterNav,
+  ImageFrame,
+  MicroLabel,
   PillTag,
   ProsCons,
   SectionHeading,
   StatChip,
-  ZoomableImage,
 } from '../../components/caseStudy';
+import { caseStudies } from '../../data/caseStudies';
+import { useCaseStudyImages } from '../../hooks/useCaseStudyImages';
 import Dashboard from '../../images/case-studies/spektrum/spektrum_iterations_3.jpg';
 import Mindmap from '../../images/case-studies/spektrum/spektrum_strategy_1.jpg';
 import Periodview from '../../images/case-studies/spektrum/spektrum_iterations_4.png';
@@ -34,14 +37,17 @@ const SECTIONS = [
   { id: 'impact', label: 'Impact' },
 ];
 
+const meta = caseStudies.spektrum;
+
 const SpektrumCaseStudy: React.FC<PageProps> = () => {
+  const getImage = useCaseStudyImages();
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Spektrum Akademie · EdTech · SaaS</Eyebrow>
-        <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
-          Administrators had no way to track scheduling progress in real time
-        </h1>
+        <Eyebrow>
+          {meta.name} · {meta.heroDomain} · {meta.platformType}
+        </Eyebrow>
+        <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">{meta.title}</h1>
         <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           Spektrum Akademie is a vocational education institution in Berlin, training students across Occupational Therapy, Physiotherapy, Speech Therapy and
           Early Childhood Education. I designed the real-time scheduling and resource-tracking system its administrators now plan every semester around.
@@ -58,17 +64,17 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             label="timetable creation, letting administrators plan a full semester in a fraction of the time"
           />
         </div>
-        <div className="mb-10 overflow-hidden rounded-3xl shadow-2xl">
-          <ZoomableImage
-            src={SchedulerHero}
-            alt="Zeitplaner scheduler view showing a weekly class timetable with teacher and room availability"
-            className="block h-auto w-full"
-          />
-        </div>
+        <ImageFrame
+          variant="hero"
+          src={SchedulerHero}
+          image={getImage('case-studies/spektrum/spektrum_overview.jpg')}
+          alt="Zeitplaner scheduler view showing a weekly class timetable with teacher and room availability"
+          className="mb-10"
+        />
         <div>
-          <div className="mb-4 text-xs font-bold tracking-wide text-accent-foreground">Skills applied</div>
+          <MicroLabel className="mb-4">Skills applied</MicroLabel>
           <div className="flex flex-wrap gap-2.5">
-            {['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'].map(s => (
+            {meta.tags.map(s => (
               <PillTag key={s}>{s}</PillTag>
             ))}
           </div>
@@ -108,15 +114,15 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           the eventual design.
         </p>
         <div className="flex flex-col gap-5">
-          <ZoomableImage
+          <ImageFrame
             src={UserJourneyResources}
+            image={getImage('case-studies/spektrum/spektrum_research_1.jpg')}
             alt="User journey tracking academic resources across the current manual process"
-            className="block h-auto w-full rounded-2xl ring-1 ring-border"
           />
-          <ZoomableImage
+          <ImageFrame
             src={UserJourney}
+            image={getImage('case-studies/spektrum/spektrum_research_2.jpg')}
             alt="User journey mapping the administrator's day-to-day scheduling struggles"
-            className="block h-auto w-full rounded-2xl ring-1 ring-border"
           />
         </div>
       </section>
@@ -135,10 +141,11 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             <strong>Consistent naming conventions:</strong> ensuring terminology stayed consistent to enable smooth data import/export with the legacy system.
           </Bullet>
         </div>
-        <ZoomableImage
+        <ImageFrame
           src={Mindmap}
+          image={getImage('case-studies/spektrum/spektrum_strategy_1.jpg')}
           alt="Mind map visualizing the relationships between academic resources"
-          className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-border"
+          className="mb-14"
         />
 
         <h3 className="mb-3.5 text-xl font-bold">User flow for idea implementation</h3>
@@ -146,10 +153,11 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           To ensure the solution aligned with the legacy system, technical constraints and enhanced usability, we collaborated closely with the product manager,
           development team and stakeholders, thoroughly assessing the proposed approach and its impact.
         </p>
-        <ZoomableImage
+        <ImageFrame
           src={Userflow}
+          image={getImage('case-studies/spektrum/spektrum_strategy_2.jpg')}
           alt="User flow diagram for the scheduling idea implementation"
-          className="mb-14 block h-auto w-full rounded-2xl ring-1 ring-border"
+          className="mb-14"
         />
 
         <h3 className="mb-6 text-xl font-bold">Key insights</h3>
@@ -183,13 +191,12 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             and annotated feedback directly on the wireframes, letting us iterate before moving forward and build interchangeable steps for class, subject,
             teacher and room selection.
           </p>
-          <div className="mt-3 overflow-hidden rounded-2xl ring-1 ring-border">
-            <ZoomableImage
-              src={WireframeDropdown}
-              alt="Early wireframe of the interchangeable class, subject, teacher and room selection steps"
-              className="block h-auto w-full scale-110"
-            />
-          </div>
+          <ImageFrame
+            src={WireframeDropdown}
+            image={getImage('case-studies/spektrum/spektrum_iterations_1.png')}
+            alt="Early wireframe of the interchangeable class, subject, teacher and room selection steps"
+            className="mt-3"
+          />
         </div>
 
         <div className="mb-14">
@@ -200,10 +207,11 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
           <p className="mb-3 text-lg leading-relaxed text-muted-foreground">
             We tested a calendar view for scheduling classes, annotated below with the dropdown selectors for class, subject, teacher and room.
           </p>
-          <ZoomableImage
+          <ImageFrame
             src={SchedulerFinal}
+            image={getImage('case-studies/spektrum/spektrum_iterations_2.jpg')}
             alt="Second iteration: calendar view for scheduling with class, subject, teacher and room selectors"
-            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-border"
+            className="my-3"
           />
           <FeedbackCallout
             tone="secondary"
@@ -223,10 +231,11 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             We tested a class dashboard summarizing scheduled hours and subject progress, with a drill-down panel showing each teacher's contribution and hours
             taught per subject.
           </p>
-          <ZoomableImage
+          <ImageFrame
             src={Dashboard}
+            image={getImage('case-studies/spektrum/spektrum_iterations_3.jpg')}
             alt="Class dashboard showing scheduled hours, subject progress and a teaching-details panel with hours taught per teacher"
-            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-border"
+            className="my-3"
           />
           <FeedbackCallout
             tone="success"
@@ -244,10 +253,11 @@ const SpektrumCaseStudy: React.FC<PageProps> = () => {
             Based on that feedback, we redesigned around a period view that lists every class per row across the week, with a &ldquo;Schedule Class&rdquo; panel
             for assigning subject, teacher, room and duration, closer to the familiar Google Calendar layout and built to support recurring subject scheduling.
           </p>
-          <ZoomableImage
+          <ImageFrame
             src={Periodview}
+            image={getImage('case-studies/spektrum/spektrum_iterations_4.png')}
             alt="Third iteration: period view scheduler with a Schedule Class panel for assigning subject, teacher, room and duration"
-            className="my-3 block h-auto w-full rounded-2xl ring-1 ring-border"
+            className="my-3"
           />
           <FeedbackCallout
             tone="success"

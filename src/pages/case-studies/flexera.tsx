@@ -9,14 +9,17 @@ import {
   Eyebrow,
   FooterNav,
   FunnelBreakdown,
+  ImageFrame,
   InsightCallout,
+  MicroLabel,
   PillTag,
   QuoteBlock,
   SectionHeading,
   StatChip,
-  ZoomableImage,
 } from '../../components/caseStudy';
 import { DIAGRAM_FONT_LINK, JobTraceFlow, LifecycleFlow, QuarterTimeline } from '../../components/caseStudy/diagrams';
+import { caseStudies } from '../../data/caseStudies';
+import { useCaseStudyImages } from '../../hooks/useCaseStudyImages';
 import AnomalyGraph from '../../images/case-studies/flexera/flexera_overview.png';
 import CurrentExperienceAudit from '../../images/case-studies/flexera/flexera_research.png';
 import DiscoveryDiscussions from '../../images/case-studies/flexera/flexera_jobs-to-be-done.png';
@@ -35,14 +38,17 @@ const SECTIONS = [
   { id: 'next-steps', label: 'Next steps' },
 ];
 
+const meta = caseStudies.flexera;
+
 const FlexeraCaseStudy: React.FC<PageProps> = () => {
+  const getImage = useCaseStudyImages();
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Flexera · FinOps / cloud cost management · B2B SaaS</Eyebrow>
-        <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">
-          Flexera already had a way to catch cloud cost spikes. Almost nobody used it
-        </h1>
+        <Eyebrow>
+          {meta.name} · {meta.heroDomain} · {meta.platformType}
+        </Eyebrow>
+        <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">{meta.title}</h1>
         <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           Flexera's cloud cost optimization platform helps enterprises manage spend across AWS, Azure and GCP. I led discovery, research synthesis and design
           for a rebuilt AI-based anomaly detection experience, working across Product, Engineering and the Data Science team over a single quarter, from usage
@@ -65,17 +71,17 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
             label="correctly identified the top cost contributor"
           />
         </div>
-        <div className="mb-10 overflow-hidden rounded-3xl shadow-2xl">
-          <ZoomableImage
-            src={AnomalyGraph}
-            alt="Line graph of daily cloud spend with two sharp spikes marked as anomalous"
-            className="block h-auto w-full"
-          />
-        </div>
+        <ImageFrame
+          variant="hero"
+          src={AnomalyGraph}
+          image={getImage('case-studies/flexera/flexera_overview.png')}
+          alt="Line graph of daily cloud spend with two sharp spikes marked as anomalous"
+          className="mb-10"
+        />
         <div>
-          <div className="mb-4 text-[11px] font-extrabold tracking-widest text-muted-foreground">Skills applied</div>
+          <MicroLabel className="mb-4">Skills applied</MicroLabel>
           <div className="flex flex-wrap gap-2.5">
-            {['Discovery research', 'Stakeholder interviews', 'Product analytics', 'Prototyping', 'AI/ML UX'].map(s => (
+            {meta.tags.map(s => (
               <PillTag key={s}>{s}</PillTag>
             ))}
           </div>
@@ -202,10 +208,11 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
         </InsightCallout>
 
         <h3 className="mt-12 mb-4 text-xl font-bold">2. Auditing the current experience</h3>
-        <ZoomableImage
+        <ImageFrame
           src={CurrentExperienceAudit}
+          image={getImage('case-studies/flexera/flexera_research.png')}
           alt="Annotated audit of the existing Tabular View and Cloud Cost Anomalies pages, marking manual filter setup, low prominence of the anomalies entry point, and unexplained anomaly charts"
-          className="mb-6 block h-auto w-full rounded-2xl ring-1 ring-border"
+          className="mb-6"
         />
         <p className="mb-5 text-lg leading-relaxed text-muted-foreground">
           A current-state gap analysis of the existing Cost Anomalies tool surfaced concrete, fixable reasons for the drop-off.
@@ -330,10 +337,11 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           (decide what to do next and hand it off). Working sessions with internal FinOps advisors and engineering surfaced these jobs directly, captured on the
           research board below.
         </p>
-        <ZoomableImage
+        <ImageFrame
           src={DiscoveryDiscussions}
+          image={getImage('case-studies/flexera/flexera_jobs-to-be-done.png')}
           alt="Discovery board showing anomaly table iterations, engineering discussion notes and sticky-note feedback from FinOps advisors"
-          className="mb-12 block h-auto w-full rounded-2xl ring-1 ring-border"
+          className="mb-12"
         />
 
         <h3 className="mb-2 text-xl font-bold">How each job traces back to research</h3>
@@ -443,10 +451,11 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
           Path 1, the system proactively surfacing AI-detected anomalies in a new Anomalies navigation, is what the MVP shipped. Path 2, users defining their
           own alert rules and thresholds with email or in-app notification, was mapped in full but marked &ldquo;not implemented in MVP.&rdquo;
         </p>
-        <ZoomableImage
+        <ImageFrame
           src={UserJourney}
+          image={getImage('case-studies/flexera/flexera_journey.png')}
           alt="Cloud cost anomaly detection user journey showing the shipped system-generated anomalies path into a detail slide-out, and the not-yet-implemented alert configuration path"
-          className="mb-10 block h-auto w-full rounded-2xl ring-1 ring-border"
+          className="mb-10"
         />
 
         <h3 className="mb-4 text-xl font-bold">Why the journey is shaped this way</h3>
@@ -493,10 +502,10 @@ const FlexeraCaseStudy: React.FC<PageProps> = () => {
       <section id="final-design">
         <Eyebrow>MVP design</Eyebrow>
         <SectionHeading>The experience we shipped</SectionHeading>
-        <ZoomableImage
+        <ImageFrame
           src={MvpDesignAnnotated}
+          image={getImage('case-studies/flexera/flexera_final-design.png')}
           alt="Annotated MVP anomaly detection design: navigation, anomalies table with date range and row grouping, and the detail slide-out with cost trend graph and top contributors table"
-          className="block h-auto w-full rounded-3xl ring-1 ring-border"
         />
       </section>
 

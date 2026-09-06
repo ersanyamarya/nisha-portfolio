@@ -3,59 +3,12 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 import { Reveal, TiltCard } from '../../components';
-import { Tone, TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
+import { TONE_SOLID, TONE_TEXT } from '../../components/caseStudy';
+import { caseStudies } from '../../data/caseStudies';
 
-const caseStudies: {
-  name: string;
-  link: string;
-  domain: string;
-  platformType: string;
-  caseStudyType: string;
-  description: string;
-  tags: string[];
-  statValue: string;
-  statLabel: string;
-  tone: Tone;
-}[] = [
-  {
-    name: 'Flexera',
-    link: '/case-studies/flexera',
-    domain: 'FinOps',
-    platformType: 'B2B SaaS',
-    caseStudyType: 'UX Research & Design',
-    description: 'Flexera already had a way to catch cloud cost spikes. Almost nobody used it',
-    tags: ['Discovery research', 'Stakeholder interviews', 'Product analytics', 'Prototyping', 'AI/ML UX'],
-    statValue: '~5/6',
-    statLabel: 'customers identified the top cost contributor',
-    tone: 'primary',
-  },
-  {
-    name: 'Spektrum Akademie',
-    link: '/case-studies/spektrum',
-    domain: 'EdTech',
-    platformType: 'SaaS',
-    caseStudyType: 'UX Research & Design',
-    description: 'Administrators had no way to track scheduling progress in real time',
-    tags: ['Discovery research', 'User flows', 'Information architecture', 'End-to-end design', 'Design system'],
-    statValue: '90%',
-    statLabel: 'less manual tracking',
-    tone: 'success',
-  },
-  {
-    name: 'Visionar.ai',
-    link: '/case-studies/visionarai',
-    domain: 'AI consultancy',
-    platformType: 'Brand & web UI',
-    caseStudyType: 'Brand & Design System',
-    description: 'Designing the UI system behind an AI strategy consultancy',
-    tags: ['Web UI design', 'Brand identity', 'AI-augmented product design', 'Design systems', 'Motion design'],
-    statValue: '4',
-    statLabel: 'color restrained brand palette',
-    tone: 'secondary',
-  },
-];
+const projects = Object.values(caseStudies);
 
-const numberOfCaseStudies = caseStudies.length;
+const numberOfCaseStudies = projects.length;
 const isOddNumberOfCaseStudies = numberOfCaseStudies % 2 !== 0;
 
 const CARD_IMAGE_CLASS = 'h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]';
@@ -116,7 +69,7 @@ export default function ProjectsSection() {
       </Reveal>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
-        {caseStudies.map((project, i) => (
+        {projects.map((project, i) => (
           <Reveal
             key={project.link}
             delay={(i % 2) * 0.1}>
@@ -139,7 +92,7 @@ export default function ProjectsSection() {
                       this is hover-state foreground text, and the bare token alone
                       fails AA on the light page background (2.12:1, needs 3:1). */}
                   <h3 className="mb-4 font-serif text-2xl leading-snug font-medium transition-colors group-hover:text-primary-700 dark:group-hover:text-primary-300">
-                    {project.description}
+                    {project.title}
                   </h3>
 
                   <div className="mb-6 flex flex-wrap gap-2">

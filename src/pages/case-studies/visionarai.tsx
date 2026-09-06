@@ -1,7 +1,9 @@
 import { HeadFC, PageProps } from 'gatsby';
 import * as React from 'react';
 import { SEO } from '../../components';
-import { Bullet, CaseStudyShell, Eyebrow, FeedbackCallout, FooterNav, PillTag, SectionHeading, ZoomableImage } from '../../components/caseStudy';
+import { Bullet, CaseStudyShell, Eyebrow, FeedbackCallout, FooterNav, ImageFrame, MicroLabel, PillTag, SectionHeading } from '../../components/caseStudy';
+import { caseStudies } from '../../data/caseStudies';
+import { useCaseStudyImages } from '../../hooks/useCaseStudyImages';
 import Components from '../../images/case-studies/visionarai/components.png';
 import Motion from '../../images/case-studies/visionarai/motion.png';
 import Overview from '../../images/case-studies/visionarai/overview.png';
@@ -136,34 +138,39 @@ const TAKEAWAYS = [
   },
 ];
 
+const meta = caseStudies.visionarai;
+
 const VisionarAiCaseStudy: React.FC<PageProps> = () => {
+  const getImage = useCaseStudyImages();
   return (
     <CaseStudyShell sections={SECTIONS}>
       <section id="overview">
-        <Eyebrow>Visionar.ai · AI strategy consultancy · Brand & web UI</Eyebrow>
-        <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">Designing the UI system behind Visionar.ai</h1>
+        <Eyebrow>
+          {meta.name} · {meta.heroDomain} · {meta.platformType}
+        </Eyebrow>
+        <h1 className="mb-6 text-4xl leading-tight font-extrabold tracking-[-0.02em] md:text-5xl">{meta.title}</h1>
         <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
           A brand and web UI for a Berlin AI strategy consultancy, built to read as a confident strategic guide instead of another cold tech interface.
         </p>
-        <div className="mb-10 overflow-hidden rounded-3xl shadow-2xl">
-          <ZoomableImage
-            src={Overview}
-            alt="Visionar.ai brand and web UI overview"
-            className="block h-auto w-full"
-          />
-        </div>
+        <ImageFrame
+          variant="hero"
+          src={Overview}
+          image={getImage('case-studies/visionarai/overview.png')}
+          alt="Visionar.ai brand and web UI overview"
+          className="mb-10"
+        />
         <div className="mb-10 grid grid-cols-1 gap-6 border-t border-border pt-6 sm:grid-cols-3">
           {IDENTITY.map(item => (
             <div key={item.label}>
-              <div className="mb-1.5 text-[11px] font-extrabold tracking-widest text-muted-foreground">{item.label.toUpperCase()}</div>
+              <MicroLabel className="mb-1.5">{item.label.toUpperCase()}</MicroLabel>
               <div className="text-sm font-semibold">{item.value}</div>
             </div>
           ))}
         </div>
         <div>
-          <div className="mb-4 text-sm font-bold tracking-wide text-accent-foreground">Skills applied</div>
+          <MicroLabel className="mb-4">Skills applied</MicroLabel>
           <div className="flex flex-wrap gap-2.5">
-            {['Web UI design', 'Brand identity', 'AI-augmented product design', 'Design systems', 'Motion design'].map(s => (
+            {meta.tags.map(s => (
               <PillTag key={s}>{s}</PillTag>
             ))}
           </div>
@@ -208,14 +215,11 @@ const VisionarAiCaseStudy: React.FC<PageProps> = () => {
           An AI consultancy&rsquo;s hero visual had to feel like it was <em>watching and guiding</em>, not surveilling. Tying its tilt to the cursor and its
           rotation to scroll progress keeps it alive and responsive rather than decorative, so the mark reads as attentive rather than static.
         </p>
-        <ZoomableImage
+        <ImageFrame
           src={VisualAnchor}
+          image={getImage('case-studies/visionarai/visual-anchor.png')}
           alt="Visionar.ai orb hero anchor design and rationale, as documented in the shipped design system"
-          className="block h-auto w-full rounded-2xl ring-1 ring-border"
         />
-        <div className="mt-3 text-xs text-muted-foreground">
-          Fig. The orb anchor, built from rings, crosshair and pulsing core, as documented in the shipped system.
-        </div>
       </section>
 
       <section
@@ -415,12 +419,11 @@ const VisionarAiCaseStudy: React.FC<PageProps> = () => {
           Clean modular cards, high-contrast dark callouts, pill-shaped tags, and dual-state CTA buttons: a small, disciplined component library built to hold
           up across every beat of the site.
         </p>
-        <ZoomableImage
+        <ImageFrame
           src={Components}
+          image={getImage('case-studies/visionarai/components.png')}
           alt="Visionar.ai component library from the shipped Figma design system"
-          className="block h-auto w-full rounded-2xl ring-1 ring-border"
         />
-        <div className="mt-3 text-xs text-muted-foreground">Fig. 3. Wordmark, buttons, nav rail, tags, and founder card components.</div>
       </section>
 
       <section id="motion">
@@ -430,12 +433,11 @@ const VisionarAiCaseStudy: React.FC<PageProps> = () => {
           The orb travels with the reader across the story. Five beats unfold sideways instead of scrolling down, so the site moves like a pitch deck rather
           than a landing page.
         </p>
-        <ZoomableImage
+        <ImageFrame
           src={Motion}
+          image={getImage('case-studies/visionarai/motion.png')}
           alt="Visionar.ai orb motion system and horizontal beat structure"
-          className="block h-auto w-full rounded-2xl ring-1 ring-border"
         />
-        <div className="mt-3 text-xs text-muted-foreground">Fig. 4. The orb protagonist and the five-beat horizontal story engine.</div>
       </section>
 
       <section id="live-site">

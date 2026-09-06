@@ -1,8 +1,14 @@
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React, { useEffect, useState } from 'react';
 import { Tone, TONE_SOLID, TONE_TEXT } from './tone';
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return <div className="mb-4 text-sm font-bold tracking-wide text-accent-foreground">{children}</div>;
+}
+
+/** The small all-caps sub-label used for things like "Skills applied", card item labels and callout eyebrows — smaller and plainer than `Eyebrow`. */
+export function MicroLabel({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return <div className={`text-[11px] font-extrabold tracking-widest text-muted-foreground ${className}`}>{children}</div>;
 }
 
 export function SectionHeading({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -16,7 +22,18 @@ export function SectionHeading({ children, className = '' }: { children: React.R
  * clicking the enlarged image zooms it to full resolution (scroll to pan around); click it
  * again, press Escape, or click outside the image to close.
  */
-export function ZoomableImage({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
+export function ZoomableImage({
+  src,
+  alt,
+  image,
+  className = '',
+}: {
+  src: string;
+  alt: string;
+  /** Optimized (lazy-loaded, blurred-placeholder) version to display inline; falls back to a plain `<img src>` when omitted. The zoom overlay always opens the full-quality `src`. */
+  image?: IGatsbyImageData;
+  className?: string;
+}) {
   const [zoomed, setZoomed] = useState(false);
   const [fullSize, setFullSize] = useState(false);
 
@@ -38,23 +55,40 @@ export function ZoomableImage({ src, alt, className = '' }: { src: string; alt: 
     setFullSize(false);
   };
 
+  const openZoom = () => setZoomed(true);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setZoomed(true);
+    }
+  };
+
   return (
     <>
-      <img
-        src={src}
-        alt={alt}
+      {/* The click/keyboard handling lives on this wrapper, not on `GatsbyImage` itself: it swaps in
+          its "main image" via direct DOM manipulation outside React's event system, so props like
+          `onClick` passed to it never end up wired to a real listener. */}
+      <div
         role="button"
         tabIndex={0}
         aria-label={`Zoom into image: ${alt}`}
-        className={`cursor-zoom-in ${className}`}
-        onClick={() => setZoomed(true)}
-        onKeyDown={e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setZoomed(true);
-          }
-        }}
-      />
+        onClick={openZoom}
+        onKeyDown={handleKeyDown}
+        className={`cursor-zoom-in ${className}`}>
+        {image ? (
+          <GatsbyImage
+            image={image}
+            alt={alt}
+            className="block h-full w-full"
+          />
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            className="block h-auto w-full"
+          />
+        )}
+      </div>
 
       {zoomed && (
         <div
@@ -80,6 +114,48 @@ export function ZoomableImage({ src, alt, className = '' }: { src: string; alt: 
         </div>
       )}
     </>
+  );
+}
+
+/**
+ * A screenshot/diagram with the shared corner/border/shadow treatment for case-study images.
+ * `variant="hero"` is the large lead image (rounded, drop shadow); `variant="body"` (default) is
+ * an in-section image (smaller radius, hairline ring). Deliberately doesn't set a width, height or
+ * aspect ratio — every image keeps its own source shape. `className` adds spacing (e.g. `mb-6`).
+ */
+export function ImageFrame({
+  src,
+  alt,
+  image,
+  variant = 'body',
+  className = '',
+}: {
+  src: string;
+  alt: string;
+  image?: IGatsbyImageData;
+  variant?: 'hero' | 'body';
+  className?: string;
+}) {
+  if (variant === 'hero') {
+    return (
+      <div className={`overflow-hidden rounded-3xl shadow-2xl ${className}`}>
+        <ZoomableImage
+          src={src}
+          alt={alt}
+          image={image}
+          className="block h-auto w-full"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <ZoomableImage
+      src={src}
+      alt={alt}
+      image={image}
+      className={`block h-auto w-full overflow-hidden rounded-2xl ring-1 ring-border ${className}`}
+    />
   );
 }
 
@@ -158,7 +234,7 @@ export function FunnelBreakdown({
 }) {
   return (
     <div className={`rounded-3xl border border-border px-6 py-8 md:px-10 ${className}`}>
-      <div className="mb-8 text-[11px] font-extrabold tracking-widest text-muted-foreground">{eyebrow}</div>
+      <MicroLabel className="mb-8">{eyebrow}</MicroLabel>
       <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
         <div>
           <div className="mb-1 text-base font-bold">{from.label}</div>
@@ -249,7 +325,7 @@ export function ChallengeApproachOutcome({
     <div className={`grid grid-cols-1 gap-8 ${items.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
       {items.map(item => (
         <div key={item.label}>
-          <div className="mb-3.5 text-[11px] font-extrabold tracking-widest text-muted-foreground">{item.label}</div>
+          <MicroLabel className="mb-3.5">{item.label}</MicroLabel>
           <p className="text-base leading-relaxed text-muted-foreground">{item.body}</p>
         </div>
       ))}
