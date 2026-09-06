@@ -30,8 +30,7 @@ const FRAMES: Record<string, { tag: string; alt: string; caption: string; focus?
     alt: 'Saved story of a heart latte art captioned patience plus practice',
     caption: 'Saved this one for the reminder more than the pour.',
   },
-  '05-espresso': { tag: 'Morning', alt: 'A glass cup of black filter coffee in hard morning light', caption: 'Filter, 6am, before anyone needs anything.' },
-  '06-palette': { tag: 'Studio', alt: 'A loaded painter’s palette with a brush across it', caption: 'Every palette becomes a design system eventually.' },
+  '05_palette': { tag: 'Studio', alt: 'A loaded painter’s palette with a brush across it', caption: 'Every palette becomes a design system eventually.' },
 };
 
 interface StoryQuery {
