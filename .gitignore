@@ -14,3 +14,10 @@ src/gatsby-types.d.ts
 lighthouse-*.json
 lighthouse-*.md
 .playwright-mcp
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+graft*.cjs
+# Generated Instagram videos (local only, not committed)
+instagram/videos/
+instagram/posts/

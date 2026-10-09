@@ -71,3 +71,7 @@ The homepage contact modal posts to a Netlify Function rather than a Gatsby API 
 ### SEO / metadata
 
 Site-wide metadata (title, description, keywords, social handles, theme color) is centralized in `gatsby-config.ts`'s `siteMetadata`; `src/components/seo.tsx` reads it via GraphQL and each page's `Head` export (e.g. `export const Head: HeadFC = () => <SEO />`) renders it, optionally overridden per page/template (see `details.tsx`, which passes per-project `keyWords`/`description` from `pageContext`).
+
+## Instagram
+
+`instagram/` manages Nisha's Instagram posts and videos, separate from the site. See `instagram/CLAUDE.md`.

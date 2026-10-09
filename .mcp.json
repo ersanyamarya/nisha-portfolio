@@ -32,6 +32,10 @@
     "playwright-webkit": {
       "command": "playwright-mcp",
       "args": ["--browser", "webkit", "--output-dir", ".playwright-mcp"]
+    },
+    "graft": {
+      "command": "graft",
+      "args": ["mcp"]
     }
   }
 }
