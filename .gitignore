@@ -19,5 +19,5 @@ lighthouse-*.md
 /graft/
 graft*.cjs
 # Generated Instagram videos (local only, not committed)
-instagram/videos/
+
 instagram/posts/
