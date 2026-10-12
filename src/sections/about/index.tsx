@@ -78,6 +78,17 @@ export default function AboutSection() {
               didn't measure is the one that ruined the shot.
             </p>
             <p>So I measure the inputs and taste as I go. Nothing ships that I wouldn&rsquo;t put my name on.</p>
+            <p>
+              The coffee and the paint live on Instagram at{' '}
+              <a
+                href="https://www.instagram.com/hue.and.brew/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold underline underline-offset-4 hover:opacity-70">
+                @hue.and.brew
+              </a>
+              .
+            </p>
           </div>
         </Reveal>
 
@@ -88,7 +99,7 @@ export default function AboutSection() {
             {/* pt clears the Dynamic Island — em, so it tracks the device as it scales. */}
             <StoryReel
               stories={stories}
-              handle="nisha.brews"
+              handle="hue.and.brew"
               chromeOffset="pt-[48em]"
             />
           </PhoneMock>

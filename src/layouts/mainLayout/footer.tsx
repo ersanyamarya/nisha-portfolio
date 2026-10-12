@@ -129,6 +129,13 @@ export default function Footer() {
               className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
               Resume ↓
             </a>
+            <a
+              href="https://www.instagram.com/hue.and.brew/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-default-50 opacity-75 transition-opacity hover:opacity-50">
+              Instagram
+            </a>
             <span className="text-default-50 opacity-75">Berlin, Germany</span>
           </div>
         </div>
